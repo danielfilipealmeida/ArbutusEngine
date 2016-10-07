@@ -18,6 +18,8 @@ public:
     virtual void newMidiMessage(string msg);
     virtual void newOscMessage(string msg);
     virtual string getThumbnailPath(string filePath);
+    
+    virtual string md5(string msg);
 };
 
 #endif /* AppProtocol_h */

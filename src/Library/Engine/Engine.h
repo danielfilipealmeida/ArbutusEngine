@@ -330,6 +330,7 @@ public:
     
     void setAppSupportDir(string _dir);
     string calculateThumbnailPath(string path);
+    string md5(string);
 
 };
 

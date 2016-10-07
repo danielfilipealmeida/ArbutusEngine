@@ -12,7 +12,7 @@
 #include <string>
 
 
-//AppProtocol *app;
+extern AppProtocol *app;
 Engine      *_engine;
 //extern CocoaHandler *cocoaHandler;
 
@@ -1150,7 +1150,16 @@ void Engine::visualsKeysControlCallback(Controller *controller) {
 /*************************************************************/
     
 #pragma mark other stuff
+
+string Engine::md5(string message) {
+    string result;
+    string shellCommand;
     
+    shellCommand = "md5 -q -s " + message;
+    result = ofSystem(shellCommand);
+    result.erase(result.size() - 2);
+    return result;
+}
 
 void Engine::setAppSupportDir(string _dir) {
     appSupportDir = _dir;
@@ -1158,7 +1167,8 @@ void Engine::setAppSupportDir(string _dir) {
 
 string Engine::calculateThumbnailPath(string path) {
     //return ofString
-    return appSupportDir + path;
+    string md5FileName = this->md5(ofFilePath::getFileName(path));
+    return appSupportDir + "/cache/thumbnails/" + md5FileName + ".jpg";
     
 }
 

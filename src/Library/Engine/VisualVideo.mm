@@ -89,10 +89,13 @@ Boolean VisualVideo::fileExists() {
 
 
 void VisualVideo::setThumbnail() {
-    string thumbnailPath = _engine->calculateThumbnailPath(filePath);
+    string newThumbnailPath;
     
-    setThumbnailPath (thumbnailPath);
-    if (!this->screenshot.loadImage(Visual::getThumbnailPath () )) {
+   // thumbnailPath = Visual::getThumbnailPath ();
+    newThumbnailPath = _engine->calculateThumbnailPath(filePath);
+    
+    setThumbnailPath (newThumbnailPath);
+    if (!this->screenshot.loadImage(newThumbnailPath)) {
         createThumbnail();
         Visual::saveThumbnail();
     }
@@ -110,26 +113,6 @@ void VisualVideo::createThumbnail(){
     Visual::createThumbnail();
 	if(fileExists() == false) return;
     
-    
-    
-    /*
-        dispatch_queue_t currentQueue = dispatch_get_current_queue();
-     dispatch_group_t group = dispatch_group_create();
-     __block ofVideoPlayer video;
-     dispatch_group_async(group,currentQueue, ^ {
-        video.loadMovie(filePath);
-        video.setFrame(2);
-        video.update();
-    });
-    
-    dispatch_group_notify(group,currentQueue, ^ {
-        screenshot.allocate(video.width, video.height, OF_IMAGE_COLOR);
-        screenshot.setFromPixels(video.getPixels(), video.getWidth(), video.getHeight(), OF_IMAGE_COLOR, true);
-        screenshot.resize(THUMBNAIL_WIDTH, THUMBNAIL_WIDTH * (screenshot.getHeight() / screenshot.getWidth()));
-    });
-   
-    dispatch_release(group);
-    */
     
     ofVideoPlayer video;
     video.loadMovie(filePath);

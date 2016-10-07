@@ -22,7 +22,7 @@ typedef enum VisualType {
     VisualType_Generator
 } VisualTypes;
 
-#define THUMBNAIL_WIDTH 320
+#define THUMBNAIL_WIDTH 160
 
 class Visual {
     VisualType  type;
