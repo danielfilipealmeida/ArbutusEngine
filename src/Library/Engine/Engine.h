@@ -154,6 +154,13 @@ public:
     bool            isSyphonInputLoaded(string serverName, string appName);
     VisualSyphon*   getSyphonInput(string serverName, string appName);
     void            removeVisualFromSet(Visual *visual);
+    
+    
+    /*************************************************************/
+
+#pragma mark App Callback Registration
+    
+    void (*appBeatCallback)(void); ;
 	
 
     /*************************************************************/
@@ -331,6 +338,20 @@ public:
     void setAppSupportDir(string _dir);
     string calculateThumbnailPath(string path);
     string md5(string);
+
+    
+#pragma mark App Callback Registration
+    
+    /* ************************** */
+    /* App Callback Registrations */
+    
+
+    
+    /*!
+     * Register the callback to be executed on the app when a beat occurs
+     * @param void* callback the callback to be executed
+     */
+    void registerAppBeatCallback(void (*callback)(void));
 
 };
 

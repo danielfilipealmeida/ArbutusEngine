@@ -1,4 +1,4 @@
-/*
+    /*
  *  Engine.mm
  *  VJingApp
  *
@@ -689,6 +689,7 @@ void Engine::beat() {
     
     // TODO run something from the main app probably set a callback for the beat
     //((AppProtocol *)app)->beat();
+    appBeatCallback();
 }
 
 
@@ -732,7 +733,7 @@ void Engine::startMetronome(){
 void Engine::stopMetronome(){
         //cout << "metronome off" <<endl;
 	metronomeThreadObj.stop();
-	metronomeOn=false;
+	metronomeOn = false;
 }
 
 
@@ -1155,9 +1156,15 @@ string Engine::md5(string message) {
     string result;
     string shellCommand;
     
-    shellCommand = "md5 -q -s " + message;
-    result = ofSystem(shellCommand);
-    result.erase(result.size() - 2);
+    try {
+        shellCommand = "md5 -q -s " + message;
+        result = ofSystem(shellCommand);
+        result.erase(result.size() - 2);
+    }
+    catch(exception& e) {
+        cout << e.what() << "\n";
+        result = "";
+    }
     return result;
 }
 
@@ -1170,5 +1177,12 @@ string Engine::calculateThumbnailPath(string path) {
     string md5FileName = this->md5(ofFilePath::getFileName(path));
     return appSupportDir + "/cache/thumbnails/" + md5FileName + ".jpg";
     
+}
+
+
+#pragma mark App Callback Registration
+
+void Engine::registerAppBeatCallback(void (*callback)(void)) {
+    appBeatCallback = callback;
 }
 
