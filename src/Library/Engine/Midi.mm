@@ -18,12 +18,22 @@ Midi *midiInstance = NULL;
 
 // this is a singleton Class
 
+
+
 Midi *Midi::getMidiInstance() {
     return midiInstance;
 }
 
+
+Midi *Midi::getInstance(int port) {
+    if (midiInstance == NULL) midiInstance = new Midi(port);
+    
+    return midiInstance;
+}
+
+
 Midi::Midi(int port) {
-    if (midiInstance != NULL) return midiInstance;
+    //if (midiInstance != NULL) return midiInstance;
     
     midiIn.openPort(port);
     //midiIn.ignoreTypes(false,false,false);

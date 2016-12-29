@@ -31,6 +31,7 @@ ChangeLayerAction::ChangeLayerAction(int _layer) {
 bool ChangeLayerAction::run() {
     if (_engine==NULL) return false;
     _engine->setActiveLayer(layer);
+    return true;
 }
 
 Action::Action(ActionType _type) {

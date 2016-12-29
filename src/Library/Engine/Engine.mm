@@ -946,6 +946,7 @@ VisualInstancesProperties* Engine::getPropertiesOfCurrentVisualInstance() {
     return(visualInstance->getProperties());
 }
 
+
 float Engine::playhead() {
     VisualInstance *visualInstance;
     
@@ -956,11 +957,12 @@ float Engine::playhead() {
 }
 
 
+
 void Engine::setPlayhead(float playhead) {
     VisualInstance *visualInstance;
     
     visualInstance = this->getCurrentVisualInstance();
-    if  (visualInstance == NULL) return 0.0;
+    if  (visualInstance == NULL) return;
 
     visualInstance->setPercentagePlayed(playhead);
 }
@@ -969,7 +971,7 @@ float Engine::start() {
     VisualInstancesProperties *properties;
     
     properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
+    if (properties==NULL) return NULL;
     
     return(properties->getStartPercentage());
 }
@@ -987,7 +989,7 @@ float Engine::end() {
     VisualInstancesProperties *properties;
     
     properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
+    if (properties==NULL) return NULL;
     
     return(properties->getEndPercentage());
 }
@@ -1014,7 +1016,7 @@ void Engine::setSpeed(float speed) {
     VisualInstance *visualInstance;
     
     visualInstance = this->getCurrentVisualInstance();
-    if  (visualInstance == NULL) return 0.0;
+    if  (visualInstance == NULL) return;
     
     return(visualInstance->video.setSpeed(speed));
 }
@@ -1023,7 +1025,7 @@ float   Engine::x() {
     VisualInstancesProperties *properties;
     
     properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
+    if (properties==NULL) return NULL;
     
     return(properties->getCenterX());
 }
@@ -1041,7 +1043,7 @@ float Engine::y()  {
     VisualInstancesProperties *properties;
     
     properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
+    if (properties==NULL) return NULL;
     
     return(properties->getCenterY());
 }
@@ -1059,7 +1061,7 @@ float Engine::width()  {
     VisualInstancesProperties *properties;
     
     properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
+    if (properties==NULL) return NULL;
     
     return(properties->getZoomX());
 }
@@ -1073,11 +1075,12 @@ void Engine::setWidth(float width)  {
     properties->setZoomX(width);
 }
 
+
 float Engine::height()  {
     VisualInstancesProperties *properties;
     
     properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
+    if (properties==NULL) return NULL;
     
     return(properties->getZoomY());
 }
@@ -1092,14 +1095,16 @@ void Engine::setHeight(float height)  {
     properties->setZoomY(height);
 }
 
+
 bool Engine::retrigger() {
     VisualInstancesProperties *properties;
     
     properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
+    if (properties==NULL) return NULL;
     
     return(properties->getRetrigger());
 }
+
 
 void Engine::setRetrigger(bool retrigger) {
     VisualInstancesProperties *properties;
@@ -1110,16 +1115,18 @@ void Engine::setRetrigger(bool retrigger) {
     properties->setRetrigger(retrigger);
 }
 
+
 bool Engine::beatSnap() {
     VisualInstancesProperties *properties;
     Boolean                     returnedVal;
     
     properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
+    if (properties==NULL) return NULL;
     
     returnedVal = properties->getBeatSnap();
     return(returnedVal);
 }
+
 
 void Engine::setBeatSnap(bool val) {
     VisualInstancesProperties *properties;

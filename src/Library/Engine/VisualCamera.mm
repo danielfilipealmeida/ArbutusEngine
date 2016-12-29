@@ -74,7 +74,9 @@ void VisualCamera::createThumbnail() {
     if (!isOpened) open();
     videoGrabber.update();
 	screenshot.allocate(videoGrabber.getWidth(), videoGrabber.getHeight(), OF_IMAGE_COLOR);
-	screenshot.setFromPixels(videoGrabber.getPixels(), videoGrabber.getWidth(), videoGrabber.getHeight(), OF_IMAGE_COLOR, true);
+	screenshot.setFromPixels(videoGrabber.getPixels().getData(), videoGrabber.getWidth(), videoGrabber.getHeight(), OF_IMAGE_COLOR, true);
+    
+    
     //screenshot.saveImage("cameraVisual.png");
 }
 

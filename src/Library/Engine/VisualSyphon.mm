@@ -107,6 +107,6 @@ bool VisualSyphon::getActive() {
 }
 
 
-unsigned int VisualSyphon::setActive(bool _active) {
+void VisualSyphon::setActive(bool _active) {
     active = _active;
 }

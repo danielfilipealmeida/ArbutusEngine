@@ -79,7 +79,7 @@ public:
 	void            emptyVisualInstanceOnAllScenes();
     unsigned int    getTotalScenes();
     Scene*          getSceneAtIndex(unsigned int index);
-    unsigned int    removeVisualFromSet(Visual *visual);
+    void            removeVisualFromSet(Visual *visual);
     
 	// debug
 	void print();

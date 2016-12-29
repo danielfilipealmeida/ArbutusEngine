@@ -118,8 +118,8 @@ void VisualVideo::createThumbnail(){
     video.loadMovie(filePath);
     video.setFrame(2);
     video.update();
-    screenshot.allocate(video.width, video.height, OF_IMAGE_COLOR);
-    screenshot.setFromPixels(video.getPixels(), video.getWidth(), video.getHeight(), OF_IMAGE_COLOR, true);
+    screenshot.allocate(video.getWidth(), video.getHeight(), OF_IMAGE_COLOR);
+    screenshot.setFromPixels(video.getPixels().getData(), video.getWidth(), video.getHeight(), OF_IMAGE_COLOR, true);
     screenshot.resize(THUMBNAIL_WIDTH, THUMBNAIL_WIDTH * (screenshot.getHeight() / screenshot.getWidth()));
   
     

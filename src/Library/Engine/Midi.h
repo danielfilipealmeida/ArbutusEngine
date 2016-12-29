@@ -171,6 +171,7 @@ public:
     Midi(int port);
     ~Midi();
     
+    static Midi *getInstance(int port);
     static Midi *getMidiInstance();
     
     // forward methods form ofxMidiIn

@@ -35,13 +35,14 @@ VisualInstancesProperties::reset() {
 }
 
 VisualInstancesProperties::~VisualInstancesProperties() {
-    return enginePtr->getPropertiesOfCurrentVisualInstance();
+    //return enginePtr->getPropertiesOfCurrentVisualInstance();
 }
 
 
 VisualInstancesProperties *VisualInstancesProperties::getCurrent() {
-    
+    return enginePtr->getPropertiesOfCurrentVisualInstance();
 }
+
 
 void VisualInstancesProperties::print() {
 	Properties::print();

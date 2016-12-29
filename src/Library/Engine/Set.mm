@@ -810,7 +810,7 @@ Scene* Set::getSceneAtIndex(unsigned int index) {
 }
 
 
-unsigned int Set::removeVisualFromSet(Visual *visual) {
+void Set::removeVisualFromSet(Visual *visual) {
     // traverse all scenes and remove the Visual Instances of this Visual
     for (ScenesListIterator it = scenesList.begin();
          it!=scenesList.end();

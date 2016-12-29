@@ -37,7 +37,7 @@ public:
     string          getServerName();
     
     bool            getActive();
-    unsigned int    setActive(bool _active);
+    void            setActive(bool _active);
     
 };
 

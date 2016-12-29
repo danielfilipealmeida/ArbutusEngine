@@ -18,8 +18,17 @@
 Osc             *oscInstance = NULL;
 extern Engine *_engine;
 
+
+Osc* Osc::getInstance(int port) {
+    if (oscInstance == NULL) oscInstance = new Osc(port);
+        
+    return oscInstance;
+}
+
+
 Osc::Osc(int port) {
-     if (oscInstance != NULL) return oscInstance;
+    //TODO: use the static method to create the oscInstance
+     //if (oscInstance != NULL) return oscInstance;
     
     _port       = port;
     oscInstance = this;
@@ -28,15 +37,8 @@ Osc::Osc(int port) {
         oscReceiver->setup(port);
     }
     catch (std::runtime_error err) {
-        /*
-        NSException *e = [NSException raise:@"OSC" format:@"%s", err.what()];
-        @throw e;
-         */
-        //throw(err);
-        //cout << err.what()<<endl;
         NSException *e = [NSException exceptionWithName:@"OSC exception" reason:[NSString stringWithFormat:@"%s", err.what()] userInfo:nil];
         [e raise];
-        return;
     }
 }
 

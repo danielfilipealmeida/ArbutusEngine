@@ -52,10 +52,66 @@
 		65A186951DF8DFEC00BE0219 /* VisualSyphon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81271DF8D8BB00331165 /* VisualSyphon.mm */; };
 		65A186961DF8DFEC00BE0219 /* VisualVideo.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81281DF8D8BB00331165 /* VisualVideo.h */; };
 		65A186971DF8DFEC00BE0219 /* VisualVideo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81291DF8D8BB00331165 /* VisualVideo.mm */; };
+		65EE9A7D1E15AA7D008C2091 /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
+		65EE9A7E1E15AA89008C2091 /* Action.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC80FC1DF8D8BB00331165 /* Action.h */; };
+		65EE9A7F1E15AA89008C2091 /* Action.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC80FD1DF8D8BB00331165 /* Action.mm */; };
+		65EE9A801E15AA89008C2091 /* AppProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC80FE1DF8D8BB00331165 /* AppProtocol.h */; };
+		65EE9A811E15AA89008C2091 /* Controller.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC80FF1DF8D8BB00331165 /* Controller.h */; };
+		65EE9A821E15AA89008C2091 /* Controller.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81001DF8D8BB00331165 /* Controller.mm */; };
+		65EE9A831E15AA89008C2091 /* Engine.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81011DF8D8BB00331165 /* Engine.h */; };
+		65EE9A841E15AA89008C2091 /* Engine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81021DF8D8BB00331165 /* Engine.mm */; };
+		65EE9A851E15AA89008C2091 /* FileManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81031DF8D8BB00331165 /* FileManager.h */; };
+		65EE9A861E15AA89008C2091 /* FileManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81041DF8D8BB00331165 /* FileManager.mm */; };
+		65EE9A871E15AA89008C2091 /* FreeFrameFilters.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81051DF8D8BB00331165 /* FreeFrameFilters.h */; };
+		65EE9A881E15AA89008C2091 /* FreeFrameFilters.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81061DF8D8BB00331165 /* FreeFrameFilters.mm */; };
+		65EE9A891E15AA89008C2091 /* Layer.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81071DF8D8BB00331165 /* Layer.h */; };
+		65EE9A8A1E15AA89008C2091 /* Layer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81081DF8D8BB00331165 /* Layer.mm */; };
+		65EE9A8B1E15AA89008C2091 /* Metronome.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81091DF8D8BB00331165 /* Metronome.h */; };
+		65EE9A8C1E15AA89008C2091 /* Metronome.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC810A1DF8D8BB00331165 /* Metronome.mm */; };
+		65EE9A8D1E15AA89008C2091 /* Midi.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC810B1DF8D8BB00331165 /* Midi.h */; };
+		65EE9A8E1E15AA89008C2091 /* Midi.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC810C1DF8D8BB00331165 /* Midi.mm */; };
+		65EE9A8F1E15AA89008C2091 /* Osc.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC810D1DF8D8BB00331165 /* Osc.h */; };
+		65EE9A901E15AA89008C2091 /* Osc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC810E1DF8D8BB00331165 /* Osc.mm */; };
+		65EE9A911E15AA89008C2091 /* LayerProperties.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81101DF8D8BB00331165 /* LayerProperties.h */; };
+		65EE9A921E15AA89008C2091 /* LayerProperties.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81111DF8D8BB00331165 /* LayerProperties.mm */; };
+		65EE9A931E15AA89008C2091 /* Properties.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81121DF8D8BB00331165 /* Properties.h */; };
+		65EE9A941E15AA89008C2091 /* Properties.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81131DF8D8BB00331165 /* Properties.mm */; };
+		65EE9A951E15AA89008C2091 /* SetProperties.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81141DF8D8BB00331165 /* SetProperties.h */; };
+		65EE9A961E15AA89008C2091 /* SetProperties.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81151DF8D8BB00331165 /* SetProperties.mm */; };
+		65EE9A971E15AA89008C2091 /* VisualInstancesProperties.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81161DF8D8BB00331165 /* VisualInstancesProperties.h */; };
+		65EE9A981E15AA89008C2091 /* VisualInstancesProperties.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81171DF8D8BB00331165 /* VisualInstancesProperties.mm */; };
+		65EE9A991E15AA89008C2091 /* Scene.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81181DF8D8BB00331165 /* Scene.h */; };
+		65EE9A9A1E15AA89008C2091 /* Scene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81191DF8D8BB00331165 /* Scene.mm */; };
+		65EE9A9B1E15AA89008C2091 /* Screen.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC811A1DF8D8BB00331165 /* Screen.h */; };
+		65EE9A9C1E15AA89008C2091 /* Screen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC811B1DF8D8BB00331165 /* Screen.mm */; };
+		65EE9A9D1E15AA89008C2091 /* Set.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC811C1DF8D8BB00331165 /* Set.h */; };
+		65EE9A9E1E15AA89008C2091 /* Set.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC811D1DF8D8BB00331165 /* Set.mm */; };
+		65EE9A9F1E15AA89008C2091 /* SyphonOutputManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC811E1DF8D8BB00331165 /* SyphonOutputManager.h */; };
+		65EE9AA01E15AA89008C2091 /* SyphonOutputManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC811F1DF8D8BB00331165 /* SyphonOutputManager.mm */; };
+		65EE9AA11E15AA89008C2091 /* Visual.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81201DF8D8BB00331165 /* Visual.h */; };
+		65EE9AA21E15AA89008C2091 /* Visual.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81211DF8D8BB00331165 /* Visual.mm */; };
+		65EE9AA31E15AA89008C2091 /* VisualCamera.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81221DF8D8BB00331165 /* VisualCamera.h */; };
+		65EE9AA41E15AA89008C2091 /* VisualCamera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81231DF8D8BB00331165 /* VisualCamera.mm */; };
+		65EE9AA51E15AA89008C2091 /* VisualInstance.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81241DF8D8BB00331165 /* VisualInstance.h */; };
+		65EE9AA61E15AA89008C2091 /* VisualInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81251DF8D8BB00331165 /* VisualInstance.mm */; };
+		65EE9AA71E15AA89008C2091 /* VisualSyphon.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81261DF8D8BB00331165 /* VisualSyphon.h */; };
+		65EE9AA81E15AA89008C2091 /* VisualSyphon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81271DF8D8BB00331165 /* VisualSyphon.mm */; };
+		65EE9AA91E15AA89008C2091 /* VisualVideo.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81281DF8D8BB00331165 /* VisualVideo.h */; };
+		65EE9AAA1E15AA89008C2091 /* VisualVideo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81291DF8D8BB00331165 /* VisualVideo.mm */; };
+		65EE9AAD1E15AC20008C2091 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EE9AAB1E15AC20008C2091 /* ofApp.cpp */; };
+		65EE9AAE1E15AC20008C2091 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65EE9AAB1E15AC20008C2091 /* ofApp.cpp */; };
+		65EE9AAF1E15AC20008C2091 /* ofApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 65EE9AAC1E15AC20008C2091 /* ofApp.h */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		65EE9A7B1E15AA6F008C2091 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
 		E4328147138ABC890047C5CB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
@@ -220,6 +276,8 @@
 		65BC81981DF8D9D600331165 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		65BC819A1DF8D9D600331165 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		65BC819B1DF8D9D600331165 /* ofxXmlSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		65EE9AAB1E15AC20008C2091 /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofApp.cpp; sourceTree = "<group>"; };
+		65EE9AAC1E15AC20008C2091 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofApp.h; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4B69B5B0A3A1756003C02F2 /* emptyExampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emptyExampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
@@ -232,6 +290,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65EE9A7D1E15AA7D008C2091 /* openFrameworksDebug.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +707,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				65EE9AAB1E15AC20008C2091 /* ofApp.cpp */,
+				65EE9AAC1E15AC20008C2091 /* ofApp.h */,
 				65BC80FA1DF8D8BB00331165 /* Library */,
 			);
 			path = src;
@@ -669,6 +730,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65EE9AAF1E15AC20008C2091 /* ofApp.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,6 +748,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				65EE9A7C1E15AA6F008C2091 /* PBXTargetDependency */,
 			);
 			name = ArbutusLib;
 			productName = ArbutusLib;
@@ -783,6 +846,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65EE9A7E1E15AA89008C2091 /* Action.h in Sources */,
+				65EE9A7F1E15AA89008C2091 /* Action.mm in Sources */,
+				65EE9A801E15AA89008C2091 /* AppProtocol.h in Sources */,
+				65EE9A811E15AA89008C2091 /* Controller.h in Sources */,
+				65EE9A821E15AA89008C2091 /* Controller.mm in Sources */,
+				65EE9A831E15AA89008C2091 /* Engine.h in Sources */,
+				65EE9A841E15AA89008C2091 /* Engine.mm in Sources */,
+				65EE9A851E15AA89008C2091 /* FileManager.h in Sources */,
+				65EE9A861E15AA89008C2091 /* FileManager.mm in Sources */,
+				65EE9A871E15AA89008C2091 /* FreeFrameFilters.h in Sources */,
+				65EE9A881E15AA89008C2091 /* FreeFrameFilters.mm in Sources */,
+				65EE9A891E15AA89008C2091 /* Layer.h in Sources */,
+				65EE9A8A1E15AA89008C2091 /* Layer.mm in Sources */,
+				65EE9A8B1E15AA89008C2091 /* Metronome.h in Sources */,
+				65EE9A8C1E15AA89008C2091 /* Metronome.mm in Sources */,
+				65EE9A8D1E15AA89008C2091 /* Midi.h in Sources */,
+				65EE9A8E1E15AA89008C2091 /* Midi.mm in Sources */,
+				65EE9A8F1E15AA89008C2091 /* Osc.h in Sources */,
+				65EE9A901E15AA89008C2091 /* Osc.mm in Sources */,
+				65EE9A911E15AA89008C2091 /* LayerProperties.h in Sources */,
+				65EE9A921E15AA89008C2091 /* LayerProperties.mm in Sources */,
+				65EE9A931E15AA89008C2091 /* Properties.h in Sources */,
+				65EE9A941E15AA89008C2091 /* Properties.mm in Sources */,
+				65EE9A951E15AA89008C2091 /* SetProperties.h in Sources */,
+				65EE9A961E15AA89008C2091 /* SetProperties.mm in Sources */,
+				65EE9A971E15AA89008C2091 /* VisualInstancesProperties.h in Sources */,
+				65EE9A981E15AA89008C2091 /* VisualInstancesProperties.mm in Sources */,
+				65EE9A991E15AA89008C2091 /* Scene.h in Sources */,
+				65EE9A9A1E15AA89008C2091 /* Scene.mm in Sources */,
+				65EE9A9B1E15AA89008C2091 /* Screen.h in Sources */,
+				65EE9A9C1E15AA89008C2091 /* Screen.mm in Sources */,
+				65EE9A9D1E15AA89008C2091 /* Set.h in Sources */,
+				65EE9A9E1E15AA89008C2091 /* Set.mm in Sources */,
+				65EE9A9F1E15AA89008C2091 /* SyphonOutputManager.h in Sources */,
+				65EE9AA01E15AA89008C2091 /* SyphonOutputManager.mm in Sources */,
+				65EE9AA11E15AA89008C2091 /* Visual.h in Sources */,
+				65EE9AA21E15AA89008C2091 /* Visual.mm in Sources */,
+				65EE9AA31E15AA89008C2091 /* VisualCamera.h in Sources */,
+				65EE9AA41E15AA89008C2091 /* VisualCamera.mm in Sources */,
+				65EE9AA51E15AA89008C2091 /* VisualInstance.h in Sources */,
+				65EE9AA61E15AA89008C2091 /* VisualInstance.mm in Sources */,
+				65EE9AA71E15AA89008C2091 /* VisualSyphon.h in Sources */,
+				65EE9AA81E15AA89008C2091 /* VisualSyphon.mm in Sources */,
+				65EE9AA91E15AA89008C2091 /* VisualVideo.h in Sources */,
+				65EE9AAE1E15AC20008C2091 /* ofApp.cpp in Sources */,
+				65EE9AAA1E15AA89008C2091 /* VisualVideo.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,6 +943,7 @@
 				65A1867A1DF8DFDA00BE0219 /* Midi.h in Sources */,
 				65A1867B1DF8DFDA00BE0219 /* Midi.mm in Sources */,
 				65A1867C1DF8DFDA00BE0219 /* Osc.h in Sources */,
+				65EE9AAD1E15AC20008C2091 /* ofApp.cpp in Sources */,
 				65A1867D1DF8DFDA00BE0219 /* Osc.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -841,6 +951,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		65EE9A7C1E15AA6F008C2091 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openFrameworks;
+			targetProxy = 65EE9A7B1E15AA6F008C2091 /* PBXContainerItemProxy */;
+		};
 		E4EEB9AC138B136A00A80321 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = openFrameworks;
@@ -1012,6 +1127,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_OBJC_INCOMP_METHOD_TYPES = NO;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_UNCHECKEDRETURN = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1022,6 +1139,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					src,
@@ -1041,6 +1159,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_OBJC_INCOMP_METHOD_TYPES = NO;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_UNCHECKEDRETURN = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1050,6 +1170,7 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					src,
@@ -1076,6 +1197,7 @@
 				65A186691DF8DF9200BE0219 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "ArbutusEngine" */ = {
 			isa = XCConfigurationList;
