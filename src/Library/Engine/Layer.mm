@@ -23,7 +23,14 @@ Layer::Layer(){
 	buffer = NULL;
 	activeInstance = NULL;
     schedulledInstance = NULL;
-    shader.load([[[NSBundle mainBundle] pathForResource:@"layerShader" ofType:@"vert"] UTF8String], [[[NSBundle mainBundle] pathForResource:@"layerShader" ofType:@"frag"] UTF8String]);
+    
+    
+    //TODO: meter proteccao que testa a existencia do shader
+    shader.load([[[NSBundle mainBundle] pathForResource:@"layerShader"
+                                                 ofType:@"vert"] UTF8String],
+                [[[NSBundle mainBundle] pathForResource:@"layerShader"
+                                                 ofType:@"frag"] UTF8String]
+    );
 }
 
 Layer::~Layer() {
@@ -116,18 +123,12 @@ void Layer::render() {
 	
 }
 
-/**
- *  @param x
- *  @param y
- *  @param width
- *  @param height
- */
+
 void Layer::draw(int x, int y, int width, int height) {
-	if (buffer==NULL) return;
-	if (activeInstance==NULL) return;
+	if (buffer == NULL)         return;
+	if (activeInstance == NULL) return;
 	
-	//ofClear(0, 0, 0, properties.alpha / 255.0);
-	buffer->draw(x, y, width, height);	
+	buffer->draw(x, y, width, height);
 }
 
 

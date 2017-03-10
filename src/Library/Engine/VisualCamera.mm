@@ -9,23 +9,34 @@
 #include "VisualCamera.h"
 
 
-VisualCamera::VisualCamera(unsigned int _deviceId, unsigned int _frameRate, unsigned int _width, unsigned int _height) {
+VisualCamera::VisualCamera(
+                           unsigned int _deviceId,
+                           unsigned int _frameRate,
+                           unsigned int _width,
+                           unsigned int _height
+) {
+    vector<ofVideoDevice> listDevices;
+    ofVideoDevice         device;
     Visual::Visual();
-    
+
+    // protection
+    listDevices = videoGrabber.listDevices();
+    if (listDevices.size() == 0) throw std::runtime_error("No video devices found");
+    if (listDevices.size() < _deviceId) throw std::runtime_error("Video device not found.");
+
+    // data set
     setType (VisualType_Camera);
-    deviceId = _deviceId;
+    deviceId  = _deviceId;
     frameRate = _frameRate;
-    width = _width;
-    height = _height;
-    isOpened = false;
+    width     = _width;
+    height    = _height;
+    isOpened  = false;
+    device    = listDevices[_deviceId];
     
+    // work executed
     open();
     createThumbnail();
     close();
-
-    
-    vector<ofVideoDevice> listDevices = videoGrabber.listDevices();
-    ofVideoDevice           device = listDevices[_deviceId];
     setCaption("Camera: " + device.deviceName);
 }
 

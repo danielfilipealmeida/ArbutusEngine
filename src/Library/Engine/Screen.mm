@@ -37,7 +37,3 @@ bool Screen::isPrimaryScreen() {
     return primaryScreen;
 }
 
-NSRect Screen::getNSRect() {
-    return NSMakeRect(x, y, width, height);
-    
-}

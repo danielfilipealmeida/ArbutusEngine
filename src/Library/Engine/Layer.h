@@ -33,8 +33,28 @@ public:
     
 	// render
 	void render();
-	void draw(int x, int y, int width, int height);
+    
+    
+    
+    /**
+     * Draws the layer buffer
+     *
+     *  @param x
+     *  @param y
+     *  @param width
+     *  @param height
+     */
+	void
+    draw(
+         int x,
+         int y,
+         int width,
+         int height
+    );
 	
+    
+    
+    
 	//debug
 	void print();
 	

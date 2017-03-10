@@ -12,7 +12,6 @@
 #include <iostream>
 #include <stdlib.h>
 #include "ofMain.h"
-#import <Foundation/Foundation.h>
 
 class Screen {
     unsigned int x, y, width, height;
@@ -28,7 +27,6 @@ public:
     
     bool isPrimaryScreen();
     
-    NSRect getNSRect();
 };
 
 
@@ -36,6 +34,5 @@ typedef std::list<Screen *> ScreensList;
 typedef ScreensList::iterator ScreensListIterator;
 
 
-NSRect getMainScreenRect();
 
 #endif /* defined(__FigTree__Screen__) */

@@ -76,22 +76,28 @@ void Scene::removeVisualInstancesWithVisual(Visual *visual) {
 }
 
 
-/**
- *  traverse the list of Visual instances to find the selected instance
- *
- *  @param column <#column description#>
- *  @param layerN <#layerN description#>
- *
- *  @return <#return value description#>
- */
-VisualInstance *Scene::getVisualInstance(unsigned int column, unsigned int layerN) {
+
+VisualInstance*
+Scene::getVisualInstance(
+                         unsigned int column,
+                         unsigned int layerN
+) {
 	if (visualsInstanceList.size() == 0) return NULL;
+    
 	for(VisualInstanceListIterator i=visualsInstanceList.begin();
         i!=visualsInstanceList.end();
         i++)
     {
-		VisualInstance *visualInstance = *i;
-        if (visualInstance->getProperties()->getLayer () == layerN && visualInstance->getProperties()->getColumn () == column) {
+		VisualInstance            *visualInstance;
+        VisualInstancesProperties properties;
+        
+        visualInstance = *i;
+        properties = *visualInstance->getProperties();
+        
+        if (
+            properties.getLayer()  == layerN &&
+            properties.getColumn() == column
+        ) {
             return visualInstance;
         }
     }

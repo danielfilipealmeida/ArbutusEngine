@@ -15,7 +15,7 @@
 #include "ofxXmlSettings.h"
 #include "Set.h"
 #include "Layer.h"
-#include "FileManager.h"
+//#include "FileManager.h"
 #include "Metronome.h"
 #include "Midi.h"
 #include "Osc.h"
@@ -80,7 +80,7 @@ class Engine {
 
     metronome		metronomeThreadObj;
     
-    FileManager     fileManagerThreadObj;
+    //FileManager     fileManagerThreadObj;
     
     SyphonOutputManager syphonOutputManager;
 public:
@@ -108,28 +108,105 @@ public:
 	~Engine();
 
 	
-	/*
+	/*******************************************************************
 	 * Set functions
-	 */
-	bool newSet(unsigned int _width=0, unsigned int _height=0, unsigned int _layers=0);
-	void closeSet();
-	bool openSet(string _setPath);
-	bool saveSet();
+	 *******************************************************************/
+	
+    
+    /**
+     * Starts a new set with the given dimentions and number of layers.
+     * Also allocs all memory needed.
+     *
+     * @params [unsigned int] _width the width of the rendering area
+     * @params [unsigned int] _height the height of the rendering area
+     * @params [unsigned int] _layers the number of layers available
+     */
+    bool newSet(
+                unsigned int _width  = 0,
+                unsigned int _height = 0,
+                unsigned int _layers = 0
+    );
+	
+   
+    
+    /**
+     * Closes a set and cleans up the memory
+     */
+    void closeSet();
+	
+    
+    
+    /**
+     *  Open a set
+     *
+     *  @param _setPath the path to the file to open
+     *
+     *  @return open success value. boolean
+     */
+    bool openSet(string _setPath);
+	
+    
+    
+    /**
+     *
+     */
+    bool saveSet();
+    
+    
+    
+    /**
+     * Saves a VJ set into a file
+     *
+     * @param _setPath the path to the file to save
+     */
 	bool saveSetAs(string _setPath);
 	
-    void setMixerResolution(unsigned int width, unsigned int height);
+    
+    
+    
+    /**
+     *  Defines the area of the rendering buffer
+     */
+    void setMixerResolution(
+                            unsigned int width,
+                            unsigned int height
+    );
+    
+    
+    
     
     /*************************************************************/
     
 #pragma mark Layer functions
  
 	Layer*          addLayer();
-	void            addLayerToList(Layer *newLayer);
-	void            removeAllLayers();
-	void            removeLayer(unsigned int layerN);
-	void            setActiveVisualInstanceNumberForLayer(unsigned int visualInstanceN, unsigned int layerN);
-	void            setActiveVisualIntancesOnAllLayers(unsigned int columnN);
-	void            setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN);
+    
+    
+    
+	void addLayerToList(Layer *newLayer);
+    
+    
+    
+	void removeAllLayers();
+    
+    
+    
+	void removeLayer(unsigned int layerN);
+    
+    
+    
+	void setActiveVisualInstanceNumberForLayer(
+                                               unsigned int visualInstanceN,
+                                               unsigned int layerN
+   );
+	
+    
+    
+    void setActiveVisualIntancesOnAllLayers(unsigned int columnN);
+	
+    
+    
+    void            setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN);
 	Layer*          getLayer(unsigned int layerN);
     Layer*          getSelectedLayer() { return this->getLayer(this->selectedLayer);}
 	void            setActiveLayer(unsigned int activeLayer);
@@ -144,15 +221,71 @@ public:
     /*************************************************************/
     
 #pragma mark Scene & Visuals Functions
-	void            addVisualToSceneListInCurrentLayer(unsigned int visual, unsigned int layer, unsigned int column);
-    void            addVisualToScene(unsigned int visual, unsigned int layer, unsigned int column);
-    void            removeVisualFromScene(unsigned int layer, unsigned int column);
-    Scene           *getCurrentScene();
-    Scene           *getSceneAtIndex(unsigned int index);
-    unsigned int    getNumberOfVisuals();
-    Visual          *getVisualAtIndex(unsigned int index);
-    bool            isSyphonInputLoaded(string serverName, string appName);
-    VisualSyphon*   getSyphonInput(string serverName, string appName);
+	
+    
+    
+    void
+    addVisualToSceneListInCurrentLayer(
+                                       unsigned int visual,
+                                       unsigned int layer,
+                                       unsigned int column
+    );
+    
+    
+    
+    void
+    addVisualToScene(
+                     unsigned int visual,
+                     unsigned int layer,
+                     unsigned int column
+    );
+    
+    
+    
+    void
+    removeVisualFromScene(
+                          unsigned int layer,
+                          unsigned int column
+    );
+    
+    
+    
+    Scene
+    *getCurrentScene();
+    
+    
+    
+    Scene
+    *getSceneAtIndex(unsigned int index);
+    
+    
+    
+    unsigned int
+    getNumberOfVisuals();
+    
+    
+    
+    Visual
+    *getVisualAtIndex(unsigned int index);
+    
+    
+    
+    bool
+    isSyphonInputLoaded(
+                        string serverName,
+                        string appName
+    );
+    
+    
+    
+    VisualSyphon*
+    getSyphonInput(
+                   string serverName,
+                   string appName
+    );
+    
+    
+    
     void            removeVisualFromSet(Visual *visual);
     
     
@@ -229,14 +362,6 @@ public:
     
     /*************************************************************/
     
-#pragma mark Windows
-
-    
-    NSRect getMainScreenRect();
-    
-    
-    /*************************************************************/
-    
 #pragma mark Cleanup
 
     void cleanup();
@@ -267,7 +392,6 @@ public:
     unsigned int    getMixerHeight() { return mixerHeight; };
     void            setMixerHeight ( unsigned int _height ) { mixerHeight = _height; }
     
-    NSSize getMixerSize() {return NSMakeSize(mixerWidth, mixerHeight); }
     
     
     int     getSelectedLayerNumber () { return selectedLayer; }

@@ -44,7 +44,11 @@ Set::~Set() {
 
 
 
-void Set::newSet(unsigned int _width, unsigned int _height, unsigned int _nLayers) {
+void Set::newSet(
+                 unsigned int _width,
+                 unsigned int _height,
+                 unsigned int _nLayers
+) {
     enginePtr->setMixerWidth ( _width );
     enginePtr->setMixerHeight ( _height );
     
@@ -86,10 +90,8 @@ bool Set::openSet(string _filePath) {
     filePath    = _filePath;
 	res         = xml.load(filePath);
   
-    if (!res) {
-        return false;
-    }
-    
+    if (!res) throw std::runtime_error ("Error opening file '" + _filePath + "'.");
+
     xml.setTo("set");
     
     // load configuration
@@ -770,7 +772,13 @@ void Set::setActiveVisualInstanceNumberForLayer(unsigned int column, unsigned in
 	
 }
 
-VisualInstance *Set::getVisualInstanceInCorrentSet(unsigned int column, unsigned int layerN) {
+
+
+VisualInstance*
+Set::getVisualInstanceInCorrentSet(
+                                   unsigned int column,
+                                   unsigned int layerN
+) {
 	if (currentScene==NULL) return NULL;
 	
 	return currentScene->getVisualInstance(column, layerN);

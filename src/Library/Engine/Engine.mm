@@ -14,9 +14,12 @@
 
 extern AppProtocol *app;
 Engine      *_engine;
+Engine *enginePtr;
 //extern CocoaHandler *cocoaHandler;
 
 
+
+#pragma mark Init Methods
 
 void Engine::setDefaults() {
     mixerWidth=640;
@@ -33,6 +36,7 @@ Engine::Engine() {
     if (_engine != NULL) return;
     
     _engine         = this;
+    enginePtr       = this;
 	currentFilePath = "";
     buffer          = NULL;
     setOpened       = false;
@@ -44,7 +48,7 @@ Engine::Engine() {
 	
     beatSnapInProgress = false;
     
-    fileManagerThreadObj.start();
+    //fileManagerThreadObj.start();
 	
 	// init the free frame filters
 #ifdef _FREEFRAMEFILTER_H_
@@ -84,48 +88,61 @@ Engine::~Engine() {
 
 
 
-bool Engine::newSet(unsigned int _width, unsigned int _height, unsigned int _layers){
+bool Engine::newSet(
+                    unsigned int _width,
+                    unsigned int _height,
+                    unsigned int _layers
+){
+    
 	closeSet();
-	if (_width>0) mixerWidth = _width;
-	if (_height>0) mixerHeight = _height; 
+	if (_width>0)  mixerWidth   = _width;
+	if (_height>0) mixerHeight  = _height;
 	if (_layers>0) mixerNLayers = _layers;
 	currentSet.newSet(mixerWidth, mixerHeight, mixerNLayers);
+    initBuffer();
 	setActiveLayer(1);
+    currentFilePath = "";
+    setOpened = true;
     
     return true;
 }
 
+
+
 void Engine::closeSet() {
+    if (currentSet.isLoaded() == false) return;
+    
 	//currentSet.emptyVisualsList(); // ? porque foi retirado
 	removeAllLayers();
-	currentVisualInstance = NULL;
 	currentSet.closeSet();
-	setOpened = false;
-    currentFilePath = "";
+
+    currentVisualInstance = NULL;
+    setOpened             = false;
+    currentFilePath       = "";
 }
 
 
 
-/**
- *  Open a set
- *
- *  @param _setPath the path to the file to open
- *
- *  @return open success value. boolean
- */
+
 bool Engine::openSet(string _setPath) {
+    bool result;
+    
     destroyBuffer();
-  	if (currentSet.isLoaded() == true) closeSet();
+    closeSet();
 	removeAllLayers();
-	bool result = currentSet.openSet(_setPath);
+	
+    result = currentSet.openSet(_setPath);
     if (!result) return result;
 
     initBuffer();
     setActiveLayer(1);
+    
 	currentFilePath = _setPath;
-    setOpened = true;
+    setOpened       = true;
+    
     return result;
 }
+
 
 bool Engine::saveSet() {
 	currentSet.saveSet();
@@ -244,21 +261,22 @@ Layer *Engine::getLayer(unsigned int layerN) {
 }
 
 
-void Engine::setActiveVisualInstanceNumberForLayer(unsigned int column, unsigned int layerN) {
+
+void
+Engine::setActiveVisualInstanceNumberForLayer(
+                                              unsigned int column,
+                                              unsigned int layerN
+) {
     Layer           *layer;
     VisualInstance  *visualInstance;
     
     layer = getLayer(layerN);
 	if (layer == NULL) return;
 		
-	
-	// get the selected visual Instance for the current scene
-	visualInstance = NULL;
 	visualInstance = currentSet.getVisualInstanceInCorrentSet(column, layerN);
     
  	
 	if(visualInstance!=NULL) {
-        //selectedLayer = layerN;
         layer->playVisualInstance(visualInstance);
         currentVisualInstance = layer->getActiveVisualInstance();
         
@@ -273,54 +291,58 @@ void Engine::setActiveVisualInstanceNumberForLayer(unsigned int column, unsigned
     }
 }
 
-void Engine::setActiveVisualIntancesOnAllLayers(unsigned int columnN) {
-	/*
-	for (LayersListIterator i = layersList.begin(); i!=layersList.end();i++){
-		Layer *layer = (*i);
-		
-		// get visual instance with the desired conditions
-		layer->setActiveVisualInstance(columnN);
-	}
-	 */
-	for (int f=0;f<layersList.size();f++) {
+
+
+void
+Engine::setActiveVisualIntancesOnAllLayers(unsigned int columnN) {
+    for (
+         int f=0;
+         f<layersList.size();
+         f++
+    ) {
 		this->setActiveVisualInstanceNumberForLayer(columnN, f);
 	}
 }
 
 
-void Engine:: setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN) {
+
+void
+Engine::setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN) {
 	setActiveVisualInstanceNumberForLayer(visualInstanceN, selectedLayer);
 }
 
 
-VisualInstance* Engine::getCurrentActiveVisualInstance(){
-	// get the current layer
-    
-    /*
-	Layer *currentLayer = getLayer(selectedLayer);
-	currentVisualInstance = currentLayer->activeInstance;
-	return currentLayer->activeInstance;
-	*/
-        //return currentVisualInstance;
+VisualInstance*
+Engine::getCurrentActiveVisualInstance(){
     return getVisualAtLayerAndInstanceN(selectedLayer, selectedColumn);
 }
 
 
-VisualInstance *Engine::getVisualAtLayerAndInstanceN(unsigned int layerN, unsigned int visualInstanceN) {
-    Scene *currentScene = getCurrentScene();
+VisualInstance*
+Engine::getVisualAtLayerAndInstanceN(
+                                     unsigned int layerN,
+                                     unsigned int visualInstanceN
+) {
+    Scene *currentScene;
+
+    currentScene = getCurrentScene();
     if (currentScene == NULL) return NULL;
     return currentScene->getVisualInstance(visualInstanceN, layerN);
-
 }
 
 
-void Engine::stopVisualAtSelectedLayer() {
+
+void
+Engine::stopVisualAtSelectedLayer() {
     stopVisualAtLayer(selectedLayer);
 }
 
 
 
-void Engine::stopVisualAtLayer(unsigned int layerN) {
+void
+Engine::stopVisualAtLayer(
+                          unsigned int layerN
+) {
     Layer           *layer;
     VisualInstance  *playingInstance;
     
@@ -336,13 +358,19 @@ void Engine::stopVisualAtLayer(unsigned int layerN) {
 
 
 
-int Engine::getNumberOfLayers() {
+int
+Engine::getNumberOfLayers() {
     return layersList.size();
 }
 
 
-void Engine::setNumberOfLayers(unsigned int _val){
-    unsigned int currentNumberOfLayers = getNumberOfLayers();
+void
+Engine::setNumberOfLayers(
+                          unsigned int _val
+){
+    unsigned int currentNumberOfLayers;
+    
+    currentNumberOfLayers = getNumberOfLayers();
     
     if (_val == currentNumberOfLayers) return;
     
@@ -350,7 +378,6 @@ void Engine::setNumberOfLayers(unsigned int _val){
         for (unsigned int i = 0; i < _val-currentNumberOfLayers; i++) {
             this->addLayer();
         }
-        
     }
     else {
         for (unsigned int i = _val-1; i < currentNumberOfLayers; i++) {
@@ -360,7 +387,9 @@ void Engine::setNumberOfLayers(unsigned int _val){
     }
 }
 
-LayerProperties* Engine::getPropertiesOfCurrentLayer() {
+LayerProperties*
+Engine::getPropertiesOfCurrentLayer()
+{
     Layer           *layer;
     LayerProperties *properties;
     
@@ -369,6 +398,8 @@ LayerProperties* Engine::getPropertiesOfCurrentLayer() {
     
     return properties;
 }
+
+
 
 /* ************************************************************************** */
 #pragma mark debug
@@ -531,21 +562,31 @@ void Engine::removeVisualFromSet(Visual *visual) {
 
 void Engine::render(){
     
+    // Protections
+    //  - must have layers
+    //  - must have bugger alloced
+    if (layersList.empty()== true) return;
+    if (this->buffer == NULL) return;
+    
+    
     if (osc != NULL) osc->update();
     
     if (beatSnapInProgress) {
         triggerSchedulledVisualsOnAllLayers();
         beatSnapInProgress = false;
     }
+
 	
-	// check if there are layers. exit if not
-	if (layersList.empty()== true) return;
-	
-	
-	// render each layer 
+	// render each layer - transform into a private method
     unsigned int layerCount = 0;
-    for (LayersListIterator i = layersList.begin();i!=layersList.end(); i++){
-		Layer *layer = (*i);
+    for (
+         LayersListIterator i = layersList.begin();
+         i!=layersList.end();
+         i++
+    ) {
+        Layer *layer;
+        
+		layer = (*i);
 		layer->render();
         if (layerCount < N_SYPHON_CHANNEL_OUTPUTS) {
             syphonOutputManager.publishChannelOutputScreen(layerCount, layer->getTexture());
@@ -557,10 +598,15 @@ void Engine::render(){
 	this->buffer->begin();
 	ofClear(0, 0, 0, 0);
 	ofEnableAlphaBlending();
-    for (LayersListReverseIterator i = layersList.rbegin();i!=layersList.rend(); i++){
-		Layer *layer = (*i);
+    for (
+         LayersListReverseIterator i = layersList.rbegin();
+         i!=layersList.rend();
+         i++
+    ){
+        Layer *layer;
 		
-		if (layer!=NULL) {
+        layer = (*i);
+        if (layer!=NULL) {
 			ofSetColor(255, 255, 255, (int) (layer->getProperties()->getAlpha() * 255.0));
 			ofEnableBlendMode((ofBlendMode) layer->getProperties()->getBlendMode());
 			layer->draw(0, 0, mixerWidth, mixerHeight);
@@ -610,30 +656,35 @@ void Engine::drawOutputPreview(int x, int y, int width, int height) {
 }
 
 void Engine::drawLayersPreview(int x, int y, int width, int maxNumLayers) {
-	unsigned int count = 0;
-	unsigned layersToDraw = this->layersList.size();
-	unsigned int layerPreviewWidth = (int) floor((float) width / (float) this->layersPreview_Columns);
-	float resizeAmount = this->mixerWidth / layerPreviewWidth;
-	unsigned int layerPreviewHeight = mixerHeight / resizeAmount;
-	
-	unsigned int x1 = x;
-	unsigned int y1 = y;
-	if (layersToDraw>maxNumLayers)layersToDraw = maxNumLayers;
+    unsigned int count, layerPreviewWidth, layerPreviewHeight, x1, y1;
+	unsigned     layersToDraw;
+	float        resizeAmount;
+    
+    
+    
+    count              = 0;
+    layersToDraw       = this->layersList.size();
+    layerPreviewWidth  = (int) floor((float) width / (float) this->layersPreview_Columns);
+    resizeAmount       = this->mixerWidth / layerPreviewWidth;
+    layerPreviewHeight = mixerHeight / resizeAmount;
+    
+    x1 = x;
+    y1 = y;
 
+    if (layersToDraw > maxNumLayers) {
+        layersToDraw = maxNumLayers;
+    }
+    
 	for (unsigned int f=0;f<layersToDraw;f++) {
-		Layer *layer = this->getLayer(f+1);
-		/*
-		ofSetColor(0,0, 0);
-		ofFill();
-		ofRect(x1, y1, layerPreviewWidth, layerPreviewHeight);
-		 */
+		Layer     *layer;
+        string    label;
+        BlendMode layerBlendMode;
+        
+        
+        layer = this->getLayer(f+1);
+        
 		ofSetColor(255, 255, 255);
 		layer->draw(x1, y1, layerPreviewWidth, layerPreviewHeight);
-		/*
-		ofSetColor(0,0, 0);
-		ofNoFill();
-		GUIRect(x1, y1, layerPreviewWidth, layerPreviewHeight);
-		*/
 		ofEnableAlphaBlending();
 		ofSetColor(0, 0, 0,128);
 		ofFill();
@@ -641,25 +692,24 @@ void Engine::drawLayersPreview(int x, int y, int width, int maxNumLayers) {
 		ofSetColor(0, 0, 0,0);
 		ofDisableAlphaBlending();
 		
-
-		string label;
-		label="Layer " + ofToString(f+1) + "|";
-        BlendMode layerBlendMode =layer->getProperties()->getBlendMode();
+		label = "Layer " + ofToString(f+1) + "|";
+        layerBlendMode = layer->getProperties()->getBlendMode();
         
-		if ( layerBlendMode == BLEND_ALPHA) label =label+"ALPHA";
-		if ( layerBlendMode == BLEND_ADD) label =label+ "ADD";
-		if ( layerBlendMode == BLEND_MULTIPLY) label =label+"MULT";
-		if ( layerBlendMode == BLEND_SUBTRACT) label =label+"SUBT";
-		if ( layerBlendMode== BLEND_SCREEN) label =label+"SCRN";
-		label =label+"|"+ofToString((int)(layer->getProperties()->getAlpha() * 100))+"%";
-		//GUIPrint(label, x1+4, y1+12, GUIFontSmall);
+        // move this into a function with a switch that basically retruns a string. concat to the result of that later
+		if (layerBlendMode == BLEND_ALPHA)    label = label + "ALPHA";
+		if (layerBlendMode == BLEND_ADD)      label = label + "ADD";
+		if (layerBlendMode == BLEND_MULTIPLY) label = label + "MULT";
+		if (layerBlendMode == BLEND_SUBTRACT) label = label + "SUBT";
+		if (layerBlendMode == BLEND_SCREEN)   label = label + "SCRN";
+		
+        
+        label =label+"|"+ofToString((int)(layer->getProperties()->getAlpha() * 100))+"%";
 		ofSetColor(255, 255, 255);
-		//GUIPrint(label, x1+3, y1+11,GUIFontSmall);
 		
 		// check if f is odd
-		if ((f+1) % layersPreview_Columns == 0) {
-			x1=x;
-			y1=y1+layerPreviewHeight;
+		if (((f+1) % layersPreview_Columns) == 0) {
+			x1 = x;
+			y1 = y1 + layerPreviewHeight;
 		} else {
 			x1 = x1+layerPreviewWidth;
 		}
@@ -877,20 +927,6 @@ void Engine::scanCameras() {
     
 }
 
-
-/* ************************************************************************ */
-#pragma mark Windows Functions
-
-
-NSRect Engine::getMainScreenRect() {
-    for (ScreensListIterator i = screensList.begin();i!=screensList.end(); i++){
-		Screen *screen = (*i);
-        
-        if (screen->isPrimaryScreen()) return screen->getNSRect();
-    }
-    return NSMakeRect(0,0,0,0);
-    
-}
 
 
 
