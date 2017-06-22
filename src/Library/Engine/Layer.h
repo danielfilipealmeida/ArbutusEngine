@@ -14,8 +14,18 @@
 #include "LayerProperties.h"
 #include <stdlib.h>
 #include "VisualInstance.h"
+#include "json.hpp"
 
 
+
+using json = nlohmann::json;
+
+
+/*!
+ @class Layer
+ @abstract 
+ @discussion
+ */
 class Layer {
     LayerProperties     properties;
     unsigned int        layerNumber;
@@ -26,24 +36,30 @@ class Layer {
 
 public:
     
-	Layer();
+    /*!
+     @abstract Layer constructor
+     @param _loadShaders a boolean to set if the shaders should be loaded when creating a new layer
+     */
+	Layer(bool _loadShaders = true);
+    
+    
 	~Layer();
 	
     
+    void loadShaders();
     
 	// render
 	void render();
     
     
     
-    /**
-     * Draws the layer buffer
-     *
-     *  @param x
-     *  @param y
-     *  @param width
-     *  @param height
-     */
+    /*!
+     @abstact Draws the layer buffer
+     @param x ...
+     @param y ...
+     @param width ...
+     @param height ...
+    */
 	void
     draw(
          int x,
@@ -53,49 +69,177 @@ public:
     );
 	
     
+    /*!
+     @abstract returns a label to be used on the frontend to tag the layer
+     @discussion Concat several information regarding the layer, like ID, blend mode and transparency.
+     */
+    string
+    label();
     
     
-	//debug
-	void print();
+    /*!
+     @abstract
+     */
+	void
+    print();
 	
-	// buffer
-	void initBuffer();
-	void destroyBuffer();	
-	
-	// video instances
-	void setActiveVisualInstance(VisualInstance *_activeInstance);
-	void stopActiveVisualInstance();
-	VisualInstance *getActiveVisualInstance() {return activeInstance;}
-    void schedulleInstance(VisualInstance *_instance);
-    void activateSchedulledInstance();
-    void playVisualInstance(VisualInstance *newInstance);
+
+    /*!
+     @abstract
+     */
+	void
+    initBuffer();
     
-    ofTexture* getTexture();
+    
+    
+    /*!
+     @abstract
+     */
+	void
+    destroyBuffer();
+	
+    
+    
+#pragma mark Video Instances
+    
+    
+    /*!
+     @abstract
+     */
+	void
+    setActiveVisualInstance(VisualInstance *_activeInstance);
+	
+    
+    /*!
+     @abstract
+     */
+    void
+    stopActiveVisualInstance();
+	
+    
+    /*!
+     @abstract
+     */
+    VisualInstance*
+    getActiveVisualInstance() {return activeInstance;}
+    
+    
+    /*!
+     @abstract
+     */
+    void
+    schedulleInstance(VisualInstance *_instance);
+    
+    
+    /*!
+     @abstract
+     */
+    void
+    activateSchedulledInstance();
+    
+    
+    /*!
+     @abstract
+     */
+    void
+    playVisualInstance(VisualInstance *newInstance);
+    
+    
+    /*!
+     @abstract
+     */
+    ofTexture*
+    getTexture();
         
     
 
-	/* free frame */
+#pragma mark Free Frame
+    
 #ifdef _FREEFRAMEFILTER_H_
+    
     FreeFrameFilterInstanceList freeFrameInstanceList;
 
-	void addFreeFrameInstance(unsigned int instanceSlotNumber);
-	void removeFreeFrameInstance(unsigned int instanceSlotNumber);
-	FreeFrameFilterInstance *getFilterInstance(unsigned int instanceSlotNumber);
+    
+    /*!
+     @abstract
+     */
+	void
+    addFreeFrameInstance(unsigned int instanceSlotNumber);
+	
+    
+    /*!
+     @abstract
+     */
+    void
+    removeFreeFrameInstance(unsigned int instanceSlotNumber);
+	
+    
+    /*!
+     @abstract
+     */
+    FreeFrameFilterInstance*
+    getFilterInstance(unsigned int instanceSlotNumber);
+    
 #endif
     
     
     
-    /** getters and setters **/
+#pragma mark Getters and setters
     
-    LayerProperties *getProperties () { return &properties; }
+    /*!
+     @abstract
+     */
+    LayerProperties*
+    getProperties () { return &properties; }
     
-    unsigned int getLayerNumber () { return layerNumber; }
-    void setLayerNumber ( unsigned int _input ) { layerNumber = _input;}
     
-    VisualInstance *getActiveInstance () { return activeInstance; }
+    /*!
+     @abstract
+     */
+    unsigned int
+    getLayerNumber () { return layerNumber; }
     
-    VisualInstance *getSchedulledInstance () { return schedulledInstance; }
+    
+    /*!
+     @abstract
+     */
+    void
+    setLayerNumber ( unsigned int _input ) { layerNumber = _input;}
+    
+    
+    /*!
+     @abstract
+     */
+    VisualInstance*
+    getActiveInstance () { return activeInstance; }
+    
+    
+    /*!
+     @abstract
+     */
+    VisualInstance*
+    getSchedulledInstance () { return schedulledInstance; }
 	
+    
+    ofFbo*
+    getBuffer() {return buffer;}
+    
+    
+    json
+    getState();
+    
+#pragma mark Actions
+    
+    /*!
+     @abstract
+     */
+    void
+    handleAction(
+                 string parameter,
+                 json data
+                 );
+    
+    
 };
 
 typedef std::list<Layer *> LayersList;

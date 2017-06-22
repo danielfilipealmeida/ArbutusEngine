@@ -8,34 +8,62 @@
  */
 
 #include "Layer.h"
-
-#include "ofApp.h"
 #include "Engine.h"
+#include "Utils.h"
+#include <string>
+
+extern Engine *enginePtr;
 
 
-extern ofApp *app;
-extern Engine *_engine;
 
-
-
-Layer::Layer(){
-	buffer = new ofFbo();
-	buffer = NULL;
-	activeInstance = NULL;
+Layer::Layer(bool _loadShaders) {
+    
+	//buffer = new ofFbo();
+	buffer             = NULL;
+	activeInstance     = NULL;
     schedulledInstance = NULL;
     
-    
-    //TODO: meter proteccao que testa a existencia do shader
-    shader.load([[[NSBundle mainBundle] pathForResource:@"layerShader"
-                                                 ofType:@"vert"] UTF8String],
-                [[[NSBundle mainBundle] pathForResource:@"layerShader"
-                                                 ofType:@"frag"] UTF8String]
-    );
+    if (_loadShaders == true) loadShaders();
+   
+    initBuffer();
 }
+
 
 Layer::~Layer() {
 	destroyBuffer();
 }
+
+
+
+void
+Layer::loadShaders() {
+    string bundlePath;
+    NSBundle *bundle;
+    NSString *vertShaderNSPath, *fragShaderNSPath;
+    string vertShaderPath, fragShaderPath;
+   
+    
+    bundle     = [NSBundle mainBundle];
+    bundlePath = [[bundle bundlePath] UTF8String];
+    
+    if (!ofFile::doesFileExist(bundlePath)) throw new std::runtime_error("Bundle path doesn't exist");
+    
+    vertShaderNSPath = [bundle pathForResource:@"layerShader"
+                                        ofType:@"vert"];
+    fragShaderNSPath = [bundle pathForResource:@"layerShader"
+                                        ofType:@"frag"];
+    
+    if (vertShaderNSPath == nil) throw new std::runtime_error("Vert shader path doesn't exist");
+    if (fragShaderNSPath == nil) throw new std::runtime_error("Frag shader path doesn't exist");
+    
+    vertShaderPath = [vertShaderNSPath UTF8String];
+    fragShaderPath = [fragShaderNSPath UTF8String];
+    
+    shader.load(vertShaderPath, fragShaderPath);
+
+}
+
+
 
 void Layer::render() {
     
@@ -79,16 +107,21 @@ void Layer::render() {
 	
 	// check for active free frame filters in this layer
 #ifdef _FREEFRAMEFILTER_H_
-	unsigned int activeFreeFrameFilters = false;
+    unsigned int activeFreeFrameFilters;
+    
+	activeFreeFrameFilters = false;
 	if (freeFrameInstanceList.size()>0) {
-		for(FreeFrameFilterInstanceListIterator it = freeFrameInstanceList.begin();it< freeFrameInstanceList.end();it++) {
+		for(
+            FreeFrameFilterInstanceListIterator it = freeFrameInstanceList.begin();
+            it< freeFrameInstanceList.end();
+            it++
+        ) {
 			FreeFrameFilterInstance *instance = *it;
 			if (instance->filter->active == true) {
 				activeFreeFrameFilters = true;
 				
 				unsigned int pluginNumber = instance->filter->number;
-				//instance->host->ffHost.setPluginActive(pluginNumber, true);
-				app->engine.freeFrameHost.ffHost.setPluginActive(pluginNumber, true);
+				engine.freeFrameHost.ffHost.setPluginActive(pluginNumber, true);
 			}
 			
 		}
@@ -98,11 +131,11 @@ void Layer::render() {
 		// process freeframe if turned on
 		ofPixels pixels;
 		buffer->readToPixels(pixels);
-		app->engine.freeFrameHost.ffHost.loadData(pixels.getPixels(), properties.width, properties.height, GL_RGBA);
+		_engine.freeFrameHost.ffHost.loadData(pixels.getPixels(), properties.width, properties.height, GL_RGBA);
 		//app->engine.freeFrameHost.ffHost.setPluginActive(2, true);
-		app->engine.freeFrameHost.ffHost.process();
+		_engine.freeFrameHost.ffHost.process();
 		buffer->begin();
-		app->engine.freeFrameHost.ffHost.draw(0, 0, properties.width, properties.height);
+		_engine.freeFrameHost.ffHost.draw(0, 0, properties.width, properties.height);
 	 
 		buffer->end();
 	
@@ -131,6 +164,18 @@ void Layer::draw(int x, int y, int width, int height) {
 	buffer->draw(x, y, width, height);
 }
 
+
+
+string
+Layer::label() {
+    string label;
+
+    label = "Layer " + ofToString(layerNumber+1) + "|";
+    label = label + LayerProperties::blendModeToString(properties.getBlendMode());
+    label = label + "|" + ofToString((int)(properties.getAlpha() * 100))+"%";
+    
+    return label;
+}
 
 
 void Layer::print() {
@@ -167,15 +212,22 @@ void Layer::setActiveVisualInstance(VisualInstance *_activeInstance) {
     schedulledInstance = NULL;
 }
 
-void Layer::stopActiveVisualInstance() {
+void
+Layer::stopActiveVisualInstance() {
 	activeInstance = NULL;
 }
 
-void Layer::schedulleInstance(VisualInstance *_instance) {
+
+
+void
+Layer::schedulleInstance(VisualInstance *_instance) {
     schedulledInstance = _instance;
 }
 
-void Layer::activateSchedulledInstance() {
+
+
+void
+Layer::activateSchedulledInstance() {
     if (schedulledInstance==NULL) return;
     if(activeInstance!=NULL && activeInstance->video.isPlaying()) activeInstance->stop();
     activeInstance = schedulledInstance;
@@ -187,13 +239,16 @@ void Layer::activateSchedulledInstance() {
 
 
 
-void Layer::playVisualInstance(VisualInstance *newInstance) {
+void
+Layer::playVisualInstance(
+                          VisualInstance *newInstance
+) {
     VisualInstancesProperties *properties = newInstance->getProperties();
     
         // if snap is on and beat detection is on
     if (properties->getBeatSnap ()  == true &&
-        _engine->isMetronomeOn()    == true &&
-        _engine->isTriggeringBeat() != true
+        enginePtr->isMetronomeOn()    == true &&
+        enginePtr->isTriggeringBeat() != true
         ) {
         schedulleInstance(newInstance);
         return;
@@ -223,7 +278,8 @@ ofTexture* Layer::getTexture() {
 #pragma mark Free Frame Functions
 #ifdef _FREEFRAMEFILTER_H_
 
-void Layer::addFreeFrameInstance(unsigned int instanceSlotNumber) {
+void
+Layer::addFreeFrameInstance(unsigned int instanceSlotNumber) {
 	// get the free frame from the host
 	FreeFrameFilter *filter = app->engine.freeFrameHost.getFilter(instanceSlotNumber);
 	if (filter == NULL) return;
@@ -237,20 +293,119 @@ void Layer::addFreeFrameInstance(unsigned int instanceSlotNumber) {
 
 
 
-void Layer::removeFreeFrameInstance(unsigned int instanceSlotNumber) {
+void
+Layer::removeFreeFrameInstance(unsigned int instanceSlotNumber) {
 	if (instanceSlotNumber >= freeFrameInstanceList.size()) return;
 	freeFrameInstanceList.erase(freeFrameInstanceList.begin()+instanceSlotNumber);
 }
 
 
 
-FreeFrameFilterInstance* Layer::getFilterInstance(unsigned int instanceSlotNumber) {
+FreeFrameFilterInstance*
+Layer::getFilterInstance(unsigned int instanceSlotNumber) {
 	if (instanceSlotNumber >= freeFrameInstanceList.size()) return NULL;
 	return freeFrameInstanceList[instanceSlotNumber];
 }
 
 
 
-
-
 #endif
+
+
+
+
+#pragma mark Actions
+
+void
+Layer::handleAction(
+                    string parameter,
+                    json data
+                    ) {
+    
+    float value;
+    //cout << data.dump() << endl;
+    value = data["value"].get<float>();
+    
+    switch (str2int(parameter.c_str())) {
+        case str2int("Alpha"):
+            properties.setAlpha(value);
+            break;
+
+        case str2int("Brightness"):
+            properties.setBrightness(value);
+            break;
+            
+
+        case str2int("Contrast"):
+            properties.setContrast(value);
+            break;
+            
+        case str2int("Saturation"):
+            properties.setSaturation(value);
+            break;
+
+        case str2int("Red"):
+            properties.setRed(value);
+            break;
+            
+        case str2int("Green"):
+            properties.setGreen(value);
+            break;
+
+        case str2int("Blue"):
+            properties.setBlue(value);
+            break;
+
+        case str2int("Blur"):
+            properties.setBlurH(value);
+            properties.setBlurV(value);
+            break;
+
+        case str2int("Horizontal Blur"):
+            properties.setBlurH(value);
+            break;
+
+        case str2int("Vertical Blur"):
+            properties.setBlurV(value);
+            break;
+
+
+        default:
+            break;
+    }
+}
+
+
+json
+Layer::getState() {
+    json state;
+    
+    /*
+    state = json::array({
+        {"Alpha", properties.getAlpha()},
+        {"Brightness", properties.getBrightness()},
+        {"Contrast", properties.getContrast()},
+        {"Saturation", properties.getSaturation()},
+        {"Red", properties.getRed()},
+        {"Green", properties.getGreen()},
+        {"Blue", properties.getBlue()},
+        {"BlurH", properties.getBlurH()},
+        {"BlurV", properties.getBlurV()}
+    });
+     */
+    
+    state = json::object({
+        {"Alpha", properties.getAlpha()},
+        {"Brightness", properties.getBrightness()},
+        {"Contrast", properties.getContrast()},
+        {"Saturation", properties.getSaturation()},
+        {"Red", properties.getRed()},
+        {"Green", properties.getGreen()},
+        {"Blue", properties.getBlue()},
+        {"BlurH", properties.getBlurH()},
+        {"BlurV", properties.getBlurV()}
+    }
+    );
+    return state;
+}
+

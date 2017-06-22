@@ -10,27 +10,25 @@
 #include "Engine.h"
 #include "AppProtocol.h"
 
-extern Engine       *_engine;
+extern Engine       *enginePtr;
 extern AppProtocol  *app;
 
-VisualVideo::VisualVideo(string _filePath) {
+VisualVideo::VisualVideo(string _filePath)
+{
+    string setFolder;
+    ofFile *visualFile2;
+    
     Visual::Visual();
     
-        // ATENCAO AQUI QUE ESTÁ A DAR ERRO
-    try {
+    // ATENCAO AQUI QUE ESTÁ A DAR ERRO
+    //try {
         ofFile *visualFile = new ofFile(_filePath);
         if (!visualFile->exists()) {
             delete visualFile;
             
-            /*
-             ofFile *setFile = new ofFile(_engine->currentSet.filePath);
-             string setFolder = setFile->getEnclosingDirectory();
-             */
-            string setFolder = ofFilePath::getEnclosingDirectory(_engine->getCurrentSet()->getFilePath () );
-            
+            setFolder = ofFilePath::getEnclosingDirectory(enginePtr->getCurrentSet()->getFilePath () );
             _filePath = ofFilePath::join(setFolder,_filePath);
-                //NSLog(@"%s", _filePath.c_str());
-            ofFile *visualFile2 = new ofFile(_filePath);
+            visualFile2 = new ofFile(_filePath);
             setCaption (visualFile2->getFileName());
             delete visualFile2;
         }
@@ -39,20 +37,19 @@ VisualVideo::VisualVideo(string _filePath) {
             delete visualFile;
         }
         
-      
+   /*
     }
     catch (int e) {
         cout << "Exception " << e <<"\n";
      }
-        // check if file exists
-    
-    
+    */
     filePath = _filePath;
-	loaded = false;
-        //createThumbnail();
-        setThumbnail();
+	loaded   = false;
+    setThumbnail();
     setType (VisualType_Video);
 }
+
+
 
 VisualVideo::~VisualVideo() {
 	if (loaded == true) closeVisual();
@@ -60,16 +57,33 @@ VisualVideo::~VisualVideo() {
 }
 
 
-Boolean VisualVideo::loadVideo(){
+json
+VisualVideo::getState()
+{
+    json state;
+    
+    state = Visual::getState();
+    
+    state["filePath"] = filePath;
+    
+    return state;
+}
+
+Boolean
+VisualVideo::loadVideo(){
     return false;
 }
 
-Boolean VisualVideo::closeVisual(){
+
+Boolean
+VisualVideo::closeVisual(){
     return false;
     
 }
 
-Boolean VisualVideo::fileExists() {
+
+Boolean
+VisualVideo::fileExists() {
 	// check if file exists
 	fstream fin;
 	string fileNameInOF = ofToDataPath(filePath);
@@ -88,11 +102,12 @@ Boolean VisualVideo::fileExists() {
 
 
 
-void VisualVideo::setThumbnail() {
+void
+VisualVideo::setThumbnail() {
     string newThumbnailPath;
     
    // thumbnailPath = Visual::getThumbnailPath ();
-    newThumbnailPath = _engine->calculateThumbnailPath(filePath);
+    newThumbnailPath = enginePtr->calculateThumbnailPath(filePath);
     
     setThumbnailPath (newThumbnailPath);
     if (!this->screenshot.loadImage(newThumbnailPath)) {
@@ -102,14 +117,16 @@ void VisualVideo::setThumbnail() {
 
 }
 
-void VisualVideo::saveThumbnail() {
+void
+VisualVideo::saveThumbnail() {
     Visual::saveThumbnail();
 }
 
 
 
 
-void VisualVideo::createThumbnail(){
+void
+VisualVideo::createThumbnail(){
     Visual::createThumbnail();
 	if(fileExists() == false) return;
     
@@ -125,7 +142,8 @@ void VisualVideo::createThumbnail(){
     
 }
 
-void VisualVideo::print(){
+void
+VisualVideo::print(){
     Visual::print();
     cout << "type: Video" <<endl;
 	cout << "file path: "<<VisualVideo::filePath<<endl;

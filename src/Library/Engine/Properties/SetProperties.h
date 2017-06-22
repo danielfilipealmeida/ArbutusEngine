@@ -14,6 +14,13 @@
 
 #include <stdio.h>
 
+
+
+/*!
+ @class SetProperties
+ @abstract
+ @discussion
+ */
 class SetProperties {
     bool stopCurrentVisualIfTriggeredInvalid;
     

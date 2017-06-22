@@ -13,6 +13,10 @@
 
 #include "ofMain.h"
 #include <stdlib.h>
+#include "json.hpp"
+
+
+using json = nlohmann::json;
 
 
 typedef enum VisualType {
@@ -24,6 +28,13 @@ typedef enum VisualType {
 
 #define THUMBNAIL_WIDTH 160
 
+
+
+/*!
+ @class Visual
+ @abstract
+ @discussion
+ */
 class Visual {
     VisualType  type;
     string      caption;
@@ -68,7 +79,7 @@ public:
     string  getFilePath () { return filePath; }
     void    setFilePath (string _val) { filePath = _val; }
     
-    
+    virtual json getState();
 
 };
 

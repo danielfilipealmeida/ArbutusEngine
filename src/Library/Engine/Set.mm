@@ -79,6 +79,29 @@ void Set::newSet(
 
 
 
+json
+Set::getScenesState() {
+    json state;
+    
+    for(auto scene:scenesList) {
+        state.push_back(scene->getState());
+    }
+    
+    return state;
+}
+
+json
+Set::getVisualsState() {
+    json state;
+    
+    for(auto visual:visualsList) {
+        state.push_back(visual->getState());
+    }
+    
+    return state;
+}
+
+
 bool Set::openSet(string _filePath) {
     bool    result;
     ofXml   xml;
@@ -598,7 +621,10 @@ unsigned int Set::getNumberOfVisuals() {
  *
  *  @param filePath string with the file path to the visual to add
  */
-void Set::addVisualVideoToListFromFile(string filePath) {
+void
+Set::addVisualVideoToListFromFile(
+                                  string filePath
+                                  ) {
     VisualVideo	*visual;
 	Boolean result;
 
@@ -653,31 +679,20 @@ void Set::emptyVisualsList(){
 
 
 
-void Set::addSceneToList(string sceneName, unsigned char nVisualsInScene, unsigned char *visualsInScene) {
-	//Scene *newScene = new Scene(sceneName, nVisualsInScene, visualsInScene);	
-	
-	// create scene
-	Scene *newScene = new Scene(sceneName, nVisualsInScene);
-	
-	
-	// add the visuals in scene to the scene using a loop
-	/*
-	for (int f=0; f<sizeof(visualsInScene);f++) {
-		int visualNumber = visualsInScene[f];
-		if (app->debugMode == true) {
-			cout << "adding scene visual "<<visualNumber<<endl;
-		}
-		Visual *visual = getVisualFromList(visualNumber-1);
-		newScene->addVisualToInstanceList(visual);
-	}
-	*/
-	
-	// add the scene to the scene list
-	scenesList.push_back(newScene);
+Scene*
+Set::addSceneToList(string sceneName, unsigned char nVisualsInScene, unsigned char *visualsInScene) {
+    Scene *newScene;
+    
+    newScene= new Scene(sceneName, nVisualsInScene);
+    scenesList.push_back(newScene);
+    
+    return newScene;
 }
 
-void Set::newScene() {
-    addSceneToList("new Scene", 0,0);
+
+Scene*
+Set::newScene() {
+    return addSceneToList("new Scene", 0,0);
 }
 
 

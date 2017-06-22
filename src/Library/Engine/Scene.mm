@@ -21,7 +21,35 @@ Scene::~Scene() {
 }
 
 
-void Scene::setName(string newName) {
+
+json
+Scene::getState() {
+    json state;
+   
+    
+    state = json::object({
+        {"name", sceneName},
+        {"instances", getInstancesState()}
+    });
+    
+    
+    return state;
+}
+
+
+json
+Scene::getInstancesState() {
+    json state;
+    
+    for(auto visualInstance:visualsInstanceList) {
+        state.push_back(visualInstance->getState());
+    }
+    
+    return state;
+}
+
+void
+Scene::setName(string newName) {
     sceneName = newName;
 }
 

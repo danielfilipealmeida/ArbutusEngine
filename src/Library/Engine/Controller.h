@@ -28,7 +28,9 @@ typedef enum
 
 
 /*!
- The Controller class that defines the basic data and functionality of controller Objects
+ @class AppProtocol
+ @abstract  class that defines the basic data and functionality of controller Objects
+ @discussion
  */
 class Controller
 {

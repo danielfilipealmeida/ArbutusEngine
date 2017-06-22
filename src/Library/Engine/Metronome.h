@@ -13,6 +13,12 @@
 #include "ofMain.h"
 #include "ofThread.h"
 
+
+/*!
+ @class metronome
+ @abstract
+ @discussion
+ */
 class metronome : public ofThread{
 
     unsigned int BPM;

@@ -17,26 +17,47 @@
 #include <stdlib.h>
 #include "VisualInstance.h"
 #include "Visual.h"
+#include "json.hpp"
 
+
+using json = nlohmann::json;
+
+
+/*!
+ @class Scene
+ @abstract
+ @discussion
+ */
 class Scene {
-
-    string sceneName;
-    unsigned int totalVisualsOnScene;
+    string          sceneName;
+    unsigned int    totalVisualsOnScene;
 
 public:
 	
 	VisualInstanceList visualsInstanceList;
 
+    /*!
+     */
 	Scene(
           string _sceneName,
           unsigned int _totalVisualsOnScene
     );
 	
-    
-    
+
+    /*!
+     */
     ~Scene();
 	
-	
+    /*!
+     */
+    json
+    getState();
+    
+    /*!
+     */
+    json
+    getInstancesState();
+    
     
     VisualInstance  *addVisualToInstanceList(Visual *visual, unsigned int layer, unsigned int column);
 	

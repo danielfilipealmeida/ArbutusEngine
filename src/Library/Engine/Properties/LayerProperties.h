@@ -24,12 +24,17 @@ typedef enum {
 	BLEND_SCREEN    = OF_BLENDMODE_SCREEN
 } BlendMode;
 
-class LayerProperties : public Properties {
 
-    unsigned int width;
-    unsigned int height;
-    BlendMode blendMode;
-    float blurH, blurV;
+/*!
+ @class LayerProperties
+ @abstract
+ @discussion
+ */
+class LayerProperties : public Properties {
+    unsigned int    width;
+    unsigned int    height;
+    BlendMode       blendMode;
+    float           blurH, blurV;
     
 public:
 
@@ -40,6 +45,14 @@ public:
     void reset();
     
 	void print();
+    
+    /*!
+     @abstract Get a string with the value of the blend mode.
+     @param mode the blend mode 
+     @return a string with the label of the blend mode
+     */
+    static string
+    blendModeToString(BlendMode mode);
     
     /** setters and getters **/
     

@@ -13,9 +13,17 @@
 #include <stdlib.h>
 #include "ofMain.h"
 
+
+
+
+/*!
+ @class Screen
+ @abstract
+ @discussion
+ */
 class Screen {
-    unsigned int x, y, width, height;
-    bool primaryScreen;
+    unsigned int    x, y, width, height;
+    bool            primaryScreen;
   
 public:
     Screen();

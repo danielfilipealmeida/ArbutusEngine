@@ -20,7 +20,11 @@
 #include "VisualSyphon.h"
 #include "VisualInstancesProperties.h"
 #include "FreeFrameFilters.h"
+#include "json.hpp"
 
+
+
+using json = nlohmann::json;
 
 /*!
  @header VisualInstance.h
@@ -29,6 +33,12 @@
  */
 
 
+
+/*!
+ @class VisualInstance
+ @abstract
+ @discussion
+ */
 class VisualInstance {
     VisualInstancesProperties properties;
     int videoX, videoY, videoWidth, videoHeight;
@@ -36,7 +46,7 @@ class VisualInstance {
     
 public:
 	Visual *visual;
-	ofVideoPlayer video;
+	ofAVFoundationPlayer video;
     
 #ifdef _FREEFRAMEFILTER_H_
 	FreeFrameFilterInstanceList freeFrameInstanceList;
@@ -52,14 +62,30 @@ public:
     
     
 	/* actions */
-	bool loadVideo();
-	bool unloadVideo();
-    void unload();
+	bool
+    loadVideo();
+    
+    bool
+    checkFileExists(string path);
+    
+	bool
+    unloadVideo();
+    
+    void
+    unload();
+    
 	void play(bool forcePlay = false);
     void retrigger();
 	void stop();
-	void update();
 	
+    
+    /**
+     *
+     */
+    void update();
+	
+    void updateVideo();
+    
     
     /* processing */
     
@@ -88,19 +114,52 @@ public:
     bool    checkCloseCondition();
     
     
-    /* loop and playhead position handling */
-        //void handleVideoGoingLeft();
-        //void handleVideoGoingRight();
-    void calculateCurrentPlayeadPosition(float position);
-    void handleNormalLoopMode(float position);
-    void handlePingPongLoopMode(float position);
-    void handleInverseLoopMode(float position);
+    
+#pragma mark loop and playhead position handling */
 
-    VisualType getVisualType();
+    void
+    calculateCurrentPlayeadPosition(float position);
+    
+    
+    void
+    handleNormalLoopMode(float position);
+    
+    
+    void
+    handlePingPongLoopMode(float position);
+    
+    
+    void
+    handleInverseLoopMode(float position);
+
+    VisualType
+    getVisualType();
     
     
     /** getters and setters **/
     VisualInstancesProperties *getProperties () { return &properties; }
+    
+    
+    
+#pragma mark state handling
+    
+    /*!
+     @abstract
+     */
+    json
+    getState();
+    
+    
+#pragma mark Actions
+    
+    /*!
+     @abstract
+     */
+    void
+    handleAction(
+                 string parameter,
+                 json data
+                 );
     
     
     

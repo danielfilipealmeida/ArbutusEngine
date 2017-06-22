@@ -10,13 +10,13 @@
 #include "Engine.h"
 #include "AppProtocol.h"
 #include <string>
+#include "Utils.h"
 
-
+#ifdef app
 extern AppProtocol *app;
-Engine      *_engine;
-Engine *enginePtr;
-//extern CocoaHandler *cocoaHandler;
+#endif
 
+Engine *enginePtr = NULL;
 
 
 #pragma mark Init Methods
@@ -33,9 +33,8 @@ void Engine::setDefaults() {
 
 
 Engine::Engine() {
-    if (_engine != NULL) return;
+    if (enginePtr != NULL) return;
     
-    _engine         = this;
     enginePtr       = this;
 	currentFilePath = "";
     buffer          = NULL;
@@ -48,8 +47,7 @@ Engine::Engine() {
 	
     beatSnapInProgress = false;
     
-    //fileManagerThreadObj.start();
-	
+ 	
 	// init the free frame filters
 #ifdef _FREEFRAMEFILTER_H_
 	freeFrameHost.init(mixerWidth, mixerHeight);
@@ -72,6 +70,10 @@ Engine::Engine() {
         syphonOutputManager.setChannelOutputActive(i, true);
         syphonOutputManager.setSyphonChannelOutput(i, "Channel " + ofToString(i+1));
     }
+    
+    //appSupportDir(ofFilePath::getUserHomeDir() + "/Library/Application Support/Arbutus/");
+
+    setAppSupportDir(ofFilePath::getUserHomeDir().append("/Library/Application Support/Arbutus"));
 }
 
 Engine::~Engine() {
@@ -79,7 +81,37 @@ Engine::~Engine() {
 }
 
 
+Engine*
+Engine::getInstance() {
+    return enginePtr;
+}
 
+/* ************************************************************************ */
+
+
+#pragma mark State Handling
+
+json
+Engine::getState() {
+    json state;
+    
+    state["visuals"] = currentSet.getVisualsState();
+    state["layers"] = getLayersState();
+    state["scenes"] = currentSet.getScenesState();
+    
+    return state;
+}
+
+
+json
+Engine::getLayersState() {
+    json state;
+    
+    for(auto layer:layersList) {
+        state.push_back(layer->getState());
+    }
+    return state;
+}
 
 /* ************************************************************************ */
 #pragma mark File Management
@@ -88,11 +120,12 @@ Engine::~Engine() {
 
 
 
-bool Engine::newSet(
-                    unsigned int _width,
-                    unsigned int _height,
-                    unsigned int _layers
-){
+bool
+Engine::newSet(
+               unsigned int _width,
+               unsigned int _height,
+               unsigned int _layers
+) {
     
 	closeSet();
 	if (_width>0)  mixerWidth   = _width;
@@ -109,7 +142,8 @@ bool Engine::newSet(
 
 
 
-void Engine::closeSet() {
+void
+Engine::closeSet() {
     if (currentSet.isLoaded() == false) return;
     
 	//currentSet.emptyVisualsList(); // ? porque foi retirado
@@ -124,7 +158,8 @@ void Engine::closeSet() {
 
 
 
-bool Engine::openSet(string _setPath) {
+bool
+Engine::openSet(string _setPath) {
     bool result;
     
     destroyBuffer();
@@ -157,6 +192,127 @@ bool Engine::saveSetAs(string _setPath) {
     return true;
     //[cocoaHandler updatePreferences];
 }
+
+
+
+#pragma mark Actions Handling
+
+
+
+Layer*
+Engine::getLayerForActionHandler (json data) {
+    Layer *layer;
+    
+    if (!data["layer"].is_number()) {
+        layer = getCurrentLayer();
+    }
+    else {
+        layer = getLayer(data["layer"].get<int>());
+    }
+
+    return layer;
+}
+
+
+void
+Engine::handleLayerAction(
+                          string parameter,
+                          json data
+                          )
+{
+    Layer *layer;
+    
+    layer = this->getLayerForActionHandler(data);
+    
+    if (layer != NULL) {
+        layer->handleAction(parameter, data);
+    }
+
+}
+
+
+void
+Engine::handleVisualAction(
+                          string parameter,
+                          json data
+                          )
+{
+    Layer *layer;
+    VisualInstance *visual;
+    
+     layer = this->getLayerForActionHandler(data);
+    if (layer == NULL) return;
+    
+    visual = layer->getActiveInstance();
+    
+    if (visual != NULL) {
+        visual->handleAction(parameter, data);
+    }
+    //visual =
+}
+
+
+/*
+TODO:
+ adicionar um modo que pode ser channel ou visual
+*/
+void
+Engine::handleAction(
+                     string parameter,
+                     json data
+) {
+    
+    
+    switch (str2int(parameter.c_str())) {
+        case str2int("Layer Alpha"):
+        case str2int("Layer Brightness"):
+        case str2int("Layer Contrast"):
+        case str2int("Layer Saturation"):
+        case str2int("Layer Red"):
+        case str2int("Layer Green"):
+        case str2int("Layer Blue"):
+        case str2int("Layer Blur"):
+        case str2int("Layer Horizontal Blur"):
+        case str2int("Layer Vertical Blur"):
+    
+            ofStringReplace(parameter, "Layer ", "");
+            handleLayerAction(parameter, data);
+            break;
+        
+        case str2int("Visual Alpha"):
+        case str2int("Visual Brightness"):
+        case str2int("Visual Contrast"):
+        case str2int("Visual Saturation"):
+        case str2int("Visual Red"):
+        case str2int("Visual Green"):
+        case str2int("Visual Blue"):
+        case str2int("Visual Zoom X"):
+        case str2int("Visual Zoom Y"):
+        case str2int("Visual Center X"):
+        case str2int("Visual Center Y"):
+        case str2int("Visual Start"):
+        case str2int("Visual End"):
+        case str2int("Visual Played"):
+        case str2int("Visual Loop Mode"):
+        case str2int("Visual Direction"):
+            ofStringReplace(parameter, "Visual ", "");
+            handleVisualAction(parameter, data);
+            
+            
+            break;
+            
+        /*
+        default:
+            break;
+         */
+    }
+    
+}
+
+
+
+#pragma mark Put somewhere better
+
 
 
 void Engine::setMixerResolution(unsigned int width, unsigned int height) {
@@ -193,13 +349,16 @@ void Engine::setMixerResolution(unsigned int width, unsigned int height) {
 /* ************************************************************************* */
 #pragma mark Layer Management
 
-Layer *Engine::addLayer() {
-	if (layersList.size() ==MAXIMUM_NUMBER_OF_LAYERS) return NULL;
-	
+Layer*
+Engine::addLayer(bool _loadShaders)
+{
 	Layer *newLayer;
+    
+    if (layersList.size() == MAXIMUM_NUMBER_OF_LAYERS) {
+        return NULL;
+    }
 	
-	
-	newLayer = new Layer();
+	newLayer = new Layer(_loadShaders);
 	newLayer->setLayerNumber(layersList.size()+1);
 	addLayerToList(newLayer);
     
@@ -207,53 +366,53 @@ Layer *Engine::addLayer() {
 }
 
 
-void Engine::addLayerToList(Layer *newLayer){
+void
+Engine::addLayerToList(Layer *newLayer)
+{
 	layersList.push_back(newLayer);
 }
 
-void Engine::removeAllLayers() {
-	// get the number of layers
-	/*
-	unsigned int totalNumberOfLayers;
-	totalNumberOfLayers = layersList.size();
-	for (int f=0;f<totalNumberOfLayers;f++) {
-			layersList.pop
-	}
-	 */
-	while (!layersList.empty()){
+
+void
+Engine::removeAllLayers()
+{
+	while (!layersList.empty()) {
 		layersList.pop_front();
 	}
 	
 	selectedLayer=0;
 }
 
-void Engine::removeLayer(unsigned int layerN) {
+
+void
+Engine::removeLayer(unsigned int layerN)
+{
+    unsigned int layerSize;
+    
 	if (layerN>layersList.size()) return;
     
-    // remove all instances in that layer
-    
-    
-    // move into the layer
+
 	LayersListIterator i;
 	i = layersList.begin();
-	for (int f=0;f<layerN;f++) {
+	for (int f=0;
+         f < layerN;
+         f++
+    ) {
 		++i;
 	}
     
-    // remove the layer
-	i=layersList.erase(i);
-    
-    // set the new selected layer
-    unsigned int layerSize =layersList.size();
-	//if (selectedLayer>=layerSize) selectedLayer = layerSize-1;
-    if (selectedLayer>=layerSize) setActiveLayer(layerSize);
+    i = layersList.erase(i);
+    layerSize = (unsigned int) layersList.size();
+    if (selectedLayer >= layerSize) {
+        setActiveLayer(layerSize);
+    }
 }
 
 
-Layer *Engine::getLayer(unsigned int layerN) {
-	// check if the layer exist
-	unsigned int layerNumber = layersList.size();
-	if (layerN>=layerNumber) return NULL;
+Layer*
+Engine::getLayer(unsigned int layerN)
+{
+	if (layerN >= layersList.size()) return NULL;
 	
 	LayersListIterator i = layersList.begin();
 	std::advance(i, layerN);
@@ -261,6 +420,60 @@ Layer *Engine::getLayer(unsigned int layerN) {
 }
 
 
+Layer*
+Engine::getCurrentLayer() {
+    return getLayer(selectedLayer);
+}
+
+
+int
+Engine::getNumberOfLayers() {
+    return layersList.size();
+}
+
+
+void
+Engine::setNumberOfLayers(
+                          unsigned int _val
+                          ){
+    unsigned int currentNumberOfLayers;
+    
+    currentNumberOfLayers = getNumberOfLayers();
+    
+    if (_val == currentNumberOfLayers) return;
+    
+    if (_val > currentNumberOfLayers) {
+        for (unsigned int i = 0; i < _val-currentNumberOfLayers; i++) {
+            this->addLayer();
+        }
+    }
+    else {
+        for (unsigned int i = _val-1; i < currentNumberOfLayers; i++) {
+            this->removeLayer(i);
+        }
+        
+    }
+}
+
+
+LayerProperties*
+Engine::getPropertiesOfCurrentLayer()
+{
+    Layer           *layer;
+    LayerProperties *properties;
+    
+    layer       = this->getSelectedLayer();
+    properties  = layer->getProperties();
+    
+    return properties;
+}
+
+
+
+
+
+/* ************************************************************************* */
+#pragma mark Visual Management
 
 void
 Engine::setActiveVisualInstanceNumberForLayer(
@@ -297,7 +510,7 @@ void
 Engine::setActiveVisualIntancesOnAllLayers(unsigned int columnN) {
     for (
          int f=0;
-         f<layersList.size();
+         f < layersList.size();
          f++
     ) {
 		this->setActiveVisualInstanceNumberForLayer(columnN, f);
@@ -358,55 +571,13 @@ Engine::stopVisualAtLayer(
 
 
 
-int
-Engine::getNumberOfLayers() {
-    return layersList.size();
-}
-
-
-void
-Engine::setNumberOfLayers(
-                          unsigned int _val
-){
-    unsigned int currentNumberOfLayers;
-    
-    currentNumberOfLayers = getNumberOfLayers();
-    
-    if (_val == currentNumberOfLayers) return;
-    
-    if (_val > currentNumberOfLayers) {
-        for (unsigned int i = 0; i < _val-currentNumberOfLayers; i++) {
-            this->addLayer();
-        }
-    }
-    else {
-        for (unsigned int i = _val-1; i < currentNumberOfLayers; i++) {
-            this->removeLayer(i);
-        }
-        
-    }
-}
-
-LayerProperties*
-Engine::getPropertiesOfCurrentLayer()
-{
-    Layer           *layer;
-    LayerProperties *properties;
-    
-    layer       = this->getSelectedLayer();
-    properties  = layer->getProperties();
-    
-    return properties;
-}
-
-
-
 /* ************************************************************************** */
 #pragma mark debug
 
 
 
-void Engine::printInfo() {
+void
+Engine::printInfo() {
 	cout << "********************************************************************************"<<endl;
 	cout << "** Engine Debug Print *********************************************** [start] **"<<endl;
 	cout << "********************************************************************************"<<endl;
@@ -434,6 +605,7 @@ void Engine::printInfo() {
 }
 
 
+
 void Engine::saveCurrentFrame(string path) {
     ofPixels pixels;
     
@@ -447,8 +619,19 @@ void Engine::saveCurrentFrame(string path) {
 
 
 
+Scene*
+Engine::addScene() {
+    return currentSet.newScene();
+}
 
-void Engine::addVisualToSceneListInCurrentLayer(unsigned int visual, unsigned int layer, unsigned int column) {
+
+void
+Engine::addVisualToSceneListInCurrentLayer(
+                                           unsigned int visual,
+                                           unsigned int layer,
+                                           unsigned int column
+                                           )
+{
 	Visual *visualToAdd = currentSet.getVisualFromList(visual);
 	
 	if (visualToAdd != NULL) {
@@ -513,28 +696,21 @@ Visual* Engine::getVisualAtIndex(unsigned int index) {
 /*!
  Traverse all the inputs, check if they are syphon inputs, check if the servername and appname are the samse
  **/
-bool Engine::isSyphonInputLoaded(string serverName, string appName) {
-    /*
-    unsigned int nVisuals;
-    
-    nVisuals = getNumberOfVisuals();
-    for(int index = 0; index < nVisuals; index++) {
-        Visual *visual = getVisualAtIndex(index);
-        if (visual->getType() == VisualType_Syphon) {
-            if (
-                serverName.compare(((VisualSyphon *)visual)->getServerName()) == 0 &&
-                appName.compare(((VisualSyphon *)visual)->getAppName()) == 0
-                
-                ) return true;
-        }
-    }
-    return false;
-     */
-    
+bool
+Engine::isSyphonInputLoaded(
+                            string serverName,
+                            string appName
+) {
     return (getSyphonInput(serverName, appName)!=NULL) ? true:false;
 }
 
-VisualSyphon* Engine::getSyphonInput(string serverName, string appName) {
+
+
+VisualSyphon*
+Engine::getSyphonInput(
+                       string serverName,
+                       string appName
+) {
     unsigned int nVisuals;
     
     nVisuals = getNumberOfVisuals();
@@ -553,7 +729,11 @@ VisualSyphon* Engine::getSyphonInput(string serverName, string appName) {
 }
 
 
-void Engine::removeVisualFromSet(Visual *visual) {
+
+void
+Engine::removeVisualFromSet(
+                            Visual *visual
+) {
     currentSet.removeVisualFromSet(visual);
  }
 
@@ -567,7 +747,6 @@ void Engine::render(){
     //  - must have bugger alloced
     if (layersList.empty()== true) return;
     if (this->buffer == NULL) return;
-    
     
     if (osc != NULL) osc->update();
     
@@ -623,47 +802,63 @@ void Engine::render(){
 
 
 
-void Engine::drawOutput(int x, int y, int width, int height){
-	if (buffer==NULL) return;
+
+
+void
+Engine::drawOutput(
+                   int x,
+                   int y,
+                   int width,
+                   int height
+){
+    if (buffer==NULL) {
+        return;
+    }
 	buffer->draw(x, y, width, height);
 }
 
 
-void Engine::drawLayer(int layerNumber, int x, int y, int width, int height) {
-	// move to layer
-	if (layerNumber<=1) return;
-	Layer *layer = getLayer(layerNumber);
+void
+Engine::drawLayer(
+                  int layerNumber,
+                  int x,
+                  int y,
+                  int width,
+                  int height
+) {
+    Layer *layer;
+    
+    if (layerNumber<=1) {
+        return;
+    }
+	layer= getLayer(layerNumber);
 	layer->draw(x,y,width, height);
 }
 
+
+// TODO: move to another class. this is for display purposes
 void Engine::drawOutputPreview(int x, int y, int width, int height) {
 	ofSetColor(255, 255, 255);
 	drawOutput(x, y,width, height);
-	/*
-	ofSetColor(0,0, 0);
-	ofNoFill();
-	GUIRect(x, y, width, height);
-	ofFill();
-	ofEnableAlphaBlending();
-	ofSetColor(0, 0, 0,128);
-	ofRect(x, y, width, 16);
-	ofSetColor(0, 0, 0,0);
-	ofDisableAlphaBlending();
-	GUIPrint("Output", x+4, y+12,GUIFontSmall);
-	ofSetColor(255, 255, 255);
-	GUIPrint("Output", x+3, y+11,GUIFontSmall);
-	*/
 }
 
-void Engine::drawLayersPreview(int x, int y, int width, int maxNumLayers) {
-    unsigned int count, layerPreviewWidth, layerPreviewHeight, x1, y1;
-	unsigned     layersToDraw;
+
+
+
+void
+Engine::drawLayersPreview(
+                          int x,
+                          int y,
+                          int width,
+                          int maxNumLayers
+ ) {
+    unsigned int count, layerPreviewWidth, layerPreviewHeight, x1, y1, layersToDraw;
 	float        resizeAmount;
     
     
     
     count              = 0;
-    layersToDraw       = this->layersList.size();
+    layersToDraw       = (unsigned int) this->layersList.size();
     layerPreviewWidth  = (int) floor((float) width / (float) this->layersPreview_Columns);
     resizeAmount       = this->mixerWidth / layerPreviewWidth;
     layerPreviewHeight = mixerHeight / resizeAmount;
@@ -675,11 +870,13 @@ void Engine::drawLayersPreview(int x, int y, int width, int maxNumLayers) {
         layersToDraw = maxNumLayers;
     }
     
-	for (unsigned int f=0;f<layersToDraw;f++) {
-		Layer     *layer;
+	for (
+         unsigned int f = 0;
+         f < layersToDraw;
+         f++
+    ) {
+        Layer     *layer;
         string    label;
-        BlendMode layerBlendMode;
-        
         
         layer = this->getLayer(f+1);
         
@@ -691,20 +888,10 @@ void Engine::drawLayersPreview(int x, int y, int width, int maxNumLayers) {
 		ofRect(x1, y1, layerPreviewWidth, 16);
 		ofSetColor(0, 0, 0,0);
 		ofDisableAlphaBlending();
-		
-		label = "Layer " + ofToString(f+1) + "|";
-        layerBlendMode = layer->getProperties()->getBlendMode();
+	
+        label = layer->label();
         
-        // move this into a function with a switch that basically retruns a string. concat to the result of that later
-		if (layerBlendMode == BLEND_ALPHA)    label = label + "ALPHA";
-		if (layerBlendMode == BLEND_ADD)      label = label + "ADD";
-		if (layerBlendMode == BLEND_MULTIPLY) label = label + "MULT";
-		if (layerBlendMode == BLEND_SUBTRACT) label = label + "SUBT";
-		if (layerBlendMode == BLEND_SCREEN)   label = label + "SCRN";
-		
-        
-        label =label+"|"+ofToString((int)(layer->getProperties()->getAlpha() * 100))+"%";
-		ofSetColor(255, 255, 255);
+        ofSetColor(255, 255, 255);
 		
 		// check if f is odd
 		if (((f+1) % layersPreview_Columns) == 0) {
@@ -722,23 +909,21 @@ void Engine::drawLayersPreview(int x, int y, int width, int maxNumLayers) {
 /* ************************************************************************** */
 #pragma mark beats and metronome functions
 
-void Engine::beat() {
+void
+Engine::beat() {
     triggeringBeat = false;
     
-        //cout << "beat!"<<endl;
     ++beatsCounter;
-        //cout << beatsCounter << endl;
-    if (beatsCounter>32) beatsCounter = 0;
+    if (beatsCounter > 32) {
+        beatsCounter = 0;
+    }
     
     if (beatsCounter%beatsToSnap == 0.0) {
         triggeringBeat = true;
         beatSnapInProgress = true;
-            //cout << "BAR!" <<endl;
     }
     
-    
     // TODO run something from the main app probably set a callback for the beat
-    //((AppProtocol *)app)->beat();
     appBeatCallback();
 }
 
@@ -898,9 +1083,17 @@ void Engine::mouseReleased(int x, int y, int button){
 
 
 /*************** */
-void Engine::setActiveLayer(unsigned int activeLayer){
-    unsigned int layerSize = layersList.size();
-	if (activeLayer>(layerSize)) activeLayer = layerSize;
+
+
+void
+Engine::setActiveLayer(unsigned int activeLayer)
+{
+    unsigned int layerSize;
+    
+    layerSize = layersList.size();
+    if ( activeLayer > layerSize ) {
+        activeLayer = layerSize;
+    }
 	selectedLayer = activeLayer-1;
 }
 
@@ -911,15 +1104,23 @@ void Engine::setActiveLayer(unsigned int activeLayer){
 #pragma mark Cameras Functions
 
 
-void Engine::scanCameras() {
-    ofVideoGrabber 		vidGrabber;
-    vector<ofVideoDevice> devices = vidGrabber.listDevices();
+void
+Engine::scanCameras() {
+    ofVideoGrabber vidGrabber;
+    vector<ofVideoDevice> devices;
     
-    for(int i = 0; i < devices.size(); i++){
+    devices = vidGrabber.listDevices();
+    for (
+        int i = 0;
+        i < devices.size();
+        i++)
+    {
 		cout << devices[i].id << ": " << devices[i].deviceName;
-        if( devices[i].bAvailable ){
+        if( devices[i].bAvailable ) {
             cout << endl;
-        }else{
+        }
+        else
+        {
             cout << " - unavailable " << endl;
         }
 	}
@@ -1186,7 +1387,7 @@ void Engine::visualsKeysControlCallback(Controller *controller) {
     //if (controller->getType() != KeyController) return;
     
     
-    _engine->setActiveVisualIntanceOnActiveLayer(controller->getValue());
+    enginePtr->setActiveVisualIntanceOnActiveLayer(controller->getValue());
     
     
 }

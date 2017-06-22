@@ -14,6 +14,12 @@
 #include "Visual.h"
 
 
+
+/*!
+ @class VisualCamera
+ @abstract
+ @discussion
+ */
 class VisualCamera : public Visual {
     ofVideoGrabber      videoGrabber;
     Boolean             ready;
@@ -34,6 +40,8 @@ public:
                  unsigned int _height       = 480);
     ~VisualCamera();
 
+    json getState();
+    
     string getThumbnailPath();
     void setThumbnail();
     void saveThumbnail();

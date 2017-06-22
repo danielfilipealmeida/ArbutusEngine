@@ -15,8 +15,8 @@
 
 
 
-Osc             *oscInstance = NULL;
-extern Engine *_engine;
+Osc           *oscInstance = NULL;
+extern Engine *enginePtr;
 
 
 Osc* Osc::getInstance(int port) {

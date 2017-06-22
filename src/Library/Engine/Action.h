@@ -21,6 +21,12 @@ typedef enum
 } ActionType;
 
 
+
+/*!
+ @class TriggerVisualAction
+ @abstract
+ @discussion
+ */
 class TriggerVisualAction {
     int layer, column;
     
@@ -30,7 +36,11 @@ public:
 };
 
 
-
+/*!
+ @class ChangeLayerAction
+ @abstract
+ @discussion
+ */
 class ChangeLayerAction {
     int layer;
     
@@ -49,16 +59,34 @@ class Action {
     ChangeLayerAction   *changeLayerAction;
 public:
     
-    // constructors
+    /*!
+     */
     Action(ActionType _type);
-    static Action *newTriggerVisualAction(int _layer, int _column);
-    static Action *newChangeLayerAction(int _layer);
+
+    /*!
+     */
+    static Action*
+    newTriggerVisualAction(int _layer, int _column);
     
-    bool run();
+    /*!
+     */
+    static Action*
+    newChangeLayerAction(int _layer);
     
-    // setters
-    void setTriggerVisualAction(TriggerVisualAction *action);
-    void setChangeLayerAction(ChangeLayerAction *action);
+    /*!
+     */
+    bool
+    run();
+    
+    /*!
+     */
+    void
+    setTriggerVisualAction(TriggerVisualAction *action);
+    
+    /*!
+     */
+    void
+    setChangeLayerAction(ChangeLayerAction *action);
     
     
 };

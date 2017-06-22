@@ -41,12 +41,33 @@ VisualCamera::VisualCamera(
 }
 
 
-VisualCamera::~VisualCamera() {
+VisualCamera::~VisualCamera()
+{
     videoGrabber.close();
     
 }
 
-void VisualCamera::open() {
+
+json
+VisualCamera::getState()
+{
+    json state;
+    
+    state = Visual::getState();
+    
+    state["deviceId"] = deviceId;
+    state["frameRate"] = frameRate;
+    state["width"] = width;
+    state["height"] = height;
+    
+    
+    return state;
+}
+
+
+void
+VisualCamera::open()
+{
     if (isOpened) return;
     isOpened = true;
     videoGrabber.setDeviceID(deviceId);

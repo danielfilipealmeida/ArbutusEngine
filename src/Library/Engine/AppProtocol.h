@@ -10,7 +10,11 @@
 #define AppProtocol_h
 
 
-
+/*!
+ @class AppProtocol
+ @abstract
+ @discussion
+ */
 class AppProtocol {
     
 public:

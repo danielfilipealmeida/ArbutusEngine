@@ -17,6 +17,12 @@
 #define _FREEFRAMEFILTER_H_
 
 
+
+/*!
+ @class FreeFrameFilter
+ @abstract  
+ @discussion
+ */
 class FreeFrameFilter {
     string filterName;
     unsigned int number;

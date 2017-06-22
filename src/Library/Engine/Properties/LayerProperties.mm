@@ -10,30 +10,65 @@
 #include "LayerProperties.h"
 #include "Engine.h"
 
-    //extern ofApp	*app;
+//extern ofApp	*app;
 
 extern Engine *enginePtr;
 
 LayerProperties::LayerProperties() {
-    width       = enginePtr->getMixerWidth();
-    height      = enginePtr->getMixerHeight();
+    if (enginePtr != NULL) {
+        width       = enginePtr->getMixerWidth();
+        height      = enginePtr->getMixerHeight();
+    }
     blendMode   = BLEND_ADD;
     reset();
 }
 
+LayerProperties::~LayerProperties() {}
 
-void LayerProperties::reset() {
+
+
+void
+LayerProperties::reset() {
     Properties::reset();
     setAlpha (1.0);
     setBlurH (0.0);
     setBlurV (0.0);
 }
 
-LayerProperties::~LayerProperties() {
-	
-}
 
 
-void LayerProperties::print() {
+void
+LayerProperties::print() {
 	Properties::print();
 }
+
+
+string
+LayerProperties::blendModeToString(BlendMode mode) {
+    switch(mode) {
+        case BLEND_ALPHA:
+        return "ALPHA";
+        break;
+        
+        case BLEND_ADD:
+        return "ADD";
+        break;
+        
+        case BLEND_MULTIPLY:
+        return "MULT";
+        break;
+        
+        case BLEND_SUBTRACT:
+        return "SUBT";
+        break;
+        
+        case BLEND_SCREEN:
+        return "SCRN";
+        break;
+
+        default:
+        return "?";
+        break;
+    }
+}
+

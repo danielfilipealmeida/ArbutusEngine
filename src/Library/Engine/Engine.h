@@ -25,8 +25,12 @@
 #include "Controller.h"
 #include "SyphonOutputManager.h"
 #include "AppProtocol.h"
+#include "json.hpp"
 
 #define MAXIMUM_NUMBER_OF_LAYERS 6
+
+
+using json = nlohmann::json;
 
 
 typedef enum  {
@@ -36,12 +40,11 @@ typedef enum  {
 
 
 
-/**
- * The Engine Class.
- * This is the main class that the program class uses to handle everything 
- * related with the video mixing.
+/*!
+ @class Engine
+ @abstract The main class, used to control all aspects of the Arbutus VJing Library.
+ @discussion This class implements the singleton pattern to create one object used to manage all aspects of the Arbutus Engine.
  */
-
 class Engine {
     EngineRunMode   runMode;
     ControllerGroup controllers;
@@ -103,23 +106,32 @@ public:
 //#warning "FreeFrame not available!"
 #endif
     
-	
-	Engine();
-	~Engine();
 
+    /*!
+     */
+	Engine();
+
+    
+    
+    /*!
+     */
+    ~Engine();
+
+    
+    
+    static Engine* getInstance();
 	
 	/*******************************************************************
 	 * Set functions
 	 *******************************************************************/
 	
     
-    /**
-     * Starts a new set with the given dimentions and number of layers.
-     * Also allocs all memory needed.
-     *
-     * @params [unsigned int] _width the width of the rendering area
-     * @params [unsigned int] _height the height of the rendering area
-     * @params [unsigned int] _layers the number of layers available
+    /*!
+     @abstract Starts a new set with the given dimentions and number of layers. Also allocs all memory needed.
+     @param _width the width of the rendering area
+     @param _height the height of the rendering area
+     @param _layers the number of layers available
+     @return a boolean result saying if the set was properly created or not
      */
     bool newSet(
                 unsigned int _width  = 0,
@@ -129,43 +141,41 @@ public:
 	
    
     
-    /**
-     * Closes a set and cleans up the memory
+    /*!
+     @abstract Closes a set and cleans up the memory
      */
     void closeSet();
 	
     
     
-    /**
-     *  Open a set
-     *
-     *  @param _setPath the path to the file to open
-     *
-     *  @return open success value. boolean
+    /*!
+     @abstract Open a set
+     @param _setPath the path to the file to open
+     @return open success value. boolean
      */
     bool openSet(string _setPath);
 	
     
     
-    /**
-     *
+    /*!
+     @abstract
      */
     bool saveSet();
     
     
     
-    /**
-     * Saves a VJ set into a file
-     *
-     * @param _setPath the path to the file to save
+    /*!
+     @abstract Saves a VJ set into a file
+     @param _setPath the path to the file to save
+     @return a boolean result. True if the file as saved and false if not
      */
 	bool saveSetAs(string _setPath);
 	
     
     
     
-    /**
-     *  Defines the area of the rendering buffer
+    /*!
+     @abstract Defines the area of the rendering buffer
      */
     void setMixerResolution(
                             unsigned int width,
@@ -174,56 +184,213 @@ public:
     
     
     
+    /*************************************************************/
+
+    
+    /*!
+     @abstract handles all actions related to layers
+     */
+    void
+    handleLayerAction(
+                      string parameter,
+                      json data
+                      );
+    
+    
+    /*!
+     @abstract handles all actions related to visuals
+     */
+    void
+    handleVisualAction(
+                      string parameter,
+                      json data
+                      );
+    
+    
+    
+    /*!
+     @abstract handles all actions to the engine
+     @param parameter a string
+     */
+    void
+    handleAction(
+                 string parameter,
+                 json data
+                 );
+    
+    
     
     /*************************************************************/
     
 #pragma mark Layer functions
  
-	Layer*          addLayer();
+
+    /*!
+     @abstract
+     */
+	Layer*
+    addLayer(bool _loadShaders = true);
+    
+
+    
+    /*!
+     @abstract
+     */
+	void
+    addLayerToList(Layer *newLayer);
     
     
     
-	void addLayerToList(Layer *newLayer);
+    /*!
+     @abstract
+     */
+	void
+    removeAllLayers();
     
     
     
-	void removeAllLayers();
+    /*!
+     @abstract
+     */
+	void
+    removeLayer(unsigned int layerN);
+    
+    
+    /*!
+     @abstract
+     */
+    Layer*
+    getLayer(unsigned int layerN);
+    
+    
+    /*!
+     @abstract
+     */
+    Layer*
+    getCurrentLayer();
+    
+    
+    unsigned int
+    getCurrentLayerNumber() { return selectedLayer;}
+    
+    /*!
+     @abstract NOTE!!! isn't getSelectedLayer == getCurrentLayer
+     */
+    Layer*
+    getSelectedLayer() { return this->getLayer(this->selectedLayer);}
     
     
     
-	void removeLayer(unsigned int layerN);
+    /*!
+     @abstract
+     */
+    void
+    setActiveLayer(unsigned int activeLayer);
     
     
     
-	void setActiveVisualInstanceNumberForLayer(
-                                               unsigned int visualInstanceN,
-                                               unsigned int layerN
+    
+    /*!
+     @abstract
+     */
+    int
+    getNumberOfLayers();
+    
+    
+    
+    /*!
+     @abstract
+     */
+    void
+    setNumberOfLayers (unsigned int _val);
+    
+    
+    
+#pragma mark Visual Instances Methods
+    
+    
+    /*!
+     @abstract
+     */
+	void
+    setActiveVisualInstanceNumberForLayer(
+                                          unsigned int visualInstanceN,
+                                        unsigned int layerN
    );
 	
     
     
-    void setActiveVisualIntancesOnAllLayers(unsigned int columnN);
+    /*!
+     @abstract
+     */
+    void
+    setActiveVisualIntancesOnAllLayers(unsigned int columnN);
 	
     
     
-    void            setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN);
-	Layer*          getLayer(unsigned int layerN);
-    Layer*          getSelectedLayer() { return this->getLayer(this->selectedLayer);}
-	void            setActiveLayer(unsigned int activeLayer);
-	VisualInstance* getCurrentActiveVisualInstance();
-    VisualInstance* getVisualAtLayerAndInstanceN(unsigned int layerN, unsigned int visualInstanceN);
-	void            stopVisualAtSelectedLayer();
-    void            stopVisualAtLayer(unsigned int layerN);
-    int             getNumberOfLayers();
-    void            setNumberOfLayers (unsigned int _val);
-    LayerProperties *getPropertiesOfCurrentLayer();
+    /*!
+     @abstract
+     */
+    void
+    setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN);
+    
+    
+    
+    /*!
+     @abstract
+     */
+	VisualInstance*
+    getCurrentActiveVisualInstance();
+    
+    
+    
+    /*!
+     @abstract
+     */
+    VisualInstance*
+    getVisualAtLayerAndInstanceN(unsigned int layerN, unsigned int visualInstanceN);
+    
+    
+    
+    /*!
+     @abstract
+     */
+	void
+    stopVisualAtSelectedLayer();
+    
+    
+    
+    /*!
+     @abstract
+     */
+    void
+    stopVisualAtLayer(unsigned int layerN);
+    
+    
+    
+
+    
+    
+    /*!
+     @abstract
+     */
+    LayerProperties
+    *getPropertiesOfCurrentLayer();
+    
+    
     
     /*************************************************************/
     
 #pragma mark Scene & Visuals Functions
 	
     
+    Scene*
+    addScene();
     
+    
+    /*!
+     @abstract
+     */
     void
     addVisualToSceneListInCurrentLayer(
                                        unsigned int visual,
@@ -233,6 +400,9 @@ public:
     
     
     
+    /*!
+     @abstract
+     */
     void
     addVisualToScene(
                      unsigned int visual,
@@ -242,7 +412,10 @@ public:
     
     
     
-    void
+    /*!
+     @abstract
+     */
+   void
     removeVisualFromScene(
                           unsigned int layer,
                           unsigned int column
@@ -250,26 +423,41 @@ public:
     
     
     
+    /*!
+     @abstract
+     */
     Scene
     *getCurrentScene();
     
     
     
+    /*!
+     @abstract
+     */
     Scene
     *getSceneAtIndex(unsigned int index);
     
     
     
-    unsigned int
+    /*!
+     @abstract
+     */
+   unsigned int
     getNumberOfVisuals();
     
     
     
+    /*!
+     @abstract
+     */
     Visual
     *getVisualAtIndex(unsigned int index);
     
     
     
+    /*!
+     @abstract
+     */
     bool
     isSyphonInputLoaded(
                         string serverName,
@@ -278,6 +466,9 @@ public:
     
     
     
+    /*!
+     @abstract
+     */
     VisualSyphon*
     getSyphonInput(
                    string serverName,
@@ -288,6 +479,15 @@ public:
     
     void            removeVisualFromSet(Visual *visual);
     
+    
+    
+#pragma mark State Handling
+    
+    json
+    getState();
+    
+    json
+    getLayersState();
     
     /*************************************************************/
 
@@ -431,37 +631,125 @@ public:
     
     /* parameters setters and getters */
     
-    float   playhead();
-    void    setPlayhead(float playhead);
-    float   start();
-    void    setStart(float start);
-    float   end();
-    void    setEnd(float end);
-    float   speed();
-    void    setSpeed(float speed);
-    float   x();
-    void    setX(float x);
-    float   y();
-    void    setY(float y);
-    float   width();
-    void    setWidth(float width);
-    float   height();
-    void    setHeight(float height);
-    bool    retrigger();
-    void    setRetrigger(bool retrigger);
-    bool    beatSnap();
-    void    setBeatSnap(bool val);
+    float
+    playhead();
+    
+    
+    void
+    setPlayhead(float playhead);
+    
+    
+    float
+    start();
+    
+    
+    /*!
+     */
+    void
+    setStart(float start);
+
+    /*!
+     */
+    float
+    end();
+  
+    /*!
+     */
+    void
+    setEnd(float end);
+    
+    /*!
+     */
+    float
+    speed();
+    
+    /*!
+     */
+    void
+    setSpeed(float speed);
+    
+    /*!
+     */
+    float
+    x();
+    
+    /*!
+     */
+    void
+    setX(float x);
+    
+    /*!
+     */
+    float
+    y();
+    
+    /*!
+     */
+    void
+    setY(float y);
+    
+    
+    /*!
+     */
+    float
+    width();
+    
+    /*!
+     */
+    void
+    setWidth(float width);
+    
+    /*!
+     */
+    float
+    height();
+    
+    /*!
+     */
+    void
+    setHeight(float height);
+    
+    /*!
+     */
+    bool
+    retrigger();
+    
+    /*!
+     */
+    void
+    setRetrigger(bool retrigger);
+
+    /*!
+     */
+    bool
+    beatSnap();
+
+    /*!
+     */
+    void
+    setBeatSnap(bool val);
     
     
     /* handling controllers */
     static void visualsKeysControlCallback(Controller *controller);
     
     
-    /* more stuff */
+#pragma mark more stuff -- should be moved to another place. probably be made static methods
     
-    void setAppSupportDir(string _dir);
-    string calculateThumbnailPath(string path);
-    string md5(string);
+    /*!
+     */
+    void
+    setAppSupportDir(string _dir);
+    
+    /*!
+     */
+    string
+    calculateThumbnailPath(string path);
+    
+    /*!
+     */
+    string
+    md5(string);
 
     
 #pragma mark App Callback Registration
@@ -477,6 +765,10 @@ public:
      */
     void registerAppBeatCallback(void (*callback)(void));
 
+    
+private:
+    Layer*
+    getLayerForActionHandler (json data);
 };
 
 

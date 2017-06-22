@@ -27,6 +27,14 @@ typedef enum
 
 */
 
+
+
+
+/*!
+ @class SyphonOutputManager
+ @abstract
+ @discussion
+ */
 class SyphonOutputManager {
     ofxSyphonServer mainOutput;
     ofxSyphonServer channelsOutput[N_SYPHON_CHANNEL_OUTPUTS];

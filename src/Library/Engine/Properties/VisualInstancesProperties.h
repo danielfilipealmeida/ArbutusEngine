@@ -34,6 +34,13 @@ typedef enum {
     TriggerMode_Piano
 } TriggerMode;
 
+
+
+/*!
+ @class VisualInstancesProperties
+ @abstract
+ @discussion
+ */
 class VisualInstancesProperties : public Properties {
     int     width, height;
     float   zoomX, zoomY;

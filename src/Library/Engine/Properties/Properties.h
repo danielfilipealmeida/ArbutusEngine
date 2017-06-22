@@ -14,12 +14,18 @@
 #include "ofMain.h"
 
 
+
+/*!
+ @class Properties
+ @abstract
+ @discussion
+ */
 class Properties {
 
-    string name;
-    float alpha; //0.0 - 1.0
-    float red, green, blue;
-    float brightness, contrast, saturation;
+    string  name;
+    float   alpha; //0.0 - 1.0
+    float   red, green, blue;
+    float   brightness, contrast, saturation;
     
 public:
 

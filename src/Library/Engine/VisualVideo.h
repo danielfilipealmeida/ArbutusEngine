@@ -14,6 +14,12 @@
 
 
 
+
+/*!
+ @class VisualVideo
+ @abstract
+ @discussion
+ */
 class VisualVideo : public Visual {
 
     string filePath;
@@ -24,6 +30,8 @@ public:
     
     VisualVideo(string _filePath);
     ~VisualVideo();
+    
+    json getState();
     
     Boolean loadVideo();
 	Boolean closeVisual();

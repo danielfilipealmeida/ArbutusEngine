@@ -14,16 +14,27 @@
 #include "Visual.h"
 #include "ofxSyphon.h"
 
+
+
+/*!
+ @class VisualSyphon
+ @abstract
+ @discussion
+ */
 class VisualSyphon : public Visual {
     ofxSyphonClient     client;
     bool                active;
     long long           loadTimestamp;
     bool                screenshotGenerated;
-
+    string              serverName;
+    string              appName;
 public:
+    
     
     VisualSyphon(string _serverName, string _appName);
     ~VisualSyphon();
+    
+    json getState();
     
     string  getThumbnailPath();
     void    setThumbnail();

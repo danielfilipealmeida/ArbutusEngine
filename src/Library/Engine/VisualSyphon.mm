@@ -14,6 +14,9 @@
 
 
 VisualSyphon::VisualSyphon(string _serverName, string _appName) {
+    serverName = _serverName;
+    appName = _appName;
+    
     client.setup();
     client.set(_serverName, _appName);
     setType (VisualType_Syphon);
@@ -28,6 +31,19 @@ VisualSyphon::VisualSyphon(string _serverName, string _appName) {
 
 VisualSyphon::~VisualSyphon() {
     
+}
+
+json
+VisualSyphon::getState()
+{
+    json state;
+    
+    state = Visual::getState();
+    
+    state["serverName"] = serverName;
+    state["appName"] = appName;    
+    
+    return state;
 }
 
 

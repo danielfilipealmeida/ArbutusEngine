@@ -13,6 +13,7 @@
 #include "VisualInstance.h"
 #include <fstream> 
 #include "ofApp.h"
+#include "Utils.h"
 #include "Engine.h"
 
 
@@ -23,7 +24,7 @@
 
 
 extern ofApp *app;
-extern Engine *_engine;
+extern Engine *enginePtr;
 
 VisualInstance::VisualInstance() {
 	visual = NULL;
@@ -45,45 +46,44 @@ VisualInstance::~VisualInstance() {
 
 bool VisualInstance::loadVideo() {
 	bool result;
-    
-    // confirm if this is a video visual
-    
+    bool fileExists;
+    string filePath;
     
 	properties.setIsPlaying ( false );
-	if (visual!=NULL) {
-		bool fileExists;
-		
-        
-        if (visual->getType () == VisualType_Video) {
-            VisualVideo *visualVideo = (VisualVideo *) visual;
-        
-            // check if file exists
-            fstream fin;
-            string fileNameInOF = ofToDataPath( visualVideo->getFilePath () );
-            fin.open(fileNameInOF.c_str(),ios::in);
-            if ( fin.is_open() ) {
-                fileExists = true;
-            }
-            fin.close();
-            if (!fileExists) return false;
-		
-		
-            // open the file
-            result = this->video.loadMovie(visualVideo->getFilePath ());
+    
+    if (visual == NULL) return false;
+    if (visual->getType () != VisualType_Video) return false;
+    
+    filePath = ((VisualVideo *) visual)->getFilePath ();
+    fileExists = checkFileExists(filePath);
+    result = this->video.loadMovie(filePath);
             
-            if (result==true) {
-                properties.setOpenedTimestampToNow();
-                //properties.setOpenedTimestamp (ofGetElapsedTimeMillis());
-                    //cout << "Video instance for video loaded" << endl;
-            }
+    if (result == true) {
+        properties.setOpenedTimestampToNow();
+    }
             
-            return result;
-        }
-	}	return false;
+    return result;
 }
 
 
-bool VisualInstance::unloadVideo() {
+bool
+VisualInstance::checkFileExists(string path) {
+    fstream fin;
+    bool fileExists;
+    
+    string fileNameInOF = ofToDataPath(path);
+    fin.open(fileNameInOF.c_str(),ios::in);
+    if ( fin.is_open() ) {
+        fileExists = true;
+    }
+    fin.close();
+    
+    return (fileExists) ? true : false;
+}
+
+
+bool
+VisualInstance::unloadVideo() {
     properties.setIsPlaying (false);
     if (video.isLoaded() == false) return false;
 	video.close();
@@ -98,7 +98,12 @@ void VisualInstance::unload() {
 }
 
 
-void VisualInstance::play(bool forcePlay) {
+
+
+
+void
+VisualInstance::play(bool forcePlay)
+{
 	if (visual == NULL) return;
     
     properties.setIsTriggered (false);
@@ -108,11 +113,9 @@ void VisualInstance::play(bool forcePlay) {
     if (visual->getType () == VisualType_Video) {
         if (video.isLoaded()==false) loadVideo();
         if (video.isLoaded()==false) return;
-        //video.getTextureReference().texData.bFlipTexture = true;
-        
         
         if (properties.getBeatSnap ()   == true &&
-            _engine->isMetronomeOn ()   == true &&
+            enginePtr->isMetronomeOn ()   == true &&
             forcePlay                   == false)
         {
             properties.setIsTriggered (true);
@@ -139,13 +142,15 @@ void VisualInstance::play(bool forcePlay) {
  * If the video is set to snap and metronome is on, just set it to trigger on the next beat snap
  */
 void VisualInstance::retrigger() {
-    if (properties.getBeatSnap () == true && _engine->isMetronomeOn() == true ) {
+    if (
+        properties.getBeatSnap () == true &&
+        enginePtr->isMetronomeOn() == true
+    ) {
         properties.setIsTriggered (true);
     }
     else {
         video.firstFrame();
         properties.setLastPlayedTimestampToNow();
-        //properties.lastPlayedTimestamp = ofGetElapsedTimeMillis();
     }
 }
 
@@ -448,129 +453,27 @@ void VisualInstance::handleVideoGoingRight() {
 
 */
 
-void VisualInstance::update() {
-	if (visual==NULL) return;
-		
+void
+VisualInstance::updateVideo() {
+    if (visual->getType() != VisualType_Video) return;
+    if (video.isLoaded()==false) return;
+    if (video.isPlaying()==false) return;
+        
+    video.update();
+        
+        
+        
+    // THIS NEEDS TO BE TESTED
+    //float currentVideoPosition = video.getPosition();
+    //calculateCurrentPlayeadPosition(currentVideoPosition);
     
-    if (visual->getType() == VisualType_Video) {
-        if (video.isLoaded()==false) return;
-        if (video.isPlaying()==false) return;
+}
 
-       video.update();
-        
-        
-        
-            // THIS NEEDS TO BE TESTED
-        float currentVideoPosition = video.getPosition();
-        calculateCurrentPlayeadPosition(currentVideoPosition);
-        
-        
-        /*
-        switch (properties.direction) {
-            case Direction_Left:
-                this->handleVideoGoingLeft();
-                break;
-                
-            case Direction_Right:
-                this->handleVideoGoingRight();
-                break;
-        }
-        */
-        
-        
-        /*
-        
-        // limit the frame
-        if (properties.direction == Direction_Left) {
-            if (currentVideoPosition<properties.startPercentage) {
-                
-                switch(properties.loopMode) {
-                        
-                    case LoopMode_Normal:
-                        video.setPosition(properties.startPercentage);
-                        break;
-                        
-                    case LoopMode_PingPong:
-                        properties.direction = Direction_Right;
-                        video.setPosition(properties.startPercentage);
-                        video.setSpeed(video.getSpeed() * -1.0);
-                        break;
-                        
-                    case LoopMode_Inverse:
-                        video.setPosition(properties.endPercentage);
-                        break;
-                }
-
-            }
-            else if (currentVideoPosition>properties.endPercentage) {
-                
-                switch(properties.loopMode) {
-                    case LoopMode_Normal:
-                        video.setPosition(properties.startPercentage);
-                        break;
-                        
-                    case LoopMode_PingPong:
-                        properties.direction = Direction_Right;
-                        video.setPosition(properties.endPercentage);
-                        video.setSpeed(video.getSpeed() * -1.0);
-                        break;
- 
-                    case LoopMode_Inverse:
-                        video.setPosition(properties.endPercentage);
-                        break;
-                }
-            }
-        }
-        
-        else if (properties.direction == Direction_Right) {
-            
-            if (currentVideoPosition<properties.startPercentage) {
-                
-                switch(properties.loopMode) {
-                    case LoopMode_Normal:
-                        video.setPosition(properties.endPercentage);
-                        break;
-                        
-                    case LoopMode_PingPong:
-                        properties.direction = Direction_Left;
-                        video.setPosition(properties.startPercentage);
-                        video.setSpeed(video.getSpeed() * -1.0);
-                        break;
-                        
-                    case LoopMode_Inverse:
-                        video.setPosition(properties.endPercentage);
-                        break;
-                        
-                        
-                }
-
-                
-            }
-            else if (video.getPosition()>properties.endPercentage) {
-                
-                switch(properties.loopMode) {
-                    case LoopMode_Normal:
-                        video.setPosition(properties.startPercentage);
-                        break;
-                        
-                    case LoopMode_PingPong:
-                        properties.direction = Direction_Right;
-                        video.setPosition(properties.endPercentage);
-                        video.setSpeed(video.getSpeed() * -1.0);
-                        break;
-                        
-                    case LoopMode_Inverse:
-                        video.setPosition(properties.endPercentage);
-                        break;
-                        
-                        
-                }
-
-            }		
-        }
-         */
-
-    }
+void
+VisualInstance::update() {
+	if (visual==NULL) return;
+    updateVideo();
+    
 
     
     if (visual->getType() == VisualType_Camera) {
@@ -621,8 +524,12 @@ void VisualInstance::update() {
 #endif
 }
 
+
+
 //debug
-void VisualInstance::print(){
+void
+VisualInstance::print()
+{
 	cout        << "visual address: "<< visual<<endl;
 	cout        << "size of object: "<< sizeof(this)<<endl;
 	if (visual->getType() == VisualType_Video) {
@@ -695,13 +602,138 @@ bool VisualInstance::checkCloseCondition() {
 }
 
 
+
+#pragma mark getters and setters
+
+VisualType
+VisualInstance::getVisualType()
+{
+    return visual->getType();
+}
+
+
+
+
+#pragma mark State Handling
+
+
+json
+VisualInstance::getState() {
+    json state;
+    
+    state = json::array({
+        {"Alpha", properties.getAlpha()},
+        {"Brightness", properties.getBrightness()},
+        {"Contrast", properties.getContrast()},
+        {"Saturation", properties.getSaturation()},
+        {"Red", properties.getRed()},
+        {"Green", properties.getGreen()},
+        {"Blue", properties.getBlue()}
+    });
+    
+    return state;
+}
+
+
+#pragma mark Actions
+
+void
+VisualInstance::handleAction(
+                    string parameter,
+                    json data
+                    ) {
+    
+    float value;
+    //cout << data.dump() << endl;
+    //cout << parameter<<endl;
+    
+    
+    value = data["value"].get<float>();
+    
+    switch (str2int(parameter.c_str())) {
+        case str2int("Alpha"):
+            properties.setAlpha(value);
+            break;
+
+        case str2int("Brightness"):
+            properties.setBrightness(value);
+            break;
+            
+            
+        case str2int("Contrast"):
+            properties.setContrast(value);
+            break;
+            
+        case str2int("Saturation"):
+            properties.setSaturation(value);
+            break;
+            
+        case str2int("Red"):
+            properties.setRed(value);
+            break;
+            
+        case str2int("Green"):
+            properties.setGreen(value);
+            break;
+            
+        case str2int("Blue"):
+            properties.setBlue(value);
+            break;
+
+        case str2int("Zoom X"):
+            properties.setZoomX(value);
+            break;
+            
+        case str2int("Zoom Y"):
+            properties.setZoomY(value);
+            break;
+            
+        case str2int("Center X"):
+            properties.setCenterX(value);
+            break;
+
+        case str2int("Center Y"):
+            properties.setCenterY(value);
+            break;
+
+        case str2int("Start"):
+            properties.setStartPercentage(value);
+            break;
+
+        case str2int("End"):
+            properties.setEndPercentage(value);
+            break;
+
+        case str2int("Played"):
+            properties.setPercentagePlayed(value);
+            break;
+
+        case str2int("Direction"):
+            PlayheadDirection direction;
+            direction = (PlayheadDirection) round(value);
+            properties.setDirection(direction);
+            break;
+            
+        case str2int("Loop Mode"):
+            LoopMode loopMode = (LoopMode) round(value);
+            properties.setLoopMode(loopMode);
+            break;
+
+            
+    }
+}
+
 ///////////////////////////////////////////////////////////////////////////
 
 #pragma mark Free Frame Functions
 
 #ifdef _FREEFRAMEFILTER_H_
 
-void VisualInstance::addFreeFrameInstance(unsigned int instanceSlotNumber) {
+void
+VisualInstance::addFreeFrameInstance(
+                                     unsigned int instanceSlotNumber
+)
+{
 	// get the free frame from the host
 	FreeFrameFilter *filter = app->engine.freeFrameHost.getFilter(instanceSlotNumber);
 	if (filter == NULL) return;
@@ -713,19 +745,17 @@ void VisualInstance::addFreeFrameInstance(unsigned int instanceSlotNumber) {
 	freeFrameInstanceList.push_back(freeFrameInstance);
 }
 
-void VisualInstance::removeFreeFrameInstance(unsigned int instanceSlotNumber) {
+
+
+void
+VisualInstance::removeFreeFrameInstance(
+                                        unsigned int instanceSlotNumber
+                                        )
+{
 	if (instanceSlotNumber >= freeFrameInstanceList.size()) return;
 	freeFrameInstanceList.erase(freeFrameInstanceList.begin()+instanceSlotNumber);
 }
 
-
-
-
-#pragma mark getters and setters
-
-VisualType VisualInstance::getVisualType() {
-    return visual->getType();
-}
 
 
 #endif

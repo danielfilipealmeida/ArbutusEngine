@@ -21,7 +21,20 @@ Visual::~Visual() {
     
 }
 
+json
+Visual::getState()
+{
+    json state;
+    
+    
+    state = json::object({
+        {"type", getType()},
+        {"caption", getCaption()}
+    });
+    
 
+    return state;
+}
 
 // debug
 void Visual::print(){

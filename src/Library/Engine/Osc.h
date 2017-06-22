@@ -13,10 +13,13 @@
 #include "ofxOsc.h"
 
 
-/*!
- Singleton Class to wrap OSC usage
- */
 
+
+/*!
+ @class Osc
+ @abstract  Singleton Class to wrap OSC usage
+ @discussion
+ */
 class Osc {
     ofxOscReceiver *oscReceiver;
     int _port;

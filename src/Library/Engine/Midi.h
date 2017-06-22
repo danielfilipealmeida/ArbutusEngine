@@ -15,6 +15,12 @@
 #include "ofMain.h"
 #include "ofxMidi.h"
 
+
+/*!
+ @class Midi
+ @abstract
+ @discussion
+ */
 class Midi : ofxMidiListener {
     ofxMidiIn       midiIn;
     ofxMidiMessage  midiMessage;

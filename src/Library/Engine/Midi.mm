@@ -12,7 +12,7 @@
 #include <assert.h>
 #include <string>
 
-extern AppProtocol        *app;
+
 Midi *midiInstance = NULL;
 
 
@@ -90,8 +90,8 @@ void Midi::newMidiMessage(ofxMidiMessage& msg) {
         _val = "code "+s;
     }
     
-    
-    app->newMidiMessage (getActionString(msg));
+    //TODO: send a message to the app. The code is on an old version
+    //app->newMidiMessage (getActionString(msg));
 }
 
 
