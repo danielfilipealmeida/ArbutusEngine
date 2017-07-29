@@ -118,7 +118,9 @@ public:
     ~Engine();
 
     
-    
+    /*!
+     @abstract Singleton instance getter
+     */
     static Engine* getInstance();
 	
 	/*******************************************************************
@@ -139,14 +141,12 @@ public:
                 unsigned int _layers = 0
     );
 	
-   
     
     /*!
      @abstract Closes a set and cleans up the memory
      */
     void closeSet();
 	
-    
     
     /*!
      @abstract Open a set
@@ -156,12 +156,11 @@ public:
     bool openSet(string _setPath);
 	
     
-    
     /*!
-     @abstract
+     @abstract Saves the set to the current filepath
+     @returns boolean the result
      */
     bool saveSet();
-    
     
     
     /*!

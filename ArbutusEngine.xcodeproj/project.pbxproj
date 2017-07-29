@@ -16,6 +16,14 @@
 		655BFB001E735F3E00B74446 /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E8966A1E73098F000D470B /* Engine.cpp */; };
 		655BFB021E73673000B74446 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 655BFB011E73673000B74446 /* Layer.cpp */; };
 		657E13FA1E85D6D900DDE6D2 /* Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 657E13F91E85D6D900DDE6D2 /* Utils.h */; };
+		65D3A5CE1F2A9B8600CE6885 /* JsonLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5CC1F2A9B8600CE6885 /* JsonLoad.cpp */; };
+		65D3A5CF1F2A9B8600CE6885 /* JsonLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5CC1F2A9B8600CE6885 /* JsonLoad.cpp */; };
+		65D3A5D01F2A9B8600CE6885 /* JsonLoad.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65D3A5CD1F2A9B8600CE6885 /* JsonLoad.hpp */; };
+		65D3A5D51F2A9BCF00CE6885 /* JsonSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5D31F2A9BCF00CE6885 /* JsonSave.cpp */; };
+		65D3A5D61F2A9BCF00CE6885 /* JsonSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5D31F2A9BCF00CE6885 /* JsonSave.cpp */; };
+		65D3A5D71F2A9BCF00CE6885 /* JsonSave.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65D3A5D41F2A9BCF00CE6885 /* JsonSave.hpp */; };
+		65D3A5DB1F2AA13100CE6885 /* JsonSaveTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5D91F2AA13100CE6885 /* JsonSaveTest.cpp */; };
+		65D3A5DC1F2AA13100CE6885 /* JsonSaveTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5D91F2AA13100CE6885 /* JsonSaveTest.cpp */; };
 		65E21BC81EC6764F006D1C37 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E21BC61EC6764F006D1C37 /* ofApp.cpp */; };
 		65E896661E730453000D470B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E896651E730453000D470B /* main.cpp */; };
 		65E8967F1E733433000D470B /* libArbutusLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A186601DF8DF9200BE0219 /* libArbutusLib.a */; };
@@ -283,6 +291,11 @@
 		65C1EB161E6E1D16003F731D /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
 		65C1EB171E6E1D16003F731D /* RtMidi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RtMidi.cpp; sourceTree = "<group>"; };
 		65C1EB181E6E1D16003F731D /* RtMidi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RtMidi.h; sourceTree = "<group>"; };
+		65D3A5CC1F2A9B8600CE6885 /* JsonLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JsonLoad.cpp; path = ../../../JsonLoad.cpp; sourceTree = "<group>"; };
+		65D3A5CD1F2A9B8600CE6885 /* JsonLoad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = JsonLoad.hpp; path = ../../../JsonLoad.hpp; sourceTree = "<group>"; };
+		65D3A5D31F2A9BCF00CE6885 /* JsonSave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonSave.cpp; sourceTree = "<group>"; };
+		65D3A5D41F2A9BCF00CE6885 /* JsonSave.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = JsonSave.hpp; sourceTree = "<group>"; };
+		65D3A5D91F2AA13100CE6885 /* JsonSaveTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JsonSaveTest.cpp; path = FileHandling/JsonSaveTest.cpp; sourceTree = "<group>"; };
 		65E21BC61EC6764F006D1C37 /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofApp.cpp; sourceTree = "<group>"; };
 		65E21BC71EC6764F006D1C37 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofApp.h; sourceTree = "<group>"; };
 		65E896531E72E85B000D470B /* makedocs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = makedocs.sh; sourceTree = "<group>"; };
@@ -333,6 +346,21 @@
 			path = TestData;
 			sourceTree = "<group>";
 		};
+		651767101F2BF3720011D409 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				651767121F2BF3830011D409 /* FileHandling */,
+			);
+			name = Fixtures;
+			sourceTree = "<group>";
+		};
+		651767121F2BF3830011D409 /* FileHandling */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = FileHandling;
+			sourceTree = "<group>";
+		};
 		659E25D41E70BCAE00217A12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +382,7 @@
 		65BC80FB1DF8D8BB00331165 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				65D3A5D21F2A9B8D00CE6885 /* FileHandling */,
 				65BC80FC1DF8D8BB00331165 /* Action.h */,
 				65BC80FD1DF8D8BB00331165 /* Action.mm */,
 				65BC80FE1DF8D8BB00331165 /* AppProtocol.h */,
@@ -684,6 +713,25 @@
 			path = ../../libs/rtmidi;
 			sourceTree = "<group>";
 		};
+		65D3A5D21F2A9B8D00CE6885 /* FileHandling */ = {
+			isa = PBXGroup;
+			children = (
+				65D3A5CC1F2A9B8600CE6885 /* JsonLoad.cpp */,
+				65D3A5CD1F2A9B8600CE6885 /* JsonLoad.hpp */,
+				65D3A5D31F2A9BCF00CE6885 /* JsonSave.cpp */,
+				65D3A5D41F2A9BCF00CE6885 /* JsonSave.hpp */,
+			);
+			name = FileHandling;
+			sourceTree = "<group>";
+		};
+		65D3A5D81F2AA0FA00CE6885 /* FileHandling */ = {
+			isa = PBXGroup;
+			children = (
+				65D3A5D91F2AA13100CE6885 /* JsonSaveTest.cpp */,
+			);
+			name = FileHandling;
+			sourceTree = "<group>";
+		};
 		65E896521E72E839000D470B /* scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,6 +752,8 @@
 		65E896641E730453000D470B /* CatchCpp */ = {
 			isa = PBXGroup;
 			children = (
+				651767101F2BF3720011D409 /* Fixtures */,
+				65D3A5D81F2AA0FA00CE6885 /* FileHandling */,
 				65E21BC61EC6764F006D1C37 /* ofApp.cpp */,
 				65E21BC71EC6764F006D1C37 /* ofApp.h */,
 				65E896651E730453000D470B /* main.cpp */,
@@ -787,7 +837,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D3A5D01F2A9B8600CE6885 /* JsonLoad.hpp in Headers */,
 				657E13FA1E85D6D900DDE6D2 /* Utils.h in Headers */,
+				65D3A5D71F2A9BCF00CE6885 /* JsonSave.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -933,6 +985,7 @@
 				65EE9A7E1E15AA89008C2091 /* Action.h in Sources */,
 				65EE9A7F1E15AA89008C2091 /* Action.mm in Sources */,
 				65EE9A801E15AA89008C2091 /* AppProtocol.h in Sources */,
+				65D3A5CE1F2A9B8600CE6885 /* JsonLoad.cpp in Sources */,
 				65EE9A811E15AA89008C2091 /* Controller.h in Sources */,
 				65EE9A821E15AA89008C2091 /* Controller.mm in Sources */,
 				65EE9A831E15AA89008C2091 /* Engine.h in Sources */,
@@ -945,9 +998,11 @@
 				65EE9A8C1E15AA89008C2091 /* Metronome.mm in Sources */,
 				65EE9A8D1E15AA89008C2091 /* Midi.h in Sources */,
 				65EE9A8E1E15AA89008C2091 /* Midi.mm in Sources */,
+				65D3A5D51F2A9BCF00CE6885 /* JsonSave.cpp in Sources */,
 				65EE9A8F1E15AA89008C2091 /* Osc.h in Sources */,
 				65EE9A901E15AA89008C2091 /* Osc.mm in Sources */,
 				65EE9A911E15AA89008C2091 /* LayerProperties.h in Sources */,
+				65D3A5DB1F2AA13100CE6885 /* JsonSaveTest.cpp in Sources */,
 				65EE9A921E15AA89008C2091 /* LayerProperties.mm in Sources */,
 				65EE9A931E15AA89008C2091 /* Properties.h in Sources */,
 				65EE9A941E15AA89008C2091 /* Properties.mm in Sources */,
@@ -990,6 +1045,7 @@
 				65E896931E7342BC000D470B /* ofxSyphonServer.mm in Sources */,
 				65E896941E734340000D470B /* ofxSyphonClient.mm in Sources */,
 				65E896A11E734F37000D470B /* RtMidi.cpp in Sources */,
+				65D3A5DC1F2AA13100CE6885 /* JsonSaveTest.cpp in Sources */,
 				65E896901E733DB5000D470B /* ofxXmlSettings.cpp in Sources */,
 				65E896911E733DD2000D470B /* ofxOscMessage.cpp in Sources */,
 				65E896921E734275000D470B /* ofxOscReceiver.cpp in Sources */,
@@ -999,10 +1055,12 @@
 				65E21BC81EC6764F006D1C37 /* ofApp.cpp in Sources */,
 				65E896A01E734F05000D470B /* OscOutboundPacketStream.cpp in Sources */,
 				65E8969E1E734EFF000D470B /* OscReceivedElements.cpp in Sources */,
+				65D3A5CF1F2A9B8600CE6885 /* JsonLoad.cpp in Sources */,
 				65E8969D1E734EEF000D470B /* OscTypes.cpp in Sources */,
 				655BFAFA1E7358C000B74446 /* UdpSocket.cpp in Sources */,
 				655BFAFC1E735B5E00B74446 /* NetworkingUtils.cpp in Sources */,
 				655BFAFD1E735BC100B74446 /* SyphonNameboundClient.m in Sources */,
+				65D3A5D61F2A9BCF00CE6885 /* JsonSave.cpp in Sources */,
 				65E8969B1E734EB6000D470B /* ofxRtMidiIn.cpp in Sources */,
 				65E8969C1E734ED7000D470B /* ofxRtMidiOut.cpp in Sources */,
 				65E8969A1E734482000D470B /* ofxBaseMidi.cpp in Sources */,

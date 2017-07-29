@@ -78,6 +78,8 @@ Engine::Engine() {
 
 Engine::~Engine() {
 	destroyBuffer();
+    
+    enginePtr = NULL;
 }
 
 
