@@ -18,8 +18,9 @@
 		657E13FA1E85D6D900DDE6D2 /* Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 657E13F91E85D6D900DDE6D2 /* Utils.h */; };
 		65CCD0371F2C7E4F00EB2AC5 /* test001.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65CCD0361F2C7E3B00EB2AC5 /* test001.json */; };
 		65CCD0391F2C7EA600EB2AC5 /* JsonLoadTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CCD0381F2C7EA600EB2AC5 /* JsonLoadTest.cpp */; };
-		65D3A5CE1F2A9B8600CE6885 /* JsonLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5CC1F2A9B8600CE6885 /* JsonLoad.cpp */; };
-		65D3A5CF1F2A9B8600CE6885 /* JsonLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5CC1F2A9B8600CE6885 /* JsonLoad.cpp */; };
+		65CCD0471F2CACA900EB2AC5 /* Engine.h in Headers */ = {isa = PBXBuildFile; fileRef = 65CCD0461F2CACA900EB2AC5 /* Engine.h */; };
+		65D3A5CE1F2A9B8600CE6885 /* JsonSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5CC1F2A9B8600CE6885 /* JsonSave.cpp */; };
+		65D3A5CF1F2A9B8600CE6885 /* JsonSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5CC1F2A9B8600CE6885 /* JsonSave.cpp */; };
 		65D3A5D01F2A9B8600CE6885 /* JsonLoad.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65D3A5CD1F2A9B8600CE6885 /* JsonLoad.hpp */; };
 		65D3A5D51F2A9BCF00CE6885 /* JsonSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5D31F2A9BCF00CE6885 /* JsonSave.cpp */; };
 		65D3A5D61F2A9BCF00CE6885 /* JsonSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5D31F2A9BCF00CE6885 /* JsonSave.cpp */; };
@@ -61,7 +62,6 @@
 		65EE9A801E15AA89008C2091 /* AppProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC80FE1DF8D8BB00331165 /* AppProtocol.h */; };
 		65EE9A811E15AA89008C2091 /* Controller.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC80FF1DF8D8BB00331165 /* Controller.h */; };
 		65EE9A821E15AA89008C2091 /* Controller.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81001DF8D8BB00331165 /* Controller.mm */; };
-		65EE9A831E15AA89008C2091 /* Engine.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81011DF8D8BB00331165 /* Engine.h */; };
 		65EE9A841E15AA89008C2091 /* Engine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81021DF8D8BB00331165 /* Engine.mm */; };
 		65EE9A871E15AA89008C2091 /* FreeFrameFilters.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81051DF8D8BB00331165 /* FreeFrameFilters.h */; };
 		65EE9A881E15AA89008C2091 /* FreeFrameFilters.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81061DF8D8BB00331165 /* FreeFrameFilters.mm */; };
@@ -186,7 +186,6 @@
 		65BC80FE1DF8D8BB00331165 /* AppProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppProtocol.h; sourceTree = "<group>"; };
 		65BC80FF1DF8D8BB00331165 /* Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		65BC81001DF8D8BB00331165 /* Controller.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Controller.mm; sourceTree = "<group>"; };
-		65BC81011DF8D8BB00331165 /* Engine.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = Engine.h; sourceTree = "<group>"; };
 		65BC81021DF8D8BB00331165 /* Engine.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Engine.mm; sourceTree = "<group>"; };
 		65BC81051DF8D8BB00331165 /* FreeFrameFilters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeFrameFilters.h; sourceTree = "<group>"; };
 		65BC81061DF8D8BB00331165 /* FreeFrameFilters.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FreeFrameFilters.mm; sourceTree = "<group>"; };
@@ -305,8 +304,9 @@
 		65C1EB181E6E1D16003F731D /* RtMidi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RtMidi.h; sourceTree = "<group>"; };
 		65CCD0361F2C7E3B00EB2AC5 /* test001.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = test001.json; path = Fixtures/FileHandling/test001.json; sourceTree = "<group>"; };
 		65CCD0381F2C7EA600EB2AC5 /* JsonLoadTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JsonLoadTest.cpp; path = FileHandling/JsonLoadTest.cpp; sourceTree = "<group>"; };
-		65D3A5CC1F2A9B8600CE6885 /* JsonLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JsonLoad.cpp; path = ../../../JsonLoad.cpp; sourceTree = "<group>"; };
-		65D3A5CD1F2A9B8600CE6885 /* JsonLoad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = JsonLoad.hpp; path = ../../../JsonLoad.hpp; sourceTree = "<group>"; };
+		65CCD0461F2CACA900EB2AC5 /* Engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
+		65D3A5CC1F2A9B8600CE6885 /* JsonSave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonSave.cpp; sourceTree = "<group>"; };
+		65D3A5CD1F2A9B8600CE6885 /* JsonLoad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = JsonLoad.hpp; sourceTree = "<group>"; };
 		65D3A5D31F2A9BCF00CE6885 /* JsonSave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonSave.cpp; sourceTree = "<group>"; };
 		65D3A5D41F2A9BCF00CE6885 /* JsonSave.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = JsonSave.hpp; sourceTree = "<group>"; };
 		65D3A5D91F2AA13100CE6885 /* JsonSaveTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JsonSaveTest.cpp; path = FileHandling/JsonSaveTest.cpp; sourceTree = "<group>"; };
@@ -397,35 +397,17 @@
 		65BC80FB1DF8D8BB00331165 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				65CCD0451F2CAA7800EB2AC5 /* Main */,
+				65CCD0441F2CA94700EB2AC5 /* Misc */,
+				65CCD0431F2CA73400EB2AC5 /* Effects */,
+				65CCD0401F2CA5CC00EB2AC5 /* __Deprecated */,
+				65CCD0421F2CA6FE00EB2AC5 /* Outputs */,
 				65BC810F1DF8D8BB00331165 /* Properties */,
 				65CCD03E1F2CA11300EB2AC5 /* Visuals */,
 				65D3A5D21F2A9B8D00CE6885 /* FileHandling */,
-				65BC80FC1DF8D8BB00331165 /* Action.h */,
-				65BC80FD1DF8D8BB00331165 /* Action.mm */,
-				65BC80FE1DF8D8BB00331165 /* AppProtocol.h */,
-				65BC80FF1DF8D8BB00331165 /* Controller.h */,
-				65BC81001DF8D8BB00331165 /* Controller.mm */,
-				65BC81011DF8D8BB00331165 /* Engine.h */,
+				65CCD0411F2CA6EC00EB2AC5 /* Inputs */,
 				65BC81021DF8D8BB00331165 /* Engine.mm */,
-				65BC81051DF8D8BB00331165 /* FreeFrameFilters.h */,
-				65BC81061DF8D8BB00331165 /* FreeFrameFilters.mm */,
-				65BC81071DF8D8BB00331165 /* Layer.h */,
-				65BC81081DF8D8BB00331165 /* Layer.mm */,
-				65BC81091DF8D8BB00331165 /* Metronome.h */,
-				65BC810A1DF8D8BB00331165 /* Metronome.mm */,
-				65BC810B1DF8D8BB00331165 /* Midi.h */,
-				65BC810C1DF8D8BB00331165 /* Midi.mm */,
-				65BC810D1DF8D8BB00331165 /* Osc.h */,
-				65BC810E1DF8D8BB00331165 /* Osc.mm */,
-				65BC81181DF8D8BB00331165 /* Scene.h */,
-				65BC81191DF8D8BB00331165 /* Scene.mm */,
-				65BC811A1DF8D8BB00331165 /* Screen.h */,
-				65BC811B1DF8D8BB00331165 /* Screen.mm */,
-				65BC811C1DF8D8BB00331165 /* Set.h */,
-				65BC811D1DF8D8BB00331165 /* Set.mm */,
-				65BC811E1DF8D8BB00331165 /* SyphonOutputManager.h */,
-				65BC811F1DF8D8BB00331165 /* SyphonOutputManager.mm */,
-				657E13F91E85D6D900DDE6D2 /* Utils.h */,
+				65CCD0461F2CACA900EB2AC5 /* Engine.h */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -736,15 +718,81 @@
 			path = Visuals;
 			sourceTree = "<group>";
 		};
+		65CCD0401F2CA5CC00EB2AC5 /* __Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = __Deprecated;
+			sourceTree = "<group>";
+		};
+		65CCD0411F2CA6EC00EB2AC5 /* Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				65BC80FF1DF8D8BB00331165 /* Controller.h */,
+				65BC81001DF8D8BB00331165 /* Controller.mm */,
+				65BC810B1DF8D8BB00331165 /* Midi.h */,
+				65BC810C1DF8D8BB00331165 /* Midi.mm */,
+				65BC810D1DF8D8BB00331165 /* Osc.h */,
+				65BC810E1DF8D8BB00331165 /* Osc.mm */,
+			);
+			path = Inputs;
+			sourceTree = "<group>";
+		};
+		65CCD0421F2CA6FE00EB2AC5 /* Outputs */ = {
+			isa = PBXGroup;
+			children = (
+				65BC811E1DF8D8BB00331165 /* SyphonOutputManager.h */,
+				65BC811F1DF8D8BB00331165 /* SyphonOutputManager.mm */,
+			);
+			path = Outputs;
+			sourceTree = "<group>";
+		};
+		65CCD0431F2CA73400EB2AC5 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				65BC81051DF8D8BB00331165 /* FreeFrameFilters.h */,
+				65BC81061DF8D8BB00331165 /* FreeFrameFilters.mm */,
+			);
+			path = Effects;
+			sourceTree = "<group>";
+		};
+		65CCD0441F2CA94700EB2AC5 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				65BC80FE1DF8D8BB00331165 /* AppProtocol.h */,
+				65BC81091DF8D8BB00331165 /* Metronome.h */,
+				65BC810A1DF8D8BB00331165 /* Metronome.mm */,
+				657E13F91E85D6D900DDE6D2 /* Utils.h */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		65CCD0451F2CAA7800EB2AC5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				65BC80FC1DF8D8BB00331165 /* Action.h */,
+				65BC80FD1DF8D8BB00331165 /* Action.mm */,
+				65BC811C1DF8D8BB00331165 /* Set.h */,
+				65BC811D1DF8D8BB00331165 /* Set.mm */,
+				65BC81181DF8D8BB00331165 /* Scene.h */,
+				65BC81191DF8D8BB00331165 /* Scene.mm */,
+				65BC811A1DF8D8BB00331165 /* Screen.h */,
+				65BC811B1DF8D8BB00331165 /* Screen.mm */,
+				65BC81071DF8D8BB00331165 /* Layer.h */,
+				65BC81081DF8D8BB00331165 /* Layer.mm */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		65D3A5D21F2A9B8D00CE6885 /* FileHandling */ = {
 			isa = PBXGroup;
 			children = (
-				65D3A5CC1F2A9B8600CE6885 /* JsonLoad.cpp */,
+				65D3A5CC1F2A9B8600CE6885 /* JsonSave.cpp */,
 				65D3A5CD1F2A9B8600CE6885 /* JsonLoad.hpp */,
 				65D3A5D31F2A9BCF00CE6885 /* JsonSave.cpp */,
 				65D3A5D41F2A9BCF00CE6885 /* JsonSave.hpp */,
 			);
-			name = FileHandling;
+			path = FileHandling;
 			sourceTree = "<group>";
 		};
 		65D3A5D81F2AA0FA00CE6885 /* FileHandling */ = {
@@ -861,6 +909,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65CCD0471F2CACA900EB2AC5 /* Engine.h in Headers */,
 				65D3A5D01F2A9B8600CE6885 /* JsonLoad.hpp in Headers */,
 				657E13FA1E85D6D900DDE6D2 /* Utils.h in Headers */,
 				65D3A5D71F2A9BCF00CE6885 /* JsonSave.hpp in Headers */,
@@ -1010,10 +1059,9 @@
 				65EE9A7E1E15AA89008C2091 /* Action.h in Sources */,
 				65EE9A7F1E15AA89008C2091 /* Action.mm in Sources */,
 				65EE9A801E15AA89008C2091 /* AppProtocol.h in Sources */,
-				65D3A5CE1F2A9B8600CE6885 /* JsonLoad.cpp in Sources */,
+				65D3A5CE1F2A9B8600CE6885 /* JsonSave.cpp in Sources */,
 				65EE9A811E15AA89008C2091 /* Controller.h in Sources */,
 				65EE9A821E15AA89008C2091 /* Controller.mm in Sources */,
-				65EE9A831E15AA89008C2091 /* Engine.h in Sources */,
 				65EE9A841E15AA89008C2091 /* Engine.mm in Sources */,
 				65EE9A871E15AA89008C2091 /* FreeFrameFilters.h in Sources */,
 				65EE9A881E15AA89008C2091 /* FreeFrameFilters.mm in Sources */,
@@ -1080,7 +1128,7 @@
 				65E21BC81EC6764F006D1C37 /* ofApp.cpp in Sources */,
 				65E896A01E734F05000D470B /* OscOutboundPacketStream.cpp in Sources */,
 				65E8969E1E734EFF000D470B /* OscReceivedElements.cpp in Sources */,
-				65D3A5CF1F2A9B8600CE6885 /* JsonLoad.cpp in Sources */,
+				65D3A5CF1F2A9B8600CE6885 /* JsonSave.cpp in Sources */,
 				65CCD0391F2C7EA600EB2AC5 /* JsonLoadTest.cpp in Sources */,
 				65E8969D1E734EEF000D470B /* OscTypes.cpp in Sources */,
 				655BFAFA1E7358C000B74446 /* UdpSocket.cpp in Sources */,
