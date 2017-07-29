@@ -397,6 +397,8 @@
 		65BC80FB1DF8D8BB00331165 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				65BC810F1DF8D8BB00331165 /* Properties */,
+				65CCD03E1F2CA11300EB2AC5 /* Visuals */,
 				65D3A5D21F2A9B8D00CE6885 /* FileHandling */,
 				65BC80FC1DF8D8BB00331165 /* Action.h */,
 				65BC80FD1DF8D8BB00331165 /* Action.mm */,
@@ -415,7 +417,6 @@
 				65BC810C1DF8D8BB00331165 /* Midi.mm */,
 				65BC810D1DF8D8BB00331165 /* Osc.h */,
 				65BC810E1DF8D8BB00331165 /* Osc.mm */,
-				65BC810F1DF8D8BB00331165 /* Properties */,
 				65BC81181DF8D8BB00331165 /* Scene.h */,
 				65BC81191DF8D8BB00331165 /* Scene.mm */,
 				65BC811A1DF8D8BB00331165 /* Screen.h */,
@@ -424,16 +425,6 @@
 				65BC811D1DF8D8BB00331165 /* Set.mm */,
 				65BC811E1DF8D8BB00331165 /* SyphonOutputManager.h */,
 				65BC811F1DF8D8BB00331165 /* SyphonOutputManager.mm */,
-				65BC81201DF8D8BB00331165 /* Visual.h */,
-				65BC81211DF8D8BB00331165 /* Visual.mm */,
-				65BC81221DF8D8BB00331165 /* VisualCamera.h */,
-				65BC81231DF8D8BB00331165 /* VisualCamera.mm */,
-				65BC81241DF8D8BB00331165 /* VisualInstance.h */,
-				65BC81251DF8D8BB00331165 /* VisualInstance.mm */,
-				65BC81261DF8D8BB00331165 /* VisualSyphon.h */,
-				65BC81271DF8D8BB00331165 /* VisualSyphon.mm */,
-				65BC81281DF8D8BB00331165 /* VisualVideo.h */,
-				65BC81291DF8D8BB00331165 /* VisualVideo.mm */,
 				657E13F91E85D6D900DDE6D2 /* Utils.h */,
 			);
 			path = Engine;
@@ -726,6 +717,23 @@
 			);
 			name = rtmidi;
 			path = ../../libs/rtmidi;
+			sourceTree = "<group>";
+		};
+		65CCD03E1F2CA11300EB2AC5 /* Visuals */ = {
+			isa = PBXGroup;
+			children = (
+				65BC81201DF8D8BB00331165 /* Visual.h */,
+				65BC81211DF8D8BB00331165 /* Visual.mm */,
+				65BC81221DF8D8BB00331165 /* VisualCamera.h */,
+				65BC81231DF8D8BB00331165 /* VisualCamera.mm */,
+				65BC81241DF8D8BB00331165 /* VisualInstance.h */,
+				65BC81251DF8D8BB00331165 /* VisualInstance.mm */,
+				65BC81261DF8D8BB00331165 /* VisualSyphon.h */,
+				65BC81271DF8D8BB00331165 /* VisualSyphon.mm */,
+				65BC81281DF8D8BB00331165 /* VisualVideo.h */,
+				65BC81291DF8D8BB00331165 /* VisualVideo.mm */,
+			);
+			path = Visuals;
 			sourceTree = "<group>";
 		};
 		65D3A5D21F2A9B8D00CE6885 /* FileHandling */ = {
