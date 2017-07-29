@@ -16,6 +16,8 @@
 		655BFB001E735F3E00B74446 /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E8966A1E73098F000D470B /* Engine.cpp */; };
 		655BFB021E73673000B74446 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 655BFB011E73673000B74446 /* Layer.cpp */; };
 		657E13FA1E85D6D900DDE6D2 /* Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 657E13F91E85D6D900DDE6D2 /* Utils.h */; };
+		65CCD0371F2C7E4F00EB2AC5 /* test001.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65CCD0361F2C7E3B00EB2AC5 /* test001.json */; };
+		65CCD0391F2C7EA600EB2AC5 /* JsonLoadTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CCD0381F2C7EA600EB2AC5 /* JsonLoadTest.cpp */; };
 		65D3A5CE1F2A9B8600CE6885 /* JsonLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5CC1F2A9B8600CE6885 /* JsonLoad.cpp */; };
 		65D3A5CF1F2A9B8600CE6885 /* JsonLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5CC1F2A9B8600CE6885 /* JsonLoad.cpp */; };
 		65D3A5D01F2A9B8600CE6885 /* JsonLoad.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65D3A5CD1F2A9B8600CE6885 /* JsonLoad.hpp */; };
@@ -145,6 +147,16 @@
 			dstSubfolderSpec = 16;
 			files = (
 				6504CA6E1ECE4E0000355E4A /* Loop001.mp4 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65CCD0341F2C7DC700EB2AC5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				65CCD0371F2C7E4F00EB2AC5 /* test001.json in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +303,8 @@
 		65C1EB161E6E1D16003F731D /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
 		65C1EB171E6E1D16003F731D /* RtMidi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RtMidi.cpp; sourceTree = "<group>"; };
 		65C1EB181E6E1D16003F731D /* RtMidi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RtMidi.h; sourceTree = "<group>"; };
+		65CCD0361F2C7E3B00EB2AC5 /* test001.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = test001.json; path = Fixtures/FileHandling/test001.json; sourceTree = "<group>"; };
+		65CCD0381F2C7EA600EB2AC5 /* JsonLoadTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JsonLoadTest.cpp; path = FileHandling/JsonLoadTest.cpp; sourceTree = "<group>"; };
 		65D3A5CC1F2A9B8600CE6885 /* JsonLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JsonLoad.cpp; path = ../../../JsonLoad.cpp; sourceTree = "<group>"; };
 		65D3A5CD1F2A9B8600CE6885 /* JsonLoad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = JsonLoad.hpp; path = ../../../JsonLoad.hpp; sourceTree = "<group>"; };
 		65D3A5D31F2A9BCF00CE6885 /* JsonSave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonSave.cpp; sourceTree = "<group>"; };
@@ -357,6 +371,7 @@
 		651767121F2BF3830011D409 /* FileHandling */ = {
 			isa = PBXGroup;
 			children = (
+				65CCD0361F2C7E3B00EB2AC5 /* test001.json */,
 			);
 			name = FileHandling;
 			sourceTree = "<group>";
@@ -728,6 +743,7 @@
 			isa = PBXGroup;
 			children = (
 				65D3A5D91F2AA13100CE6885 /* JsonSaveTest.cpp */,
+				65CCD0381F2C7EA600EB2AC5 /* JsonLoadTest.cpp */,
 			);
 			name = FileHandling;
 			sourceTree = "<group>";
@@ -874,6 +890,7 @@
 				65E8965A1E72F3FF000D470B /* Copy Files */,
 				65E896841E73377E000D470B /* ShellScript */,
 				6504CA6D1ECE4DF200355E4A /* CopyFiles */,
+				65CCD0341F2C7DC700EB2AC5 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1056,6 +1073,7 @@
 				65E896A01E734F05000D470B /* OscOutboundPacketStream.cpp in Sources */,
 				65E8969E1E734EFF000D470B /* OscReceivedElements.cpp in Sources */,
 				65D3A5CF1F2A9B8600CE6885 /* JsonLoad.cpp in Sources */,
+				65CCD0391F2C7EA600EB2AC5 /* JsonLoadTest.cpp in Sources */,
 				65E8969D1E734EEF000D470B /* OscTypes.cpp in Sources */,
 				655BFAFA1E7358C000B74446 /* UdpSocket.cpp in Sources */,
 				655BFAFC1E735B5E00B74446 /* NetworkingUtils.cpp in Sources */,
