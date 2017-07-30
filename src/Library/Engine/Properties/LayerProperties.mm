@@ -16,8 +16,8 @@ extern Engine *enginePtr;
 
 LayerProperties::LayerProperties() {
     if (enginePtr != NULL) {
-        width       = enginePtr->getMixerWidth();
-        height      = enginePtr->getMixerHeight();
+        width       = enginePtr->getEngineProperties().getMixerWidth();
+        height      = enginePtr->getEngineProperties().getMixerHeight();
     }
     blendMode   = BLEND_ADD;
     reset();

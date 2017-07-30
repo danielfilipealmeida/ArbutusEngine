@@ -9,6 +9,16 @@
 #ifndef Utils_h
 #define Utils_h
 
+#include <string>
+
+
+class Utils {
+    
+public:
+    static std::string
+    md5(std::string message);
+};
+
 
 constexpr unsigned int str2int(const char* str, int h = 0)
 {

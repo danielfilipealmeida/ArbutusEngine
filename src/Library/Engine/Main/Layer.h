@@ -27,12 +27,11 @@ using json = nlohmann::json;
  @discussion
  */
 class Layer {
-    LayerProperties     properties;
-    unsigned int        layerNumber;
-    VisualInstance      *activeInstance;
-    VisualInstance      *schedulledInstance;
-    ofFbo               *buffer;
-    ofShader            shader;
+    LayerProperties properties;
+    unsigned int layerNumber;
+    VisualInstance *activeInstance, *schedulledInstance;
+    ofFbo *buffer;
+    ofShader shader;
 
 public:
     

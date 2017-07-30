@@ -49,8 +49,8 @@ void Set::newSet(
                  unsigned int _height,
                  unsigned int _nLayers
 ) {
-    enginePtr->setMixerWidth ( _width );
-    enginePtr->setMixerHeight ( _height );
+    enginePtr->getEngineProperties().setMixerWidth ( _width );
+    enginePtr->getEngineProperties().setMixerHeight ( _height );
     
 	nLayers = _nLayers;
 	
@@ -123,8 +123,8 @@ bool Set::openSet(string _filePath) {
     width   = xml.getIntValue("width");
     height  = xml.getIntValue("height");
     
-    enginePtr->setMixerWidth(width);
-    enginePtr->setMixerHeight(height);
+    enginePtr->getEngineProperties().setMixerWidth(width);
+    enginePtr->getEngineProperties().setMixerHeight(height);
     
     xml.setToParent();
     
@@ -261,8 +261,8 @@ bool Set::openSet_old(string _filePath){
     //enginePtr->mixerWidth = width;
 	//enginePtr->mixerHeight = height;
 	
-    enginePtr->setMixerWidth (width);
-    enginePtr->setMixerHeight (height);
+    enginePtr->getEngineProperties().setMixerWidth (width);
+    enginePtr->getEngineProperties().setMixerHeight (height);
     
 	
 	// read layers info
@@ -411,8 +411,8 @@ void Set::saveSet() {
     xml.setTo("set");
     xml.addChild("configuration");
     xml.setTo("configuration");
-    xml.addValue("width", enginePtr->getMixerWidth());
-    xml.addValue("height", enginePtr->getMixerHeight());
+    xml.addValue("width", enginePtr->getEngineProperties().getMixerWidth());
+    xml.addValue("height", enginePtr->getEngineProperties().getMixerHeight());
     xml.setToParent();
     
     

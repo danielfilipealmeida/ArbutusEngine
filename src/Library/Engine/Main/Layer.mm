@@ -247,8 +247,8 @@ Layer::playVisualInstance(
     
         // if snap is on and beat detection is on
     if (properties->getBeatSnap ()  == true &&
-        enginePtr->isMetronomeOn()    == true &&
-        enginePtr->isTriggeringBeat() != true
+        enginePtr->getEngineProperties().isMetronomeOn()    == true &&
+        enginePtr->getEngineProperties().isTriggeringBeat() != true
         ) {
         schedulleInstance(newInstance);
         return;

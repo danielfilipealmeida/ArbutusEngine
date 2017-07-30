@@ -15,28 +15,24 @@
 #include "ofxXmlSettings.h"
 #include "Set.h"
 #include "Layer.h"
-//#include "FileManager.h"
 #include "Metronome.h"
 #include "Midi.h"
 #include "Osc.h"
-//#include "FreeFrameFilters.h"
 #include "Screen.h"
 #include "SetProperties.h"
 #include "Controller.h"
 #include "SyphonOutputManager.h"
 #include "AppProtocol.h"
 #include "json.hpp"
+#include "EngineProperties.h"
 
-#define MAXIMUM_NUMBER_OF_LAYERS 6
+
+
 
 
 using json = nlohmann::json;
 
 
-typedef enum  {
-    PLAY_MODE = 0,
-    LEARN_MODE
-} EngineRunMode;
 
 
 
@@ -46,49 +42,32 @@ typedef enum  {
  @discussion This class implements the singleton pattern to create one object used to manage all aspects of the Arbutus Engine.
  */
 class Engine {
-    EngineRunMode   runMode;
+    Set currentSet;
+    LayersList layersList;
+    ScreensList screensList;
+
     ControllerGroup controllers;
     Osc             *osc;   // isto é usado???
-    unsigned int	mixerWidth, mixerHeight, mixerNLayers;
     
-    
-    string          appSupportDir;
-    int             selectedLayer;
-    int             selectedColumn;
-
-    // I should make a class just for these data
-    Boolean			metronomeOn;
-    unsigned int    beatsToSnap;
-    unsigned int    beatsCounter;
-    Boolean         triggeringBeat;
-    Boolean         beatSnapInProgress;
-    unsigned long long taps[4];
-    int             currentTapIndex = -1;
+    bool setOpened;
+    unsigned layersPreview_Columns;
 
     
-    bool			setOpened;
-    unsigned		layersPreview_Columns;
-
     
-    string          currentFilePath;
-    
-    Set				currentSet;
   
-    LayersList		layersList;
-    ScreensList     screensList;
 
-    VisualInstance	*currentVisualInstance;
-
-    ofFbo			*buffer;
-
-    metronome		metronomeThreadObj;
-    
-    //FileManager     fileManagerThreadObj;
+    VisualInstance *currentVisualInstance;
+    ofFbo *buffer;
+    metronome metronomeThreadObj;
     
     SyphonOutputManager syphonOutputManager;
-public:
-    SetProperties   properties;
     
+    EngineProperties engineProperties;
+    SetProperties setProperties;
+    
+public:
+    
+    EngineProperties getEngineProperties();
 	
 	
     dispatch_queue_t processingQueue;
@@ -230,15 +209,11 @@ public:
 	Layer*
     addLayer(bool _loadShaders = true);
     
-
-    
     /*!
      @abstract
      */
 	void
     addLayerToList(Layer *newLayer);
-    
-    
     
     /*!
      @abstract
@@ -246,14 +221,11 @@ public:
 	void
     removeAllLayers();
     
-    
-    
     /*!
      @abstract
      */
 	void
     removeLayer(unsigned int layerN);
-    
     
     /*!
      @abstract
@@ -270,13 +242,13 @@ public:
     
     
     unsigned int
-    getCurrentLayerNumber() { return selectedLayer;}
+    getCurrentLayerNumber() { return engineProperties.getSelectedLayerNumber();}
     
     /*!
      @abstract NOTE!!! isn't getSelectedLayer == getCurrentLayer
      */
     Layer*
-    getSelectedLayer() { return this->getLayer(this->selectedLayer);}
+    getSelectedLayer() { return getLayer(engineProperties.getSelectedLayerNumber());}
     
     
     
@@ -585,35 +557,8 @@ public:
     
     bool isCurrentSetLoaded() {return currentSet.isLoaded();}
     
-    unsigned int    getMixerWidth() { return mixerWidth; };
-    void            setMixerWidth ( unsigned int _width ) { mixerWidth = _width; }
     
-    unsigned int    getMixerHeight() { return mixerHeight; };
-    void            setMixerHeight ( unsigned int _height ) { mixerHeight = _height; }
-    
-    
-    
-    int     getSelectedLayerNumber () { return selectedLayer; }
-    void    setSelectedLayerNumber ( int val ) { selectedLayer = val; }
-    
-    int     getSelectedColumnNumber () { return selectedColumn; }
-    void    setSelectedColumnNumber ( int val ) { selectedColumn = val; }
-    
-    
-    unsigned int    getBeatsToSnap() { return beatsToSnap; }
-    void            setBeatsToSnap ( unsigned int val ) { beatsToSnap = val; }
-    
-    unsigned int    getBeatsCounter() { return beatsCounter; }
-    void            setBeatsCounter ( unsigned int val ) { beatsCounter = val; }
-
-    
-    Boolean isMetronomeOn () { return metronomeOn; }
-    void setMetronomeOn ( Boolean val ) { metronomeOn = val; }
-    
-    Boolean isTriggeringBeat () { return triggeringBeat; }
-    void setTriggeringBeat ( Boolean val ) { triggeringBeat = val; }
-    
-    string getCurrentFilePath () { return currentFilePath; }
+    string getCurrentFilePath () { return engineProperties.getCurrentFilePath(); }
     
     Set *getCurrentSet () { return &currentSet; }
     
@@ -745,11 +690,6 @@ public:
     string
     calculateThumbnailPath(string path);
     
-    /*!
-     */
-    string
-    md5(string);
-
     
 #pragma mark App Callback Registration
     

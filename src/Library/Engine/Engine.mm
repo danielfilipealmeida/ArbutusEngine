@@ -22,11 +22,7 @@ Engine *enginePtr = NULL;
 #pragma mark Init Methods
 
 void Engine::setDefaults() {
-    mixerWidth=640;
-    mixerHeight=480;
     layersPreview_Columns = 3;
-    mixerNLayers = 3;
-    beatsToSnap = 4;
     
 }
 
@@ -35,17 +31,14 @@ void Engine::setDefaults() {
 Engine::Engine() {
     if (enginePtr != NULL) return;
     
-    enginePtr       = this;
-	currentFilePath = "";
-    buffer          = NULL;
-    setOpened       = false;
-    runMode         = PLAY_MODE;
+    enginePtr = this;
+    buffer = NULL;
+    setOpened = false;
     
     
     setDefaults();
     
 	
-    beatSnapInProgress = false;
     
  	
 	// init the free frame filters
@@ -130,13 +123,19 @@ Engine::newSet(
 ) {
     
 	closeSet();
-	if (_width>0)  mixerWidth   = _width;
-	if (_height>0) mixerHeight  = _height;
-	if (_layers>0) mixerNLayers = _layers;
-	currentSet.newSet(mixerWidth, mixerHeight, mixerNLayers);
+    if (_width>0)  {
+        engineProperties.setMixerWidth(_width);
+    }
+    if (_height>0) {
+        engineProperties.setMixerHeight(_height);
+    }
+    if (_layers>0) {
+        engineProperties.setNumberOfLayers(_layers);
+    };
+	currentSet.newSet(_width, _height, _layers);
     initBuffer();
 	setActiveLayer(1);
-    currentFilePath = "";
+    engineProperties.setCurrentFilePath("");
     setOpened = true;
     
     return true;
@@ -154,7 +153,7 @@ Engine::closeSet() {
 
     currentVisualInstance = NULL;
     setOpened             = false;
-    currentFilePath       = "";
+    engineProperties.setCurrentFilePath("");
 }
 
 
@@ -174,7 +173,8 @@ Engine::openSet(string _setPath) {
     initBuffer();
     setActiveLayer(1);
     
-	currentFilePath = _setPath;
+	engineProperties.setCurrentFilePath(_setPath);
+    
     setOpened       = true;
     
     return result;
@@ -189,10 +189,9 @@ bool Engine::saveSet() {
 
 bool Engine::saveSetAs(string _setPath) {
 	currentSet.saveSetAs(_setPath);
-    currentFilePath = _setPath;
+    engineProperties.setCurrentFilePath(_setPath);
     
     return true;
-    //[cocoaHandler updatePreferences];
 }
 
 
@@ -317,22 +316,20 @@ Engine::handleAction(
 
 
 
-void Engine::setMixerResolution(unsigned int width, unsigned int height) {
+void
+Engine::setMixerResolution(
+                           unsigned int width,
+                           unsigned int height
+                           ) {
     destroyBuffer();
-    
-    mixerWidth = width;
-    mixerHeight = height;
+
+    engineProperties.setMixerWidth(width);
+    engineProperties.setMixerHeight(height);
+    //mixerWidth = width;
+    //mixerHeight = height;
     
     initBuffer();
-    
-    /* restart all the layers */
-    /*
-     LayersListIterator i;
-     i = layersList.begin();
-     for (int f=0;f<layerN;f++) {
-     ++i;
-     }
-     */
+
     for (LayersListIterator i = layersList.begin();i!=layersList.end(); i++){
         Layer *layer = (*i);
         
@@ -381,8 +378,8 @@ Engine::removeAllLayers()
 	while (!layersList.empty()) {
 		layersList.pop_front();
 	}
+    engineProperties.setSelectedLayerNumber(0);
 	
-	selectedLayer=0;
 }
 
 
@@ -405,7 +402,7 @@ Engine::removeLayer(unsigned int layerN)
     
     i = layersList.erase(i);
     layerSize = (unsigned int) layersList.size();
-    if (selectedLayer >= layerSize) {
+    if (engineProperties.getSelectedLayerNumber() >= layerSize) {
         setActiveLayer(layerSize);
     }
 }
@@ -424,7 +421,7 @@ Engine::getLayer(unsigned int layerN)
 
 Layer*
 Engine::getCurrentLayer() {
-    return getLayer(selectedLayer);
+    return getLayer(engineProperties.getSelectedLayerNumber());
 }
 
 
@@ -496,11 +493,14 @@ Engine::setActiveVisualInstanceNumberForLayer(
         currentVisualInstance = layer->getActiveVisualInstance();
         
         if (currentVisualInstance != NULL) {
-            selectedColumn = currentVisualInstance->getProperties()->getColumn();
+            engineProperties.setSelectedColumnNumber( currentVisualInstance->getProperties()->getColumn());
         }
 	}
     else {
-        if (currentVisualInstance != NULL && properties.getStopCurrentVisualIfTriggeredInvalid() == YES) {
+        if (
+            currentVisualInstance != NULL &&
+            setProperties.getStopCurrentVisualIfTriggeredInvalid() == YES
+            ) {
             stopVisualAtLayer(layerN);
         }
     }
@@ -523,13 +523,19 @@ Engine::setActiveVisualIntancesOnAllLayers(unsigned int columnN) {
 
 void
 Engine::setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN) {
-	setActiveVisualInstanceNumberForLayer(visualInstanceN, selectedLayer);
+	setActiveVisualInstanceNumberForLayer(
+                                          visualInstanceN,
+                                          engineProperties.getSelectedLayerNumber()
+                                          );
 }
 
 
 VisualInstance*
 Engine::getCurrentActiveVisualInstance(){
-    return getVisualAtLayerAndInstanceN(selectedLayer, selectedColumn);
+    return getVisualAtLayerAndInstanceN(
+                                        engineProperties.getSelectedLayerNumber(),
+                                        engineProperties.getSelectedColumnNumber()
+                                        );
 }
 
 
@@ -549,7 +555,7 @@ Engine::getVisualAtLayerAndInstanceN(
 
 void
 Engine::stopVisualAtSelectedLayer() {
-    stopVisualAtLayer(selectedLayer);
+    stopVisualAtLayer(engineProperties.getSelectedLayerNumber());
 }
 
 
@@ -583,8 +589,8 @@ Engine::printInfo() {
 	cout << "********************************************************************************"<<endl;
 	cout << "** Engine Debug Print *********************************************** [start] **"<<endl;
 	cout << "********************************************************************************"<<endl;
-	cout << "mixerWidth: "<<mixerWidth<<endl;
-	cout << "mixerHeight: "<<mixerHeight<<endl;
+	cout << "mixerWidth: " << engineProperties.getMixerWidth() << endl;
+	cout << "mixerHeight: " << engineProperties.getMixerHeight() << endl;
 	cout << "Set object address: "<<&currentSet<<endl;
 	cout << endl;
 	cout << "** Layers **********************************************************************"<<endl;
@@ -638,7 +644,7 @@ Engine::addVisualToSceneListInCurrentLayer(
 	
 	if (visualToAdd != NULL) {
             //cout << "adding visual #"<<visual<<" in column "<<column<<endl;
-		if (layer <=0) layer = selectedLayer;
+		if (layer <=0) layer = engineProperties.getSelectedLayerNumber();
 		if (layer>layersList.size()) layer = layersList.size();
 		currentSet.getCurrentScene()->addVisualToInstanceList(visualToAdd, layer, column);
 	}
@@ -669,7 +675,10 @@ void Engine::removeVisualFromScene(unsigned int layer, unsigned int column) {
     
     currentScene = getCurrentScene();
     
-    if (layer == selectedLayer && column == selectedColumn) {
+    if (
+        layer == engineProperties.getSelectedLayerNumber() &&
+        column == engineProperties.getSelectedColumnNumber()
+        ) {
         stopVisualAtSelectedLayer();
     }
     
@@ -752,9 +761,9 @@ void Engine::render(){
     
     if (osc != NULL) osc->update();
     
-    if (beatSnapInProgress) {
+    if (engineProperties.isBeatSnapInProgress()) {
         triggerSchedulledVisualsOnAllLayers();
-        beatSnapInProgress = false;
+        engineProperties.setIsBeatSnapInProgress(false);
     }
 
 	
@@ -790,7 +799,12 @@ void Engine::render(){
         if (layer!=NULL) {
 			ofSetColor(255, 255, 255, (int) (layer->getProperties()->getAlpha() * 255.0));
 			ofEnableBlendMode((ofBlendMode) layer->getProperties()->getBlendMode());
-			layer->draw(0, 0, mixerWidth, mixerHeight);
+			layer->draw(
+                        0,
+                        0,
+                        engineProperties.getMixerWidth(),
+                        engineProperties.getMixerHeight()
+                        );
             ofDisableBlendMode();
 		}
 	}
@@ -862,8 +876,8 @@ Engine::drawLayersPreview(
     count              = 0;
     layersToDraw       = (unsigned int) this->layersList.size();
     layerPreviewWidth  = (int) floor((float) width / (float) this->layersPreview_Columns);
-    resizeAmount       = this->mixerWidth / layerPreviewWidth;
-    layerPreviewHeight = mixerHeight / resizeAmount;
+    resizeAmount       = engineProperties.getMixerWidth() / layerPreviewWidth;
+    layerPreviewHeight = engineProperties.getMixerHeight() / resizeAmount;
     
     x1 = x;
     y1 = y;
@@ -913,17 +927,7 @@ Engine::drawLayersPreview(
 
 void
 Engine::beat() {
-    triggeringBeat = false;
-    
-    ++beatsCounter;
-    if (beatsCounter > 32) {
-        beatsCounter = 0;
-    }
-    
-    if (beatsCounter%beatsToSnap == 0.0) {
-        triggeringBeat = true;
-        beatSnapInProgress = true;
-    }
+    engineProperties.beat();
     
     // TODO run something from the main app probably set a callback for the beat
     appBeatCallback();
@@ -962,15 +966,13 @@ void Engine::triggerSchedulledVisualsOnAllLayers() {
 }
 
 void Engine::startMetronome(){
-        //cout << "metronome on" <<endl;
-	metronomeThreadObj.start();
-	metronomeOn=true;
+ 	metronomeThreadObj.start();
+    engineProperties.setMetronomeOn(true);
 }
 
 void Engine::stopMetronome(){
-        //cout << "metronome off" <<endl;
 	metronomeThreadObj.stop();
-	metronomeOn = false;
+    engineProperties.setMetronomeOn(false);
 }
 
 
@@ -979,24 +981,30 @@ void Engine::resetMetronome() {
 }
 
 
-void Engine::tap() {
-    unsigned long long elapsedTime = ofGetElapsedTimeMillis();
+void
+Engine::tap() {
+    unsigned int newBPM;
+    
+    newBPM = engineProperties.tap();
+    
+    if (newBPM) setBPM(newBPM);
+    
+    setBPM((unsigned int) round(newBPM));
     /*
-    unsigned int index=0;
-    if (currentTapIndex>-1) index = currentTapIndex+1;
-    */
-    if (currentTapIndex>-1) currentTapIndex++; else currentTapIndex=0;
-    if (currentTapIndex>3) currentTapIndex = 0;
+    unsigned long long elapsedTime = ofGetElapsedTimeMillis();
+ 
+    engineProperties.incrementTap();
+    
+    
     taps[currentTapIndex] = elapsedTime;
     
-    //printf("%3llu %3llu %3llu %3llu\n", taps[0], taps[1], taps[2], taps[3]);
-    
-    
+   
+
     // calculate bpm
     if (currentTapIndex == 3) {
         unsigned long  long a, b, c;
         float newBpm;
-        a = taps[1]-taps[0];
+        a = taps[1] - taps[0];
         b = taps[2] - taps[1];
         c = taps[3] - taps[2];
         
@@ -1011,6 +1019,7 @@ void Engine::tap() {
         // reset
         currentTapIndex=-1;
     }
+     */
 }
 
 
@@ -1042,15 +1051,19 @@ unsigned int Engine::getBPM() {
 #pragma mark buffer
 
 void Engine::initBuffer() {
-	if (buffer==NULL) {
-		buffer = new ofFbo();
-		buffer->allocate(mixerWidth, mixerHeight);
+    if (buffer!=NULL) return;
+    
+    buffer = new ofFbo();
+    buffer->allocate(
+                     engineProperties.getMixerWidth(),
+                     engineProperties.getMixerHeight()
+                    );
 		
-		// clear the fbo
-		buffer->begin();
-		ofClear(0, 0, 0, 0);
-		buffer->end();
-	}
+    // clear the fbo
+    buffer->begin();
+    ofClear(0, 0, 0, 0);
+    buffer->end();
+	
 }
 
 void Engine::destroyBuffer() {
@@ -1096,7 +1109,7 @@ Engine::setActiveLayer(unsigned int activeLayer)
     if ( activeLayer > layerSize ) {
         activeLayer = layerSize;
     }
-	selectedLayer = activeLayer-1;
+    engineProperties.setSelectedLayerNumber(activeLayer - 1);
 }
 
 
@@ -1398,30 +1411,15 @@ void Engine::visualsKeysControlCallback(Controller *controller) {
     
 #pragma mark other stuff
 
-string Engine::md5(string message) {
-    string result;
-    string shellCommand;
-    
-    try {
-        shellCommand = "md5 -q -s " + message;
-        result = ofSystem(shellCommand);
-        result.erase(result.size() - 2);
-    }
-    catch(exception& e) {
-        cout << e.what() << "\n";
-        result = "";
-    }
-    return result;
-}
-
 void Engine::setAppSupportDir(string _dir) {
-    appSupportDir = _dir;
+    engineProperties.setAppSupportDir(_dir);
 }
 
-string Engine::calculateThumbnailPath(string path) {
-    //return ofString
-    string md5FileName = this->md5(ofFilePath::getFileName(path));
-    return appSupportDir + "/cache/thumbnails/" + md5FileName + ".jpg";
+string
+Engine::calculateThumbnailPath(string path) {
+    string md5FileName = Utils::md5(ofFilePath::getFileName(path));
+
+    return engineProperties.getAppSupportDir() + "/cache/thumbnails/" + md5FileName + ".jpg";
     
 }
 
@@ -1432,3 +1430,10 @@ void Engine::registerAppBeatCallback(void (*callback)(void)) {
     appBeatCallback = callback;
 }
 
+
+//###########################
+
+EngineProperties
+Engine::getEngineProperties() {
+    return engineProperties;
+}
