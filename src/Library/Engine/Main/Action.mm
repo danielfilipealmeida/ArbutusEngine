@@ -35,7 +35,7 @@ ChangeLayerAction::ChangeLayerAction(int _layer) {
 bool
 ChangeLayerAction::run() {
     if (enginePtr==NULL) return false;
-    enginePtr->setActiveLayer(layer);
+    Layers::getInstance().setActive(layer);
     return true;
 }
 

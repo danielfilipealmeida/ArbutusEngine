@@ -39,11 +39,11 @@ using json = nlohmann::json;
 /*!
  @class Engine
  @abstract The main class, used to control all aspects of the Arbutus VJing Library.
- @discussion This class implements the singleton pattern to create one object used to manage all aspects of the Arbutus Engine.
+ @discussion This class implements the singleton pattƒLayerern to create one object used to manage all aspects of the Arbutus Engine.
  */
 class Engine {
     Set currentSet;
-    LayersList layersList;
+    //LayersList layersList;
     ScreensList screensList;
 
     ControllerGroup controllers;
@@ -52,24 +52,16 @@ class Engine {
     bool setOpened;
     unsigned layersPreview_Columns;
 
-    
-    
-  
-
     VisualInstance *currentVisualInstance;
     ofFbo *buffer;
     metronome metronomeThreadObj;
     
     SyphonOutputManager syphonOutputManager;
     
-    EngineProperties engineProperties;
     SetProperties setProperties;
     
 public:
-    
-    EngineProperties getEngineProperties();
-	
-	
+ 	
     dispatch_queue_t processingQueue;
     
     
@@ -90,12 +82,9 @@ public:
      */
 	Engine();
 
-    
-    
     /*!
      */
     ~Engine();
-
     
     /*!
      @abstract Singleton instance getter
@@ -174,7 +163,6 @@ public:
                       json data
                       );
     
-    
     /*!
      @abstract handles all actions related to visuals
      */
@@ -183,8 +171,6 @@ public:
                       string parameter,
                       json data
                       );
-    
-    
     
     /*!
      @abstract handles all actions to the engine
@@ -196,86 +182,7 @@ public:
                  json data
                  );
     
-    
-    
     /*************************************************************/
-    
-#pragma mark Layer functions
- 
-
-    /*!
-     @abstract
-     */
-	Layer*
-    addLayer(bool _loadShaders = true);
-    
-    /*!
-     @abstract
-     */
-	void
-    addLayerToList(Layer *newLayer);
-    
-    /*!
-     @abstract
-     */
-	void
-    removeAllLayers();
-    
-    /*!
-     @abstract
-     */
-	void
-    removeLayer(unsigned int layerN);
-    
-    /*!
-     @abstract
-     */
-    Layer*
-    getLayer(unsigned int layerN);
-    
-    
-    /*!
-     @abstract
-     */
-    Layer*
-    getCurrentLayer();
-    
-    
-    unsigned int
-    getCurrentLayerNumber() { return engineProperties.getSelectedLayerNumber();}
-    
-    /*!
-     @abstract NOTE!!! isn't getSelectedLayer == getCurrentLayer
-     */
-    Layer*
-    getSelectedLayer() { return getLayer(engineProperties.getSelectedLayerNumber());}
-    
-    
-    
-    /*!
-     @abstract
-     */
-    void
-    setActiveLayer(unsigned int activeLayer);
-    
-    
-    
-    
-    /*!
-     @abstract
-     */
-    int
-    getNumberOfLayers();
-    
-    
-    
-    /*!
-     @abstract
-     */
-    void
-    setNumberOfLayers (unsigned int _val);
-    
-    
     
 #pragma mark Visual Instances Methods
     
@@ -558,11 +465,12 @@ public:
     bool isCurrentSetLoaded() {return currentSet.isLoaded();}
     
     
-    string getCurrentFilePath () { return engineProperties.getCurrentFilePath(); }
+    string getCurrentFilePath () {
+        return EngineProperties::getInstance().getCurrentFilePath();
+    }
     
     Set *getCurrentSet () { return &currentSet; }
     
-    LayersList getLayersList() { return layersList;}
     ScreensList getScreensList() { return screensList; }
     
     VisualInstance *getCurrentVisualInstance () { return currentVisualInstance; }

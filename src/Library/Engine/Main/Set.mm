@@ -18,7 +18,7 @@
 #include "VisualVideo.h"
 #include "VisualCamera.h"
 #include "VisualSyphon.h"
-
+#include "EngineProperties.h"
 
 
 extern Engine *enginePtr;
@@ -49,8 +49,8 @@ void Set::newSet(
                  unsigned int _height,
                  unsigned int _nLayers
 ) {
-    enginePtr->getEngineProperties().setMixerWidth ( _width );
-    enginePtr->getEngineProperties().setMixerHeight ( _height );
+    EngineProperties::getInstance().setMixerWidth ( _width );
+    EngineProperties::getInstance().setMixerHeight ( _height );
     
 	nLayers = _nLayers;
 	
@@ -66,7 +66,7 @@ void Set::newSet(
 		layerProperties->setSaturation (1.0);
 		layerProperties->setBlurH (0.0);
 		layerProperties->setBlurV (0.0);
-		enginePtr->addLayerToList(newLayer);
+        Layers::getInstance().addToList(newLayer);
 	}
 	
 	Scene *newScene = NULL;
@@ -123,8 +123,8 @@ bool Set::openSet(string _filePath) {
     width   = xml.getIntValue("width");
     height  = xml.getIntValue("height");
     
-    enginePtr->getEngineProperties().setMixerWidth(width);
-    enginePtr->getEngineProperties().setMixerHeight(height);
+    EngineProperties::getInstance().setMixerWidth(width);
+    EngineProperties::getInstance().setMixerHeight(height);
     
     xml.setToParent();
     
@@ -151,7 +151,7 @@ bool Set::openSet(string _filePath) {
 		layerProperties->setBlurV (xml.getFloatValue("blur"));
 		layerProperties->setName (xml.getValue("name"));
         newLayer->setLayerNumber (f);
-        enginePtr->addLayerToList(newLayer);
+        Layers::getInstance().addToList(newLayer);
         
         xml.setToParent();
     }
@@ -258,13 +258,9 @@ bool Set::openSet_old(string _filePath){
 	nLayers = (int) setData.getValue("NUMBER_OF_LAYERS", 0);
 	setData.popTag();
 	
-    //enginePtr->mixerWidth = width;
-	//enginePtr->mixerHeight = height;
-	
-    enginePtr->getEngineProperties().setMixerWidth (width);
-    enginePtr->getEngineProperties().setMixerHeight (height);
+    EngineProperties::getInstance().setMixerWidth (width);
+    EngineProperties::getInstance().setMixerHeight (height);
     
-	
 	// read layers info
 	setData.pushTag("LAYERS", 0);
 	int numberOfLayers = (int) setData.getNumTags("LAYER");
@@ -315,7 +311,7 @@ bool Set::openSet_old(string _filePath){
 		*/
 		
 		// add layer to list
-		enginePtr->addLayerToList(newLayer);
+        Layers::getInstance().addToList(newLayer);
 		setData.popTag();
 	}
 	setData.popTag();
@@ -404,15 +400,15 @@ void Set::saveSetAs(string _filePath) {
 
 
 void Set::saveSet() {
-    ofXml   xml;
-    int     count;
+    ofXml xml;
+    int count;
     
     xml.addChild("set");
     xml.setTo("set");
     xml.addChild("configuration");
     xml.setTo("configuration");
-    xml.addValue("width", enginePtr->getEngineProperties().getMixerWidth());
-    xml.addValue("height", enginePtr->getEngineProperties().getMixerHeight());
+    xml.addValue("width", EngineProperties::getInstance().getMixerWidth());
+    xml.addValue("height", EngineProperties::getInstance().getMixerHeight());
     xml.setToParent();
     
     
@@ -421,14 +417,16 @@ void Set::saveSet() {
     xml.setTo("layers");
     
     count = 0;
+    /*
     for (LayersListIterator i = enginePtr->getLayersList().begin();
          i!=enginePtr->getLayersList().end();
          i++)
     {
 		Layer           *layer;
+     */
+    for (auto layer:Layers::getInstance().getList()) {
         LayerProperties *layerProperties;
         
-        layer = (*i);
         xml.addChild("layer");
         xml.setToChild(count);
         

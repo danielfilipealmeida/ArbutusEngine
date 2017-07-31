@@ -21,6 +21,8 @@ typedef enum  {
 
 class EngineProperties
 {
+    EngineProperties() {};
+    
     EngineRunMode runMode;
     unsigned int mixerWidth, mixerHeight, mixerNLayers;
     unsigned int beatsToSnap, beatsCounter;
@@ -30,10 +32,11 @@ class EngineProperties
     string appSupportDir, currentFilePath;
     int selectedLayer, selectedColumn;
 
-    
 public:
-    
-    EngineProperties();
+ 
+    static EngineProperties& getInstance();
+    EngineProperties(EngineProperties const&) = delete;
+    void operator=(EngineProperties const&) = delete;
     
     void setDefaults();
     

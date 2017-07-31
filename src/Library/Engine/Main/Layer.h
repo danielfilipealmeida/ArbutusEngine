@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "VisualInstance.h"
 #include "json.hpp"
-
+#include "EngineProperties.h"
 
 
 using json = nlohmann::json;
@@ -23,8 +23,8 @@ using json = nlohmann::json;
 
 /*!
  @class Layer
- @abstract 
- @discussion
+ @abstract ...
+ @discussion ...
  */
 class Layer {
     LayerProperties properties;
@@ -75,77 +75,65 @@ public:
     string
     label();
     
-    
     /*!
-     @abstract
+     @abstract ...
      */
 	void
     print();
 	
-
     /*!
-     @abstract
+     @abstract ...
      */
 	void
     initBuffer();
     
-    
-    
     /*!
-     @abstract
+     @abstract ...
      */
 	void
     destroyBuffer();
 	
-    
-    
 #pragma mark Video Instances
     
     
     /*!
-     @abstract
+     @abstract ...
      */
 	void
     setActiveVisualInstance(VisualInstance *_activeInstance);
 	
-    
     /*!
-     @abstract
+     @abstract ...
      */
     void
     stopActiveVisualInstance();
 	
-    
     /*!
-     @abstract
+     @abstract ...
      */
     VisualInstance*
     getActiveVisualInstance() {return activeInstance;}
     
-    
     /*!
-     @abstract
+     @abstract ...
      */
     void
     schedulleInstance(VisualInstance *_instance);
     
-    
     /*!
-     @abstract
+     @abstract ...
      */
     void
     activateSchedulledInstance();
     
-    
     /*!
-     @abstract
+     @abstract ...
      */
     void
     playVisualInstance(VisualInstance *newInstance);
     
-    
     /*!
-     @abstract
+     @abstract ...
      */
     ofTexture*
     getTexture();
@@ -158,13 +146,11 @@ public:
     
     FreeFrameFilterInstanceList freeFrameInstanceList;
 
-    
     /*!
      @abstract
      */
 	void
     addFreeFrameInstance(unsigned int instanceSlotNumber);
-	
     
     /*!
      @abstract
@@ -172,7 +158,6 @@ public:
     void
     removeFreeFrameInstance(unsigned int instanceSlotNumber);
 	
-    
     /*!
      @abstract
      */
@@ -186,35 +171,35 @@ public:
 #pragma mark Getters and setters
     
     /*!
-     @abstract
+     @abstract ...
      */
     LayerProperties*
     getProperties () { return &properties; }
     
     
     /*!
-     @abstract
+     @abstract ...
      */
     unsigned int
     getLayerNumber () { return layerNumber; }
     
     
     /*!
-     @abstract
+     @abstract ...
      */
     void
     setLayerNumber ( unsigned int _input ) { layerNumber = _input;}
     
     
     /*!
-     @abstract
+     @abstract ...
      */
     VisualInstance*
     getActiveInstance () { return activeInstance; }
     
     
     /*!
-     @abstract
+     @abstract ...
      */
     VisualInstance*
     getSchedulledInstance () { return schedulledInstance; }
@@ -230,7 +215,7 @@ public:
 #pragma mark Actions
     
     /*!
-     @abstract
+     @abstract ...
      */
     void
     handleAction(
@@ -238,11 +223,87 @@ public:
                  json data
                  );
     
-    
 };
 
 typedef std::list<Layer *> LayersList;
 typedef LayersList::iterator LayersListIterator;
 typedef LayersList::reverse_iterator LayersListReverseIterator;
+
+/**!
+ */
+class Layers {
+    LayersList layersList;
+    
+    
+    Layers() {}
+    
+public:
+    
+    static Layers& getInstance();
+    Layers(Layers const&) = delete;
+    void operator=(Layers const&) = delete;
+    
+    /*!
+     @abstract ...
+     */
+    Layer*
+    add(bool _loadShaders = true);
+    
+    /*!
+     @abstract ...
+     */
+    void
+    addToList(Layer *newLayer);
+    
+    /*!
+     @abstract ...
+     */
+    void removeAll();
+    
+    /*!
+     @abstract ...
+     */
+    void remove(unsigned int layerN);
+    
+    /*!
+     @abstract ...
+     */
+    Layer* get(unsigned int layerN);
+    
+    /*!
+     @abstract ...
+     */
+    Layer* getCurrent();
+    
+    /*!
+     @abstract ...
+     */
+    unsigned int getCurrentId();
+    
+    /*!
+     @abstract NOTE!!! isn't getSelectedLayer == getCurrentLayer
+     */
+    Layer* getSelected();
+    
+    /*!
+     @abstract ...
+     */
+    void setActive (unsigned int activeLayer);
+    
+    /*!
+     @abstract ...
+     */
+    int count();
+    
+    /*!
+     @abstract ...
+     */
+    void setCount (unsigned int _val);
+
+    /*!
+     @abstract Returns the actual STL list of the layers in the app
+     */
+    LayersList getList();
+};
 
 #endif

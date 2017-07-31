@@ -31,10 +31,10 @@ void Engine::setDefaults() {
 Engine::Engine() {
     if (enginePtr != NULL) return;
     
+    
     enginePtr = this;
     buffer = NULL;
     setOpened = false;
-    
     
     setDefaults();
     
@@ -97,12 +97,11 @@ Engine::getState() {
     return state;
 }
 
-
-json
-Engine::getLayersState() {
+// TODO: move this to the Layers class
+json Engine::getLayersState() {
     json state;
     
-    for(auto layer:layersList) {
+    for(auto layer:Layers::getInstance().getList()) {
         state.push_back(layer->getState());
     }
     return state;
@@ -121,21 +120,20 @@ Engine::newSet(
                unsigned int _height,
                unsigned int _layers
 ) {
-    
 	closeSet();
     if (_width>0)  {
-        engineProperties.setMixerWidth(_width);
+        EngineProperties::getInstance().setMixerWidth(_width);
     }
     if (_height>0) {
-        engineProperties.setMixerHeight(_height);
+        EngineProperties::getInstance().setMixerHeight(_height);
     }
     if (_layers>0) {
-        engineProperties.setNumberOfLayers(_layers);
+        EngineProperties::getInstance().setNumberOfLayers(_layers);
     };
 	currentSet.newSet(_width, _height, _layers);
     initBuffer();
-	setActiveLayer(1);
-    engineProperties.setCurrentFilePath("");
+    Layers::getInstance().setActive(1);
+    EngineProperties::getInstance().setCurrentFilePath("");
     setOpened = true;
     
     return true;
@@ -147,13 +145,12 @@ void
 Engine::closeSet() {
     if (currentSet.isLoaded() == false) return;
     
-	//currentSet.emptyVisualsList(); // ? porque foi retirado
-	removeAllLayers();
+    Layers::getInstance().removeAll();
 	currentSet.closeSet();
 
     currentVisualInstance = NULL;
     setOpened             = false;
-    engineProperties.setCurrentFilePath("");
+    EngineProperties::getInstance().setCurrentFilePath("");
 }
 
 
@@ -165,15 +162,15 @@ Engine::openSet(string _setPath) {
     
     destroyBuffer();
     closeSet();
-	removeAllLayers();
+	Layers::getInstance().removeAll();
 	
     result = currentSet.openSet(_setPath);
     if (!result) return result;
 
     initBuffer();
-    setActiveLayer(1);
+    Layers::getInstance().setActive(1);
     
-	engineProperties.setCurrentFilePath(_setPath);
+	EngineProperties::getInstance().setCurrentFilePath(_setPath);
     
     setOpened       = true;
     
@@ -188,8 +185,8 @@ bool Engine::saveSet() {
 }
 
 bool Engine::saveSetAs(string _setPath) {
-	currentSet.saveSetAs(_setPath);
-    engineProperties.setCurrentFilePath(_setPath);
+   currentSet.saveSetAs(_setPath);
+    EngineProperties::getInstance().setCurrentFilePath(_setPath);
     
     return true;
 }
@@ -205,10 +202,10 @@ Engine::getLayerForActionHandler (json data) {
     Layer *layer;
     
     if (!data["layer"].is_number()) {
-        layer = getCurrentLayer();
+        layer = Layers::getInstance().getCurrent();
     }
     else {
-        layer = getLayer(data["layer"].get<int>());
+        layer = Layers::getInstance().get(data["layer"].get<int>());
     }
 
     return layer;
@@ -323,151 +320,21 @@ Engine::setMixerResolution(
                            ) {
     destroyBuffer();
 
-    engineProperties.setMixerWidth(width);
-    engineProperties.setMixerHeight(height);
-    //mixerWidth = width;
-    //mixerHeight = height;
-    
+    EngineProperties::getInstance().setMixerWidth(width);
+    EngineProperties::getInstance().setMixerHeight(height);
+ 
     initBuffer();
 
-    for (LayersListIterator i = layersList.begin();i!=layersList.end(); i++){
-        Layer *layer = (*i);
+    for (auto layer:Layers::getInstance().getList()) {
+        if (layer == NULL) continue;
         
         LayerProperties *layerProperties = layer->getProperties();
-        
         layerProperties->setWidth(width);
         layerProperties->setHeight(height);
         layer->destroyBuffer();
         layer->initBuffer();
     }
 }
-
-
-
-
-/* ************************************************************************* */
-#pragma mark Layer Management
-
-Layer*
-Engine::addLayer(bool _loadShaders)
-{
-	Layer *newLayer;
-    
-    if (layersList.size() == MAXIMUM_NUMBER_OF_LAYERS) {
-        return NULL;
-    }
-	
-	newLayer = new Layer(_loadShaders);
-	newLayer->setLayerNumber(layersList.size()+1);
-	addLayerToList(newLayer);
-    
-    return newLayer;
-}
-
-
-void
-Engine::addLayerToList(Layer *newLayer)
-{
-	layersList.push_back(newLayer);
-}
-
-
-void
-Engine::removeAllLayers()
-{
-	while (!layersList.empty()) {
-		layersList.pop_front();
-	}
-    engineProperties.setSelectedLayerNumber(0);
-	
-}
-
-
-void
-Engine::removeLayer(unsigned int layerN)
-{
-    unsigned int layerSize;
-    
-	if (layerN>layersList.size()) return;
-    
-
-	LayersListIterator i;
-	i = layersList.begin();
-	for (int f=0;
-         f < layerN;
-         f++
-    ) {
-		++i;
-	}
-    
-    i = layersList.erase(i);
-    layerSize = (unsigned int) layersList.size();
-    if (engineProperties.getSelectedLayerNumber() >= layerSize) {
-        setActiveLayer(layerSize);
-    }
-}
-
-
-Layer*
-Engine::getLayer(unsigned int layerN)
-{
-	if (layerN >= layersList.size()) return NULL;
-	
-	LayersListIterator i = layersList.begin();
-	std::advance(i, layerN);
-	return *i;
-}
-
-
-Layer*
-Engine::getCurrentLayer() {
-    return getLayer(engineProperties.getSelectedLayerNumber());
-}
-
-
-int
-Engine::getNumberOfLayers() {
-    return layersList.size();
-}
-
-
-void
-Engine::setNumberOfLayers(
-                          unsigned int _val
-                          ){
-    unsigned int currentNumberOfLayers;
-    
-    currentNumberOfLayers = getNumberOfLayers();
-    
-    if (_val == currentNumberOfLayers) return;
-    
-    if (_val > currentNumberOfLayers) {
-        for (unsigned int i = 0; i < _val-currentNumberOfLayers; i++) {
-            this->addLayer();
-        }
-    }
-    else {
-        for (unsigned int i = _val-1; i < currentNumberOfLayers; i++) {
-            this->removeLayer(i);
-        }
-        
-    }
-}
-
-
-LayerProperties*
-Engine::getPropertiesOfCurrentLayer()
-{
-    Layer           *layer;
-    LayerProperties *properties;
-    
-    layer       = this->getSelectedLayer();
-    properties  = layer->getProperties();
-    
-    return properties;
-}
-
-
 
 
 
@@ -482,7 +349,7 @@ Engine::setActiveVisualInstanceNumberForLayer(
     Layer           *layer;
     VisualInstance  *visualInstance;
     
-    layer = getLayer(layerN);
+    layer = Layers::getInstance().get(layerN);
 	if (layer == NULL) return;
 		
 	visualInstance = currentSet.getVisualInstanceInCorrentSet(column, layerN);
@@ -493,7 +360,7 @@ Engine::setActiveVisualInstanceNumberForLayer(
         currentVisualInstance = layer->getActiveVisualInstance();
         
         if (currentVisualInstance != NULL) {
-            engineProperties.setSelectedColumnNumber( currentVisualInstance->getProperties()->getColumn());
+            EngineProperties::getInstance().setSelectedColumnNumber( currentVisualInstance->getProperties()->getColumn());
         }
 	}
     else {
@@ -512,7 +379,7 @@ void
 Engine::setActiveVisualIntancesOnAllLayers(unsigned int columnN) {
     for (
          int f=0;
-         f < layersList.size();
+         f < Layers::getInstance().getList().size();
          f++
     ) {
 		this->setActiveVisualInstanceNumberForLayer(columnN, f);
@@ -525,7 +392,7 @@ void
 Engine::setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN) {
 	setActiveVisualInstanceNumberForLayer(
                                           visualInstanceN,
-                                          engineProperties.getSelectedLayerNumber()
+                                          EngineProperties::getInstance().getSelectedLayerNumber()
                                           );
 }
 
@@ -533,8 +400,8 @@ Engine::setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN) {
 VisualInstance*
 Engine::getCurrentActiveVisualInstance(){
     return getVisualAtLayerAndInstanceN(
-                                        engineProperties.getSelectedLayerNumber(),
-                                        engineProperties.getSelectedColumnNumber()
+                                        EngineProperties::getInstance().getSelectedLayerNumber(),
+                                        EngineProperties::getInstance().getSelectedColumnNumber()
                                         );
 }
 
@@ -555,7 +422,7 @@ Engine::getVisualAtLayerAndInstanceN(
 
 void
 Engine::stopVisualAtSelectedLayer() {
-    stopVisualAtLayer(engineProperties.getSelectedLayerNumber());
+    stopVisualAtLayer(EngineProperties::getInstance().getSelectedLayerNumber());
 }
 
 
@@ -567,7 +434,7 @@ Engine::stopVisualAtLayer(
     Layer           *layer;
     VisualInstance  *playingInstance;
     
-    layer = getLayer(layerN);
+    layer = Layers::getInstance().get(layerN);
     if (layer == NULL) return;
     
     // get the current playing instance and stop it
@@ -589,14 +456,17 @@ Engine::printInfo() {
 	cout << "********************************************************************************"<<endl;
 	cout << "** Engine Debug Print *********************************************** [start] **"<<endl;
 	cout << "********************************************************************************"<<endl;
-	cout << "mixerWidth: " << engineProperties.getMixerWidth() << endl;
-	cout << "mixerHeight: " << engineProperties.getMixerHeight() << endl;
+	cout << "mixerWidth: " << EngineProperties::getInstance().getMixerWidth() << endl;
+	cout << "mixerHeight: " << EngineProperties::getInstance().getMixerHeight() << endl;
 	cout << "Set object address: "<<&currentSet<<endl;
 	cout << endl;
 	cout << "** Layers **********************************************************************"<<endl;
-	cout << "number of layers: "<<layersList.size()<<endl;
+	cout << "number of layers: " << Layers::getInstance().getList().size()<<endl;
 	int count = 1;
-	for (LayersListIterator i = layersList.begin();i!=layersList.end(); i++){
+	for (LayersListIterator i = Layers::getInstance().getList().begin();
+         i != Layers::getInstance().getList().end();
+         i++
+         ){
 		Layer *layer = (*i);
 		cout << endl;
 		cout << "LAYER "<<count<<":"<<endl;
@@ -616,8 +486,7 @@ Engine::printInfo() {
 
 void Engine::saveCurrentFrame(string path) {
     ofPixels pixels;
-    
-    //pixels.setFromPixels(buffer.get)
+
     buffer->readToPixels(pixels);
     ofSaveImage(pixels, path);
 }
@@ -644,9 +513,13 @@ Engine::addVisualToSceneListInCurrentLayer(
 	
 	if (visualToAdd != NULL) {
             //cout << "adding visual #"<<visual<<" in column "<<column<<endl;
-		if (layer <=0) layer = engineProperties.getSelectedLayerNumber();
-		if (layer>layersList.size()) layer = layersList.size();
-		currentSet.getCurrentScene()->addVisualToInstanceList(visualToAdd, layer, column);
+        if (layer <= 0) {
+            layer = EngineProperties::getInstance().getSelectedLayerNumber();
+        }
+        if (layer > Layers::getInstance().count()) {
+            layer =  Layers::getInstance().count();
+        }
+        currentSet.getCurrentScene()->addVisualToInstanceList(visualToAdd, layer, column);
 	}
 }
 
@@ -658,10 +531,8 @@ void Engine::addVisualToScene(unsigned int visual, unsigned int layer, unsigned 
     if (visualToAdd != NULL) {
             // check if the current layer exists. if not, add it and all before
         if (layer > currentSet.getNumberOfLayers() ) {
-            for (int i=layersList.size();i<=layer; i++) {
-                    //cout << "adding layer "<<i<<endl;
-                    //add here
-                addLayer();
+            for (int i = Layers::getInstance().count(); i <= layer; i++) {
+                Layers::getInstance().add();
             }
         }
         
@@ -676,8 +547,8 @@ void Engine::removeVisualFromScene(unsigned int layer, unsigned int column) {
     currentScene = getCurrentScene();
     
     if (
-        layer == engineProperties.getSelectedLayerNumber() &&
-        column == engineProperties.getSelectedColumnNumber()
+        layer == EngineProperties::getInstance().getSelectedLayerNumber() &&
+        column == EngineProperties::getInstance().getSelectedColumnNumber()
         ) {
         stopVisualAtSelectedLayer();
     }
@@ -756,27 +627,29 @@ void Engine::render(){
     // Protections
     //  - must have layers
     //  - must have bugger alloced
-    if (layersList.empty()== true) return;
+    if (Layers::getInstance().getList().empty()== true) return;
     if (this->buffer == NULL) return;
     
     if (osc != NULL) osc->update();
     
-    if (engineProperties.isBeatSnapInProgress()) {
+    if (EngineProperties::getInstance().isBeatSnapInProgress()) {
         triggerSchedulledVisualsOnAllLayers();
-        engineProperties.setIsBeatSnapInProgress(false);
+        EngineProperties::getInstance().setIsBeatSnapInProgress(false);
     }
 
 	
 	// render each layer - transform into a private method
     unsigned int layerCount = 0;
+    /*
     for (
          LayersListIterator i = layersList.begin();
          i!=layersList.end();
          i++
     ) {
         Layer *layer;
-        
-		layer = (*i);
+       */
+    for (auto layer:Layers::getInstance().getList()) {
+		//layer = (*i);
 		layer->render();
         if (layerCount < N_SYPHON_CHANNEL_OUTPUTS) {
             syphonOutputManager.publishChannelOutputScreen(layerCount, layer->getTexture());
@@ -788,6 +661,7 @@ void Engine::render(){
 	this->buffer->begin();
 	ofClear(0, 0, 0, 0);
 	ofEnableAlphaBlending();
+    /*
     for (
          LayersListReverseIterator i = layersList.rbegin();
          i!=layersList.rend();
@@ -796,14 +670,16 @@ void Engine::render(){
         Layer *layer;
 		
         layer = (*i);
+     */
+    for (auto layer:Layers::getInstance().getList()) {
         if (layer!=NULL) {
 			ofSetColor(255, 255, 255, (int) (layer->getProperties()->getAlpha() * 255.0));
 			ofEnableBlendMode((ofBlendMode) layer->getProperties()->getBlendMode());
 			layer->draw(
                         0,
                         0,
-                        engineProperties.getMixerWidth(),
-                        engineProperties.getMixerHeight()
+                        EngineProperties::getInstance().getMixerWidth(),
+                        EngineProperties::getInstance().getMixerHeight()
                         );
             ofDisableBlendMode();
 		}
@@ -847,7 +723,7 @@ Engine::drawLayer(
     if (layerNumber<=1) {
         return;
     }
-	layer= getLayer(layerNumber);
+    layer = Layers::getInstance().get(layerNumber);
 	layer->draw(x,y,width, height);
 }
 
@@ -874,10 +750,10 @@ Engine::drawLayersPreview(
     
     
     count              = 0;
-    layersToDraw       = (unsigned int) this->layersList.size();
+    layersToDraw       = (unsigned int) Layers::getInstance().count();
     layerPreviewWidth  = (int) floor((float) width / (float) this->layersPreview_Columns);
-    resizeAmount       = engineProperties.getMixerWidth() / layerPreviewWidth;
-    layerPreviewHeight = engineProperties.getMixerHeight() / resizeAmount;
+    resizeAmount       = EngineProperties::getInstance().getMixerWidth() / layerPreviewWidth;
+    layerPreviewHeight = EngineProperties::getInstance().getMixerHeight() / resizeAmount;
     
     x1 = x;
     y1 = y;
@@ -894,7 +770,7 @@ Engine::drawLayersPreview(
         Layer     *layer;
         string    label;
         
-        layer = this->getLayer(f+1);
+        layer = Layers::getInstance().get(f+1);
         
 		ofSetColor(255, 255, 255);
 		layer->draw(x1, y1, layerPreviewWidth, layerPreviewHeight);
@@ -927,7 +803,7 @@ Engine::drawLayersPreview(
 
 void
 Engine::beat() {
-    engineProperties.beat();
+    EngineProperties::getInstance().beat();
     
     // TODO run something from the main app probably set a callback for the beat
     appBeatCallback();
@@ -935,10 +811,11 @@ Engine::beat() {
 
 
 void Engine::triggerSchedulledVisualsOnAllLayers() {
-        // traverse all layers and activate what needs to be activated
+    /*
     for (LayersListIterator i = layersList.begin();i!=layersList.end(); i++){
         Layer *layer = (*i);
-        
+       */
+    for (auto layer:Layers::getInstance().getList()) {
         if (layer->getSchedulledInstance () == NULL) {
             VisualInstance *instance = layer->getActiveInstance ();
             
@@ -967,12 +844,12 @@ void Engine::triggerSchedulledVisualsOnAllLayers() {
 
 void Engine::startMetronome(){
  	metronomeThreadObj.start();
-    engineProperties.setMetronomeOn(true);
+    EngineProperties::getInstance().setMetronomeOn(true);
 }
 
 void Engine::stopMetronome(){
 	metronomeThreadObj.stop();
-    engineProperties.setMetronomeOn(false);
+    EngineProperties::getInstance().setMetronomeOn(false);
 }
 
 
@@ -985,7 +862,7 @@ void
 Engine::tap() {
     unsigned int newBPM;
     
-    newBPM = engineProperties.tap();
+    newBPM = EngineProperties::getInstance().tap();
     
     if (newBPM) setBPM(newBPM);
     
@@ -1055,8 +932,8 @@ void Engine::initBuffer() {
     
     buffer = new ofFbo();
     buffer->allocate(
-                     engineProperties.getMixerWidth(),
-                     engineProperties.getMixerHeight()
+                     EngineProperties::getInstance().getMixerWidth(),
+                     EngineProperties::getInstance().getMixerHeight()
                     );
 		
     // clear the fbo
@@ -1094,22 +971,6 @@ void Engine::mousePressed(int x, int y, int button){
 }
 
 void Engine::mouseReleased(int x, int y, int button){
-}
-
-
-/*************** */
-
-
-void
-Engine::setActiveLayer(unsigned int activeLayer)
-{
-    unsigned int layerSize;
-    
-    layerSize = layersList.size();
-    if ( activeLayer > layerSize ) {
-        activeLayer = layerSize;
-    }
-    engineProperties.setSelectedLayerNumber(activeLayer - 1);
 }
 
 
@@ -1396,15 +1257,7 @@ void Engine::setBeatSnap(bool val) {
 #pragma mark controllers handling
 
 void Engine::visualsKeysControlCallback(Controller *controller) {
-    int value;
-    
-    //if (_engine==NULL) return;
-    //if (controller->getType() != KeyController) return;
-    
-    
     enginePtr->setActiveVisualIntanceOnActiveLayer(controller->getValue());
-    
-    
 }
 
 /*************************************************************/
@@ -1412,14 +1265,14 @@ void Engine::visualsKeysControlCallback(Controller *controller) {
 #pragma mark other stuff
 
 void Engine::setAppSupportDir(string _dir) {
-    engineProperties.setAppSupportDir(_dir);
+    EngineProperties::getInstance().setAppSupportDir(_dir);
 }
 
 string
 Engine::calculateThumbnailPath(string path) {
     string md5FileName = Utils::md5(ofFilePath::getFileName(path));
 
-    return engineProperties.getAppSupportDir() + "/cache/thumbnails/" + md5FileName + ".jpg";
+    return EngineProperties::getInstance().getAppSupportDir() + "/cache/thumbnails/" + md5FileName + ".jpg";
     
 }
 
@@ -1431,9 +1284,3 @@ void Engine::registerAppBeatCallback(void (*callback)(void)) {
 }
 
 
-//###########################
-
-EngineProperties
-Engine::getEngineProperties() {
-    return engineProperties;
-}

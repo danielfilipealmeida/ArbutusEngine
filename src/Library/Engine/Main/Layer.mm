@@ -247,8 +247,8 @@ Layer::playVisualInstance(
     
         // if snap is on and beat detection is on
     if (properties->getBeatSnap ()  == true &&
-        enginePtr->getEngineProperties().isMetronomeOn()    == true &&
-        enginePtr->getEngineProperties().isTriggeringBeat() != true
+        EngineProperties::getInstance().isMetronomeOn()    == true &&
+        EngineProperties::getInstance().isTriggeringBeat() != true
         ) {
         schedulleInstance(newInstance);
         return;
@@ -409,3 +409,131 @@ Layer::getState() {
     return state;
 }
 
+
+
+#pragma mark Layers Implementation
+
+Layers& Layers::getInstance()
+{
+    static Layers instance;
+    
+    return instance;
+}
+
+
+Layer*
+Layers::add(bool _loadShaders) {
+    Layer *newLayer;
+    
+    if (layersList.size() == MAXIMUM_NUMBER_OF_LAYERS) {
+        return NULL;
+    }
+    
+    newLayer = new Layer(_loadShaders);
+    newLayer->setLayerNumber(layersList.size()+1);
+    addToList(newLayer);
+    
+    return newLayer;
+}
+
+
+void
+Layers::addToList(Layer *newLayer) {
+    layersList.push_back(newLayer);
+}
+
+
+
+void
+Layers::removeAll() {
+    while (!layersList.empty()) {
+        layersList.pop_front();
+    }
+    EngineProperties::getInstance().setSelectedLayerNumber(0);
+}
+
+
+
+void
+Layers::remove(unsigned int layerN) {
+    unsigned int layerSize;
+    
+    if (layerN>layersList.size()) return;
+    
+    
+    LayersListIterator i;
+    i = layersList.begin();
+    for (int f=0;
+         f < layerN;
+         f++
+         ) {
+        ++i;
+    }
+    
+    i = layersList.erase(i);
+    layerSize = (unsigned int) layersList.size();
+    if (EngineProperties::getInstance().getSelectedLayerNumber() >= layerSize) {
+        setActive(layerSize);
+    }
+}
+
+
+Layer* Layers::get(unsigned int layerN) {
+   	if (layerN >= layersList.size()) return NULL;
+    
+    LayersListIterator i = layersList.begin();
+    std::advance(i, layerN);
+    return *i;
+}
+
+
+
+Layer* Layers::getCurrent() {
+    return get(EngineProperties::getInstance().getSelectedLayerNumber());
+}
+
+unsigned int Layers::getCurrentId() {
+    return EngineProperties::getInstance().getSelectedLayerNumber();
+}
+
+Layer* Layers::getSelected() {
+    return get(EngineProperties::getInstance().getSelectedLayerNumber());
+}
+
+void Layers::setActive (unsigned int activeLayer) {
+    unsigned int layerSize;
+    
+    layerSize = layersList.size();
+    if ( activeLayer > layerSize ) {
+        activeLayer = layerSize;
+    }
+    EngineProperties::getInstance().setSelectedLayerNumber(activeLayer - 1);
+
+}
+
+int Layers::count() {
+    return layersList.size();
+}
+
+void Layers::setCount (unsigned int _val) {
+    unsigned int currentNumberOfLayers;
+    
+    currentNumberOfLayers = count();
+    
+    if (_val == currentNumberOfLayers) return;
+    
+    if (_val > currentNumberOfLayers) {
+        for (unsigned int i = 0; i < _val-currentNumberOfLayers; i++) {
+            this->add();
+        }
+    }
+    else {
+        for (unsigned int i = _val-1; i < currentNumberOfLayers; i++) {
+            this->remove(i);
+        }
+    }
+}
+
+LayersList Layers::getList() {
+    return layersList;
+}

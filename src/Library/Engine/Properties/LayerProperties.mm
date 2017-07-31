@@ -16,16 +16,14 @@ extern Engine *enginePtr;
 
 LayerProperties::LayerProperties() {
     if (enginePtr != NULL) {
-        width       = enginePtr->getEngineProperties().getMixerWidth();
-        height      = enginePtr->getEngineProperties().getMixerHeight();
+        width = EngineProperties::getInstance().getMixerWidth();
+        height = EngineProperties::getInstance().getMixerHeight();
     }
     blendMode   = BLEND_ADD;
     reset();
 }
 
 LayerProperties::~LayerProperties() {}
-
-
 
 void
 LayerProperties::reset() {
@@ -35,13 +33,10 @@ LayerProperties::reset() {
     setBlurV (0.0);
 }
 
-
-
 void
 LayerProperties::print() {
 	Properties::print();
 }
-
 
 string
 LayerProperties::blendModeToString(BlendMode mode) {

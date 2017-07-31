@@ -8,12 +8,13 @@
 
 #include "EngineProperties.h"
 
-EngineProperties::EngineProperties() {
-    setDefaults();
+EngineProperties&
+EngineProperties::getInstance() {
+    static EngineProperties instance;
     
-    currentFilePath = "";
-    runMode = PLAY_MODE;
-
+    instance.setDefaults();
+    
+    return instance;
 }
 
 void
@@ -23,13 +24,14 @@ EngineProperties::setDefaults() {
     mixerNLayers = 3;
     beatsToSnap = 4;
     beatSnapInProgress = false;
+    currentFilePath = "";
+    runMode = PLAY_MODE;
  
 }
 
 void
 EngineProperties::beat() {
     triggeringBeat = false;
-    
     
     ++beatsCounter;
     if (beatsCounter > 32) {

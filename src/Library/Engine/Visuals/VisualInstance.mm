@@ -115,7 +115,7 @@ VisualInstance::play(bool forcePlay)
         if (video.isLoaded()==false) return;
         
         if (properties.getBeatSnap ()   == true &&
-            enginePtr->getEngineProperties().isMetronomeOn ()   == true &&
+            EngineProperties::getInstance().isMetronomeOn ()   == true &&
             forcePlay                   == false)
         {
             properties.setIsTriggered (true);
@@ -144,7 +144,7 @@ VisualInstance::play(bool forcePlay)
 void VisualInstance::retrigger() {
     if (
         properties.getBeatSnap () == true &&
-        enginePtr->getEngineProperties().isMetronomeOn() == true
+        EngineProperties::getInstance().isMetronomeOn() == true
     ) {
         properties.setIsTriggered (true);
     }
