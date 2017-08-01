@@ -263,3 +263,53 @@ void Scene::removeFreeFrameInstanceToVisualInstance(unsigned int instanceSlotNum
 
 }
 
+
+
+
+#pragma mark Scenes Implementation
+
+Scenes& Scenes::getInstance()
+{
+    static Scenes instance;
+    
+    return instance;
+}
+
+
+ScenesList Scenes::getList() {
+    return scenesList;
+}
+
+void Scenes::add(Scene *newScene) {
+    scenesList.push_back(newScene);
+}
+
+
+void Scenes::empty() {
+    for(ScenesListIterator i = scenesList.begin();
+        i != scenesList.end();
+        i++) {
+        
+        Scene *scene = (*i);
+        delete scene;
+    };
+    
+    while (!scenesList.empty()){
+        scenesList.pop_front();
+    }
+}
+
+Scene* Scenes::get(unsigned int index) {
+    unsigned int count;
+    
+    count = 0;
+    
+    if (count >= scenesList.size()) return NULL;
+    for (ScenesListIterator it = scenesList.begin();
+         it!=scenesList.end();
+         it++) {
+        if (count == index) return *it;
+        count++;
+    }
+    return NULL;
+}

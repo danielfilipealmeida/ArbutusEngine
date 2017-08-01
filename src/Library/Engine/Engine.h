@@ -43,9 +43,6 @@ using json = nlohmann::json;
  */
 class Engine {
     Set currentSet;
-    //LayersList layersList;
-    ScreensList screensList;
-
     ControllerGroup controllers;
     Osc             *osc;   // isto é usado???
     
@@ -471,7 +468,6 @@ public:
     
     Set *getCurrentSet () { return &currentSet; }
     
-    ScreensList getScreensList() { return screensList; }
     
     VisualInstance *getCurrentVisualInstance () { return currentVisualInstance; }
     VisualInstancesProperties *getPropertiesOfCurrentVisualInstance();

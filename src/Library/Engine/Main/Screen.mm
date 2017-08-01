@@ -37,3 +37,19 @@ bool Screen::isPrimaryScreen() {
     return primaryScreen;
 }
 
+
+
+
+#pragma mark Screens Implementantion
+
+Screens& Screens::getInstance()
+{
+    static Screens instance;
+    
+    return instance;
+}
+
+
+ScreensList Screens::get() {
+    return screensList;
+}

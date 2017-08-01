@@ -101,8 +101,6 @@ public:
     emptyVisualInstancesList();
 	
     
-    
-    
 	// debug
 	void print();
 	
@@ -110,6 +108,7 @@ public:
 	void addFreeFrameInstanceToVisualInstance(unsigned int instanceSlotNumber,
                                               unsigned int column,
                                               unsigned int layerN);
+    
 	void removeFreeFrameInstanceToVisualInstance(unsigned int instanceSlotNumber,
                                                  unsigned int column,
                                                  unsigned int layerN);
@@ -137,5 +136,29 @@ public:
 
 typedef std::list<Scene *> ScenesList;
 typedef ScenesList::iterator ScenesListIterator;
+
+
+/**!
+ */
+class Scenes {
+    ScenesList scenesList;
+    
+    
+    Scenes() {}
+    
+public:
+    
+    static Scenes& getInstance();
+    Scenes(Scenes const&) = delete;
+    void operator=(Scenes const&) = delete;
+
+    ScenesList getList();
+    
+    void add(Scene *newScene);
+    
+    void empty();
+    
+    Scene* get(unsigned int index);
+};
 
 #endif

@@ -376,23 +376,8 @@ Layer::handleAction(
 }
 
 
-json
-Layer::getState() {
+json Layer::getState() {
     json state;
-    
-    /*
-    state = json::array({
-        {"Alpha", properties.getAlpha()},
-        {"Brightness", properties.getBrightness()},
-        {"Contrast", properties.getContrast()},
-        {"Saturation", properties.getSaturation()},
-        {"Red", properties.getRed()},
-        {"Green", properties.getGreen()},
-        {"Blue", properties.getBlue()},
-        {"BlurH", properties.getBlurH()},
-        {"BlurV", properties.getBlurV()}
-    });
-     */
     
     state = json::object({
         {"Alpha", properties.getAlpha()},
@@ -404,8 +389,8 @@ Layer::getState() {
         {"Blue", properties.getBlue()},
         {"BlurH", properties.getBlurH()},
         {"BlurV", properties.getBlurV()}
-    }
-    );
+    });
+    
     return state;
 }
 

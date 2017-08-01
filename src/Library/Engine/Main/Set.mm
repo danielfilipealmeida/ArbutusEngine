@@ -83,7 +83,7 @@ json
 Set::getScenesState() {
     json state;
     
-    for(auto scene:scenesList) {
+    for(auto scene:Scenes::getInstance().getList()) {
         state.push_back(scene->getState());
     }
     
@@ -487,11 +487,8 @@ void Set::saveSet() {
     count=0;
     xml.addChild("scenes");
     xml.setTo("scenes");
-    for(ScenesListIterator i = scenesList.begin();
-        i!=scenesList.end();
-        i++) {
+    for(auto scene:Scenes::getInstance().getList()) {
         
-        Scene *scene = (*i);
         if (scene!=NULL) {
             xml.addChild("scene");
             xml.setToChild(count);
@@ -677,19 +674,18 @@ void Set::emptyVisualsList(){
 
 
 
-Scene*
-Set::addSceneToList(string sceneName, unsigned char nVisualsInScene, unsigned char *visualsInScene) {
+Scene* Set::addSceneToList(string sceneName, unsigned char nVisualsInScene, unsigned char *visualsInScene) {
     Scene *newScene;
     
-    newScene= new Scene(sceneName, nVisualsInScene);
-    scenesList.push_back(newScene);
+    newScene = new Scene(sceneName, nVisualsInScene);
+    //scenesList.push_back(newScene);
+    Scenes::getInstance().add(newScene);
     
     return newScene;
 }
 
 
-Scene*
-Set::newScene() {
+Scene* Set::newScene() {
     return addSceneToList("new Scene", 0,0);
 }
 
@@ -701,7 +697,7 @@ void Set::setNameToCurrentScene(string newName) {
 
 
 void Set::removeCurrentScene() {
-    
+    ScenesList scenesList = Scenes::getInstance().getList();
     unsigned int nextScene = this->currentSceneNumber;
     if (nextScene >0) nextScene--;
     
@@ -719,33 +715,6 @@ void Set::removeCurrentScene() {
     this->setCurrentScene(nextScene);
 }
 
-void Set::addSceneToList(Scene *newScene) {
-	scenesList.push_back(newScene);
-	
-}
-
-
-void Set::emptyScenesList() {
- 
-    for(ScenesListIterator i = scenesList.begin();
-        i!=scenesList.end();
-        i++) {
-        
-        Scene *scene = (*i);
-        delete scene;
-    };
-    
-    while (!scenesList.empty()){
-		//if (app->debugMode == true) cout << " " << scenesList.front();
-		scenesList.pop_front();
-	}
-}
-
-
-
-
-
-
 
 
 
@@ -756,6 +725,8 @@ void Set::emptyScenesList() {
  *  @param _sceneNumber the scene numbe
  */
 void Set::setCurrentScene(unsigned int _sceneNumber) {
+     ScenesList scenesList = Scenes::getInstance().getList();
+    
   	if (_sceneNumber>scenesList.size()-1) return;
 	currentSceneNumber = _sceneNumber;
 	ScenesListIterator i = scenesList.begin();
@@ -773,8 +744,9 @@ void Set::gotoPreviewScene() {
 }
 
 void Set::gotoNextScene() {
-    if (currentSceneNumber<(scenesList.size()-1)) setCurrentScene(currentSceneNumber+1);
-
+    if (currentSceneNumber < ( Scenes::getInstance().getList().size() - 1 ) ) {
+        setCurrentScene(currentSceneNumber+1);
+    }
 }
 
 
@@ -804,34 +776,24 @@ Boolean Set::isVisualInstantInColumn(unsigned int column, unsigned int layerN) {
 }
 
 void Set::emptyVisualInstanceOnAllScenes() {
-	for (ScenesListIterator it = scenesList.begin(); it!=scenesList.end(); it++) {
-		(*it)->emptyVisualInstancesList();
+	for(auto scene:Scenes::getInstance().getList()) {
+        scene->emptyVisualInstancesList();
 	}
 }
 
 unsigned int Set::getTotalScenes() {
-    return scenesList.size();
+    return Scenes::getInstance().getList().size();
 }
 
 
-Scene* Set::getSceneAtIndex(unsigned int index) {
-    //return scenesList[index];
-    unsigned int count;
-    
-    count = 0;
-    
-    if (count >= scenesList.size()) return NULL;
-    for (ScenesListIterator it = scenesList.begin();
-         it!=scenesList.end();
-         it++) {
-        if (count == index) return *it;
-        count++;
-    }
-    return NULL;
-}
+// this should used without traversing but direct
 
 
+// is this right!? apparently it's removing all the visual instances
 void Set::removeVisualFromSet(Visual *visual) {
+    ScenesList scenesList = Scenes::getInstance().getList();
+    
+    
     // traverse all scenes and remove the Visual Instances of this Visual
     for (ScenesListIterator it = scenesList.begin();
          it!=scenesList.end();
@@ -860,6 +822,8 @@ void Set::removeVisualFromSet(Visual *visual) {
 #pragma mark debug
 
 void Set::print() {
+    ScenesList scenesList = Scenes::getInstance().getList();
+    
 	cout << "** SET **********************************************************************"<<endl;
 	cout << "file path: "<<filePath<<endl;
 	cout << "number of videos: " << numVideosFound<<endl;
@@ -880,11 +844,12 @@ void Set::print() {
 	cout << endl;
 	
 	cout << "** SCENES ********************************************************************"<<endl;
-	cout << "number of scenes: "<<scenesList.size()<<endl;
+	cout << "number of scenes: " << scenesList.size() << endl;
 	count = 1;
-	for (ScenesListIterator i = scenesList.begin();i!=scenesList.end(); i++){
+    
+    
+    for (auto scene:scenesList){
 		cout << endl;
-		Scene *scene = (*i);
 		cout << "** SCENE "<<count<<": ******************"<<endl;
 		scene->print();
 		count++;

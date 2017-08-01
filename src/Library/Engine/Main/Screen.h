@@ -18,8 +18,8 @@
 
 /*!
  @class Screen
- @abstract
- @discussion
+ @abstract ...
+ @discussion ...
  */
 class Screen {
     unsigned int    x, y, width, height;
@@ -41,6 +41,22 @@ public:
 typedef std::list<Screen *> ScreensList;
 typedef ScreensList::iterator ScreensListIterator;
 
+
+/**!
+ @abstract Singleton Wrapper class around the Screen STL list
+ */
+class Screens {
+    ScreensList screensList;
+    
+    Screens() {}
+    
+public:
+    static Screens& getInstance();
+    Screens(Screens const&) = delete;
+    void operator=(Screens const&) = delete;
+
+    ScreensList get();
+};
 
 
 #endif /* defined(__FigTree__Screen__) */

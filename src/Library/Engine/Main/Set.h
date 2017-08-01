@@ -22,213 +22,257 @@
 
 /*!
  @class Set
- @abstract
- @discussion
+ @abstract ...
+ @discussion ...
  */
 class Set {
-    bool			loaded;
-    string			filePath;
-    unsigned int	nLayers;
+    bool loaded;
+    string filePath;
+    unsigned int nLayers, numVideosFound, totalScenes, currentSceneNumber;
     ofxXmlSettings	setData;
-    unsigned int	numVideosFound;
-    unsigned int	totalScenes;
-    unsigned int	currentSceneNumber;
-    ScenesList		scenesList;
-    Scene			*currentScene;
     
+    Scene *currentScene;
+    
+    // cleaning up
     VisualsList		visualsList;
-    
+    //ScenesList scenesList;
     
 public:
 
-    
+    /**!
+     @abstract ...
+     */
 	Set();
     
-    
+    /**!
+     @abstract ...
+     */
 	~Set();
     
-    json
-    getScenesState();
+    /**!
+     @abstract ...
+     */
+    json getScenesState();
     
-    
-    json
-    getVisualsState();
+    /**!
+     @abstract ...
+     */
+    json getVisualsState();
 	
-	bool
-    openSet(string _filePath);
+    /**!
+     @abstract ...
+     */
+    bool openSet(string _filePath);
     
     
-    bool
-    openSet_old(string _filePath);
+    /**!
+     @abstract ...
+     */
+    bool openSet_old(string _filePath);
 	
+    /**!
+     @abstract ...
+     */
+    void closeSet();
     
-    void
-    closeSet();
-	
-    
-    void
-    newSet(unsigned int _width, unsigned int _height, unsigned int _nLayers);
-    
+    /**!
+     @abstract ...
+     */
+    void newSet(unsigned int _width, unsigned int _height, unsigned int _nLayers);
     
     /*!
      *  traverse set data and generate a xml document
      */
-	void
-    saveSet();
+	void saveSet();
 	
     
-    void
-    saveSetAs(string _filePath);
+    /**!
+     @abstract ...
+     */
+    void saveSetAs(string _filePath);
     
 	
-	// visuals
-    unsigned int
-    getNumberOfVisuals();
+    /**!
+     @abstract ...
+     */
+    unsigned int getNumberOfVisuals();
     
     
+    /**!
+     @abstract ...
+     */
     void
     addVisualToList(Visual *visual);
     
+    /**!
+     @abstract ...
+     */
+	Visual *getVisualFromList(int pos);
     
-	Visual
-    *getVisualFromList(int pos);
+    /**!
+     @abstract ...
+     */
+	Boolean isFileInVisualsList(string filePath);
     
+    /**!
+     @abstract ...
+     */
+	void addVisualVideoToListFromFile(string filePath);
     
-	Boolean
-    isFileInVisualsList(string filePath);
+    /**!
+     @abstract ...
+     */
+    void addVisualCameraToList(unsigned int id, unsigned int rate, unsigned int w, unsigned int h);
     
-    
-	void
-    addVisualVideoToListFromFile(string filePath);
-    
-    
-    void
-    addVisualCameraToList(unsigned int id, unsigned int rate, unsigned int w, unsigned int h);
-    
-    
+    /**!
+     @abstract ...
+     */
     void
     addVisualSyphonToList(string serverName, string appName);
 	
-    
-    void
-    emptyVisualsList();
+    /**!
+     @abstract ...
+     */
+    void emptyVisualsList();
 	
-
-    
-    
-    
+  
 #pragma mark Scenes
 	
+    /**!
+     @abstract ...
+     */
+    Scene* addSceneToList(string sceneName, unsigned char nVisualsInScene, unsigned char *visualsInScene);
     
+    /**!
+     @abstract ...
+     */
+    Scene* newScene();
     
-    
-    Scene*
-    addSceneToList(string sceneName, unsigned char nVisualsInScene, unsigned char *visualsInScene);
-    
-    
-    Scene*
-    newScene();
-    
-    
-    void
-    removeCurrentScene();
+    /**!
+     @abstract ...
+     */
+    void removeCurrentScene();
 	
-    
-    void
-    addSceneToList(Scene *newScene);
+    /**!
+     @abstract ...
+     */
+    void addSceneToList(Scene *newScene);
 	
-    
-    void
-    emptyScenesList();
+    /**!
+     @abstract ...
+     */
+    void emptyScenesList();
 	
+    /**!
+     @abstract ...
+     */
+    void setCurrentScene(unsigned int _sceneNumber);
     
-    void
-    setCurrentScene(unsigned int _sceneNumber);
+    /**!
+     @abstract ...
+     */
+    void setNameToCurrentScene(string newName);
     
+    /**!
+     @abstract ...
+     */
+    void gotoPreviewScene();
     
-    void
-    setNameToCurrentScene(string newName);
+    /**!
+     @abstract ...
+     */
+    void gotoNextScene();
     
+    /**!
+     @abstract ...
+     */
+    void setActiveVisualInstanceNumberForLayer(unsigned int column, unsigned int layerN);
     
-    void
-    gotoPreviewScene();
+    /**!
+     @abstract ...
+     */
+    VisualInstance *getVisualInstanceInCorrentSet(unsigned int column, unsigned int layerN);
+ 
+    /**!
+     @abstract ...
+     */
+    Boolean isVisualInstantInColumn(unsigned int column, unsigned int layerN);
     
+    /**!
+     @abstract ...
+     */
+    void emptyVisualInstanceOnAllScenes();
     
-    void
-    gotoNextScene();
-	
+    /**!
+     @abstract ...
+     */
+    unsigned int getTotalScenes();
     
-    void
-    setActiveVisualInstanceNumberForLayer(unsigned int column, unsigned int layerN);
-	
-    
-    VisualInstance
-    *getVisualInstanceInCorrentSet(unsigned int column, unsigned int layerN);
-	
-    
-    Boolean
-    isVisualInstantInColumn(unsigned int column, unsigned int layerN);
-	
-    
-    void
-    emptyVisualInstanceOnAllScenes();
-    
-    
-    unsigned int
-    getTotalScenes();
-    
-    
+    /**!
+     @abstract ...
+     */
     Scene*
     getSceneAtIndex(unsigned int index);
     
+    /**!
+     @abstract ...
+     */
+    void removeVisualFromSet(Visual *visual);
     
-    void
-    removeVisualFromSet(Visual *visual);
+    /**!
+     @abstract ...
+     */
+	void print();
     
-	// debug
-	void
-    print();
-    
-        // cleanup
-    void
-    cleanup();
+    /**!
+     @abstract ...
+     */
+    void cleanup();
     
     
 #pragma mark Setters & Getters
     
-    bool
-    isLoaded() {return loaded;}
+    /**!
+     @abstract ...
+     */
+    bool isLoaded() {return loaded;}
 
     
-    string
-    getFilePath () { return filePath; }
+    /**!
+     @abstract ...
+     */
+    string getFilePath () { return filePath; }
     
     
-    void
-    setFilePath ( string _input ) { filePath = _input; }
+    /**!
+     @abstract ...
+     */
+    void setFilePath ( string _input ) { filePath = _input; }
     
+    /**!
+     @abstract ...
+     */
+    unsigned int getNumberOfLayers () { return nLayers; }
     
-    unsigned int
-    getNumberOfLayers () { return nLayers; }
+    /**!
+     @abstract ...
+     */
+    void setNumberOfLayers (unsigned int _val) { nLayers = _val; }
     
+    /**!
+     @abstract ...
+     */
+    unsigned int getCurrentSceneNumber () { return currentSceneNumber; }
     
-    void
-    setNumberOfLayers (unsigned int _val) { nLayers = _val; }
+    /**!
+     @abstract ...
+     */
+    VisualsList* getVisualsList () { return &visualsList; }
     
-    
-    unsigned int
-    getCurrentSceneNumber () { return currentSceneNumber; }
-    
-    
-    VisualsList*
-    getVisualsList () { return &visualsList; }
-    
-    
-    Scene*
-    getCurrentScene () { return currentScene; }
-    
-    
-    
+    /**!
+     @abstract ...
+     */
+    Scene*  getCurrentScene () { return currentScene; }
 };
 
 

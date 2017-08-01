@@ -611,13 +611,14 @@ Engine::getSyphonInput(
 }
 
 
-
+/*
 void
 Engine::removeVisualFromSet(
                             Visual *visual
 ) {
     currentSet.removeVisualFromSet(visual);
  }
+ */
 
 /* ************************************************************************** */
 #pragma mark Render & Draw
