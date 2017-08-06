@@ -17,10 +17,8 @@ extern Engine *enginePtr;
 
 
 Layer::Layer(bool _loadShaders) {
-    
-	//buffer = new ofFbo();
-	buffer             = NULL;
-	activeInstance     = NULL;
+	buffer = NULL;
+	activeInstance = NULL;
     schedulledInstance = NULL;
     
     if (_loadShaders == true) loadShaders();
@@ -379,6 +377,7 @@ Layer::handleAction(
 json Layer::getState() {
     json state;
     
+    /*
     state = json::object({
         {"Alpha", properties.getAlpha()},
         {"Brightness", properties.getBrightness()},
@@ -390,6 +389,9 @@ json Layer::getState() {
         {"BlurH", properties.getBlurH()},
         {"BlurV", properties.getBlurV()}
     });
+     */
+    
+    state = properties.getState();
     
     return state;
 }
@@ -444,7 +446,6 @@ Layers::remove(unsigned int layerN) {
     unsigned int layerSize;
     
     if (layerN>layersList.size()) return;
-    
     
     LayersListIterator i;
     i = layersList.begin();

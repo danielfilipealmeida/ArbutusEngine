@@ -65,7 +65,7 @@ VisualInstance * Scene::addVisualToInstanceList(Visual *visual, unsigned int lay
     
 	VisualInstance *instance = new VisualInstance(visual, layer, column);
 	visualsInstanceList.push_back(instance);
-	totalVisualsOnScene = visualsInstanceList.size();
+	totalVisualsOnScene = (unsigned int) visualsInstanceList.size();
     
     return instance;
 }
@@ -249,18 +249,17 @@ void Scene::addFreeFrameInstanceToVisualInstance(unsigned int instanceSlotNumber
 }
 
 
-void Scene::removeFreeFrameInstanceToVisualInstance(unsigned int instanceSlotNumber,
+void Scene::removeFreeFrameInstanceToVisualInstance(
+                                                    unsigned int instanceSlotNumber,
                                                     unsigned int column,
-                                                    unsigned int layerN) {
-    VisualInstance *instance;
-    
+                                                    unsigned int layerN
+                                                    )
+{
 #ifdef _FREEFRAMEFILTER_H_
+    VisualInstance *instance;
     instance = getVisualInstance(column, layerN);;
 	instance->removeFreeFrameInstance(instanceSlotNumber);
 #endif
-
-
-
 }
 
 
@@ -279,6 +278,14 @@ Scenes& Scenes::getInstance()
 ScenesList Scenes::getList() {
     return scenesList;
 }
+
+
+void Scenes::newScene(string sceneTitle, unsigned int nVisuals) {
+    Scene *newScene = NULL;
+    newScene = new Scene(sceneTitle, nVisuals);
+    add(newScene);
+}
+
 
 void Scenes::add(Scene *newScene) {
     scenesList.push_back(newScene);

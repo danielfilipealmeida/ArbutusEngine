@@ -14,6 +14,10 @@
 
 
 #include "Properties.h"
+#include "json.hpp"
+
+
+using json = nlohmann::json;
 
 
 typedef enum {
@@ -38,20 +42,16 @@ typedef enum {
 
 /*!
  @class VisualInstancesProperties
- @abstract
- @discussion
+ @abstract ...
+ @discussion ...
  */
 class VisualInstancesProperties : public Properties {
-    int     width, height;
-    float   zoomX, zoomY;
-    float   centerX, centerY;
-    int     x, y;
-    int     layer;
-    int     column;
-    Boolean retrigger;
-    float   effects_drywet;
-    Boolean isPlaying;
-    float   percentagePlayed, startPercentage, endPercentage;
+    int width, height;
+    float zoomX, zoomY;
+    float centerX, centerY;
+    int x, y, layer, column;
+    Boolean retrigger, isPlaying;
+    float percentagePlayed, startPercentage, endPercentage, effects_drywet;
     LoopMode loopMode;
     PlayheadDirection direction;
 
@@ -65,78 +65,299 @@ class VisualInstancesProperties : public Properties {
 public:
 	
 	
+    /**!
+     @abstract ...
+     */
 	VisualInstancesProperties();
-	~VisualInstancesProperties();
+
+    
+    /**!
+     @abstract ...
+     */
+    ~VisualInstancesProperties();
 	
     
+    /**!
+     @abstract ...
+     */
     static VisualInstancesProperties *getCurrent();
     
+    
+    /**!
+     @abstract ...
+     */
     void reset();
     
-	void setLoopMode(LoopMode _loopMode){loopMode = _loopMode;}
-	LoopMode getLoopMode() {return loopMode;}
-	
-	// debug
+    
+    /**!
+     @abstract ...
+     */
+    void setLoopMode(LoopMode _loopMode);
+    
+    
+    /**!
+     @abstract ...
+     */
+    LoopMode getLoopMode();
+    
+    
+    /**!
+     @abstract ...
+     */
 	void print();
     
     
-    /** getters and setters **/
-    int getWidth () { return width; }
-    int getHeight () { return height; }
+    /**!
+     @abstract ...
+     */
+    int getWidth ();
     
-    float getZoomX () { return zoomX; }
-    void setZoomX (float _zoomX) { zoomX = _zoomX; }
     
-    float getZoomY () { return zoomY; }
-    void setZoomY (float _zoomY) { zoomY = _zoomY; }
+    /**!
+     @abstract ...
+     */
+    int getHeight ();
     
-    float getCenterX() { return centerX; }
-    float getCenterY() { return centerY; }
-    ofPoint getCenter() { ofPoint point; point.x=centerX; point.y = centerY; return point;}
-    void setCenterX(float _centerX) { centerX = _centerX; }
-    void setCenterY(float _centerY) { centerY = _centerY; }
     
-    int getX () { return x; }
-    int getY () { return y; }
     
-    int     getLayer () { return layer; }
-    void    setLayer (int _layer) { layer = _layer; }
+    /**!
+     @abstract ...
+     */
+    float getZoomX ();
     
-    int     getColumn () { return column; }
-    void    setColumn (int _column) { column = _column; }
     
-    Boolean getRetrigger () { return retrigger; }
-    void    setRetrigger (bool _retrigger) { retrigger = _retrigger; }
+    /**!
+     @abstract ...
+     */
+    void setZoomX (float _zoomX);
+    
+    
+    /**!
+     @abstract ...
+     */
+    float getZoomY ();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setZoomY (float _zoomY);
+    
+    
+    
+    
+    /**!
+     @abstract ...
+     */
+    float getCenterX();
+    
+    
+    /**!
+     @abstract ...
+     */
+    float getCenterY();
+    
+    
+    /**!
+     @abstract ...
+     */
+    ofPoint getCenter();
+    
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setCenterX(float _centerX);
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setCenterY(float _centerY);
+    
+    
+    /**!
+     @abstract ...
+     */
+    int getX ();
+    
+    
+    /**!
+     @abstract ...
+     */
+    int getY ();
+    
+    
+    /**!
+     @abstract ...
+     */
+    int getLayer ();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setLayer (int _layer);
+    
+    
+    /**!
+     @abstract ...
+     */
+    int getColumn ();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setColumn (int _column);
+    
+    
+    
+    /**!
+     @abstract ...
+     */
+    Boolean getRetrigger ();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setRetrigger (bool _retrigger);
+    
+    
 
-    Boolean getIsPlaying() { return isPlaying; }
-    void    setIsPlaying ( Boolean _isPlaying ) { isPlaying = _isPlaying; }
+    /**!
+     @abstract ...
+     */
+    Boolean getIsPlaying();
     
-    float   getPercentagePlayed () { return percentagePlayed; }
-    float   getStartPercentage () { return startPercentage; }
-    float   getEndPercentage () { return endPercentage; }
-    void    setPercentagePlayed ( float _val ) { percentagePlayed = ofClamp(_val, 0.0, 1.0); }
-    void    setStartPercentage ( float _val ) { startPercentage = ofClamp(_val, 0.0, 1.0); }
-    void    setEndPercentage ( float _val ) { endPercentage = ofClamp(_val, 0.0, 1.0); }
+    
+    /**!
+     @abstract ...
+     */
+    void setIsPlaying ( Boolean _isPlaying );
+    
+    
+    
+    /**!
+     @abstract ...
+     */
+    float getPercentagePlayed ();
+    
+    
+    /**!
+     @abstract ...
+     */
+    float getStartPercentage ();
+    
+    
+    /**!
+     @abstract ...
+     */
+    float getEndPercentage ();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setPercentagePlayed ( float _val );
+    
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setStartPercentage ( float _val );
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setEndPercentage ( float _val );
+    
+    
   
-    PlayheadDirection getDirection () { return direction; }
-    void setDirection ( PlayheadDirection _val ) { direction = _val; }
+    /**!
+     @abstract ...
+     */
+    PlayheadDirection getDirection ();
     
+    
+    /**!
+     @abstract ...
+     */
+    void setDirection ( PlayheadDirection _val );
+    
+    
+    /**!
+     @abstract ...
+     */
     Boolean getBeatSnap ();
-    void    setBeatSnap (Boolean _val );
-    
-    Boolean getIsTriggered () { return isTriggered; }
-    void    setIsTriggered (Boolean _val ) { isTriggered = _val; }
-    
-    unsigned long long getOpenedTimestamp () { return openedTimestamp; }
-    unsigned long long getLastPlayedTimestamp () { return lastPlayedTimestamp; }
-    void setOpenedTimestampToNow () { openedTimestamp = ofGetElapsedTimeMillis(); }
-    void setLastPlayedTimestampToNow () { lastPlayedTimestamp = ofGetElapsedTimeMillis(); }
     
     
-    TriggerMode getTriggerMode () { return triggerMode; }
-    void setTriggerMode ( TriggerMode _val ) { triggerMode = _val; }
+    /**!
+     @abstract ...
+     */
+    void setBeatSnap (Boolean _val );
     
-
+    
+    
+    /**!
+     @abstract ...
+     */
+    Boolean getIsTriggered ();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setIsTriggered (Boolean _val );
+    
+    
+    
+    /**!
+     @abstract ...
+     */
+    unsigned long long getOpenedTimestamp ();
+    
+    
+    /**!
+     @abstract ...
+     */
+    unsigned long long getLastPlayedTimestamp ();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setOpenedTimestampToNow ();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setLastPlayedTimestampToNow ();
+    
+    
+    
+    
+    /**!
+     @abstract ...
+     */
+    TriggerMode getTriggerMode ();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setTriggerMode ( TriggerMode _val );
+    
+    
+    /**!
+     @abstract ...
+     */
+    json getState();
     
 };
 

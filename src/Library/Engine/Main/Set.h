@@ -64,7 +64,6 @@ public:
      */
     bool openSet(string _filePath);
     
-    
     /**!
      @abstract ...
      */
@@ -213,11 +212,6 @@ public:
      */
     Scene*
     getSceneAtIndex(unsigned int index);
-    
-    /**!
-     @abstract ...
-     */
-    void removeVisualFromSet(Visual *visual);
     
     /**!
      @abstract ...

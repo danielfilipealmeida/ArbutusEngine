@@ -20,15 +20,15 @@ using json = nlohmann::json;
 
 void testNewLayer(json layer) {
     //cout << layer.dump();
-    REQUIRE(layer["Alpha"].get<float>() == 1.0);
-    REQUIRE(layer["Brightness"].get<float>() == 1.0);
-    REQUIRE(layer["Contrast"].get<float>() == 1.0);
-    REQUIRE(layer["Saturation"].get<float>() == 1.0);
-    REQUIRE(layer["Red"].get<float>() == 1.0);
-    REQUIRE(layer["Green"].get<float>() == 1.0);
-    REQUIRE(layer["Blue"].get<float>() == 1.0);
-    REQUIRE(layer["BlurH"].get<float>() == 0.0);
-    REQUIRE(layer["BlurV"].get<float>() == 0.0);
+    REQUIRE(layer["alpha"].get<float>() == 1.0);
+    REQUIRE(layer["brightness"].get<float>() == 1.0);
+    REQUIRE(layer["contrast"].get<float>() == 1.0);
+    REQUIRE(layer["saturation"].get<float>() == 1.0);
+    REQUIRE(layer["red"].get<float>() == 1.0);
+    REQUIRE(layer["green"].get<float>() == 1.0);
+    REQUIRE(layer["blue"].get<float>() == 1.0);
+    REQUIRE(layer["blurH"].get<float>() == 0.0);
+    REQUIRE(layer["blurV"].get<float>() == 0.0);
     
 }
 

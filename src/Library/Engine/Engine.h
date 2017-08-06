@@ -339,30 +339,26 @@ public:
                         string appName
     );
     
-    
-    
     /*!
      @abstract
      */
-    VisualSyphon*
-    getSyphonInput(
+    VisualSyphon* getSyphonInput(
                    string serverName,
                    string appName
     );
     
     
-    
-    void            removeVisualFromSet(Visual *visual);
-    
-    
-    
 #pragma mark State Handling
     
-    json
-    getState();
+    /*!
+     @abstract
+     */
+    json getState();
     
-    json
-    getLayersState();
+    /*!
+     @abstract
+     */
+    json getLayersState();
     
     /*************************************************************/
 

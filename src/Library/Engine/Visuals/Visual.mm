@@ -44,12 +44,16 @@ void Visual::print(){
 }
 
 void Visual::drawScreenshot(float x, float y, float w, float h){
-	if (this->screenshot.bAllocated() == false) return;
+    if (screenshot.bAllocated() == false) {
+        return;
+    }
 	this->screenshot.draw(x, y, w, h);
 };
 
 void Visual::drawThumbnail(float x, float y, float w, float h) {
-	if (this->screenshot.bAllocated() == false) return;
+    if (this->screenshot.bAllocated() == false) {
+        return;
+    }
 	//GUIThumbnail(&screenshot, x, y, w, h);
 }
 

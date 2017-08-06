@@ -25,18 +25,19 @@ using json = nlohmann::json;
 
 /*!
  @class Scene
- @abstract
- @discussion
+ @abstract ...
+ @discussion ...
  */
 class Scene {
-    string          sceneName;
-    unsigned int    totalVisualsOnScene;
+    string sceneName;
+    unsigned int totalVisualsOnScene;
 
 public:
 	
 	VisualInstanceList visualsInstanceList;
 
     /*!
+     @abstract ...
      */
 	Scene(
           string _sceneName,
@@ -45,20 +46,24 @@ public:
 	
 
     /*!
+     @abstract ...
      */
     ~Scene();
 	
     /*!
+     @abstract ...
      */
-    json
-    getState();
+    json getState();
     
     /*!
+     @abstract ...
      */
-    json
-    getInstancesState();
+    json getInstancesState();
     
     
+    /*!
+     @abstract ...
+     */
     VisualInstance  *addVisualToInstanceList(Visual *visual, unsigned int layer, unsigned int column);
 	
     
@@ -71,63 +76,98 @@ public:
      *
      *  @return [VisualInstance*] a pointer of the selected visual instance
      */
-    VisualInstance*
-    getVisualInstance(
+    VisualInstance* getVisualInstance(
                       unsigned int column,
                       unsigned int layerN
     );
     
     
     
-    void
-    removeVisualInstance(unsigned int layer, unsigned int column);
+    /*!
+     @abstract ...
+     */
+    void removeVisualInstance(unsigned int layer, unsigned int column);
     
     
     
-    void
-    removeVisualInstancesWithVisual(Visual *visual);
+    /*!
+     @abstract ...
+     */
+    void removeVisualInstancesWithVisual(Visual *visual);
     
     
     
-    Boolean
-    isVisualInstantInColumn(
+    /*!
+     @abstract ...
+     */
+    Boolean isVisualInstantInColumn(
                             unsigned int column,
                             unsigned int layerN
     );
     
     
     
-	void
-    emptyVisualInstancesList();
+    /*!
+     @abstract ...
+     */
+	void emptyVisualInstancesList();
 	
     
-	// debug
+    /*!
+     @abstract ...
+     */
 	void print();
 	
-	// freeframe
+    /*!
+     @abstract ...
+     */
 	void addFreeFrameInstanceToVisualInstance(unsigned int instanceSlotNumber,
                                               unsigned int column,
                                               unsigned int layerN);
     
+    /*!
+     @abstract ...
+     */
 	void removeFreeFrameInstanceToVisualInstance(unsigned int instanceSlotNumber,
                                                  unsigned int column,
                                                  unsigned int layerN);
     
+    /*!
+     @abstract ...
+     */
     int getLastColumnInLayer(unsigned int layer);
     
+    /*!
+     @abstract ...
+     */
     void cleanup();
 	
+    /*!
+     @abstract ...
+     */
     void loadAllVisuals();
 
     
     
-    /** getters and setters **/
-    
+    /*!
+     @abstract ...
+     */
     unsigned int getTotalVisualsOnScene () { return totalVisualsOnScene; }
     
+    /*!
+     @abstract ...
+     */
     string getSceneName () { return sceneName; }
+
+    
+    /*!
+     @abstract ...
+     */
     void setSceneName ( string _val ) { sceneName = _val; }
     
+    /*!
+     @abstract ...
+     */
     void setName(string newName);
 
 };
@@ -153,7 +193,8 @@ public:
     void operator=(Scenes const&) = delete;
 
     ScenesList getList();
-    
+
+    void newScene(string sceneTitle, unsigned int nVisuals);
     void add(Scene *newScene);
     
     void empty();

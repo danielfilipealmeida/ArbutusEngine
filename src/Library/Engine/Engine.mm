@@ -11,6 +11,7 @@
 #include "AppProtocol.h"
 #include <string>
 #include "Utils.h"
+#include "SetFile.hpp"
 
 #ifdef app
 extern AppProtocol *app;
@@ -31,16 +32,12 @@ void Engine::setDefaults() {
 Engine::Engine() {
     if (enginePtr != NULL) return;
     
-    
     enginePtr = this;
     buffer = NULL;
     setOpened = false;
     
     setDefaults();
     
-	
-    
- 	
 	// init the free frame filters
 #ifdef _FREEFRAMEFILTER_H_
 	freeFrameHost.init(mixerWidth, mixerHeight);
@@ -64,8 +61,6 @@ Engine::Engine() {
         syphonOutputManager.setSyphonChannelOutput(i, "Channel " + ofToString(i+1));
     }
     
-    //appSupportDir(ofFilePath::getUserHomeDir() + "/Library/Application Support/Arbutus/");
-
     setAppSupportDir(ofFilePath::getUserHomeDir().append("/Library/Application Support/Arbutus"));
 }
 
@@ -562,7 +557,8 @@ Scene *Engine::getCurrentScene() {
 }
 
 Scene *Engine::getSceneAtIndex(unsigned int index) {
-    return currentSet.getSceneAtIndex(index);
+    return Scenes::getInstance().get(index);
+    //return currentSet.getSceneAtIndex(index);
 }
 
 unsigned int Engine::getNumberOfVisuals() {
@@ -610,15 +606,6 @@ Engine::getSyphonInput(
 
 }
 
-
-/*
-void
-Engine::removeVisualFromSet(
-                            Visual *visual
-) {
-    currentSet.removeVisualFromSet(visual);
- }
- */
 
 /* ************************************************************************** */
 #pragma mark Render & Draw

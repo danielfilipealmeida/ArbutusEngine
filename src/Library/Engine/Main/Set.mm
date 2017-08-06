@@ -12,6 +12,7 @@
 #include "Scene.h"
 #include "Layer.h"
 #include "Engine.h"
+#include "SetFile.hpp"
 
 #include <algorithm>
 
@@ -53,30 +54,22 @@ void Set::newSet(
     EngineProperties::getInstance().setMixerHeight ( _height );
     
 	nLayers = _nLayers;
-	
-	for(int f=0;f<_nLayers;f++) {
-		Layer *newLayer = new Layer();
-        LayerProperties *layerProperties = newLayer->getProperties();
-		layerProperties->setAlpha (1.0);
-		layerProperties->setRed (1.0);
-		layerProperties->setGreen (1.0);
-		layerProperties->setBlue (1.0);
-		layerProperties->setBrightness (1.0);
-		layerProperties->setContrast (1.0);
-		layerProperties->setSaturation (1.0);
-		layerProperties->setBlurH (0.0);
-		layerProperties->setBlurV (0.0);
-        Layers::getInstance().addToList(newLayer);
-	}
-	
+    
+    for (int f=0; f < _nLayers; f++) {
+        Layers::getInstance().add();
+    }
+    Scenes::getInstance().newScene("First Scene", 0);
+    /*
 	Scene *newScene = NULL;
 	newScene = new Scene("First Scene", 0);
 	addSceneToList(newScene);
-	currentSceneNumber = 1;
-	setCurrentScene(0);
-	loaded = true;
-}
+     */
 
+    currentSceneNumber = 1;
+    setCurrentScene(0);
+    loaded = true;
+
+}
 
 
 json
@@ -103,6 +96,10 @@ Set::getVisualsState() {
 
 
 bool Set::openSet(string _filePath) {
+    SetFile::load(_filePath);
+    
+    return true;
+    /*
     bool    result;
     ofXml   xml;
     bool    res;
@@ -235,164 +232,13 @@ bool Set::openSet(string _filePath) {
     loaded = true;
     
     return result;
-}
-
-
-bool Set::openSet_old(string _filePath){
-	filePath = _filePath;
-	setData.loadFile(_filePath);
-	
-	/*
-	if (app->debugMode == true) {
-		cout << endl;
-		cout << "** LOADING SET ************************************************** [start]" << endl;
-		cout << "File: " << _filePath <<endl;
-	}
-	*/
-	
-	// open configuration info
-	
-	setData.pushTag("CONFIGURATION", 0);
-	int width = (int) setData.getValue("WIDTH", 0);
-	int height = (int) setData.getValue("HEIGHT", 0);
-	nLayers = (int) setData.getValue("NUMBER_OF_LAYERS", 0);
-	setData.popTag();
-	
-    EngineProperties::getInstance().setMixerWidth (width);
-    EngineProperties::getInstance().setMixerHeight (height);
-    
-	// read layers info
-	setData.pushTag("LAYERS", 0);
-	int numberOfLayers = (int) setData.getNumTags("LAYER");
-	nLayers = 	numberOfLayers;
-	//if (app->debugMode == true) cout << "Layers Found: " << nLayers << endl;
-	for (int f=0; f < numberOfLayers; f++) {
-		setData.pushTag("LAYER", f);
-		float alpha = setData.getValue("ALPHA", 0.0);
-		float red = setData.getValue("RED", 0.0);
-		float green = setData.getValue("GREEN", 0.0);
-		float blue = setData.getValue("BLUE", 0.0);
-		float brightness = setData.getValue("BRIGHTNESS", 0.0);
-		float saturation = setData.getValue("SATURATION", 0.0);
-		float contrast = setData.getValue("CONTRAST", 0.0);
-		float blur = setData.getValue("BLUR", 0.0);
-		string name = setData.getValue("NAME", "");
-
-		// create a layer
-		Layer *newLayer;
-		
-		newLayer = new Layer();
-        
-		LayerProperties *layerProperties = newLayer->getProperties();
-        
-		layerProperties->setAlpha (alpha);
-		layerProperties->setRed (red);
-		layerProperties->setGreen (green);
-		layerProperties->setBlue (blue);
-		layerProperties->setBrightness (brightness);
-		layerProperties->setContrast (contrast);
-		layerProperties->setSaturation (saturation);
-		layerProperties->setBlurH (blur);
-		layerProperties->setBlurV (blur);
-		layerProperties->setName (name);
-		
-		/*
-		if (app->debugMode == true) {
-			cout << "Layer  " << (f +1) << ":" << endl;
-			cout << "    Name:  " << name << endl;
-			cout << "    Alpha:  " << alpha << endl;
-			cout << "    Red:  " << red << endl;
-			cout << "    Green:  " << green << endl;
-			cout << "    Blue:  " << blue << endl;
-			cout << "    Brighness:  " << brightness << endl;
-			cout << "    Contrast:  " << contrast << endl;
-			
-		}
-		*/
-		
-		// add layer to list
-        Layers::getInstance().addToList(newLayer);
-		setData.popTag();
-	}
-	setData.popTag();
-	
-	
-	// open the videos info
-	setData.pushTag("VIDEOS", 0);
-	//numVideos = setData.getNumTags("VIDEO:PATH");
-	int numVideosFound = setData.getNumTags("VIDEO:PATH");
-	//if (app->debugMode == true) cout << "Videos Found: " << numVideosFound << endl;
-	
-	for (int f=0; f < numVideosFound; f++) {
-		string filePath = setData.getValue("VIDEO:PATH", "", f);
-		//if (app->debugMode == 1) cout << "Loading Video: "<< filePath << endl;
-		addVisualVideoToListFromFile(filePath);
-	}
-	setData.popTag();
-	
-	// read scenes information
-	setData.pushTag("SCENES", 0);	
-	totalScenes = setData.getNumTags("SCENE:NAME");
-	//if (app->debugMode == 1) cout << "Scenes Found: "<< totalScenes << endl;
-	
-	for (int f=0;f<totalScenes;f++) {
-		setData.pushTag("SCENE", f);
-		string sceneName = setData.getValue("NAME","",0);
-		//if (app->debugMode == 1) cout << "Loading Scene: " << sceneName << endl;
-		
-		// add a new scene to the scene list
-		Scene *newScene;
-		unsigned char *visualsOnScene;
-		setData.pushTag("VIDEOS", 0);
-		unsigned char totalVisualsOnScene = setData.getNumTags("VIDEO:NUMBER");
-		//if (app->debugMode == 1) cout << "Videos for this Scene found: " << totalVisualsOnScene << endl;
-		//visualsOnScene = (unsigned char *) malloc(sizeof(unsigned char) * totalVisualsOnScene);
-		newScene = new Scene(sceneName, totalVisualsOnScene);
-		
-		for (int g=0;g<totalVisualsOnScene;g++) {
-			//visualsOnScene[g] = setData.getValue("VIDEO", 0, g);
-			//if (app->debugMode == 1) cout << visualsOnScene[g] << " ";
-			
-			// get the video number
-			int videoNumber = setData.getValue("VIDEO:NUMBER", 0,g);
-			//if (videoNumber>0) videoNumber=videoNumber;
-			
-			int layer = setData.getValue("VIDEO:LAYER", 0,g);
-			int column = setData.getValue("VIDEO:COLUMN", 0,g);
-			
-			// get the visual
-			Visual *visual = getVisualFromList(videoNumber);
-			
-			// add instance to scene
-			if(visual!=NULL) newScene->addVisualToInstanceList(visual, layer, column);
-			//if (app->debugMode == 1) cout << "number: "<<videoNumber<< ", layer: "<<layer<<", column: "<<column<<endl;
-		}
-		//if (app->debugMode == 1) cout << endl;
-		addSceneToList(newScene);
-		setData.popTag();
-		setData.popTag();
-	}
-	setData.popTag();	
-	currentSceneNumber = 1;
-	/*
-	if (app->debugMode == true) {
-		cout << "** LOADING SET ************************************************** [end]" << endl;
-	}
-	 */
-	
-	// set the current scene to be the first scene
-	setCurrentScene(0);
-	
-	
-	loaded=true;
-    
-    return true;
+     */
 }
 
 
 void Set::saveSetAs(string _filePath) {
 	filePath = _filePath;
-	saveSet();
+    SetFile::save(_filePath, Engine::getInstance()->getState());
 }
 
 
@@ -554,8 +400,9 @@ void Set::saveSet() {
 
 void Set::closeSet() {
 	emptyVisualsList();
-	emptyScenesList();
-	loaded = false;
+	//emptyScenesList();
+    Scenes::getInstance().empty();
+    loaded = false;
 }
 
 
@@ -785,36 +632,6 @@ unsigned int Set::getTotalScenes() {
     return Scenes::getInstance().getList().size();
 }
 
-
-// this should used without traversing but direct
-
-
-// is this right!? apparently it's removing all the visual instances
-void Set::removeVisualFromSet(Visual *visual) {
-    ScenesList scenesList = Scenes::getInstance().getList();
-    
-    
-    // traverse all scenes and remove the Visual Instances of this Visual
-    for (ScenesListIterator it = scenesList.begin();
-         it!=scenesList.end();
-         it++) {
-        Scene *scene;
-        
-        scene = *it;
-        scene->removeVisualInstancesWithVisual(visual);
-    }
-
-    
-    // remove the Visual
-    for(VisualsListIterator i = visualsList.begin();
-        i!=visualsList.end();
-        i++)
-    {
-        if (visual == *i) {
-            visualsList.erase(i);
-        }
-    }
-}
 
 
 /* ************************************************************************* */

@@ -1,11 +1,5 @@
 {
-    {
-        "layers" : []
-    },
-    {
-        "scenes": []
-    },
-    {
-        "visuals": []
-    }
+    "layers" : [],
+    "scenes": [],
+    "visuals": []
 }

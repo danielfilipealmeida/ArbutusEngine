@@ -12,13 +12,14 @@
 #define __PROPERTIES_H__
 
 #include "ofMain.h"
+#include "json.hpp"
 
-
+using json = nlohmann::json;
 
 /*!
  @class Properties
- @abstract
- @discussion
+ @abstract Base class for properties
+ @discussion Implements common functionality to handle properties
  */
 class Properties {
 
@@ -29,43 +30,126 @@ class Properties {
     
 public:
 
-	
+	/**!
+     @abstract ...
+     */
 	Properties();
-	~Properties();
+
+    /**!
+     @abstract ...
+     */
+    ~Properties();
 	
+    /**!
+     @abstract ...
+     */
     void reset();
     
-	// debug
+    /**!
+     @abstract ...
+     */
 	void print();
     
     
-    /** getters and setters **/
+    /**!
+     @abstract ...
+     */
+    string getName();
     
-    string getName() {return name;}
-    void setName(string _input) {name = _input;}
+    
+    /**!
+     @abstract ...
+     */
+    void setName(string _input);
+    
 
-    float getAlpha() {return alpha;}
-    void setAlpha(float _input) {alpha = _input;}
+    /**!
+     @abstract ...
+     */
+    float getAlpha();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setAlpha(float _input);
+    
 
-    float getRed() {return red;}
-    void setRed(float _input) {red = _input;}
+    /**!
+     @abstract ...
+     */
+    float getRed();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setRed(float _input);
+    
 
-    float getGreen() {return green;}
-    void setGreen(float _input) {green = _input;}
-
-    float getBlue() {return blue;}
-    void setBlue(float _input) {blue = _input;}
-
-    float getBrightness() {return brightness;}
-    void setBrightness(float _input) {brightness = _input;}
-
-    float getContrast() {return contrast;}
-    void setContrast(float _input) {contrast = _input;}
-
-    float getSaturation() {return saturation;}
-    void setSaturation(float _input) {saturation = _input;}
+    /**!
+     @abstract ...
+     */
+    float getGreen();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setGreen(float _input);
 
     
+    /**!
+     @abstract ...
+     */
+    float getBlue();
+    
+    
+    /**!
+     @abstract ...
+     */
+   void setBlue(float _input);
+
+    /**!
+     @abstract ...
+     */
+    float getBrightness();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setBrightness(float _input);
+    
+
+    /**!
+     @abstract ...
+     */
+    float getContrast();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setContrast(float _input);
+    
+
+    /**!
+     @abstract ...
+     */
+    float getSaturation();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setSaturation(float _input);
+    
+    
+    /**!
+     @abstract ...
+     */
+    json getState();
 	
 };
 

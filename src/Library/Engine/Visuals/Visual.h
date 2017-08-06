@@ -32,8 +32,8 @@ typedef enum VisualType {
 
 /*!
  @class Visual
- @abstract
- @discussion
+ @abstract ...
+ @discussion ...
  */
 class Visual {
     VisualType  type;

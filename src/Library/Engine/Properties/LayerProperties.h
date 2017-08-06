@@ -27,8 +27,8 @@ typedef enum {
 
 /*!
  @class LayerProperties
- @abstract
- @discussion
+ @abstract ...
+ @discussion ...
  */
 class LayerProperties : public Properties {
     unsigned int    width;
@@ -39,11 +39,25 @@ class LayerProperties : public Properties {
 public:
 
 	
+    /**!
+     @abstract ...
+     */
 	LayerProperties();
-	~LayerProperties();
+
+    
+    /**!
+     @abstract ...
+     */
+    ~LayerProperties();
 	
+    /**!
+     @abstract ...
+     */
     void reset();
     
+    /**!
+     @abstract ...
+     */
 	void print();
     
     /*!
@@ -52,27 +66,80 @@ public:
      @return a string with the label of the blend mode
      */
     static string
+
+    
+    /**!
+     @abstract ...
+     */
     blendModeToString(BlendMode mode);
     
-    /** setters and getters **/
     
-    unsigned int getWidth() { return width;}
-    void setWidth(unsigned int _width) {width = _width;}
-    
-    unsigned int getHeight() { return height;}
-    void setHeight(unsigned int _height) {height = _height;}
-    
-    BlendMode getBlendMode() { return blendMode;}
-    void setBlendMode(BlendMode _blendMode) { blendMode = _blendMode;}
+    /**!
+     @abstract ...
+     */
+    unsigned int getWidth();
     
     
-    unsigned int getBlurH() { return blurH;}
-    void setBlurH(unsigned int _blurH) {blurH = _blurH;}
+    /**!
+     @abstract ...
+     */
+    void setWidth(unsigned int _width);
+    
+    
+    
+    /**!
+     @abstract ...
+     */
+    unsigned int getHeight();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setHeight(unsigned int _height);
+    
+    
+    
+    /**!
+     @abstract ...
+     */
+    BlendMode getBlendMode();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setBlendMode(BlendMode _blendMode);
+    
+    
+    
+    
+    /**!
+     @abstract ...
+     */
+    unsigned int getBlurH();
+    
+    
+    /**!
+     @abstract ...
+     */
+    void setBlurH(unsigned int _blurH);
+    
+    
 
-    unsigned int getBlurV() { return blurV;}
-    void setBlurV(unsigned int _blurV) {blurV = _blurV;}
-
+    /**!
+     @abstract ...
+     */
+    unsigned int getBlurV();
     
+    
+    /**!
+     @abstract ...
+     */
+    void setBlurV(unsigned int _blurV);
+    
+    
+    json getState();
 };
 
 

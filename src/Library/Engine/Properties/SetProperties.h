@@ -27,7 +27,14 @@ class SetProperties {
 public:
     SetProperties();
     
+    /**!
+     @abstract ...
+     */
     void setStopCurrentVisualIfTriggeredInvalid(bool val);
+
+    /**!
+     @abstract ...
+     */
     bool getStopCurrentVisualIfTriggeredInvalid();
 };
 
