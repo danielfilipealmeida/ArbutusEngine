@@ -32,12 +32,11 @@
                
                ]
     },
+    {
                "name": "scene 2",
                "instances" : [
                
                ]
-    {
-    
     }],
     "visuals": [
     {

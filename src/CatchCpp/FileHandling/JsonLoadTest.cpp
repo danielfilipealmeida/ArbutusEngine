@@ -86,8 +86,12 @@ TEST_CASE("Open a file and check the imported state is correct","[open]") {
     };
     json expectedScenes = {
         {
+            {"name", "scene 1"},
+            {"instances", json::array()}
         },
         {
+            {"name", "scene 2"},
+            {"instances", json::array()}
         }
     };
     json expectedState = {
@@ -96,9 +100,23 @@ TEST_CASE("Open a file and check the imported state is correct","[open]") {
         {"visuals", expectedVisuals}
     };
 
-    std::cout << expectedState.dump()<< endl;
-    std::cout << result.dump()<< endl;
-    REQUIRE(result.dump().compare(expectedState.dump()) == 0);
-
+    //std::cout << expectedState.dump()<< endl;
+    //std::cout << result.dump()<< endl;
+    //REQUIRE(result.dump().compare(expectedState.dump()) == 0);
+    
+    // check expected Layers
+    REQUIRE(result["layers"].dump().compare(expectedLayers.dump()) == 0);
+    
+    // check expected visuals
+    REQUIRE(result["visuals"].dump().compare(expectedVisuals.dump()) == 0);
+    
+    // check expected scenes
+    unsigned int counter = 0;
+    for (auto  &element:expectedScenes)
+    {
+        REQUIRE(element["name"].get<string>().compare(result["scenes"][counter]["name"]) == 0);
+        std::cout << element << std::endl;
+        counter++;
+    }
 
 }

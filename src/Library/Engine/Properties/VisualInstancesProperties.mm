@@ -32,6 +32,8 @@ VisualInstancesProperties::reset() {
     direction = Direction_Left;
     beatSnap = isTriggered = false;
     triggerMode = TriggerMode_MouseDown;
+    column = layer = 0;
+    percentagePlayed = 0;
 }
 
 VisualInstancesProperties::~VisualInstancesProperties() {
