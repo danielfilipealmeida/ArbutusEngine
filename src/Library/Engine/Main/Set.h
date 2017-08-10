@@ -37,17 +37,24 @@ class Set {
     VisualsList		visualsList;
     //ScenesList scenesList;
     
-public:
-
     /**!
      @abstract ...
      */
-	Set();
+    Set();
+    
+public:
+
+    static Set& getInstance();
+    Set(Set const&) = delete;
+    void operator=(Set const&) = delete;
+    
     
     /**!
      @abstract ...
      */
 	~Set();
+    
+    
     
     /**!
      @abstract ...
@@ -145,6 +152,11 @@ public:
     /**!
      @abstract ...
      */
+    void addSceneToList(Scene *newScene);
+    
+    /**!
+     @abstract ...
+     */
     Scene* newScene();
     
     /**!
@@ -152,10 +164,7 @@ public:
      */
     void removeCurrentScene();
 	
-    /**!
-     @abstract ...
-     */
-    void addSceneToList(Scene *newScene);
+    
 	
     /**!
      @abstract ...

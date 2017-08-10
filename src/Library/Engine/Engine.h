@@ -42,27 +42,20 @@ using json = nlohmann::json;
  @discussion This class implements the singleton pattƒLayerern to create one object used to manage all aspects of the Arbutus Engine.
  */
 class Engine {
-    Set currentSet;
     ControllerGroup controllers;
-    Osc             *osc;   // isto é usado???
-    
     bool setOpened;
-    unsigned layersPreview_Columns;
-
     VisualInstance *currentVisualInstance;
     ofFbo *buffer;
     metronome metronomeThreadObj;
-    
     SyphonOutputManager syphonOutputManager;
-    
     SetProperties setProperties;
+
+    Osc *osc;   // isto é usado???
+    unsigned layersPreview_Columns ;// isto é usado???
     
 public:
  	
     dispatch_queue_t processingQueue;
-    
-    
-    
     
     
 // include free frame if available
@@ -136,16 +129,10 @@ public:
 	bool saveSetAs(string _setPath);
 	
     
-    
-    
     /*!
      @abstract Defines the area of the rendering buffer
      */
-    void setMixerResolution(
-                            unsigned int width,
-                            unsigned int height
-    );
-    
+    void setMixerResolution (unsigned int width, unsigned int height);
     
     
     /*************************************************************/
@@ -154,30 +141,19 @@ public:
     /*!
      @abstract handles all actions related to layers
      */
-    void
-    handleLayerAction(
-                      string parameter,
-                      json data
-                      );
+    void handleLayerAction(string parameter, json data);
+    
     
     /*!
      @abstract handles all actions related to visuals
      */
-    void
-    handleVisualAction(
-                      string parameter,
-                      json data
-                      );
+    void handleVisualAction (string parameter, json data);
     
     /*!
      @abstract handles all actions to the engine
      @param parameter a string
      */
-    void
-    handleAction(
-                 string parameter,
-                 json data
-                 );
+    void handleAction(string parameter, json data);
     
     /*************************************************************/
     
@@ -185,10 +161,9 @@ public:
     
     
     /*!
-     @abstract
+     @abstract ...
      */
-	void
-    setActiveVisualInstanceNumberForLayer(
+	void setActiveVisualInstanceNumberForLayer(
                                           unsigned int visualInstanceN,
                                         unsigned int layerN
    );
@@ -196,94 +171,67 @@ public:
     
     
     /*!
-     @abstract
+     @abstract ...
      */
-    void
-    setActiveVisualIntancesOnAllLayers(unsigned int columnN);
+    void setActiveVisualIntancesOnAllLayers(unsigned int columnN);
 	
     
-    
     /*!
-     @abstract
+     @abstract ...
      */
-    void
-    setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN);
-    
+    void setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN);
     
     
     /*!
-     @abstract
+     @abstract ...
      */
-	VisualInstance*
-    getCurrentActiveVisualInstance();
-    
+	VisualInstance* getCurrentActiveVisualInstance();
     
     
     /*!
-     @abstract
+     @abstract ...
      */
-    VisualInstance*
-    getVisualAtLayerAndInstanceN(unsigned int layerN, unsigned int visualInstanceN);
+    VisualInstance* getVisualAtLayerAndInstanceN(unsigned int layerN, unsigned int visualInstanceN);
     
     
     
     /*!
-     @abstract
+     @abstract ...
      */
-	void
-    stopVisualAtSelectedLayer();
-    
+	void stopVisualAtSelectedLayer();
     
     
     /*!
      @abstract
      */
-    void
-    stopVisualAtLayer(unsigned int layerN);
-    
-    
-    
-
+    void stopVisualAtLayer(unsigned int layerN);
     
     
     /*!
      @abstract
      */
-    LayerProperties
-    *getPropertiesOfCurrentLayer();
-    
-    
+    LayerProperties  *getPropertiesOfCurrentLayer();
     
     /*************************************************************/
     
 #pragma mark Scene & Visuals Functions
 	
-    
-    Scene*
-    addScene();
-    
+    /*!
+     @abstract ...
+     */
+    Scene* addScene();
     
     /*!
-     @abstract
+     @abstract ...
      */
-    void
-    addVisualToSceneListInCurrentLayer(
-                                       unsigned int visual,
-                                       unsigned int layer,
-                                       unsigned int column
-    );
+    void addVisualToSceneListInCurrentLayer(unsigned int visual, unsigned int layer, unsigned int column);
     
     
     
     /*!
-     @abstract
+     @abstract ...
      */
-    void
-    addVisualToScene(
-                     unsigned int visual,
-                     unsigned int layer,
-                     unsigned int column
-    );
+    void addVisualToScene(unsigned int visual, unsigned int layer, unsigned int column);
     
     
     
@@ -455,14 +403,14 @@ public:
     
 
     
-    bool isCurrentSetLoaded() {return currentSet.isLoaded();}
+    //bool isCurrentSetLoaded() {return Set::getInstance().isLoaded();}
     
     
     string getCurrentFilePath () {
         return EngineProperties::getInstance().getCurrentFilePath();
     }
     
-    Set *getCurrentSet () { return &currentSet; }
+    //Set *getCurrentSet () { return &Set::getInstance(); }
     
     
     VisualInstance *getCurrentVisualInstance () { return currentVisualInstance; }

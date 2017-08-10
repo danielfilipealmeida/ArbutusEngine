@@ -25,7 +25,8 @@ TEST_CASE("Empty Sets State","[getState]") {
     //REQUIRE(state["visuals"].is_null());
 };
 
-/*
+
+
  // this test needs to be remade
 TEST_CASE("State with Layers", "[getState]") {
     Engine *engine;
@@ -36,14 +37,12 @@ TEST_CASE("State with Layers", "[getState]") {
     
     engine = new Engine();
     layer = Layers::getInstance().add(false);
-    //scene = engine->addScene();
     scene = new Scene("my scene", 1);
     visual = new VisualVideo("loop001.mov");
-    engine->getCurrentSet()->addVisualToList(visual);
+    Set::getInstance().addVisualToList(visual);
     scene->addVisualToInstanceList(visual, 1, 1);
-    engine->getCurrentSet()->addSceneToList(scene);
     
-    
+    Set::getInstance().addSceneToList(scene);
     
     state = engine->getState();
     REQUIRE(state["layers"].is_null() == false);
@@ -61,4 +60,4 @@ TEST_CASE("State with Layers", "[getState]") {
     REQUIRE(state["visuals"][0]["filePath"] == "../../../data/loop001.mov");
     REQUIRE((int) state["visuals"][0]["type"] == 0);
 }
-*/
+

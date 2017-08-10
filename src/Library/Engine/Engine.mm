@@ -85,9 +85,9 @@ json
 Engine::getState() {
     json state;
     
-    state["visuals"] = currentSet.getVisualsState();
+    state["visuals"] = Set::getInstance().getVisualsState();
     state["layers"] = getLayersState();
-    state["scenes"] = currentSet.getScenesState();
+    state["scenes"] = Set::getInstance().getScenesState();
     
     return state;
 }
@@ -125,7 +125,7 @@ Engine::newSet(
     if (_layers>0) {
         EngineProperties::getInstance().setNumberOfLayers(_layers);
     };
-	currentSet.newSet(_width, _height, _layers);
+	Set::getInstance().newSet(_width, _height, _layers);
     initBuffer();
     Layers::getInstance().setActive(1);
     EngineProperties::getInstance().setCurrentFilePath("");
@@ -138,10 +138,10 @@ Engine::newSet(
 
 void
 Engine::closeSet() {
-    if (currentSet.isLoaded() == false) return;
+    if (Set::getInstance().isLoaded() == false) return;
     
     Layers::getInstance().removeAll();
-	currentSet.closeSet();
+	Set::getInstance().closeSet();
 
     currentVisualInstance = NULL;
     setOpened             = false;
@@ -159,7 +159,7 @@ Engine::openSet(string _setPath) {
     closeSet();
 	Layers::getInstance().removeAll();
 	
-    result = currentSet.openSet(_setPath);
+    result = Set::getInstance().openSet(_setPath);
     if (!result) return result;
 
     initBuffer();
@@ -174,13 +174,13 @@ Engine::openSet(string _setPath) {
 
 
 bool Engine::saveSet() {
-	currentSet.saveSet();
+	Set::getInstance().saveSet();
     
     return true;
 }
 
 bool Engine::saveSetAs(string _setPath) {
-   currentSet.saveSetAs(_setPath);
+   Set::getInstance().saveSetAs(_setPath);
     EngineProperties::getInstance().setCurrentFilePath(_setPath);
     
     return true;
@@ -347,7 +347,7 @@ Engine::setActiveVisualInstanceNumberForLayer(
     layer = Layers::getInstance().get(layerN);
 	if (layer == NULL) return;
 		
-	visualInstance = currentSet.getVisualInstanceInCorrentSet(column, layerN);
+	visualInstance = Set::getInstance().getVisualInstanceInCorrentSet(column, layerN);
     
  	
 	if(visualInstance!=NULL) {
@@ -453,7 +453,7 @@ Engine::printInfo() {
 	cout << "********************************************************************************"<<endl;
 	cout << "mixerWidth: " << EngineProperties::getInstance().getMixerWidth() << endl;
 	cout << "mixerHeight: " << EngineProperties::getInstance().getMixerHeight() << endl;
-	cout << "Set object address: "<<&currentSet<<endl;
+	cout << "Set object address: "<<&Set::getInstance()<<endl;
 	cout << endl;
 	cout << "** Layers **********************************************************************"<<endl;
 	cout << "number of layers: " << Layers::getInstance().getList().size()<<endl;
@@ -469,7 +469,7 @@ Engine::printInfo() {
 		count++;
 	}
 	cout << endl;
-	currentSet.print();
+	Set::getInstance().print();
 
 	cout << "********************************************************************************"<<endl;
 	cout << "** Engine Debug Print ************************************************* [end] **"<<endl;
@@ -493,7 +493,7 @@ void Engine::saveCurrentFrame(string path) {
 
 Scene*
 Engine::addScene() {
-    return currentSet.newScene();
+    return Set::getInstance().newScene();
 }
 
 
@@ -504,7 +504,7 @@ Engine::addVisualToSceneListInCurrentLayer(
                                            unsigned int column
                                            )
 {
-	Visual *visualToAdd = currentSet.getVisualFromList(visual);
+	Visual *visualToAdd = Set::getInstance().getVisualFromList(visual);
 	
 	if (visualToAdd != NULL) {
             //cout << "adding visual #"<<visual<<" in column "<<column<<endl;
@@ -514,24 +514,24 @@ Engine::addVisualToSceneListInCurrentLayer(
         if (layer > Layers::getInstance().count()) {
             layer =  Layers::getInstance().count();
         }
-        currentSet.getCurrentScene()->addVisualToInstanceList(visualToAdd, layer, column);
+        Set::getInstance().getCurrentScene()->addVisualToInstanceList(visualToAdd, layer, column);
 	}
 }
 
 
 
 void Engine::addVisualToScene(unsigned int visual, unsigned int layer, unsigned int column) {
-    Visual *visualToAdd = currentSet.getVisualFromList(visual);
+    Visual *visualToAdd = Set::getInstance().getVisualFromList(visual);
     
     if (visualToAdd != NULL) {
             // check if the current layer exists. if not, add it and all before
-        if (layer > currentSet.getNumberOfLayers() ) {
+        if (layer > Set::getInstance().getNumberOfLayers() ) {
             for (int i = Layers::getInstance().count(); i <= layer; i++) {
                 Layers::getInstance().add();
             }
         }
         
-        currentSet.getCurrentScene()->addVisualToInstanceList(visualToAdd, layer, column);
+        Set::getInstance().getCurrentScene()->addVisualToInstanceList(visualToAdd, layer, column);
     }
 }
 
@@ -553,20 +553,20 @@ void Engine::removeVisualFromScene(unsigned int layer, unsigned int column) {
 
 
 Scene *Engine::getCurrentScene() {
-    return currentSet.getCurrentScene();
+    return Set::getInstance().getCurrentScene();
 }
 
 Scene *Engine::getSceneAtIndex(unsigned int index) {
     return Scenes::getInstance().get(index);
-    //return currentSet.getSceneAtIndex(index);
+    //return Set::getInstance().getSceneAtIndex(index);
 }
 
 unsigned int Engine::getNumberOfVisuals() {
-    return currentSet.getNumberOfVisuals();
+    return Set::getInstance().getNumberOfVisuals();
 }
 
 Visual* Engine::getVisualAtIndex(unsigned int index) {
-    return currentSet.getVisualFromList(index);
+    return Set::getInstance().getVisualFromList(index);
 }
 
 
@@ -999,7 +999,7 @@ Engine::scanCameras() {
 #pragma mark cleanup
 
 void Engine::cleanup() {
-    currentSet.cleanup();
+    Set::getInstance().cleanup();
 }
 
 

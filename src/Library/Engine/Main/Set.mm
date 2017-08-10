@@ -24,6 +24,11 @@
 
 extern Engine *enginePtr;
 
+Set& Set::getInstance() {
+    static Set instance;
+    
+    return instance;
+}
 
 Set::Set() {
 	currentScene = NULL;
@@ -363,11 +368,11 @@ void Set::saveSet() {
                 visual = instance->visual;
     
                 visualCounter = 0;
-                for(VisualsListIterator k = enginePtr->getCurrentSet()->visualsList.begin();
-                    k!=enginePtr->getCurrentSet()->visualsList.end();
-                    k++) {
-                    if ((*k) == visual)visualNumber = visualCounter;
-                    
+                for (auto k:Set::getInstance().visualsList) {
+                    if (k == visual) {
+                        visualNumber = visualCounter;
+                        continue;
+                    }
                     visualCounter++;
                 }
                 
@@ -525,10 +530,13 @@ Scene* Set::addSceneToList(string sceneName, unsigned char nVisualsInScene, unsi
     Scene *newScene;
     
     newScene = new Scene(sceneName, nVisualsInScene);
-    //scenesList.push_back(newScene);
-    Scenes::getInstance().add(newScene);
+    addSceneToList(newScene);
     
     return newScene;
+}
+
+void Set::addSceneToList(Scene *newScene) {
+    Scenes::getInstance().add(newScene);
 }
 
 
