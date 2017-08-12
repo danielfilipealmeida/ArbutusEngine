@@ -63,10 +63,10 @@ void Set::newSet(
     for (int f=0; f < _nLayers; f++) {
         Layers::getInstance().add();
     }
-    Scenes::getInstance().newScene("First Scene", 0);
+    Scenes::getInstance().newScene("First Scene");
     /*
 	Scene *newScene = NULL;
-	newScene = new Scene("First Scene", 0);
+	newScene = new Scene("First Scene");
 	addSceneToList(newScene);
      */
 
@@ -251,6 +251,8 @@ void Set::saveSetAs(string _filePath) {
 
 
 void Set::saveSet() {
+    saveSetAs(filePath);
+    /*
     ofXml xml;
     int count;
     
@@ -268,13 +270,6 @@ void Set::saveSet() {
     xml.setTo("layers");
     
     count = 0;
-    /*
-    for (LayersListIterator i = enginePtr->getLayersList().begin();
-         i!=enginePtr->getLayersList().end();
-         i++)
-    {
-		Layer           *layer;
-     */
     for (auto layer:Layers::getInstance().getList()) {
         LayerProperties *layerProperties;
         
@@ -401,7 +396,9 @@ void Set::saveSet() {
     
     
 	//setData.saveFile(filePath);
+*/
 }
+
 
 void Set::closeSet() {
 	emptyVisualsList();
@@ -529,7 +526,7 @@ void Set::emptyVisualsList(){
 Scene* Set::addSceneToList(string sceneName, unsigned char nVisualsInScene, unsigned char *visualsInScene) {
     Scene *newScene;
     
-    newScene = new Scene(sceneName, nVisualsInScene);
+    newScene = new Scene(sceneName);
     addSceneToList(newScene);
     
     return newScene;
@@ -556,7 +553,7 @@ void Set::removeCurrentScene() {
     unsigned int nextScene = this->currentSceneNumber;
     if (nextScene >0) nextScene--;
     
-    this->currentScene->emptyVisualInstancesList();
+    this->currentScene->visualInstances.empty();
     bool isFirst = false;
     if (this->currentScene == scenesList.front()) isFirst = true;
     
@@ -580,7 +577,7 @@ void Set::removeCurrentScene() {
  *  @param _sceneNumber the scene numbe
  */
 void Set::setCurrentScene(unsigned int _sceneNumber) {
-     ScenesList scenesList = Scenes::getInstance().getList();
+    ScenesList scenesList = Scenes::getInstance().getList();
     
   	if (_sceneNumber>scenesList.size()-1) return;
 	currentSceneNumber = _sceneNumber;
@@ -588,7 +585,7 @@ void Set::setCurrentScene(unsigned int _sceneNumber) {
 	std::advance(i, _sceneNumber);
 	currentScene = (*i);
     if (currentScene == NULL) return;
-    currentScene->loadAllVisuals();
+    currentScene->visualInstances.loadAll();
 }
 
 
@@ -621,23 +618,23 @@ Set::getVisualInstanceInCorrentSet(
 ) {
 	if (currentScene==NULL) return NULL;
 	
-	return currentScene->getVisualInstance(column, layerN);
+	return currentScene->visualInstances.get(column, layerN);
 }
 
 Boolean Set::isVisualInstantInColumn(unsigned int column, unsigned int layerN) {
 	if (currentScene==NULL) return NULL;
 	
-	return currentScene->isVisualInstantInColumn(column, layerN);
+	return currentScene->visualInstances.inColumn(column, layerN);
 }
 
 void Set::emptyVisualInstanceOnAllScenes() {
 	for(auto scene:Scenes::getInstance().getList()) {
-        scene->emptyVisualInstancesList();
+        scene->visualInstances.empty();;
 	}
 }
 
 unsigned int Set::getTotalScenes() {
-    return Scenes::getInstance().getList().size();
+    return (unsigned int) 	Scenes::getInstance().getList().size();
 }
 
 

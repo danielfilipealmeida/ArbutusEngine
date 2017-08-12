@@ -66,18 +66,20 @@ TEST_CASE("valid state and path should save","[save]") {
 
 
 TEST_CASE("Set should save", "[save]") {
-    std::string path = ofFilePath::getCurrentExeDir() + "/test001.json";
+    std::string path = ofFilePath::getCurrentExeDir() + "/test_save_001.json";
     
     Engine *engine;
     Layer *layer1, *layer2;
     Scene *scene1, *scene2;
-    
+   
     engine = new Engine();
     
     layer1 = Layers::getInstance().add(false);
     layer2 = Layers::getInstance().add(false);
-    Scenes::getInstance().newScene("Scene 1", 2);
-    Scenes::getInstance().newScene("scene 2", 2);
+    Scenes::getInstance().newScene("Scene 1");
+    Scenes::getInstance().newScene("scene 2");
+    
+    JsonSave::save(path, Engine::getInstance()->getState());
     
     delete engine;
     

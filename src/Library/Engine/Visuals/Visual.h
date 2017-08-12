@@ -36,14 +36,14 @@ typedef enum VisualType {
  @discussion ...
  */
 class Visual {
-    VisualType  type;
-    string      caption;
-    string      thumbnailPath;
-    string      filePath;
+    VisualType type;
+    string caption;
+    string thumbnailPath;
+    string filePath;
 	
 
 public:
-    ofImage     screenshot;
+    ofImage screenshot;
     
 	
 	Visual();
@@ -65,19 +65,19 @@ public:
     
     /** setters and getters **/
     
-    VisualType  getType () { return type; }
-    void        setType (VisualType _val) { type = _val; }
+    VisualType getType () { return type; }
+    void setType (VisualType _val) { type = _val; }
     
-    string  getCaption();
-    void    setCaption(string _val) { caption = _val; }
+    string getCaption();
+    void setCaption(string _val) { caption = _val; }
     
-    string  getThumbnailPath() { return thumbnailPath; }
-    void    setThumbnailPath(string _val) { thumbnailPath = _val; }
+    string getThumbnailPath() { return thumbnailPath; }
+    void setThumbnailPath(string _val) { thumbnailPath = _val; }
     
     
     /** setters and getters **/
-    string  getFilePath () { return filePath; }
-    void    setFilePath (string _val) { filePath = _val; }
+    string getFilePath () { return filePath; }
+    void setFilePath (string _val) { filePath = _val; }
     
     virtual json getState();
 

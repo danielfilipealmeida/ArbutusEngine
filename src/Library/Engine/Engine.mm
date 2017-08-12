@@ -28,7 +28,6 @@ void Engine::setDefaults() {
 }
 
 
-
 Engine::Engine() {
     if (enginePtr != NULL) return;
     
@@ -167,7 +166,7 @@ Engine::openSet(string _setPath) {
     
 	EngineProperties::getInstance().setCurrentFilePath(_setPath);
     
-    setOpened       = true;
+    setOpened = true;
     
     return result;
 }
@@ -410,7 +409,7 @@ Engine::getVisualAtLayerAndInstanceN(
 
     currentScene = getCurrentScene();
     if (currentScene == NULL) return NULL;
-    return currentScene->getVisualInstance(visualInstanceN, layerN);
+    return currentScene->visualInstances.get(visualInstanceN, layerN);
 }
 
 
@@ -506,16 +505,16 @@ Engine::addVisualToSceneListInCurrentLayer(
 {
 	Visual *visualToAdd = Set::getInstance().getVisualFromList(visual);
 	
-	if (visualToAdd != NULL) {
-            //cout << "adding visual #"<<visual<<" in column "<<column<<endl;
-        if (layer <= 0) {
-            layer = EngineProperties::getInstance().getSelectedLayerNumber();
-        }
-        if (layer > Layers::getInstance().count()) {
-            layer =  Layers::getInstance().count();
-        }
-        Set::getInstance().getCurrentScene()->addVisualToInstanceList(visualToAdd, layer, column);
-	}
+    if (visualToAdd == NULL)  return;
+    
+    if (layer <= 0) {
+        layer = EngineProperties::getInstance().getSelectedLayerNumber();
+    }
+    if (layer > Layers::getInstance().count()) {
+        layer =  Layers::getInstance().count();
+    }
+        
+    Set::getInstance().getCurrentScene()->visualInstances.add(visualToAdd, layer, column);
 }
 
 
@@ -531,7 +530,7 @@ void Engine::addVisualToScene(unsigned int visual, unsigned int layer, unsigned 
             }
         }
         
-        Set::getInstance().getCurrentScene()->addVisualToInstanceList(visualToAdd, layer, column);
+        Set::getInstance().getCurrentScene()->visualInstances.add(visualToAdd, layer, column);
     }
 }
 
@@ -548,7 +547,8 @@ void Engine::removeVisualFromScene(unsigned int layer, unsigned int column) {
         stopVisualAtSelectedLayer();
     }
     
-    currentScene->removeVisualInstance(layer, column);
+    //VisualInstances::getInstance().remove(layer, column);
+    currentScene->visualInstances.remove(layer, column);
 }
 
 
@@ -616,7 +616,7 @@ void Engine::render(){
     //  - must have layers
     //  - must have bugger alloced
     if (Layers::getInstance().getList().empty()== true) return;
-    if (this->buffer == NULL) return;
+    if (buffer == NULL) return;
     
     if (osc != NULL) osc->update();
     
@@ -646,19 +646,10 @@ void Engine::render(){
 	}
 	
 	// draw each layer on the engine buffer
-	this->buffer->begin();
+	buffer->begin();
 	ofClear(0, 0, 0, 0);
 	ofEnableAlphaBlending();
-    /*
-    for (
-         LayersListReverseIterator i = layersList.rbegin();
-         i!=layersList.rend();
-         i++
-    ){
-        Layer *layer;
-		
-        layer = (*i);
-     */
+
     for (auto layer:Layers::getInstance().getList()) {
         if (layer!=NULL) {
 			ofSetColor(255, 255, 255, (int) (layer->getProperties()->getAlpha() * 255.0));
@@ -674,7 +665,7 @@ void Engine::render(){
 	}
 	ofDisableAlphaBlending();
 
-	this->buffer->end();
+	buffer->end();
     
     // send the main output syphon
     syphonOutputManager.publishMainOutputScreen(&this->buffer->getTextureReference());

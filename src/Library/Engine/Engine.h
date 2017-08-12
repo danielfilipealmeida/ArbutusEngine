@@ -236,7 +236,7 @@ public:
     
     
     /*!
-     @abstract
+     @abstract ...
      */
    void
     removeVisualFromScene(
@@ -247,7 +247,7 @@ public:
     
     
     /*!
-     @abstract
+     @abstract ...
      */
     Scene
     *getCurrentScene();
@@ -255,7 +255,7 @@ public:
     
     
     /*!
-     @abstract
+     @abstract ...
      */
     Scene
     *getSceneAtIndex(unsigned int index);
@@ -263,7 +263,7 @@ public:
     
     
     /*!
-     @abstract
+     @abstract ...
      */
    unsigned int
     getNumberOfVisuals();
@@ -271,7 +271,7 @@ public:
     
     
     /*!
-     @abstract
+     @abstract ...
      */
     Visual
     *getVisualAtIndex(unsigned int index);
@@ -279,7 +279,7 @@ public:
     
     
     /*!
-     @abstract
+     @abstract ...
      */
     bool
     isSyphonInputLoaded(
@@ -288,7 +288,7 @@ public:
     );
     
     /*!
-     @abstract
+     @abstract ...
      */
     VisualSyphon* getSyphonInput(
                    string serverName,
@@ -299,12 +299,12 @@ public:
 #pragma mark State Handling
     
     /*!
-     @abstract
+     @abstract ...
      */
     json getState();
     
     /*!
-     @abstract
+     @abstract ...
      */
     json getLayersState();
     

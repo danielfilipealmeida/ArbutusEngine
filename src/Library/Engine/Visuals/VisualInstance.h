@@ -36,8 +36,8 @@ using json = nlohmann::json;
 
 /*!
  @class VisualInstance
- @abstract
- @discussion
+ @abstract ...
+ @discussion ...
  */
 class VisualInstance {
     VisualInstancesProperties properties;
@@ -144,24 +144,21 @@ public:
 #pragma mark state handling
     
     /*!
-     @abstract
+     @abstract Returns the state of this visual instance
      */
-    json
-    getState();
+    json getState();
     
     
 #pragma mark Actions
     
     /*!
-     @abstract
+     @abstract Process and execute a requested action
+     @param parameter
+        a string containing the name of what parameter to manipulate
+     @param data
+        a json object with the change to be executed
      */
-    void
-    handleAction(
-                 string parameter,
-                 json data
-                 );
-    
-    
+    void handleAction(string parameter, json data);
     
 private:
     void autoLoadAndAutoPlayVideo();
@@ -172,6 +169,76 @@ private:
 typedef std::list<VisualInstance *> VisualInstanceList;
 typedef VisualInstanceList::iterator VisualInstanceListIterator;
 
+class VisualInstances {
+    VisualInstanceList visualInstanceList;
+    
+public:
+    
+    /**!
+     
+     */
+    unsigned int findIndex(VisualInstance *instance);
 
+    /**!
+     
+     */
+    json getState();
+   
+    /**!
+     
+     */
+    Boolean inColumn(unsigned int column, unsigned int layerN);
+    
+    /**!
+     
+     */    
+    VisualInstance* add(Visual *visual, unsigned int layer, unsigned int column);
+
+    /**!
+     Load the actual file for each Visual Instance in the list
+     */
+    void loadAll();
+    
+    /**!
+     
+     */
+    void remove(unsigned int layer, unsigned int column);
+
+    /**!
+     
+     */
+    void remove(Visual *visual);
+    
+    /**!
+     
+     */
+    void empty();
+
+    /**!
+     
+     */
+    void cleanup();
+    
+    /**!
+     
+     */
+    VisualInstance* get(unsigned int column, unsigned int layerN);
+    
+    
+    /**!
+        Returns the number if Visual Instances in the list
+     */
+    unsigned int count();
+    
+    /**!
+     
+     */
+    int getLastColumnInLayer(unsigned int layer);
+    
+    /**!
+     
+     */
+   void print();
+};
 
 #endif

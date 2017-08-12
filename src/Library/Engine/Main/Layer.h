@@ -72,47 +72,39 @@ public:
      @abstract returns a label to be used on the frontend to tag the layer
      @discussion Concat several information regarding the layer, like ID, blend mode and transparency.
      */
-    string
-    label();
+    string label();
     
     /*!
      @abstract ...
      */
-	void
-    print();
+	void print();
 	
     /*!
      @abstract ...
      */
-	void
-    initBuffer();
+	void initBuffer();
     
     /*!
      @abstract ...
      */
-	void
-    destroyBuffer();
+	void destroyBuffer();
 	
 #pragma mark Video Instances
     
-    
     /*!
      @abstract ...
      */
-	void
-    setActiveVisualInstance(VisualInstance *_activeInstance);
+	void setActiveVisualInstance(VisualInstance *_activeInstance);
 	
     /*!
      @abstract ...
      */
-    void
-    stopActiveVisualInstance();
+    void stopActiveVisualInstance();
 	
     /*!
      @abstract ...
      */
-    VisualInstance*
-    getActiveVisualInstance() {return activeInstance;}
+    VisualInstance* getActiveVisualInstance() {return activeInstance;}
     
     /*!
      @abstract ...

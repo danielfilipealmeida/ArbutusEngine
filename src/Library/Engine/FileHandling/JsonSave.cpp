@@ -19,7 +19,7 @@ JsonSave::save(std::string path, json state) {
     }
     
     // try to save
-    ofBuffer *buffer = new ofBuffer(state.dump());
+    ofBuffer *buffer = new ofBuffer(state.dump(4));
     if (!ofBufferToFile(path, *buffer)) {
         throw "Error saving to file";
     }

@@ -30,19 +30,16 @@ using json = nlohmann::json;
  */
 class Scene {
     string sceneName;
-    unsigned int totalVisualsOnScene;
 
 public:
 	
-	VisualInstanceList visualsInstanceList;
+	VisualInstances visualInstances;
 
     /*!
-     @abstract ...
+     @abstract Scene Object constructor
+     @param  _sceneName a string for the name of the new scene
      */
-	Scene(
-          string _sceneName,
-          unsigned int _totalVisualsOnScene
-    );
+	Scene(string _sceneName);
 	
 
     /*!
@@ -58,30 +55,8 @@ public:
     /*!
      @abstract ...
      */
-    json getInstancesState();
-    
-    
-    /*!
-     @abstract ...
-     */
     VisualInstance  *addVisualToInstanceList(Visual *visual, unsigned int layer, unsigned int column);
 	
-    
-    
-    /**
-     *  traverse the list of Visual instances to find the selected instance
-     *
-     *  @param column the column of the visual
-     *  @param layerN the layer of the visual
-     *
-     *  @return [VisualInstance*] a pointer of the selected visual instance
-     */
-    VisualInstance* getVisualInstance(
-                      unsigned int column,
-                      unsigned int layerN
-    );
-    
-    
     
     /*!
      @abstract ...
@@ -141,18 +116,9 @@ public:
      @abstract ...
      */
     void cleanup();
-	
-    /*!
-     @abstract ...
-     */
-    void loadAllVisuals();
 
     
     
-    /*!
-     @abstract ...
-     */
-    unsigned int getTotalVisualsOnScene () { return totalVisualsOnScene; }
     
     /*!
      @abstract ...
@@ -194,7 +160,7 @@ public:
 
     ScenesList getList();
 
-    void newScene(string sceneTitle, unsigned int nVisuals);
+    void newScene(string sceneTitle);
     void add(Scene *newScene);
     
     void empty();

@@ -10,14 +10,13 @@
 #include "Scene.h"
 
 
-Scene::Scene(string _sceneName, unsigned int _totalVisualsOnScene=0){
+Scene::Scene(string _sceneName){
 	sceneName = _sceneName; 
-	totalVisualsOnScene = _totalVisualsOnScene;
 };
 
 
 Scene::~Scene() {
- 	emptyVisualInstancesList();
+ 	visualInstances.empty();
 }
 
 
@@ -29,7 +28,7 @@ Scene::getState() {
     
     state = json::object({
         {"name", sceneName},
-        {"instances", getInstancesState()}
+        {"instances", visualInstances.getState()}
     });
     
     
@@ -37,24 +36,13 @@ Scene::getState() {
 }
 
 
-json
-Scene::getInstancesState() {
-    json state;
-    
-    for(auto visualInstance:visualsInstanceList) {
-        state.push_back(visualInstance->getState());
-    }
-    
-    return state;
-}
-
 void
 Scene::setName(string newName) {
     sceneName = newName;
 }
 
 
-
+/*
 VisualInstance * Scene::addVisualToInstanceList(Visual *visual, unsigned int layer, unsigned int column) {
 	
 	// check if there is already a visual and the layer/column
@@ -69,9 +57,9 @@ VisualInstance * Scene::addVisualToInstanceList(Visual *visual, unsigned int lay
     
     return instance;
 }
+*/
 
-
-
+/*
 void Scene::removeVisualInstance(unsigned int layer, unsigned int column) {
     
 	for(VisualInstanceListIterator i=visualsInstanceList.begin();
@@ -87,9 +75,9 @@ void Scene::removeVisualInstance(unsigned int layer, unsigned int column) {
 		}
 	}
 }
+*/
 
-
-
+/*
 void Scene::removeVisualInstancesWithVisual(Visual *visual) {
     for(VisualInstanceListIterator i=visualsInstanceList.begin();
         i!=visualsInstanceList.end();
@@ -102,39 +90,12 @@ void Scene::removeVisualInstancesWithVisual(Visual *visual) {
         }
     }
 }
-
-
-
-VisualInstance*
-Scene::getVisualInstance(
-                         unsigned int column,
-                         unsigned int layerN
-) {
-	if (visualsInstanceList.size() == 0) return NULL;
-    
-	for(VisualInstanceListIterator i=visualsInstanceList.begin();
-        i!=visualsInstanceList.end();
-        i++)
-    {
-		VisualInstance            *visualInstance;
-        VisualInstancesProperties properties;
-        
-        visualInstance = *i;
-        properties = *visualInstance->getProperties();
-        
-        if (
-            properties.getLayer()  == layerN &&
-            properties.getColumn() == column
-        ) {
-            return visualInstance;
-        }
-    }
-	return NULL;
-}
+ */
 
 
 
 
+/*
 Boolean Scene::isVisualInstantInColumn(unsigned int column, unsigned int layerN) {
 	Boolean res = false;
 	for(VisualInstanceListIterator i=visualsInstanceList.begin(); i!=visualsInstanceList.end();i++) {
@@ -144,8 +105,9 @@ Boolean Scene::isVisualInstantInColumn(unsigned int column, unsigned int layerN)
 	
 	return res;
 }
-
-
+*/
+ 
+/*
 void Scene::emptyVisualInstancesList() {
 	
     for(VisualInstanceListIterator i=visualsInstanceList.begin(); i!=visualsInstanceList.end();i++) {
@@ -156,9 +118,9 @@ void Scene::emptyVisualInstancesList() {
     
     visualsInstanceList.empty();
 }
+*/
 
-
-
+/*
 int Scene::getLastColumnInLayer(unsigned int layer) {
     int result = -1;
     for(VisualInstanceListIterator i=visualsInstanceList.begin(); i!=visualsInstanceList.end();i++) {
@@ -173,7 +135,7 @@ int Scene::getLastColumnInLayer(unsigned int layer) {
 
     return result;
 }
-
+*/
 
 
 /****************************************************************************/
@@ -182,19 +144,8 @@ int Scene::getLastColumnInLayer(unsigned int layer) {
 
 void Scene::print(){
 	cout << "scene name: "<<sceneName<<endl;
-	cout << "total visuals: "<<totalVisualsOnScene<<endl;
-	cout << "visual instances number: " << visualsInstanceList.size()<<endl;
-	cout << endl;
-	cout << "** VISUAL INSTANCES ****"<<endl;
-	int count = 1;
-	for (VisualInstanceListIterator i = visualsInstanceList.begin();i!=visualsInstanceList.end(); i++){
-		VisualInstance *visualInstance = (*i);
-		cout << "VISUAL INSTANCE "<<count<<":"<<endl;
-		visualInstance->print();
-		count++;
-		cout << endl;;
-	}
-	
+	cout << "total visuals: " << visualInstances.count() << endl;
+    visualInstances.print();
 }
 
 
@@ -203,32 +154,10 @@ void Scene::print(){
 
 
 void Scene::cleanup() {
-    VisualInstanceListIterator  i;
-    VisualInstance              *visualInstance;
-    
-    if (visualsInstanceList.empty()) return;
-    if (visualsInstanceList.size() ==0) return;
-    
-    for(i=visualsInstanceList.begin(); i!=visualsInstanceList.end();i++) {
-        visualInstance = *i;
-        
-        if (visualInstance->checkCloseCondition() == true) {
-            visualInstance->unload();
-        }
-    }
-    
+    visualInstances.cleanup();
 }
 
 
-void Scene::loadAllVisuals() {
-    VisualInstanceListIterator  i;
-    VisualInstance              *visualInstance;
-    
-    for(i = visualsInstanceList.begin(); i != visualsInstanceList.end(); i++) {
-        visualInstance = *i;
-        visualInstance->loadVideo();
-    }
-}
 
 
 //////////////////////////////////////////////////////////////////////
@@ -241,7 +170,7 @@ void Scene::addFreeFrameInstanceToVisualInstance(unsigned int instanceSlotNumber
                                                  unsigned int column,
                                                  unsigned int layerN) {
 	
-	VisualInstance *instance = getVisualInstance(column, layerN);
+	VisualInstance *instance = visualInstances.get(column, layerN);
 	if (instance==NULL) return;
 #ifdef _FREEFRAMEFILTER_H_
 	instance->addFreeFrameInstance(instanceSlotNumber);
@@ -257,7 +186,7 @@ void Scene::removeFreeFrameInstanceToVisualInstance(
 {
 #ifdef _FREEFRAMEFILTER_H_
     VisualInstance *instance;
-    instance = getVisualInstance(column, layerN);;
+    instance = visualInstances.get(column, layerN);;
 	instance->removeFreeFrameInstance(instanceSlotNumber);
 #endif
 }
@@ -280,9 +209,9 @@ ScenesList Scenes::getList() {
 }
 
 
-void Scenes::newScene(string sceneTitle, unsigned int nVisuals) {
+void Scenes::newScene(string sceneTitle) {
     Scene *newScene = NULL;
-    newScene = new Scene(sceneTitle, nVisuals);
+    newScene = new Scene(sceneTitle);
     add(newScene);
 }
 

@@ -23,6 +23,8 @@ TEST_CASE("Empty Sets State","[getState]") {
     REQUIRE(state["layer"].is_null());
     //REQUIRE(state["scenes"].is_null());
     //REQUIRE(state["visuals"].is_null());
+    
+    delete engine;
 };
 
 
@@ -37,10 +39,10 @@ TEST_CASE("State with Layers", "[getState]") {
     
     engine = new Engine();
     layer = Layers::getInstance().add(false);
-    scene = new Scene("my scene", 1);
+    scene = new Scene("my scene");
     visual = new VisualVideo("loop001.mov");
     Set::getInstance().addVisualToList(visual);
-    scene->addVisualToInstanceList(visual, 1, 1);
+    scene->visualInstances.add(visual, 1, 1);
     
     Set::getInstance().addSceneToList(scene);
     
@@ -59,5 +61,7 @@ TEST_CASE("State with Layers", "[getState]") {
     REQUIRE(state["visuals"][0]["caption"] == "loop001.mov");
     REQUIRE(state["visuals"][0]["filePath"] == "../../../data/loop001.mov");
     REQUIRE((int) state["visuals"][0]["type"] == 0);
+    
+    delete engine;
 }
 

@@ -21,18 +21,16 @@ Visual::~Visual() {
     
 }
 
-json
-Visual::getState()
+json Visual::getState()
 {
     json state;
     
-    
     state = json::object({
         {"type", getType()},
-        {"caption", getCaption()}
+        {"caption", getCaption()},
+        {"address", ofToString(this)}
     });
     
-
     return state;
 }
 

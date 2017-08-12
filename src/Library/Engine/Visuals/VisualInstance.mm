@@ -208,10 +208,10 @@ bool VisualInstance::isFreeFrameFilterActive() {
 /**
  * Draws the current visual instance.
  *
- * @param [unsigned int] x
- * @param [unsigned int] y
- * @param [unsigned int] width
- * @param [unsigned int] height
+ * @param [unsigned int] x x position
+ * @param [unsigned int] y y position
+ * @param [unsigned int] width the width
+ * @param [unsigned int] height the height
  */
 void VisualInstance::draw(unsigned int x,
                           unsigned int y,
@@ -621,15 +621,29 @@ json
 VisualInstance::getState() {
     json state;
     
+    /*
     state = json::array({
-        {"Alpha", properties.getAlpha()},
-        {"Brightness", properties.getBrightness()},
-        {"Contrast", properties.getContrast()},
-        {"Saturation", properties.getSaturation()},
-        {"Red", properties.getRed()},
-        {"Green", properties.getGreen()},
-        {"Blue", properties.getBlue()}
+        
+            {"alpha", properties.getAlpha()},
+            {"brightness", properties.getBrightness()},
+            {"contrast", properties.getContrast()},
+            {"saturation", properties.getSaturation()},
+            {"red", properties.getRed()},
+            {"green", properties.getGreen()},
+            {"blue", properties.getBlue()}
+    
+       
     });
+     */
+    
+    
+    state = json::object();
+    state["properties"] = properties.getState();
+    state["videoX"] = videoX;
+    state["videoY"] = videoX;
+    state["videoWidth"] = videoWidth;
+    state["videoHeight"] = videoHeight;
+    state["visual"] = visual->getState();
     
     return state;
 }
@@ -637,11 +651,7 @@ VisualInstance::getState() {
 
 #pragma mark Actions
 
-void
-VisualInstance::handleAction(
-                    string parameter,
-                    json data
-                    ) {
+void VisualInstance::handleAction(string parameter, json data) {
     
     float value;
     //cout << data.dump() << endl;
@@ -723,6 +733,169 @@ VisualInstance::handleAction(
     }
 }
 
+
+
+
+	
+
+#pragma mark VisualInstances
+
+
+unsigned int VisualInstances::findIndex(VisualInstance *instance) {
+    /// traverse the whole list for a visual with the same address
+    return 0;
+}
+
+json VisualInstances::getState() {
+    json state;
+
+    for(auto visualInstance:visualInstanceList) {
+        state.push_back(visualInstance->getState());
+    }
+    
+    return state;
+}
+
+
+VisualInstance * VisualInstances::add(Visual *visual, unsigned int layer, unsigned int column) {
+    if (inColumn(column, layer) == true) {
+        remove(layer, column);
+	}
+ 
+	VisualInstance *instance = new VisualInstance(visual, layer, column);
+	visualInstanceList.push_back(instance);
+	
+    return instance;
+ }
+
+void VisualInstances::remove(unsigned int layer, unsigned int column) {
+    
+    for(VisualInstanceListIterator it = visualInstanceList.begin();
+        it !=visualInstanceList.end();
+        it++) {
+        VisualInstance *visualInstance = *it;
+        if (visualInstance->getProperties()->getLayer () == layer &&
+            visualInstance->getProperties()->getColumn () == column)
+        {
+            visualInstanceList.erase(it);
+            break;
+        }
+    }
+}
+
+void VisualInstances::remove(Visual *visual) {
+    for(VisualInstanceListIterator it = visualInstanceList.begin();
+        it !=visualInstanceList.end();
+        it++) {
+        VisualInstance *visualInstance = *it;
+        if (visualInstance->visual == visual) {
+            visualInstanceList.erase(it);
+        }
+    }
+}
+
+void VisualInstances::empty() {
+    
+    for(auto visualInstance:visualInstanceList) {
+         delete visualInstance;
+    }
+    
+    visualInstanceList.empty();
+}
+
+
+VisualInstance* VisualInstances::get(unsigned int column, unsigned int layerN)
+{
+    if (count() == 0) return NULL;
+    
+    for(auto visualInstance:visualInstanceList)
+    {
+        VisualInstancesProperties properties;
+        
+        properties = *visualInstance->getProperties();
+        
+        if (properties.getLayer()  == layerN &&
+            properties.getColumn() == column)
+        {
+            return visualInstance;
+        }
+    }
+    return NULL;
+}
+
+
+void VisualInstances::loadAll() {
+    for(auto visualInstance:visualInstanceList) {
+        visualInstance->loadVideo();
+    }
+}
+
+
+unsigned int VisualInstances::count() {
+    return (unsigned int) visualInstanceList.size();
+}
+
+Boolean VisualInstances::inColumn(unsigned int column, unsigned int layerN) {
+    Boolean res = false;
+    for(auto visualInstance:visualInstanceList)
+    {
+        if (visualInstance->getProperties()->getLayer () == layerN &&
+            visualInstance->getProperties()->getColumn () == column)
+        {
+         res = true;
+            break;
+        }
+    }
+    
+    return res;
+}
+
+int VisualInstances::getLastColumnInLayer(unsigned int layer) {
+    int result = -1;
+    for(auto visualInstance:visualInstanceList) {
+        unsigned int column = visualInstance->getProperties()->getColumn ();
+         if (visualInstance->getProperties()->getLayer () == layer &&
+            column > result)
+         {
+            result = column;
+             break;
+        }
+    }
+    
+    
+    return result;
+}
+
+
+void VisualInstances::cleanup() {
+    
+    if (count() == 0) return;
+    
+    for(auto visualInstance:visualInstanceList) {
+        if (visualInstance->checkCloseCondition() == true) {
+            visualInstance->unload();
+        }
+    }
+    
+}
+
+
+void VisualInstances::print() {
+    cout << "visual instances number: " << count()<<endl;
+    cout << endl;
+    cout << "** VISUAL INSTANCES ****"<<endl;
+    int count = 1;
+    for (auto visualInstance:visualInstanceList) {
+         cout << "VISUAL INSTANCE " << count << ":"<<endl;
+        visualInstance->print();
+        count++;
+        cout << endl;;
+    }
+}
+
+
+
+
 ///////////////////////////////////////////////////////////////////////////
 
 #pragma mark Free Frame Functions
@@ -730,32 +903,26 @@ VisualInstance::handleAction(
 #ifdef _FREEFRAMEFILTER_H_
 
 void
-VisualInstance::addFreeFrameInstance(
-                                     unsigned int instanceSlotNumber
-)
+VisualInstance::addFreeFrameInstance(unsigned int instanceSlotNumber)
 {
-	// get the free frame from the host
-	FreeFrameFilter *filter = app->engine.freeFrameHost.getFilter(instanceSlotNumber);
-	if (filter == NULL) return;
-	
-	// create an instance
-	FreeFrameFilterInstance *freeFrameInstance = new FreeFrameFilterInstance(&(app->engine.freeFrameHost), filter);
-	
-	// add it to the list
-	freeFrameInstanceList.push_back(freeFrameInstance);
+    FreeFrameFilter *filter;
+    FreeFrameFilterInstance *freeFrameInstance;
+    
+    filter = app->engine.freeFrameHost.getFilter(instanceSlotNumber);
+    if (filter == NULL) {
+        return;
+    }
+    freeFrameInstance = new FreeFrameFilterInstance(&(app->engine.freeFrameHost), filter);
+    freeFrameInstanceList.push_back(freeFrameInstance);
 }
 
 
 
 void
-VisualInstance::removeFreeFrameInstance(
-                                        unsigned int instanceSlotNumber
-                                        )
+VisualInstance::removeFreeFrameInstance(unsigned int instanceSlotNumber)
 {
-	if (instanceSlotNumber >= freeFrameInstanceList.size()) return;
-	freeFrameInstanceList.erase(freeFrameInstanceList.begin()+instanceSlotNumber);
+    if (instanceSlotNumber >= freeFrameInstanceList.size()) return;
+    freeFrameInstanceList.erase(freeFrameInstanceList.begin()+instanceSlotNumber);
 }
-
-
 
 #endif
