@@ -13,6 +13,7 @@
 #include "Utils.h"
 #include "SetFile.hpp"
 
+
 #ifdef app
 extern AppProtocol *app;
 #endif
@@ -24,17 +25,19 @@ Engine *enginePtr = NULL;
 
 void Engine::setDefaults() {
     layersPreview_Columns = 3;
-    
+    buffer = NULL;
+    setOpened = false;
 }
+
+void Engine::setupSyphon() {
+
+ }
 
 
 Engine::Engine() {
     if (enginePtr != NULL) return;
-    
     enginePtr = this;
-    buffer = NULL;
-    setOpened = false;
-    
+
     setDefaults();
     
 	// init the free frame filters
@@ -51,20 +54,16 @@ Engine::Engine() {
     osc = new Osc(1234);
      */
     
-    
-    // setup some syphon outputs. this is temporary. needs to be controlled by the user and stored on the file
-    syphonOutputManager.setMainOutputActive(true);
-    syphonOutputManager.setSyphonMainOutput("Main Output");
-    for (unsigned int i=0;i<4;i++) {
-        syphonOutputManager.setChannelOutputActive(i, true);
-        syphonOutputManager.setSyphonChannelOutput(i, "Channel " + ofToString(i+1));
-    }
+    setupSyphon();
     
     setAppSupportDir(ofFilePath::getUserHomeDir().append("/Library/Application Support/Arbutus"));
 }
 
 Engine::~Engine() {
 	destroyBuffer();
+    Scenes::getInstance().cleanup();
+    
+    // clean visual lists
     
     enginePtr = NULL;
 }
@@ -84,7 +83,7 @@ json
 Engine::getState() {
     json state;
     
-    state["visuals"] = Set::getInstance().getVisualsState();
+    state["visuals"] = Visuals::getInstance().getState();
     state["layers"] = getLayersState();
     state["scenes"] = Set::getInstance().getScenesState();
     
@@ -109,19 +108,19 @@ json Engine::getLayersState() {
 
 
 bool
-Engine::newSet(
-               unsigned int _width,
-               unsigned int _height,
-               unsigned int _layers
-) {
+Engine::newSet(unsigned int _width, unsigned int _height, unsigned int _layers)
+{
 	closeSet();
-    if (_width>0)  {
+    if (_width>0)
+    {
         EngineProperties::getInstance().setMixerWidth(_width);
     }
-    if (_height>0) {
+    if (_height>0)
+    {
         EngineProperties::getInstance().setMixerHeight(_height);
     }
-    if (_layers>0) {
+    if (_layers>0)
+    {
         EngineProperties::getInstance().setNumberOfLayers(_layers);
     };
 	Set::getInstance().newSet(_width, _height, _layers);
@@ -503,7 +502,7 @@ Engine::addVisualToSceneListInCurrentLayer(
                                            unsigned int column
                                            )
 {
-	Visual *visualToAdd = Set::getInstance().getVisualFromList(visual);
+	Visual *visualToAdd = Visuals::getInstance().get(visual);
 	
     if (visualToAdd == NULL)  return;
     
@@ -520,7 +519,7 @@ Engine::addVisualToSceneListInCurrentLayer(
 
 
 void Engine::addVisualToScene(unsigned int visual, unsigned int layer, unsigned int column) {
-    Visual *visualToAdd = Set::getInstance().getVisualFromList(visual);
+    Visual *visualToAdd = Visuals::getInstance().get(visual);
     
     if (visualToAdd != NULL) {
             // check if the current layer exists. if not, add it and all before
@@ -562,11 +561,11 @@ Scene *Engine::getSceneAtIndex(unsigned int index) {
 }
 
 unsigned int Engine::getNumberOfVisuals() {
-    return Set::getInstance().getNumberOfVisuals();
+    return Visuals::getInstance().count();
 }
 
 Visual* Engine::getVisualAtIndex(unsigned int index) {
-    return Set::getInstance().getVisualFromList(index);
+    return Visuals::getInstance().get(index);
 }
 
 

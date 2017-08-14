@@ -17,8 +17,8 @@
 
 /*!
  @class VisualVideo
- @abstract
- @discussion
+ @abstract ...
+ @discussion ...
  */
 class VisualVideo : public Visual {
 

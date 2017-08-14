@@ -249,3 +249,16 @@ Scene* Scenes::get(unsigned int index) {
     }
     return NULL;
 }
+
+void Scenes::cleanup() {
+    for (ScenesListIterator it = scenesList.begin();
+         it!=scenesList.end();
+         it++)
+    {
+        Scene *scene = *it;
+        
+        delete scene;
+    }
+    scenesList.clear();
+    
+}

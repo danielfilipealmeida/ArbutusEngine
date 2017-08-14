@@ -25,7 +25,7 @@
 #include "AppProtocol.h"
 #include "json.hpp"
 #include "EngineProperties.h"
-
+#include "Visuals.h"
 
 
 
@@ -80,6 +80,17 @@ public:
      @abstract Singleton instance getter
      */
     static Engine* getInstance();
+    
+    
+#pragma mark Setup methods
+    
+
+    /*!
+     @abstract setup some syphon outputs
+     this is temporary. needs to be controlled by the user and stored on the file
+    
+     */
+    void setupSyphon();
 	
 	/*******************************************************************
 	 * Set functions
@@ -202,13 +213,13 @@ public:
     
     
     /*!
-     @abstract
+     @abstract ...
      */
     void stopVisualAtLayer(unsigned int layerN);
     
     
     /*!
-     @abstract
+     @abstract ...
      */
     LayerProperties  *getPropertiesOfCurrentLayer();
     

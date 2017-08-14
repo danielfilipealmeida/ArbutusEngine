@@ -166,6 +166,8 @@ public:
     void empty();
     
     Scene* get(unsigned int index);
+    
+    void cleanup();
 };
 
 #endif

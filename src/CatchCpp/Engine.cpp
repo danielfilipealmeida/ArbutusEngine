@@ -41,7 +41,7 @@ TEST_CASE("State with Layers", "[getState]") {
     layer = Layers::getInstance().add(false);
     scene = new Scene("my scene");
     visual = new VisualVideo("loop001.mov");
-    Set::getInstance().addVisualToList(visual);
+    Visuals::getInstance().add((Visual *)visual);
     scene->visualInstances.add(visual, 1, 1);
     
     Set::getInstance().addSceneToList(scene);

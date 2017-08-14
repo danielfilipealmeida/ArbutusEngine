@@ -34,7 +34,7 @@ class Set {
     Scene *currentScene;
     
     // cleaning up
-    VisualsList		visualsList;
+    //VisualsList		visualsList; // passar para um singleton
     //ScenesList scenesList;
     
     /**!
@@ -61,11 +61,7 @@ public:
      */
     json getScenesState();
     
-    /**!
-     @abstract ...
-     */
-    json getVisualsState();
-	
+
     /**!
      @abstract ...
      */
@@ -98,28 +94,6 @@ public:
     void saveSetAs(string _filePath);
     
 	
-    /**!
-     @abstract ...
-     */
-    unsigned int getNumberOfVisuals();
-    
-    
-    /**!
-     @abstract ...
-     */
-    void
-    addVisualToList(Visual *visual);
-    
-    /**!
-     @abstract ...
-     */
-	Visual *getVisualFromList(int pos);
-    
-    /**!
-     @abstract ...
-     */
-	Boolean isFileInVisualsList(string filePath);
-    
     /**!
      @abstract ...
      */
@@ -266,11 +240,6 @@ public:
      @abstract ...
      */
     unsigned int getCurrentSceneNumber () { return currentSceneNumber; }
-    
-    /**!
-     @abstract ...
-     */
-    VisualsList* getVisualsList () { return &visualsList; }
     
     /**!
      @abstract ...

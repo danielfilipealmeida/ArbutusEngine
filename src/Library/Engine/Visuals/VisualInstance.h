@@ -177,7 +177,7 @@ public:
     /**!
      
      */
-    unsigned int findIndex(VisualInstance *instance);
+    unsigned int getIndex(VisualInstance *instance);
 
     /**!
      

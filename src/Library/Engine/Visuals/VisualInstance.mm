@@ -208,10 +208,10 @@ bool VisualInstance::isFreeFrameFilterActive() {
 /**
  * Draws the current visual instance.
  *
- * @param [unsigned int] x x position
- * @param [unsigned int] y y position
- * @param [unsigned int] width the width
- * @param [unsigned int] height the height
+ * @param  x x position
+ * @param  y y position
+ * @param width the width
+ * @param height the height
  */
 void VisualInstance::draw(unsigned int x,
                           unsigned int y,
@@ -621,22 +621,6 @@ json
 VisualInstance::getState() {
     json state;
     
-    /*
-    state = json::array({
-        
-            {"alpha", properties.getAlpha()},
-            {"brightness", properties.getBrightness()},
-            {"contrast", properties.getContrast()},
-            {"saturation", properties.getSaturation()},
-            {"red", properties.getRed()},
-            {"green", properties.getGreen()},
-            {"blue", properties.getBlue()}
-    
-       
-    });
-     */
-    
-    
     state = json::object();
     state["properties"] = properties.getState();
     state["videoX"] = videoX;
@@ -728,29 +712,32 @@ void VisualInstance::handleAction(string parameter, json data) {
             LoopMode loopMode = (LoopMode) round(value);
             properties.setLoopMode(loopMode);
             break;
-
-            
     }
 }
 
 
 
 
-	
-
 #pragma mark VisualInstances
 
 
-unsigned int VisualInstances::findIndex(VisualInstance *instance) {
-    /// traverse the whole list for a visual with the same address
-    return 0;
+unsigned int VisualInstances::getIndex(VisualInstance *instance) {
+    unsigned int counter = 0;
+    for(auto visualInstance:visualInstanceList) {
+        if (visualInstance == instance) break;
+        
+        counter++;
+    }
+    return counter;
 }
 
 json VisualInstances::getState() {
     json state;
 
     for(auto visualInstance:visualInstanceList) {
-        state.push_back(visualInstance->getState());
+        json instanteState = visualInstance->getState();
+        instanteState["index"] = getIndex(visualInstance);
+        state.push_back(instanteState);
     }
     
     return state;

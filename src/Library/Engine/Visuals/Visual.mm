@@ -12,7 +12,6 @@
 
 Visual::Visual() {
     caption = "Untitled";
-	
 }
 
 Visual::~Visual() {
@@ -95,6 +94,10 @@ void Visual::createThumbnail(){
 /** geters and setters ***/
 
 
-string Visual::getCaption() {
+string Visual::getCaption()
+{
     return caption;
 }
+
+
+

@@ -89,4 +89,3 @@ typedef VisualsList::iterator VisualsListIterator;
 
 
 #endif
-

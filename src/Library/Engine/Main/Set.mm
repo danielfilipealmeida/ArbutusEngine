@@ -20,6 +20,7 @@
 #include "VisualCamera.h"
 #include "VisualSyphon.h"
 #include "EngineProperties.h"
+#include "Visuals.h"
 
 
 extern Engine *enginePtr;
@@ -83,17 +84,6 @@ Set::getScenesState() {
     
     for(auto scene:Scenes::getInstance().getList()) {
         state.push_back(scene->getState());
-    }
-    
-    return state;
-}
-
-json
-Set::getVisualsState() {
-    json state;
-    
-    for(auto visual:visualsList) {
-        state.push_back(visual->getState());
     }
     
     return state;
@@ -401,9 +391,8 @@ void Set::saveSet() {
 
 
 void Set::closeSet() {
-	emptyVisualsList();
-	//emptyScenesList();
-    Scenes::getInstance().empty();
+    Visuals::getInstance().empty();
+	Scenes::getInstance().empty();
     loaded = false;
 }
 
@@ -412,51 +401,9 @@ void Set::closeSet() {
 #pragma mark Visuals Management
 
 
-void Set::addVisualToList(Visual *visual) {
-	if (visual==NULL) return;
-	visualsList.push_back(visual);
-}
-
-Boolean	Set::isFileInVisualsList(string filePath) {
-	Boolean found = false;
-	
-	if (visualsList.empty() != true) {
-		
-		for (VisualsListIterator i = visualsList.begin();
-			 i != visualsList.end();
-             i++)
-        {
-			Visual *visual = ((Visual *) *i);
-            
-            switch (visual->getType()) {
-                case VisualType_Video:
-                    if (filePath.compare(((VisualVideo*)visual)->getFilePath () ) == 0 ) return true;
-                    break;
-                    
-                case VisualType_Camera:
-                    break;
-                    
-                case VisualType_Generator:
-                    
-                    break;
-                    
-                case VisualType_Syphon:
-                    
-                    break;
-                    
-            }
-            
-			
-		}
-	}
-	return found;
-}
 
 
-unsigned int Set::getNumberOfVisuals() {
-    return visualsList.size();
-    
-}
+
 
 
 
@@ -473,11 +420,11 @@ Set::addVisualVideoToListFromFile(
 	Boolean result;
 
 	// check if the visual is already on the list
-	if (isFileInVisualsList(filePath)) return;
+    if (Visuals::getInstance().isFileInList(filePath)) return;
 	
 	visual = new VisualVideo(filePath);
     //NSLog(@"Loading visual into %x an file %s",(unsigned int) visual, filePath.c_str());
-	addVisualToList((Visual *)visual);
+	Visuals::getInstance().add((Visual *)visual);
 }
 
 
@@ -489,7 +436,7 @@ void Set::addVisualCameraToList(unsigned int id, unsigned int rate, unsigned int
     //if (isCameraInVisualList(id)) return;
     
     visual = new VisualCamera(id, rate, w, h);
-    addVisualToList((Visual *)visual);    
+    Visuals::getInstance().add((Visual *)visual);
 }
 
 
@@ -497,29 +444,10 @@ void Set::addVisualSyphonToList(string serverName, string appName){
     VisualSyphon *visual;
     
     visual = new VisualSyphon(serverName, appName);
-    addVisualToList(visual);
-    
-}
-
-// traverse the Visuals list and return the visual
-Visual* Set::getVisualFromList(int pos){
-	int counter = 0;
-	
-	// traverse
-	for (VisualsListIterator i = visualsList.begin();i!=visualsList.end(); i++){
-		Visual *visual = (*i);
-		if (counter == pos) return visual;
-        counter++;
-	}
-	return NULL;
+    Visuals::getInstance().add((Visual *)visual);
 }
 
 
-void Set::emptyVisualsList(){
-	while (!visualsList.empty()){
-		visualsList.pop_front();
-	}
-}
 
 
 
@@ -654,20 +582,13 @@ void Set::print() {
 	cout << endl;
 	
 	cout << "** VISUALS *******************************************************************"<<endl;
-	cout << "number of visuals: "<<visualsList.size()<<endl;
-	int count = 1;
-	for (VisualsListIterator i = visualsList.begin();i!=visualsList.end(); i++){
-		cout << endl;
-		Visual *visual = (*i);
-		cout << "VISUAL "<<count<<":"<<endl;
-		visual->print();
-		count++;
-	}
+    cout << "number of visuals: " << Visuals::getInstance().count() << endl;
+    Visuals::getInstance().print();
 	cout << endl;
 	
 	cout << "** SCENES ********************************************************************"<<endl;
 	cout << "number of scenes: " << scenesList.size() << endl;
-	count = 1;
+	unsigned int count = 1;
     
     
     for (auto scene:scenesList){
