@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		6504CA6E1ECE4E0000355E4A /* Loop001.mp4 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6504CA6B1ECE4DCC00355E4A /* Loop001.mp4 */; };
+		6511F61B1F388F7000B750C2 /* VisualInstancesPropertiesTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6511F61A1F388F7000B750C2 /* VisualInstancesPropertiesTest.cpp */; };
+		651E5BA81F2E1673008B4FEF /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 651E5BA71F2E1673008B4FEF /* Utils.cpp */; };
+		651E5BA91F2E1673008B4FEF /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 651E5BA71F2E1673008B4FEF /* Utils.cpp */; };
+		65324F9D1F324187007C9FCF /* SetFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65324F9B1F324187007C9FCF /* SetFile.cpp */; };
+		65324F9E1F324187007C9FCF /* SetFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65324F9B1F324187007C9FCF /* SetFile.cpp */; };
+		65324F9F1F324187007C9FCF /* SetFile.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65324F9C1F324187007C9FCF /* SetFile.hpp */; };
+		65324FAC1F35D280007C9FCF /* JsonLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65324FAB1F35D280007C9FCF /* JsonLoad.cpp */; };
+		65324FAD1F35D280007C9FCF /* JsonLoad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65324FAB1F35D280007C9FCF /* JsonLoad.cpp */; };
 		655BFAF91E7355BD00B74446 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BFAF81E7355BD00B74446 /* CoreMIDI.framework */; };
 		655BFAFA1E7358C000B74446 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81461DF8D96500331165 /* UdpSocket.cpp */; };
 		655BFAFB1E735A3D00B74446 /* IpEndpointName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81401DF8D96500331165 /* IpEndpointName.cpp */; };
@@ -16,11 +24,10 @@
 		655BFB001E735F3E00B74446 /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E8966A1E73098F000D470B /* Engine.cpp */; };
 		655BFB021E73673000B74446 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 655BFB011E73673000B74446 /* Layer.cpp */; };
 		657E13FA1E85D6D900DDE6D2 /* Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 657E13F91E85D6D900DDE6D2 /* Utils.h */; };
-		65CCD0371F2C7E4F00EB2AC5 /* test001.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65CCD0361F2C7E3B00EB2AC5 /* test001.json */; };
 		65CCD0391F2C7EA600EB2AC5 /* JsonLoadTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CCD0381F2C7EA600EB2AC5 /* JsonLoadTest.cpp */; };
 		65CCD0471F2CACA900EB2AC5 /* Engine.h in Headers */ = {isa = PBXBuildFile; fileRef = 65CCD0461F2CACA900EB2AC5 /* Engine.h */; };
-		65D3A5CE1F2A9B8600CE6885 /* JsonSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5CC1F2A9B8600CE6885 /* JsonSave.cpp */; };
-		65D3A5CF1F2A9B8600CE6885 /* JsonSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5CC1F2A9B8600CE6885 /* JsonSave.cpp */; };
+		65CCD04F1F2CC30400EB2AC5 /* EngineProperties.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65CCD04D1F2CC30400EB2AC5 /* EngineProperties.mm */; };
+		65CCD0501F2CC30400EB2AC5 /* EngineProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 65CCD04E1F2CC30400EB2AC5 /* EngineProperties.h */; };
 		65D3A5D01F2A9B8600CE6885 /* JsonLoad.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65D3A5CD1F2A9B8600CE6885 /* JsonLoad.hpp */; };
 		65D3A5D51F2A9BCF00CE6885 /* JsonSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5D31F2A9BCF00CE6885 /* JsonSave.cpp */; };
 		65D3A5D61F2A9BCF00CE6885 /* JsonSave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5D31F2A9BCF00CE6885 /* JsonSave.cpp */; };
@@ -30,7 +37,6 @@
 		65E21BC81EC6764F006D1C37 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E21BC61EC6764F006D1C37 /* ofApp.cpp */; };
 		65E896661E730453000D470B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E896651E730453000D470B /* main.cpp */; };
 		65E8967F1E733433000D470B /* libArbutusLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A186601DF8DF9200BE0219 /* libArbutusLib.a */; };
-		65E896801E733441000D470B /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		65E896811E733454000D470B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E8967B1E73311F000D470B /* Foundation.framework */; };
 		65E896821E73347B000D470B /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BC812F1DF8D94600331165 /* Syphon.framework */; };
 		65E896861E733920000D470B /* Syphon.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 65E896851E733920000D470B /* Syphon.framework */; };
@@ -56,7 +62,6 @@
 		65E8969F1E734F02000D470B /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81531DF8D96500331165 /* OscPrintReceivedElements.cpp */; };
 		65E896A01E734F05000D470B /* OscOutboundPacketStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81501DF8D96500331165 /* OscOutboundPacketStream.cpp */; };
 		65E896A11E734F37000D470B /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65C1EB171E6E1D16003F731D /* RtMidi.cpp */; };
-		65EE9A7D1E15AA7D008C2091 /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		65EE9A7E1E15AA89008C2091 /* Action.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC80FC1DF8D8BB00331165 /* Action.h */; };
 		65EE9A7F1E15AA89008C2091 /* Action.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC80FD1DF8D8BB00331165 /* Action.mm */; };
 		65EE9A801E15AA89008C2091 /* AppProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC80FE1DF8D8BB00331165 /* AppProtocol.h */; };
@@ -99,43 +104,19 @@
 		65EE9AA81E15AA89008C2091 /* VisualSyphon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81271DF8D8BB00331165 /* VisualSyphon.mm */; };
 		65EE9AA91E15AA89008C2091 /* VisualVideo.h in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81281DF8D8BB00331165 /* VisualVideo.h */; };
 		65EE9AAA1E15AA89008C2091 /* VisualVideo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81291DF8D8BB00331165 /* VisualVideo.mm */; };
+		65EF0A1B1F424DC900C5FB69 /* Visuals.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65EF0A191F424DC900C5FB69 /* Visuals.mm */; };
+		65EF0A1C1F424DC900C5FB69 /* Visuals.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65EF0A191F424DC900C5FB69 /* Visuals.mm */; };
+		65EF0A1D1F424DC900C5FB69 /* Visuals.h in Headers */ = {isa = PBXBuildFile; fileRef = 65EF0A1A1F424DC900C5FB69 /* Visuals.h */; };
+		65F6C5411F42F08A00270C51 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 65F6C5401F42F08A00270C51 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		65AFA9541E84834300A1FA8D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 65FE2A221E7C0D25008ABDCE;
-			remoteInfo = tests;
-		};
 		65E896751E733026000D470B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E4B69B4C0A3A1720003C02F2 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 65A1865F1DF8DF9200BE0219;
 			remoteInfo = ArbutusLib;
-		};
-		65E896771E733026000D470B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
-			remoteInfo = openFrameworks;
-		};
-		65EE9A7B1E15AA6F008C2091 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
-			remoteInfo = openFrameworks;
-		};
-		E4328147138ABC890047C5CB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E4B27C1510CBEB8E00536013;
-			remoteInfo = openFrameworks;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -156,7 +137,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				65CCD0371F2C7E4F00EB2AC5 /* test001.json in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +156,12 @@
 
 /* Begin PBXFileReference section */
 		6504CA6B1ECE4DCC00355E4A /* Loop001.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Loop001.mp4; sourceTree = "<group>"; };
+		6511F61A1F388F7000B750C2 /* VisualInstancesPropertiesTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VisualInstancesPropertiesTest.cpp; path = Properties/VisualInstancesPropertiesTest.cpp; sourceTree = "<group>"; };
+		651E5BA71F2E1673008B4FEF /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
+		65324F9B1F324187007C9FCF /* SetFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SetFile.cpp; sourceTree = "<group>"; };
+		65324F9C1F324187007C9FCF /* SetFile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SetFile.hpp; sourceTree = "<group>"; };
+		65324FAB1F35D280007C9FCF /* JsonLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLoad.cpp; sourceTree = "<group>"; };
+		65324FB61F373E62007C9FCF /* test002.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = test002.json; path = Fixtures/FileHandling/test002.json; sourceTree = "<group>"; };
 		655BFAF81E7355BD00B74446 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		655BFB011E73673000B74446 /* Layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = "<group>"; };
 		657E13F91E85D6D900DDE6D2 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
@@ -305,7 +291,8 @@
 		65CCD0361F2C7E3B00EB2AC5 /* test001.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = test001.json; path = Fixtures/FileHandling/test001.json; sourceTree = "<group>"; };
 		65CCD0381F2C7EA600EB2AC5 /* JsonLoadTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JsonLoadTest.cpp; path = FileHandling/JsonLoadTest.cpp; sourceTree = "<group>"; };
 		65CCD0461F2CACA900EB2AC5 /* Engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
-		65D3A5CC1F2A9B8600CE6885 /* JsonSave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonSave.cpp; sourceTree = "<group>"; };
+		65CCD04D1F2CC30400EB2AC5 /* EngineProperties.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EngineProperties.mm; sourceTree = "<group>"; };
+		65CCD04E1F2CC30400EB2AC5 /* EngineProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineProperties.h; sourceTree = "<group>"; };
 		65D3A5CD1F2A9B8600CE6885 /* JsonLoad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = JsonLoad.hpp; sourceTree = "<group>"; };
 		65D3A5D31F2A9BCF00CE6885 /* JsonSave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonSave.cpp; sourceTree = "<group>"; };
 		65D3A5D41F2A9BCF00CE6885 /* JsonSave.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = JsonSave.hpp; sourceTree = "<group>"; };
@@ -322,9 +309,10 @@
 		65E8967B1E73311F000D470B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65E896851E733920000D470B /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Syphon.framework; path = ../../../addons/ofxSyphon/libs/Syphon/lib/osx/Syphon.framework; sourceTree = "<group>"; };
 		65E896871E733975000D470B /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodex.dylib; path = ../../../libs/fmodex/lib/osx/libfmodex.dylib; sourceTree = "<group>"; };
-		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
+		65EF0A191F424DC900C5FB69 /* Visuals.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Visuals.mm; sourceTree = "<group>"; };
+		65EF0A1A1F424DC900C5FB69 /* Visuals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Visuals.h; sourceTree = "<group>"; };
+		65F6C5401F42F08A00270C51 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
-		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -333,7 +321,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65EE9A7D1E15AA7D008C2091 /* openFrameworksDebug.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +330,6 @@
 			files = (
 				655BFAF91E7355BD00B74446 /* CoreMIDI.framework in Frameworks */,
 				65E896811E733454000D470B /* Foundation.framework in Frameworks */,
-				65E896801E733441000D470B /* openFrameworksDebug.a in Frameworks */,
 				65E8967F1E733433000D470B /* libArbutusLib.a in Frameworks */,
 				65E896821E73347B000D470B /* Syphon.framework in Frameworks */,
 			);
@@ -352,12 +338,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6504CA6A1ECE4DCC00355E4A /* TestData */ = {
+		6504CA6A1ECE4DCC00355E4A /* Test Data */ = {
 			isa = PBXGroup;
 			children = (
 				6504CA6B1ECE4DCC00355E4A /* Loop001.mp4 */,
 			);
+			name = "Test Data";
 			path = TestData;
+			sourceTree = "<group>";
+		};
+		6511F6181F388F2400B750C2 /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				6511F61A1F388F7000B750C2 /* VisualInstancesPropertiesTest.cpp */,
+			);
+			name = Properties;
 			sourceTree = "<group>";
 		};
 		651767101F2BF3720011D409 /* Fixtures */ = {
@@ -372,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				65CCD0361F2C7E3B00EB2AC5 /* test001.json */,
+				65324FB61F373E62007C9FCF /* test002.json */,
 			);
 			name = FileHandling;
 			sourceTree = "<group>";
@@ -379,6 +375,8 @@
 		659E25D41E70BCAE00217A12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65E896871E733975000D470B /* libfmodex.dylib */,
+				65E896851E733920000D470B /* Syphon.framework */,
 				655BFAF81E7355BD00B74446 /* CoreMIDI.framework */,
 				65E8967B1E73311F000D470B /* Foundation.framework */,
 				659E25D51E70BCAE00217A12 /* CoreVideo.framework */,
@@ -400,7 +398,6 @@
 				65CCD0451F2CAA7800EB2AC5 /* Main */,
 				65CCD0441F2CA94700EB2AC5 /* Misc */,
 				65CCD0431F2CA73400EB2AC5 /* Effects */,
-				65CCD0401F2CA5CC00EB2AC5 /* __Deprecated */,
 				65CCD0421F2CA6FE00EB2AC5 /* Outputs */,
 				65BC810F1DF8D8BB00331165 /* Properties */,
 				65CCD03E1F2CA11300EB2AC5 /* Visuals */,
@@ -408,6 +405,7 @@
 				65CCD0411F2CA6EC00EB2AC5 /* Inputs */,
 				65BC81021DF8D8BB00331165 /* Engine.mm */,
 				65CCD0461F2CACA900EB2AC5 /* Engine.h */,
+				65CCD0401F2CA5CC00EB2AC5 /* __Deprecated */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -423,6 +421,8 @@
 				65BC81151DF8D8BB00331165 /* SetProperties.mm */,
 				65BC81161DF8D8BB00331165 /* VisualInstancesProperties.h */,
 				65BC81171DF8D8BB00331165 /* VisualInstancesProperties.mm */,
+				65CCD04D1F2CC30400EB2AC5 /* EngineProperties.mm */,
+				65CCD04E1F2CC30400EB2AC5 /* EngineProperties.h */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -714,6 +714,8 @@
 				65BC81271DF8D8BB00331165 /* VisualSyphon.mm */,
 				65BC81281DF8D8BB00331165 /* VisualVideo.h */,
 				65BC81291DF8D8BB00331165 /* VisualVideo.mm */,
+				65EF0A191F424DC900C5FB69 /* Visuals.mm */,
+				65EF0A1A1F424DC900C5FB69 /* Visuals.h */,
 			);
 			path = Visuals;
 			sourceTree = "<group>";
@@ -763,6 +765,7 @@
 				65BC81091DF8D8BB00331165 /* Metronome.h */,
 				65BC810A1DF8D8BB00331165 /* Metronome.mm */,
 				657E13F91E85D6D900DDE6D2 /* Utils.h */,
+				651E5BA71F2E1673008B4FEF /* Utils.cpp */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -787,10 +790,12 @@
 		65D3A5D21F2A9B8D00CE6885 /* FileHandling */ = {
 			isa = PBXGroup;
 			children = (
-				65D3A5CC1F2A9B8600CE6885 /* JsonSave.cpp */,
+				65324FAB1F35D280007C9FCF /* JsonLoad.cpp */,
 				65D3A5CD1F2A9B8600CE6885 /* JsonLoad.hpp */,
 				65D3A5D31F2A9BCF00CE6885 /* JsonSave.cpp */,
 				65D3A5D41F2A9BCF00CE6885 /* JsonSave.hpp */,
+				65324F9B1F324187007C9FCF /* SetFile.cpp */,
+				65324F9C1F324187007C9FCF /* SetFile.hpp */,
 			);
 			path = FileHandling;
 			sourceTree = "<group>";
@@ -824,6 +829,7 @@
 		65E896641E730453000D470B /* CatchCpp */ = {
 			isa = PBXGroup;
 			children = (
+				6511F6181F388F2400B750C2 /* Properties */,
 				651767101F2BF3720011D409 /* Fixtures */,
 				65D3A5D81F2AA0FA00CE6885 /* FileHandling */,
 				65E21BC61EC6764F006D1C37 /* ofApp.cpp */,
@@ -855,32 +861,21 @@
 			name = addons;
 			sourceTree = "<group>";
 		};
-		E4328144138ABC890047C5CB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E4328148138ABC890047C5CB /* openFrameworksDebug.a */,
-				65AFA9551E84834300A1FA8D /* tests */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				65E896871E733975000D470B /* libfmodex.dylib */,
-				65E896851E733920000D470B /* Syphon.framework */,
-				65E896521E72E839000D470B /* scripts */,
+				65F6C5401F42F08A00270C51 /* README.md */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				65E896641E730453000D470B /* CatchCpp */,
-				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				6948EE371B920CB800B5AC1A /* local_addons */,
-				65A186601DF8DF9200BE0219 /* libArbutusLib.a */,
 				659E25D41E70BCAE00217A12 /* Frameworks */,
+				65E896521E72E839000D470B /* scripts */,
+				65A186601DF8DF9200BE0219 /* libArbutusLib.a */,
 				65E896631E72F420000D470B /* Catch Tests */,
-				6504CA6A1ECE4DCC00355E4A /* TestData */,
+				6504CA6A1ECE4DCC00355E4A /* Test Data */,
 			);
 			sourceTree = "<group>";
 		};
@@ -893,15 +888,6 @@
 			path = src;
 			sourceTree = SOURCE_ROOT;
 		};
-		E4EEC9E9138DF44700A80321 /* openFrameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */,
-				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
-			);
-			name = openFrameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -910,8 +896,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				65CCD0471F2CACA900EB2AC5 /* Engine.h in Headers */,
+				65EF0A1D1F424DC900C5FB69 /* Visuals.h in Headers */,
 				65D3A5D01F2A9B8600CE6885 /* JsonLoad.hpp in Headers */,
 				657E13FA1E85D6D900DDE6D2 /* Utils.h in Headers */,
+				65324F9F1F324187007C9FCF /* SetFile.hpp in Headers */,
+				65CCD0501F2CC30400EB2AC5 /* EngineProperties.h in Headers */,
 				65D3A5D71F2A9BCF00CE6885 /* JsonSave.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -931,7 +920,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				65EE9A7C1E15AA6F008C2091 /* PBXTargetDependency */,
 			);
 			name = ArbutusLib;
 			productName = ArbutusLib;
@@ -953,7 +941,6 @@
 			);
 			dependencies = (
 				65E896761E733026000D470B /* PBXTargetDependency */,
-				65E896781E733026000D470B /* PBXTargetDependency */,
 			);
 			name = "Catch Tests";
 			productName = catch;
@@ -991,12 +978,6 @@
 			mainGroup = E4B69B4A0A3A1720003C02F2;
 			productRefGroup = E4B69B4A0A3A1720003C02F2;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = E4328144138ABC890047C5CB /* Products */;
-					ProjectRef = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				65A1865F1DF8DF9200BE0219 /* ArbutusLib */,
@@ -1004,23 +985,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		65AFA9551E84834300A1FA8D /* tests */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = tests;
-			remoteRef = 65AFA9541E84834300A1FA8D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E4328148138ABC890047C5CB /* openFrameworksDebug.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = openFrameworksDebug.a;
-			remoteRef = E4328147138ABC890047C5CB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		65E896691E730647000D470B /* ShellScript */ = {
@@ -1034,7 +998,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"copying lib fmodex\"\nrsync -aved ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR\";\n";
+			shellScript = "echo \"copying lib fmodex\"\nrsync -aved \"$OF_LIBS_PATH\"/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR\";\n";
 		};
 		65E896841E73377E000D470B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1047,7 +1011,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#echo \"copying fmodex lib into $TARGET_BUILD_DIR\"\n#rsync -aved ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR\";\n#cp ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR\";\n\n";
+			shellScript = "echo \"Copying fixtures\"\ncp -R src/CatchCpp/Fixtures \"$TARGET_BUILD_DIR\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1059,7 +1023,7 @@
 				65EE9A7E1E15AA89008C2091 /* Action.h in Sources */,
 				65EE9A7F1E15AA89008C2091 /* Action.mm in Sources */,
 				65EE9A801E15AA89008C2091 /* AppProtocol.h in Sources */,
-				65D3A5CE1F2A9B8600CE6885 /* JsonSave.cpp in Sources */,
+				65CCD04F1F2CC30400EB2AC5 /* EngineProperties.mm in Sources */,
 				65EE9A811E15AA89008C2091 /* Controller.h in Sources */,
 				65EE9A821E15AA89008C2091 /* Controller.mm in Sources */,
 				65EE9A841E15AA89008C2091 /* Engine.mm in Sources */,
@@ -1068,6 +1032,7 @@
 				65EE9A891E15AA89008C2091 /* Layer.h in Sources */,
 				65EE9A8A1E15AA89008C2091 /* Layer.mm in Sources */,
 				65EE9A8B1E15AA89008C2091 /* Metronome.h in Sources */,
+				65F6C5411F42F08A00270C51 /* README.md in Sources */,
 				65EE9A8C1E15AA89008C2091 /* Metronome.mm in Sources */,
 				65EE9A8D1E15AA89008C2091 /* Midi.h in Sources */,
 				65EE9A8E1E15AA89008C2091 /* Midi.mm in Sources */,
@@ -1093,14 +1058,18 @@
 				65EE9AA01E15AA89008C2091 /* SyphonOutputManager.mm in Sources */,
 				65EE9AA11E15AA89008C2091 /* Visual.h in Sources */,
 				65EE9AA21E15AA89008C2091 /* Visual.mm in Sources */,
+				65324F9D1F324187007C9FCF /* SetFile.cpp in Sources */,
 				65EE9AA31E15AA89008C2091 /* VisualCamera.h in Sources */,
+				65324FAC1F35D280007C9FCF /* JsonLoad.cpp in Sources */,
 				65EE9AA41E15AA89008C2091 /* VisualCamera.mm in Sources */,
 				65EE9AA51E15AA89008C2091 /* VisualInstance.h in Sources */,
 				65EE9AA61E15AA89008C2091 /* VisualInstance.mm in Sources */,
+				651E5BA81F2E1673008B4FEF /* Utils.cpp in Sources */,
 				65EE9AA71E15AA89008C2091 /* VisualSyphon.h in Sources */,
 				65EE9AA81E15AA89008C2091 /* VisualSyphon.mm in Sources */,
 				65EE9AA91E15AA89008C2091 /* VisualVideo.h in Sources */,
 				65EE9AAA1E15AA89008C2091 /* VisualVideo.mm in Sources */,
+				65EF0A1B1F424DC900C5FB69 /* Visuals.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1108,39 +1077,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65E896661E730453000D470B /* main.cpp in Sources */,
 				65E8968E1E733D4F000D470B /* ofxMidiMessage.cpp in Sources */,
-				65E896891E733C88000D470B /* LayerProperties.cpp in Sources */,
-				655BFB001E735F3E00B74446 /* Engine.cpp in Sources */,
 				65E896951E7343A9000D470B /* tinyxmlparser.cpp in Sources */,
 				65E896961E7343AC000D470B /* tinyxmlerror.cpp in Sources */,
 				65E896971E7343AF000D470B /* tinyxml.cpp in Sources */,
 				65E896931E7342BC000D470B /* ofxSyphonServer.mm in Sources */,
 				65E896941E734340000D470B /* ofxSyphonClient.mm in Sources */,
 				65E896A11E734F37000D470B /* RtMidi.cpp in Sources */,
-				65D3A5DC1F2AA13100CE6885 /* JsonSaveTest.cpp in Sources */,
 				65E896901E733DB5000D470B /* ofxXmlSettings.cpp in Sources */,
 				65E896911E733DD2000D470B /* ofxOscMessage.cpp in Sources */,
 				65E896921E734275000D470B /* ofxOscReceiver.cpp in Sources */,
-				655BFB021E73673000B74446 /* Layer.cpp in Sources */,
 				655BFAFB1E735A3D00B74446 /* IpEndpointName.cpp in Sources */,
 				65E8969F1E734F02000D470B /* OscPrintReceivedElements.cpp in Sources */,
-				65E21BC81EC6764F006D1C37 /* ofApp.cpp in Sources */,
 				65E896A01E734F05000D470B /* OscOutboundPacketStream.cpp in Sources */,
 				65E8969E1E734EFF000D470B /* OscReceivedElements.cpp in Sources */,
-				65D3A5CF1F2A9B8600CE6885 /* JsonSave.cpp in Sources */,
-				65CCD0391F2C7EA600EB2AC5 /* JsonLoadTest.cpp in Sources */,
 				65E8969D1E734EEF000D470B /* OscTypes.cpp in Sources */,
 				655BFAFA1E7358C000B74446 /* UdpSocket.cpp in Sources */,
 				655BFAFC1E735B5E00B74446 /* NetworkingUtils.cpp in Sources */,
 				655BFAFD1E735BC100B74446 /* SyphonNameboundClient.m in Sources */,
-				65D3A5D61F2A9BCF00CE6885 /* JsonSave.cpp in Sources */,
 				65E8969B1E734EB6000D470B /* ofxRtMidiIn.cpp in Sources */,
 				65E8969C1E734ED7000D470B /* ofxRtMidiOut.cpp in Sources */,
 				65E8969A1E734482000D470B /* ofxBaseMidi.cpp in Sources */,
 				65E896981E73441F000D470B /* ofxMidi.cpp in Sources */,
 				65E8968F1E733D97000D470B /* ofxMidiIn.cpp in Sources */,
 				65E896991E734422000D470B /* ofxMidiOut.cpp in Sources */,
+				65E896661E730453000D470B /* main.cpp in Sources */,
+				65E896891E733C88000D470B /* LayerProperties.cpp in Sources */,
+				651E5BA91F2E1673008B4FEF /* Utils.cpp in Sources */,
+				655BFB001E735F3E00B74446 /* Engine.cpp in Sources */,
+				65D3A5DC1F2AA13100CE6885 /* JsonSaveTest.cpp in Sources */,
+				655BFB021E73673000B74446 /* Layer.cpp in Sources */,
+				65E21BC81EC6764F006D1C37 /* ofApp.cpp in Sources */,
+				65CCD0391F2C7EA600EB2AC5 /* JsonLoadTest.cpp in Sources */,
+				65D3A5D61F2A9BCF00CE6885 /* JsonSave.cpp in Sources */,
+				6511F61B1F388F7000B750C2 /* VisualInstancesPropertiesTest.cpp in Sources */,
+				65324FAD1F35D280007C9FCF /* JsonLoad.cpp in Sources */,
+				65324F9E1F324187007C9FCF /* SetFile.cpp in Sources */,
+				65EF0A1C1F424DC900C5FB69 /* Visuals.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1151,16 +1124,6 @@
 			isa = PBXTargetDependency;
 			target = 65A1865F1DF8DF9200BE0219 /* ArbutusLib */;
 			targetProxy = 65E896751E733026000D470B /* PBXContainerItemProxy */;
-		};
-		65E896781E733026000D470B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = openFrameworks;
-			targetProxy = 65E896771E733026000D470B /* PBXContainerItemProxy */;
-		};
-		65EE9A7C1E15AA6F008C2091 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = openFrameworks;
-			targetProxy = 65EE9A7B1E15AA6F008C2091 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1207,12 +1170,35 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(OF_CORE_HEADERS)",
+					"$(OF_LIBS_PATH)/openframeworks/**",
+					"$(OF_LIBS_PATH)/glew/include",
+					"$(OF_LIBS_PATH)/tess2/include/**",
+					"$(OF_LIBS_PATH)/boost/include/",
+					"$(OF_LIBS_PATH)/utf8cpp/include",
+					"$(OF_LIBS_PATH)/poco/include",
+					"$(OF_LIBS_PATH)/rtAudio/include",
+					"$(OF_LIBS_PATH)/FreeImage/include",
+					"$(OF_LIBS_PATH)/freetype/include",
+					"$(OF_LIBS_PATH)/glut/include",
+					"$(OF_LIBS_PATH)/cairo/include/**",
+					"$(OF_LIBS_PATH)/fmodex/include",
+					"$(OF_LIBS_PATH)/glfw/include",
+					"$(OF_LIBS_PATH)/openssl/include",
+					"$(OF_ADDONS_PATH)/ofxMidi/src",
+					"$(OF_ADDONS_PATH)/ofxMidi/libs/rtmidi",
+					"$(OF_ADDONS_PATH)/ofxXmlSettings/src",
+					"$(OF_ADDONS_PATH)/ofxXmlSettings/libs",
+					"$(OF_ADDONS_PATH)/ofxOsc/src",
+					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/osc",
+					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/ip",
+					"$(OF_ADDONS_PATH)/ofxSyphon/src",
+					"$(SRCROOT)/libs/**",
 					src,
-					"\"$(SRCROOT)/libs\"/**",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				OF_ADDONS_PATH = "$(OF_PATH)/addons";
+				OF_LIBS_PATH = "$(OF_PATH)/libs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1255,12 +1241,35 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(OF_CORE_HEADERS)",
+					"$(OF_LIBS_PATH)/openframeworks/**",
+					"$(OF_LIBS_PATH)/glew/include",
+					"$(OF_LIBS_PATH)/tess2/include/**",
+					"$(OF_LIBS_PATH)/boost/include/",
+					"$(OF_LIBS_PATH)/utf8cpp/include",
+					"$(OF_LIBS_PATH)/poco/include",
+					"$(OF_LIBS_PATH)/rtAudio/include",
+					"$(OF_LIBS_PATH)/FreeImage/include",
+					"$(OF_LIBS_PATH)/freetype/include",
+					"$(OF_LIBS_PATH)/glut/include",
+					"$(OF_LIBS_PATH)/cairo/include/**",
+					"$(OF_LIBS_PATH)/fmodex/include",
+					"$(OF_LIBS_PATH)/glfw/include",
+					"$(OF_LIBS_PATH)/openssl/include",
+					"$(OF_ADDONS_PATH)/ofxMidi/src",
+					"$(OF_ADDONS_PATH)/ofxMidi/libs/rtmidi",
+					"$(OF_ADDONS_PATH)/ofxXmlSettings/src",
+					"$(OF_ADDONS_PATH)/ofxXmlSettings/libs",
+					"$(OF_ADDONS_PATH)/ofxOsc/src",
+					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/osc",
+					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/ip",
+					"$(OF_ADDONS_PATH)/ofxSyphon/src",
+					"$(SRCROOT)/libs/**",
 					src,
-					"\"$(SRCROOT)/libs\"/**",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OF_ADDONS_PATH = "$(OF_PATH)/addons";
+				OF_LIBS_PATH = "$(OF_PATH)/libs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1294,7 +1303,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"\"$(SRCROOT)/../../../addons/ofxSyphon/libs/Syphon/lib/osx\"",
 				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "$(OF_PATH)/libs/glut/lib/osx\"";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = NO;
@@ -1309,11 +1318,34 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(OF_CORE_HEADERS)",
+					"$(OF_LIBS_PATH)/openframeworks/**",
 					src,
 					"\"$(SRCROOT)/libs\"/**",
 					"\"$(SRCROOT)/src/Library/Engine\"",
 					"\"$(SRCROOT)/../../../addons/ofxOsc/libs/oscpack/src\"/**",
+					"$(OF_LIBS_PATH)/boost/include/",
+					"$(OF_LIBS_PATH)/utf8cpp/include",
+					"$(OF_LIBS_PATH)/poco/include",
+					"$(OF_LIBS_PATH)/rtAudio/include",
+					"$(OF_LIBS_PATH)/FreeImage/include",
+					"$(OF_LIBS_PATH)/freetype/include",
+					"$(OF_LIBS_PATH)/glut/include",
+					"$(OF_LIBS_PATH)/cairo/include/**",
+					"$(OF_LIBS_PATH)/fmodex/include",
+					"$(OF_LIBS_PATH)/glfw/include",
+					"$(OF_LIBS_PATH)/openssl/include",
+					"$(OF_ADDONS_PATH)/ofxMidi/src",
+					"$(OF_ADDONS_PATH)/ofxMidi/libs/rtmidi",
+					"$(OF_ADDONS_PATH)/ofxXmlSettings/src",
+					"$(OF_ADDONS_PATH)/ofxXmlSettings/libs",
+					"$(OF_ADDONS_PATH)/ofxOsc/src",
+					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/osc",
+					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/ip",
+					"$(OF_ADDONS_PATH)/ofxSyphon/src",
+					"$(SRCROOT)/libs/**",
+					src,
+					"$(OF_LIBS_PATH)/glew/include",
+					"$(OF_LIBS_PATH)/tess2/include/**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = mh_execute;
@@ -1358,7 +1390,7 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"\"$(SRCROOT)/../../../addons/ofxSyphon/libs/Syphon/lib/osx\"",
 				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "$(OF_PATH)/libs/glut/lib/osx\"";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1368,11 +1400,34 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(OF_CORE_HEADERS)",
+					"$(OF_LIBS_PATH)/openframeworks/**",
 					src,
 					"\"$(SRCROOT)/libs\"/**",
 					"\"$(SRCROOT)/src/Library/Engine\"",
 					"\"$(SRCROOT)/../../../addons/ofxOsc/libs/oscpack/src\"/**",
+					"$(OF_LIBS_PATH)/boost/include/",
+					"$(OF_LIBS_PATH)/utf8cpp/include",
+					"$(OF_LIBS_PATH)/poco/include",
+					"$(OF_LIBS_PATH)/rtAudio/include",
+					"$(OF_LIBS_PATH)/FreeImage/include",
+					"$(OF_LIBS_PATH)/freetype/include",
+					"$(OF_LIBS_PATH)/glut/include",
+					"$(OF_LIBS_PATH)/cairo/include/**",
+					"$(OF_LIBS_PATH)/fmodex/include",
+					"$(OF_LIBS_PATH)/glfw/include",
+					"$(OF_LIBS_PATH)/openssl/include",
+					"$(OF_ADDONS_PATH)/ofxMidi/src",
+					"$(OF_ADDONS_PATH)/ofxMidi/libs/rtmidi",
+					"$(OF_ADDONS_PATH)/ofxXmlSettings/src",
+					"$(OF_ADDONS_PATH)/ofxXmlSettings/libs",
+					"$(OF_ADDONS_PATH)/ofxOsc/src",
+					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/osc",
+					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/ip",
+					"$(OF_ADDONS_PATH)/ofxSyphon/src",
+					"$(SRCROOT)/libs/**",
+					src,
+					"$(OF_LIBS_PATH)/glew/include",
+					"$(OF_LIBS_PATH)/tess2/include/**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = mh_execute;
@@ -1408,10 +1463,14 @@
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					"$(OF_CORE_HEADERS)",
+					"$(OF_PATH)/libs/openframeworks/**",
+					"$(OF_PATH)/libs/glew/include/**",
 					src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OF_ADDONS_PATH = "$(OF_PATH)/addons";
+				OF_LIBS_PATH = "$(OF_PATH)/libs";
+				OF_PATH = ../of_v0.9.8_osx_release;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
@@ -1443,10 +1502,14 @@
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					"$(OF_CORE_HEADERS)",
+					"$(OF_PATH)/libs/openframeworks/**",
+					"$(OF_PATH)/libs/glew/include/**",
 					src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OF_ADDONS_PATH = "$(OF_PATH)/addons";
+				OF_LIBS_PATH = "$(OF_PATH)/libs";
+				OF_PATH = ../of_v0.9.8_osx_release;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-mtune=native",

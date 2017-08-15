@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "____C_A_T_C_H____T_E_S_T____68():JsonSaveTest.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Engine::Engine():Engine.mm">
+      </ContextState>
+      <ContextState
+         contextName = "Engine::destroyBuffer():Engine.mm">
+      </ContextState>
+      <ContextState
+         contextName = "Engine::~Engine():Engine.mm">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
