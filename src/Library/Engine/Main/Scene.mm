@@ -230,10 +230,10 @@ void Scenes::empty() {
         delete scene;
     };
     
-    while (!scenesList.empty()){
-        scenesList.pop_front();
-    }
+    scenesList.clear();
 }
+
+
 
 Scene* Scenes::get(unsigned int index) {
     unsigned int count;
@@ -250,15 +250,4 @@ Scene* Scenes::get(unsigned int index) {
     return NULL;
 }
 
-void Scenes::cleanup() {
-    for (ScenesListIterator it = scenesList.begin();
-         it!=scenesList.end();
-         it++)
-    {
-        Scene *scene = *it;
-        
-        delete scene;
-    }
-    scenesList.clear();
-    
-}
+

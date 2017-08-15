@@ -96,9 +96,23 @@ Visual* Visuals::get(int pos) {
 
 void Visuals::empty()
 {
+    /*
     while (!visualsList.empty()){
-        visualsList.pop_front();
+        Visual *visual = visualsList.pop_front();
+        delete visual;
     }
+    */
+    for (auto it = visualsList.begin();
+         it!= visualsList.end();
+         it++ )
+    {
+        Visual *visual = *it;
+        delete visual;
+        
+        visualsList.erase(it);
+    }
+    
+    print();
 }
 
 

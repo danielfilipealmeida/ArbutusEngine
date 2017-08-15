@@ -14,10 +14,8 @@ Visual::Visual() {
     caption = "Untitled";
 }
 
+
 Visual::~Visual() {
-	//if (loaded == true) closeVisual();
-    //cout << "visual destroy" <<endl;
-    
 }
 
 json Visual::getState()

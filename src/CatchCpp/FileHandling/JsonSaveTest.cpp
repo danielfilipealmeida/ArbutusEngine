@@ -50,6 +50,8 @@ TEST_CASE("throws if state isn't an object","[save]") {
 
 
 TEST_CASE("valid state and path should save","[save]") {
+    
+    cout << Visuals::getInstance().getState().dump()<< endl;
     std::string path = ofFilePath::getCurrentExeDir() + "/mytestset.json";
     json state = {
         {"layers", {}},

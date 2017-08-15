@@ -53,7 +53,6 @@ VisualVideo::VisualVideo(string _filePath)
 
 VisualVideo::~VisualVideo() {
 	if (loaded == true) closeVisual();
-    Visual::~Visual();
 }
 
 

@@ -47,7 +47,7 @@ public:
     
 	
 	Visual();
-	~Visual();
+	virtual ~Visual();
 	
 	
 		

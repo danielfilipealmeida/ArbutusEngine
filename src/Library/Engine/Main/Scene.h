@@ -167,7 +167,7 @@ public:
     
     Scene* get(unsigned int index);
     
-    void cleanup();
+
 };
 
 #endif

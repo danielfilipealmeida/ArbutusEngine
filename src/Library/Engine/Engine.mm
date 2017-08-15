@@ -61,8 +61,8 @@ Engine::Engine() {
 
 Engine::~Engine() {
 	destroyBuffer();
-    Scenes::getInstance().cleanup();
-    
+    Scenes::getInstance().empty();
+    Visuals::getInstance().empty();
     // clean visual lists
     
     enginePtr = NULL;
