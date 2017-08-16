@@ -19,7 +19,6 @@
 		655BFAF91E7355BD00B74446 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BFAF81E7355BD00B74446 /* CoreMIDI.framework */; };
 		655BFAFA1E7358C000B74446 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81461DF8D96500331165 /* UdpSocket.cpp */; };
 		655BFAFB1E735A3D00B74446 /* IpEndpointName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81401DF8D96500331165 /* IpEndpointName.cpp */; };
-		655BFAFC1E735B5E00B74446 /* NetworkingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81451DF8D96500331165 /* NetworkingUtils.cpp */; };
 		655BFAFD1E735BC100B74446 /* SyphonNameboundClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81321DF8D94600331165 /* SyphonNameboundClient.m */; };
 		655BFB001E735F3E00B74446 /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E8966A1E73098F000D470B /* Engine.cpp */; };
 		655BFB021E73673000B74446 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 655BFB011E73673000B74446 /* Layer.cpp */; };
@@ -35,6 +34,15 @@
 		65D3A5DB1F2AA13100CE6885 /* JsonSaveTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5D91F2AA13100CE6885 /* JsonSaveTest.cpp */; };
 		65D3A5DC1F2AA13100CE6885 /* JsonSaveTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5D91F2AA13100CE6885 /* JsonSaveTest.cpp */; };
 		65E21BC81EC6764F006D1C37 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E21BC61EC6764F006D1C37 /* ofApp.cpp */; };
+		65E6BD321F4467A0008E4F9E /* ofxMidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC818E1DF8D9CA00331165 /* ofxMidiMessage.cpp */; };
+		65E6BD331F4467B1008E4F9E /* ofxMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81891DF8D9CA00331165 /* ofxMidi.cpp */; };
+		65E6BD341F4467C1008E4F9E /* ofxMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC818C1DF8D9CA00331165 /* ofxMidiIn.cpp */; };
+		65E6BD351F4467C5008E4F9E /* ofxMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81901DF8D9CA00331165 /* ofxMidiOut.cpp */; };
+		65E6BD3A1F44691E008E4F9E /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E6BD361F44691E008E4F9E /* tinyxml.cpp */; };
+		65E6BD3B1F44691E008E4F9E /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E6BD381F44691E008E4F9E /* tinyxmlerror.cpp */; };
+		65E6BD3C1F44691E008E4F9E /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E6BD391F44691E008E4F9E /* tinyxmlparser.cpp */; };
+		65E6BD3E1F4469DB008E4F9E /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC819A1DF8D9D600331165 /* ofxXmlSettings.cpp */; };
+		65E6BD3F1F446BB5008E4F9E /* NetworkingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81451DF8D96500331165 /* NetworkingUtils.cpp */; };
 		65E896661E730453000D470B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E896651E730453000D470B /* main.cpp */; };
 		65E8967F1E733433000D470B /* libArbutusLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A186601DF8DF9200BE0219 /* libArbutusLib.a */; };
 		65E896811E733454000D470B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E8967B1E73311F000D470B /* Foundation.framework */; };
@@ -42,18 +50,10 @@
 		65E896861E733920000D470B /* Syphon.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 65E896851E733920000D470B /* Syphon.framework */; };
 		65E896881E733975000D470B /* libfmodex.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = 65E896871E733975000D470B /* libfmodex.dylib */; };
 		65E896891E733C88000D470B /* LayerProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E8966C1E730C45000D470B /* LayerProperties.cpp */; };
-		65E8968E1E733D4F000D470B /* ofxMidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC818E1DF8D9CA00331165 /* ofxMidiMessage.cpp */; };
-		65E8968F1E733D97000D470B /* ofxMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC818C1DF8D9CA00331165 /* ofxMidiIn.cpp */; };
-		65E896901E733DB5000D470B /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC819A1DF8D9D600331165 /* ofxXmlSettings.cpp */; };
 		65E896911E733DD2000D470B /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC815E1DF8D96500331165 /* ofxOscMessage.cpp */; };
 		65E896921E734275000D470B /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81621DF8D96500331165 /* ofxOscReceiver.cpp */; };
 		65E896931E7342BC000D470B /* ofxSyphonServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81381DF8D94600331165 /* ofxSyphonServer.mm */; };
 		65E896941E734340000D470B /* ofxSyphonClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81361DF8D94600331165 /* ofxSyphonClient.mm */; };
-		65E896951E7343A9000D470B /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81981DF8D9D600331165 /* tinyxmlparser.cpp */; };
-		65E896961E7343AC000D470B /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81971DF8D9D600331165 /* tinyxmlerror.cpp */; };
-		65E896971E7343AF000D470B /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81951DF8D9D600331165 /* tinyxml.cpp */; };
-		65E896981E73441F000D470B /* ofxMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81891DF8D9CA00331165 /* ofxMidi.cpp */; };
-		65E896991E734422000D470B /* ofxMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81901DF8D9CA00331165 /* ofxMidiOut.cpp */; };
 		65E8969A1E734482000D470B /* ofxBaseMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81871DF8D9CA00331165 /* ofxBaseMidi.cpp */; };
 		65E8969B1E734EB6000D470B /* ofxRtMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81691DF8D9CA00331165 /* ofxRtMidiIn.cpp */; };
 		65E8969C1E734ED7000D470B /* ofxRtMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC816B1DF8D9CA00331165 /* ofxRtMidiOut.cpp */; };
@@ -279,10 +279,6 @@
 		65BC81901DF8D9CA00331165 /* ofxMidiOut.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidiOut.cpp; sourceTree = "<group>"; };
 		65BC81911DF8D9CA00331165 /* ofxMidiOut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidiOut.h; sourceTree = "<group>"; };
 		65BC81921DF8D9CA00331165 /* ofxMidiTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMidiTypes.h; sourceTree = "<group>"; };
-		65BC81951DF8D9D600331165 /* tinyxml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
-		65BC81961DF8D9D600331165 /* tinyxml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
-		65BC81971DF8D9D600331165 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
-		65BC81981DF8D9D600331165 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		65BC819A1DF8D9D600331165 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		65BC819B1DF8D9D600331165 /* ofxXmlSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
 		65C1EB161E6E1D16003F731D /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
@@ -299,6 +295,10 @@
 		65D3A5D91F2AA13100CE6885 /* JsonSaveTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JsonSaveTest.cpp; path = FileHandling/JsonSaveTest.cpp; sourceTree = "<group>"; };
 		65E21BC61EC6764F006D1C37 /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofApp.cpp; sourceTree = "<group>"; };
 		65E21BC71EC6764F006D1C37 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofApp.h; sourceTree = "<group>"; };
+		65E6BD361F44691E008E4F9E /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxml.cpp; path = Vendor/ofxXmlSettings/libs/tinyxml.cpp; sourceTree = SOURCE_ROOT; };
+		65E6BD371F44691E008E4F9E /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tinyxml.h; path = Vendor/ofxXmlSettings/libs/tinyxml.h; sourceTree = SOURCE_ROOT; };
+		65E6BD381F44691E008E4F9E /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxmlerror.cpp; path = Vendor/ofxXmlSettings/libs/tinyxmlerror.cpp; sourceTree = SOURCE_ROOT; };
+		65E6BD391F44691E008E4F9E /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxmlparser.cpp; path = Vendor/ofxXmlSettings/libs/tinyxmlparser.cpp; sourceTree = SOURCE_ROOT; };
 		65E896531E72E85B000D470B /* makedocs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = makedocs.sh; sourceTree = "<group>"; };
 		65E896561E72F36F000D470B /* ofApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofApp.cpp; sourceTree = "<group>"; };
 		65E896571E72F36F000D470B /* ofApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofApp.h; sourceTree = "<group>"; };
@@ -312,6 +312,10 @@
 		65EF0A191F424DC900C5FB69 /* Visuals.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Visuals.mm; sourceTree = "<group>"; };
 		65EF0A1A1F424DC900C5FB69 /* Visuals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Visuals.h; sourceTree = "<group>"; };
 		65F6C5401F42F08A00270C51 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		65F6C5461F43AA6900270C51 /* ofxMidiMessage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxMidiMessage.cpp; path = ../../../XCode/ArbutusEngine/Vendor/ofxMidi/src/ofxMidiMessage.cpp; sourceTree = "<group>"; };
+		65F6C5481F43AA9100270C51 /* ofxMidi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxMidi.cpp; path = ../../../XCode/ArbutusEngine/Vendor/ofxMidi/src/ofxMidi.cpp; sourceTree = "<group>"; };
+		65F6C54A1F43AA9A00270C51 /* ofxMidiOut.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxMidiOut.cpp; path = ../../../XCode/ArbutusEngine/Vendor/ofxMidi/src/ofxMidiOut.cpp; sourceTree = "<group>"; };
+		65F6C54C1F43AAA600270C51 /* ofxMidiIn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxMidiIn.cpp; path = ../../../XCode/ArbutusEngine/Vendor/ofxMidi/src/ofxMidiIn.cpp; sourceTree = "<group>"; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -442,7 +446,7 @@
 				65BC812C1DF8D94600331165 /* Syphon */,
 			);
 			name = libs;
-			path = ../../../addons/ofxSyphon/libs;
+			path = ofxSyphon/libs;
 			sourceTree = "<group>";
 		};
 		65BC812C1DF8D94600331165 /* Syphon */ = {
@@ -491,7 +495,7 @@
 				65BC813A1DF8D94600331165 /* ofxSyphonServerDirectory.mm */,
 			);
 			name = src;
-			path = ../../../addons/ofxSyphon/src;
+			path = ofxSyphon/src;
 			sourceTree = "<group>";
 		};
 		65BC813B1DF8D95600331165 /* ofxOsc */ = {
@@ -500,7 +504,7 @@
 				65BC81591DF8D96500331165 /* src */,
 				65BC813C1DF8D96500331165 /* libs */,
 			);
-			name = ofxOsc;
+			path = ofxOsc;
 			sourceTree = "<group>";
 		};
 		65BC813C1DF8D96500331165 /* libs */ = {
@@ -508,8 +512,7 @@
 			children = (
 				65BC813D1DF8D96500331165 /* oscpack */,
 			);
-			name = libs;
-			path = ../../../addons/ofxOsc/libs;
+			path = libs;
 			sourceTree = "<group>";
 		};
 		65BC813D1DF8D96500331165 /* oscpack */ = {
@@ -597,8 +600,7 @@
 				65BC81641DF8D96500331165 /* ofxOscSender.cpp */,
 				65BC81651DF8D96500331165 /* ofxOscSender.h */,
 			);
-			name = src;
-			path = ../../../addons/ofxOsc/src;
+			path = src;
 			sourceTree = "<group>";
 		};
 		65BC81661DF8D9A300331165 /* ofxMidi */ = {
@@ -626,9 +628,13 @@
 				65BC81901DF8D9CA00331165 /* ofxMidiOut.cpp */,
 				65BC81911DF8D9CA00331165 /* ofxMidiOut.h */,
 				65BC81921DF8D9CA00331165 /* ofxMidiTypes.h */,
+				65F6C54C1F43AAA600270C51 /* ofxMidiIn.cpp */,
+				65F6C54A1F43AA9A00270C51 /* ofxMidiOut.cpp */,
+				65F6C5481F43AA9100270C51 /* ofxMidi.cpp */,
+				65F6C5461F43AA6900270C51 /* ofxMidiMessage.cpp */,
 			);
 			name = src;
-			path = ../../../addons/ofxMidi/src;
+			path = ofxMidi/src;
 			sourceTree = "<group>";
 		};
 		65BC81681DF8D9CA00331165 /* desktop */ = {
@@ -666,19 +672,19 @@
 				65BC81941DF8D9D600331165 /* libs */,
 				65BC81991DF8D9D600331165 /* src */,
 			);
-			name = ofxXmlSettings;
-			path = ../../../addons/ofxXmlSettings;
+			path = ofxXmlSettings;
 			sourceTree = "<group>";
 		};
 		65BC81941DF8D9D600331165 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				65BC81951DF8D9D600331165 /* tinyxml.cpp */,
-				65BC81961DF8D9D600331165 /* tinyxml.h */,
-				65BC81971DF8D9D600331165 /* tinyxmlerror.cpp */,
-				65BC81981DF8D9D600331165 /* tinyxmlparser.cpp */,
+				65E6BD361F44691E008E4F9E /* tinyxml.cpp */,
+				65E6BD371F44691E008E4F9E /* tinyxml.h */,
+				65E6BD381F44691E008E4F9E /* tinyxmlerror.cpp */,
+				65E6BD391F44691E008E4F9E /* tinyxmlparser.cpp */,
 			);
-			path = libs;
+			name = libs;
+			path = Vendor/ofxXmlSettings/libs;
 			sourceTree = "<group>";
 		};
 		65BC81991DF8D9D600331165 /* src */ = {
@@ -859,6 +865,7 @@
 				65BC812A1DF8D8E400331165 /* ofxSyphon */,
 			);
 			name = addons;
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 		E4B69B4A0A3A1720003C02F2 = {
@@ -930,6 +937,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65E896601E72F400000D470B /* Build configuration list for PBXNativeTarget "Catch Tests" */;
 			buildPhases = (
+				65F6C5451F43A6E000270C51 /* ShellScript */,
 				65E896581E72F3FF000D470B /* Sources */,
 				65E896591E72F3FF000D470B /* Frameworks */,
 				65E8965A1E72F3FF000D470B /* Copy Files */,
@@ -1013,6 +1021,19 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"Copying fixtures\"\ncp -R src/CatchCpp/Fixtures \"$TARGET_BUILD_DIR\"";
 		};
+		65F6C5451F43A6E000270C51 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Creating Vendors folder\"\n@mkdir Vendor\n\necho \"Copy ofxMidi files\"\ncp -R \"$OF_ADDONS_PATH/ofxMidi\" Vendor/ofxMidi\n\necho \"Copy ofxSyphon files\"\ncp -R \"$OF_ADDONS_PATH/ofxSyphon\" Vendor/ofxSyphon\n\necho \"Copy ofxXmlSettings files\"\ncp -R \"$OF_ADDONS_PATH/ofxXmlSettings\" Vendor/ofxXmlSettings\n\necho \"Copy ofxOsc files\"\ncp -R \"$OF_ADDONS_PATH/ofxOsc\" Vendor/ofxOsc";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1077,30 +1098,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65E8968E1E733D4F000D470B /* ofxMidiMessage.cpp in Sources */,
-				65E896951E7343A9000D470B /* tinyxmlparser.cpp in Sources */,
-				65E896961E7343AC000D470B /* tinyxmlerror.cpp in Sources */,
-				65E896971E7343AF000D470B /* tinyxml.cpp in Sources */,
+				65E6BD3F1F446BB5008E4F9E /* NetworkingUtils.cpp in Sources */,
+				65E6BD3E1F4469DB008E4F9E /* ofxXmlSettings.cpp in Sources */,
+				65E6BD321F4467A0008E4F9E /* ofxMidiMessage.cpp in Sources */,
+				65E6BD331F4467B1008E4F9E /* ofxMidi.cpp in Sources */,
+				65E6BD341F4467C1008E4F9E /* ofxMidiIn.cpp in Sources */,
+				65E6BD351F4467C5008E4F9E /* ofxMidiOut.cpp in Sources */,
 				65E896931E7342BC000D470B /* ofxSyphonServer.mm in Sources */,
 				65E896941E734340000D470B /* ofxSyphonClient.mm in Sources */,
 				65E896A11E734F37000D470B /* RtMidi.cpp in Sources */,
-				65E896901E733DB5000D470B /* ofxXmlSettings.cpp in Sources */,
 				65E896911E733DD2000D470B /* ofxOscMessage.cpp in Sources */,
 				65E896921E734275000D470B /* ofxOscReceiver.cpp in Sources */,
 				655BFAFB1E735A3D00B74446 /* IpEndpointName.cpp in Sources */,
+				65E6BD3A1F44691E008E4F9E /* tinyxml.cpp in Sources */,
+				65E6BD3B1F44691E008E4F9E /* tinyxmlerror.cpp in Sources */,
 				65E8969F1E734F02000D470B /* OscPrintReceivedElements.cpp in Sources */,
 				65E896A01E734F05000D470B /* OscOutboundPacketStream.cpp in Sources */,
 				65E8969E1E734EFF000D470B /* OscReceivedElements.cpp in Sources */,
+				65E6BD3C1F44691E008E4F9E /* tinyxmlparser.cpp in Sources */,
 				65E8969D1E734EEF000D470B /* OscTypes.cpp in Sources */,
 				655BFAFA1E7358C000B74446 /* UdpSocket.cpp in Sources */,
-				655BFAFC1E735B5E00B74446 /* NetworkingUtils.cpp in Sources */,
 				655BFAFD1E735BC100B74446 /* SyphonNameboundClient.m in Sources */,
 				65E8969B1E734EB6000D470B /* ofxRtMidiIn.cpp in Sources */,
 				65E8969C1E734ED7000D470B /* ofxRtMidiOut.cpp in Sources */,
 				65E8969A1E734482000D470B /* ofxBaseMidi.cpp in Sources */,
-				65E896981E73441F000D470B /* ofxMidi.cpp in Sources */,
-				65E8968F1E733D97000D470B /* ofxMidiIn.cpp in Sources */,
-				65E896991E734422000D470B /* ofxMidiOut.cpp in Sources */,
 				65E896661E730453000D470B /* main.cpp in Sources */,
 				65E896891E733C88000D470B /* LayerProperties.cpp in Sources */,
 				651E5BA91F2E1673008B4FEF /* Utils.cpp in Sources */,
@@ -1340,7 +1361,7 @@
 					"$(OF_ADDONS_PATH)/ofxXmlSettings/libs",
 					"$(OF_ADDONS_PATH)/ofxOsc/src",
 					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/osc",
-					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/ip",
+					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/**",
 					"$(OF_ADDONS_PATH)/ofxSyphon/src",
 					"$(SRCROOT)/libs/**",
 					src,
@@ -1422,7 +1443,7 @@
 					"$(OF_ADDONS_PATH)/ofxXmlSettings/libs",
 					"$(OF_ADDONS_PATH)/ofxOsc/src",
 					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/osc",
-					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/ip",
+					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/**",
 					"$(OF_ADDONS_PATH)/ofxSyphon/src",
 					"$(SRCROOT)/libs/**",
 					src,
