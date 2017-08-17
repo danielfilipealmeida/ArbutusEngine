@@ -1329,7 +1329,7 @@
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"\"$(SRCROOT)/../../../addons/ofxSyphon/libs/Syphon/lib/osx\"",
-					"\"$(OF_ADDONS_PATH)/ofxSyphon/libs/Syphon/lib/osx/Syphon.framework\"",
+					"\"$(OF_ADDONS_PATH)/ofxSyphon/libs/Syphon/lib/osx/\"",
 					"\"$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/\"",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "$(OF_PATH)/libs/glut/lib/osx\"";
@@ -1449,7 +1449,7 @@
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"\"$(SRCROOT)/../../../addons/ofxSyphon/libs/Syphon/lib/osx\"",
-					"\"$(OF_ADDONS_PATH)/ofxSyphon/libs/Syphon/lib/osx/Syphon.framework\"",
+					"\"$(OF_ADDONS_PATH)/ofxSyphon/libs/Syphon/lib/osx/\"",
 					"\"$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/\"",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "$(OF_PATH)/libs/glut/lib/osx\"";
