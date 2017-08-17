@@ -43,12 +43,12 @@
 		65E6BD3C1F44691E008E4F9E /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E6BD391F44691E008E4F9E /* tinyxmlparser.cpp */; };
 		65E6BD3E1F4469DB008E4F9E /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC819A1DF8D9D600331165 /* ofxXmlSettings.cpp */; };
 		65E6BD3F1F446BB5008E4F9E /* NetworkingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81451DF8D96500331165 /* NetworkingUtils.cpp */; };
+		65E6BD461F464E83008E4F9E /* libfmodex.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = 65E6BD451F464E83008E4F9E /* libfmodex.dylib */; };
+		65E6BD481F464F4E008E4F9E /* Syphon.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 65E6BD471F464F4E008E4F9E /* Syphon.framework */; };
 		65E896661E730453000D470B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E896651E730453000D470B /* main.cpp */; };
 		65E8967F1E733433000D470B /* libArbutusLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A186601DF8DF9200BE0219 /* libArbutusLib.a */; };
 		65E896811E733454000D470B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E8967B1E73311F000D470B /* Foundation.framework */; };
 		65E896821E73347B000D470B /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BC812F1DF8D94600331165 /* Syphon.framework */; };
-		65E896861E733920000D470B /* Syphon.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 65E896851E733920000D470B /* Syphon.framework */; };
-		65E896881E733975000D470B /* libfmodex.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = 65E896871E733975000D470B /* libfmodex.dylib */; };
 		65E896891E733C88000D470B /* LayerProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E8966C1E730C45000D470B /* LayerProperties.cpp */; };
 		65E896911E733DD2000D470B /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC815E1DF8D96500331165 /* ofxOscMessage.cpp */; };
 		65E896921E734275000D470B /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81621DF8D96500331165 /* ofxOscReceiver.cpp */; };
@@ -146,8 +146,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				65E896861E733920000D470B /* Syphon.framework in Copy Files */,
-				65E896881E733975000D470B /* libfmodex.dylib in Copy Files */,
+				65E6BD461F464E83008E4F9E /* libfmodex.dylib in Copy Files */,
+				65E6BD481F464F4E008E4F9E /* Syphon.framework in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +299,9 @@
 		65E6BD371F44691E008E4F9E /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tinyxml.h; path = Vendor/ofxXmlSettings/libs/tinyxml.h; sourceTree = SOURCE_ROOT; };
 		65E6BD381F44691E008E4F9E /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxmlerror.cpp; path = Vendor/ofxXmlSettings/libs/tinyxmlerror.cpp; sourceTree = SOURCE_ROOT; };
 		65E6BD391F44691E008E4F9E /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tinyxmlparser.cpp; path = Vendor/ofxXmlSettings/libs/tinyxmlparser.cpp; sourceTree = SOURCE_ROOT; };
+		65E6BD431F463A15008E4F9E /* openFrameworksDebug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = openFrameworksDebug.a; path = ../of_v0.9.3_osx_release/libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a; sourceTree = "<group>"; };
+		65E6BD451F464E83008E4F9E /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodex.dylib; path = Vendor/fmodex/libfmodex.dylib; sourceTree = "<group>"; };
+		65E6BD471F464F4E008E4F9E /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Syphon.framework; path = Vendor/ofxSyphon/libs/Syphon/lib/osx/Syphon.framework; sourceTree = "<group>"; };
 		65E896531E72E85B000D470B /* makedocs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = makedocs.sh; sourceTree = "<group>"; };
 		65E896561E72F36F000D470B /* ofApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofApp.cpp; sourceTree = "<group>"; };
 		65E896571E72F36F000D470B /* ofApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofApp.h; sourceTree = "<group>"; };
@@ -379,6 +382,7 @@
 		659E25D41E70BCAE00217A12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65E6BD431F463A15008E4F9E /* openFrameworksDebug.a */,
 				65E896871E733975000D470B /* libfmodex.dylib */,
 				65E896851E733920000D470B /* Syphon.framework */,
 				655BFAF81E7355BD00B74446 /* CoreMIDI.framework */,
@@ -871,6 +875,8 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				65E6BD471F464F4E008E4F9E /* Syphon.framework */,
+				65E6BD451F464E83008E4F9E /* libfmodex.dylib */,
 				65F6C5401F42F08A00270C51 /* README.md */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
@@ -1032,7 +1038,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Creating Vendors folder\"\n@mkdir Vendor\n\necho \"Copy ofxMidi files\"\ncp -R \"$OF_ADDONS_PATH/ofxMidi\" Vendor/ofxMidi\n\necho \"Copy ofxSyphon files\"\ncp -R \"$OF_ADDONS_PATH/ofxSyphon\" Vendor/ofxSyphon\n\necho \"Copy ofxXmlSettings files\"\ncp -R \"$OF_ADDONS_PATH/ofxXmlSettings\" Vendor/ofxXmlSettings\n\necho \"Copy ofxOsc files\"\ncp -R \"$OF_ADDONS_PATH/ofxOsc\" Vendor/ofxOsc";
+			shellScript = "echo \"Creating Vendors folder\"\nmkdir Vendor\n\necho \"Copy ofxMidi files\"\ncp -R \"$OF_ADDONS_PATH/ofxMidi\" Vendor/ofxMidi\n\necho \"Copy ofxSyphon files\"\ncp -R \"$OF_ADDONS_PATH/ofxSyphon\" Vendor/ofxSyphon\n\necho \"Copy ofxXmlSettings files\"\ncp -R \"$OF_ADDONS_PATH/ofxXmlSettings\" Vendor/ofxXmlSettings\n\necho \"Copy ofxOsc files\"\ncp -R \"$OF_ADDONS_PATH/ofxOsc\" Vendor/ofxOsc\n\necho \"Copying needed files\"\nmkdir Vendor/fmodex\ncp \"$OF_PATH/libs/fmodex/lib/osx/libfmodex.dylib\" Vendor/fmodex/\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1323,6 +1329,8 @@
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"\"$(SRCROOT)/../../../addons/ofxSyphon/libs/Syphon/lib/osx\"",
+					"\"$(OF_ADDONS_PATH)/ofxSyphon/libs/Syphon/lib/osx/Syphon.framework\"",
+					"\"$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/\"",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "$(OF_PATH)/libs/glut/lib/osx\"";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
@@ -1367,11 +1375,42 @@
 					src,
 					"$(OF_LIBS_PATH)/glew/include",
 					"$(OF_LIBS_PATH)/tess2/include/**",
+					"\"$(SRCROOT)/Vendor/ofxSyphon/libs/Syphon/src\"",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/\"",
+				);
+				LIB_BOOST_FS = "\"$(OF_PATH)/libs/boost/lib/osx/boost_filesystem.a\"";
+				LIB_BOOST_SYSTEM = "\"$(OF_PATH)/libs/boost/lib/osx/boost_system.a\"";
+				LIB_CAIRO1 = "\"$(OF_PATH)/libs/cairo/lib/osx/cairo-script-interpreter.a\"";
+				LIB_CAIRO2 = "\"$(OF_PATH)/libs/cairo/lib/osx/cairo.a\"";
+				LIB_CAIRO3 = "\"$(OF_PATH)/libs/cairo/lib/osx/pixman-1.a\"";
+				LIB_FMODEX = "\"$(OF_PATH)/libs/fmodex/lib/osx/libfmodex.dylib\"";
+				LIB_FREEIMAGE = "\"$(OF_PATH)/libs/FreeImage/lib/osx/freeimage.a\"";
+				LIB_FREETYPE = "\"$(OF_PATH)/libs/freetype/lib/osx/freetype.a\"";
+				LIB_GLEW = "\"$(OF_PATH)/libs/glew/lib/osx/glew.a\"";
+				LIB_GLFW = "\"$(OF_PATH)/libs/glfw/lib/osx/glfw3.a\"";
+				LIB_GLUT = "\"$(OF_PATH)/libs/glut/lib/osx/GLUT.framework/Versions/A/GLUT\"";
+				LIB_OPENSSL1 = "\"$(OF_PATH)/libs/openssl/lib/osx/crypto.a\"";
+				LIB_OPENSSL2 = "\"$(OF_PATH)/libs/openssl/lib/osx/ssl.a\"";
+				LIB_POCO = "$(LIB_POCO_0) $(LIB_POCO_1) $(LIB_POCO_2) $(LIB_POCO_3) $(LIB_POCO_4) $(LIB_POCO_5) $(LIB_POCO_6) $(LIB_POCO_7) $(LIB_POCO_8) $(LIB_POCO_9)";
+				LIB_POCO_0 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoCrypto.a\"";
+				LIB_POCO_1 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoData.a\"";
+				LIB_POCO_2 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoDataSQLite.a\"";
+				LIB_POCO_3 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoJSON.a\"";
+				LIB_POCO_4 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoUtil.a\"";
+				LIB_POCO_5 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoXML.a\"";
+				LIB_POCO_6 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoNet.a\"";
+				LIB_POCO_7 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoNetSSL.a\"";
+				LIB_POCO_8 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoZip.a\"";
+				LIB_POCO_9 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoFoundation.a\"";
+				LIB_RTAUDIO = "\"$(OF_PATH)/libs/rtAudio/lib/osx/rtAudio.a\"";
+				LIB_TESS = "\"$(OF_PATH)/libs/tess2/lib/osx/tess2.a\"";
 				MACH_O_TYPE = mh_execute;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				OF_CORE_FRAMEWORKS = "$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a -framework Accelerate -framework AGL -framework AppKit -framework ApplicationServices -framework AudioToolbox -framework AVFoundation -framework Cocoa -framework CoreAudio -framework CoreFoundation -framework CoreMedia -framework CoreServices -framework CoreVideo -framework IOKit -framework OpenGL -framework QuartzCore -framework QuickTime -framework QTKit -framework GLUT";
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",
@@ -1410,6 +1449,8 @@
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 					"\"$(SRCROOT)/../../../addons/ofxSyphon/libs/Syphon/lib/osx\"",
+					"\"$(OF_ADDONS_PATH)/ofxSyphon/libs/Syphon/lib/osx/Syphon.framework\"",
+					"\"$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/\"",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "$(OF_PATH)/libs/glut/lib/osx\"";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
@@ -1449,11 +1490,42 @@
 					src,
 					"$(OF_LIBS_PATH)/glew/include",
 					"$(OF_LIBS_PATH)/tess2/include/**",
+					"\"$(SRCROOT)/Vendor/ofxSyphon/libs/Syphon/src\"",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/\"",
+				);
+				LIB_BOOST_FS = "\"$(OF_PATH)/libs/boost/lib/osx/boost_filesystem.a\"";
+				LIB_BOOST_SYSTEM = "\"$(OF_PATH)/libs/boost/lib/osx/boost_system.a\"";
+				LIB_CAIRO1 = "\"$(OF_PATH)/libs/cairo/lib/osx/cairo-script-interpreter.a\"";
+				LIB_CAIRO2 = "\"$(OF_PATH)/libs/cairo/lib/osx/cairo.a\"";
+				LIB_CAIRO3 = "\"$(OF_PATH)/libs/cairo/lib/osx/pixman-1.a\"";
+				LIB_FMODEX = "\"$(OF_PATH)/libs/fmodex/lib/osx/libfmodex.dylib\"";
+				LIB_FREEIMAGE = "\"$(OF_PATH)/libs/FreeImage/lib/osx/freeimage.a\"";
+				LIB_FREETYPE = "\"$(OF_PATH)/libs/freetype/lib/osx/freetype.a\"";
+				LIB_GLEW = "\"$(OF_PATH)/libs/glew/lib/osx/glew.a\"";
+				LIB_GLFW = "\"$(OF_PATH)/libs/glfw/lib/osx/glfw3.a\"";
+				LIB_GLUT = "\"$(OF_PATH)/libs/glut/lib/osx/GLUT.framework/Versions/A/GLUT\"";
+				LIB_OPENSSL1 = "\"$(OF_PATH)/libs/openssl/lib/osx/crypto.a\"";
+				LIB_OPENSSL2 = "\"$(OF_PATH)/libs/openssl/lib/osx/ssl.a\"";
+				LIB_POCO = "$(LIB_POCO_0) $(LIB_POCO_1) $(LIB_POCO_2) $(LIB_POCO_3) $(LIB_POCO_4) $(LIB_POCO_5) $(LIB_POCO_6) $(LIB_POCO_7) $(LIB_POCO_8) $(LIB_POCO_9)";
+				LIB_POCO_0 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoCrypto.a\"";
+				LIB_POCO_1 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoData.a\"";
+				LIB_POCO_2 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoDataSQLite.a\"";
+				LIB_POCO_3 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoJSON.a\"";
+				LIB_POCO_4 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoUtil.a\"";
+				LIB_POCO_5 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoXML.a\"";
+				LIB_POCO_6 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoNet.a\"";
+				LIB_POCO_7 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoNetSSL.a\"";
+				LIB_POCO_8 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoZip.a\"";
+				LIB_POCO_9 = "\"$(OF_PATH)/libs/poco/lib/osx/PocoFoundation.a\"";
+				LIB_RTAUDIO = "\"$(OF_PATH)/libs/rtAudio/lib/osx/rtAudio.a\"";
+				LIB_TESS = "\"$(OF_PATH)/libs/tess2/lib/osx/tess2.a\"";
 				MACH_O_TYPE = mh_execute;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OF_CORE_FRAMEWORKS = "$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a -framework Accelerate -framework AGL -framework AppKit -framework ApplicationServices -framework AudioToolbox -framework AVFoundation -framework Cocoa -framework CoreAudio -framework CoreFoundation -framework CoreMedia -framework CoreServices -framework CoreVideo -framework IOKit -framework OpenGL -framework QuartzCore -framework QuickTime -framework QTKit -framework GLUT";
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",
@@ -1490,6 +1562,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OF_ADDONS_PATH = "$(OF_PATH)/addons";
+				OF_CORE_LIBS = "$(LIB_POCO) $(LIB_TESS) $(LIB_GLEW) $(LIB_CAIRO1) $(LIB_CAIRO2) $(LIB_CAIRO3) $(LIB_FMODEX) $(LIB_RTAUDIO) $(LIB_OPENSSL1) $(LIB_OPENSSL2) $(LIB_GLFW) $(LIB_FREEIMAGE) $(LIB_FREETYPE) $(LIB_BOOST_FS) $(LIB_BOOST_SYSTEM)";
 				OF_LIBS_PATH = "$(OF_PATH)/libs";
 				OF_PATH = ../of_v0.9.8_osx_release;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1529,6 +1602,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OF_ADDONS_PATH = "$(OF_PATH)/addons";
+				OF_CORE_LIBS = "$(LIB_POCO) $(LIB_TESS) $(LIB_GLEW) $(LIB_CAIRO1) $(LIB_CAIRO2) $(LIB_CAIRO3) $(LIB_FMODEX) $(LIB_RTAUDIO) $(LIB_OPENSSL1) $(LIB_OPENSSL2) $(LIB_GLFW) $(LIB_FREEIMAGE) $(LIB_FREETYPE) $(LIB_BOOST_FS) $(LIB_BOOST_SYSTEM)";
 				OF_LIBS_PATH = "$(OF_PATH)/libs";
 				OF_PATH = ../of_v0.9.8_osx_release;
 				OTHER_CPLUSPLUSFLAGS = (
