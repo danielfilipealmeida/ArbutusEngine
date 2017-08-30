@@ -26,6 +26,8 @@ public:
     void operator=(Visuals const&) = delete;
     
     json getState();
+    void setState(json state);
+    
     void add(Visual *visual);
     Boolean isFileInList(string filePath);
     unsigned int count();
@@ -38,6 +40,13 @@ public:
     void empty();
     
     void print();
+    
+    
+    /*!
+     Adds a video directly to visuals list
+     Only add if the file isn't yet on the list. Always returns the desired video as a visual.
+     */
+    Visual* addVideo(std::string path);
 };
 
 

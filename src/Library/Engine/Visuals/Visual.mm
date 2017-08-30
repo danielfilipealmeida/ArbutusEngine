@@ -31,6 +31,10 @@ json Visual::getState()
     return state;
 }
 
+void Visual::setState(json state) {
+    
+}
+
 // debug
 void Visual::print(){
     cout << "Visual Data"<<endl;

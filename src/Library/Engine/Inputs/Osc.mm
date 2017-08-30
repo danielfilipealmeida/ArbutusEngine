@@ -61,7 +61,7 @@ void Osc::update() {
         
         checkVisualTrigger(msg);
         
-        cout << description(msg) << endl;
+        // cout << description(msg) << endl;
     }
 }
 

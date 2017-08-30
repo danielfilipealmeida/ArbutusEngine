@@ -48,8 +48,7 @@ VisualCamera::~VisualCamera()
 }
 
 
-json
-VisualCamera::getState()
+json VisualCamera::getState()
 {
     json state;
     
@@ -65,8 +64,11 @@ VisualCamera::getState()
 }
 
 
-void
-VisualCamera::open()
+void VisualCamera::setState(json state) {
+    Visual::setState(state);
+}
+
+void VisualCamera::open()
 {
     if (isOpened) return;
     isOpened = true;

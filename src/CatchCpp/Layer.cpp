@@ -7,9 +7,6 @@
 //
 
 #include <stdio.h>
-
-
-#include <stdio.h>
 #include "catch.hpp"
 #include "Layer.h"
 #include "json.hpp"
@@ -86,7 +83,7 @@ TEST_CASE("Layer label should be properly created", "[label]") {
         properties->setBlendMode((BlendMode) element["blendMode"].get<int>());
         properties->setAlpha(element["alpha"]);
         
-        std::cout <<layer->label()<<" -- "<<element["expectedResult"].get<std::string>()<<std::endl;
+        //std::cout <<layer->label()<<" -- "<<element["expectedResult"].get<std::string>()<<std::endl;
         
         
         REQUIRE(layer->label().compare(element["expectedResult"].get<std::string>()) == 0);
@@ -95,4 +92,28 @@ TEST_CASE("Layer label should be properly created", "[label]") {
     }
     
    // std::cout << layer->label() << std::endl;
+}
+
+TEST_CASE("State should be properly set", "[getState]") {
+    Layer *layer;
+    
+    layer = new Layer(false);
+    
+    json state = json::object({
+        {"name", "a layer"},
+        {"alpha", (float) 0.5f},
+        {"blendMode", 1},
+        {"red", 0.5f},
+        {"green", (double) 0.6f},
+        {"blue", 0.7f},
+        {"blurH", 1},
+        {"blurV", 2},
+        {"brightness", 0.4f},
+        {"saturation", 0.2f},
+        {"contrast", -0.20f},
+        {"width", 320},
+        {"height", 240},
+    });
+    layer->setState(state);
+    REQUIRE(layer->getState().dump(4).compare(state.dump(4)) == 0);
 }

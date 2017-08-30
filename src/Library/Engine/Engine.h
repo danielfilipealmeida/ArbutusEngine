@@ -50,7 +50,7 @@ class Engine {
     SyphonOutputManager syphonOutputManager;
     SetProperties setProperties;
 
-    Osc *osc;   // isto é usado???
+    Osc *osc = NULL;   // isto é usado???
     unsigned layersPreview_Columns ;// isto é usado???
     
 public:
@@ -174,49 +174,37 @@ public:
     /*!
      @abstract ...
      */
-	void setActiveVisualInstanceNumberForLayer(
-                                          unsigned int visualInstanceN,
-                                        unsigned int layerN
-   );
-	
-    
+	void setActiveVisualInstanceNumberForLayer(unsigned int visualInstanceN, unsigned int layerN);
     
     /*!
      @abstract ...
      */
     void setActiveVisualIntancesOnAllLayers(unsigned int columnN);
-	
     
     /*!
      @abstract ...
      */
     void setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN);
     
-    
     /*!
      @abstract ...
      */
 	VisualInstance* getCurrentActiveVisualInstance();
     
-    
     /*!
      @abstract ...
      */
     VisualInstance* getVisualAtLayerAndInstanceN(unsigned int layerN, unsigned int visualInstanceN);
-    
-    
-    
+  
     /*!
      @abstract ...
      */
 	void stopVisualAtSelectedLayer();
     
-    
     /*!
      @abstract ...
      */
     void stopVisualAtLayer(unsigned int layerN);
-    
     
     /*!
      @abstract ...
@@ -317,6 +305,12 @@ public:
     /*!
      @abstract ...
      */
+    void setState(json state);
+
+    
+    /*!
+     @abstract ...
+     */
     json getLayersState();
     
     /*************************************************************/
@@ -331,7 +325,7 @@ public:
 #pragma mark Rendering and drawing Functions
 
     void render();
-	void drawOutput(int x, int y, int width, int height);
+	void drawOutput(int x = 0, int y = 0, int width = 0, int height = 0);
 	void drawLayer(int layerNumber, int x, int y, int width, int height);
 	void drawOutputPreview(int x, int y, int width, int height);
 	void drawLayersPreview(int x, int y, int height, int maxNumLayers = MAXIMUM_NUMBER_OF_LAYERS );
@@ -565,8 +559,7 @@ public:
 
     
 private:
-    Layer*
-    getLayerForActionHandler (json data);
+    Layer*  getLayerForActionHandler (json data);
 };
 
 

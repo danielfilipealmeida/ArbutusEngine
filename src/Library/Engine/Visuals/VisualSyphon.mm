@@ -46,6 +46,9 @@ VisualSyphon::getState()
     return state;
 }
 
+void VisualSyphon::setState(json state) {
+    Visual::setState(state);
+}
 
 
 string VisualSyphon::getThumbnailPath() {

@@ -37,6 +37,8 @@ void Engine::setupSyphon() {
 Engine::Engine() {
     if (enginePtr != NULL) return;
     enginePtr = this;
+    
+    osc = NULL;
 
     setDefaults();
     
@@ -56,6 +58,7 @@ Engine::Engine() {
     
     setupSyphon();
     
+    // this needs to only work on osx
     setAppSupportDir(ofFilePath::getUserHomeDir().append("/Library/Application Support/Arbutus"));
 }
 
@@ -63,6 +66,8 @@ Engine::~Engine() {
 	destroyBuffer();
     Scenes::getInstance().empty();
     Visuals::getInstance().empty();
+    Layers::getInstance().empty();
+    
     // clean visual lists
     
     enginePtr = NULL;
@@ -79,18 +84,35 @@ Engine::getInstance() {
 
 #pragma mark State Handling
 
-json
-Engine::getState() {
+json Engine::getState() {
     json state;
     
     state["visuals"] = Visuals::getInstance().getState();
-    state["layers"] = getLayersState();
+    state["layers"] = Layers::getInstance().getState();
     state["scenes"] = Set::getInstance().getScenesState();
     
     return state;
 }
 
+
+
+void Engine::setState(json state) {
+    cout << state.dump(4) << endl;
+    if (state["visuals"].is_array()) {
+        Visuals::getInstance().setState(state["visuals"]);
+    }
+    if (state["layers"].is_array()) {
+        Layers::getInstance().setState(state["layers"]);
+    }
+    if (state["scenes"].is_array()) {
+        Scenes::getInstance().setState(state["scenes"]);
+    }
+}
+
+
+
 // TODO: move this to the Layers class
+/*
 json Engine::getLayersState() {
     json state;
     
@@ -99,6 +121,7 @@ json Engine::getLayersState() {
     }
     return state;
 }
+ */
 
 /* ************************************************************************ */
 #pragma mark File Management
@@ -138,7 +161,7 @@ void
 Engine::closeSet() {
     if (Set::getInstance().isLoaded() == false) return;
     
-    Layers::getInstance().removeAll();
+    Layers::getInstance().empty();
 	Set::getInstance().closeSet();
 
     currentVisualInstance = NULL;
@@ -155,7 +178,7 @@ Engine::openSet(string _setPath) {
     
     destroyBuffer();
     closeSet();
-	Layers::getInstance().removeAll();
+	Layers::getInstance().empty();
 	
     result = Set::getInstance().openSet(_setPath);
     if (!result) return result;
@@ -683,6 +706,13 @@ Engine::drawOutput(
 ){
     if (buffer==NULL) {
         return;
+    }
+    
+    if (width == 0) {
+        width = ofGetWidth() - x;
+    }
+    if (height == 0) {
+        height = ofGetHeight() - y;
     }
 	buffer->draw(x, y, width, height);
 }

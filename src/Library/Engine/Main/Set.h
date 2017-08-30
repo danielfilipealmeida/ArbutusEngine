@@ -121,12 +121,12 @@ public:
     /**!
      @abstract ...
      */
-    Scene* addSceneToList(string sceneName, unsigned char nVisualsInScene, unsigned char *visualsInScene);
+    Scene* addScene(string sceneName, unsigned char nVisualsInScene, unsigned char *visualsInScene);
     
     /**!
      @abstract ...
      */
-    void addSceneToList(Scene *newScene);
+    void addScene(Scene *newScene);
     
     /**!
      @abstract ...
@@ -139,7 +139,6 @@ public:
     void removeCurrentScene();
 	
     
-	
     /**!
      @abstract ...
      */
@@ -158,7 +157,7 @@ public:
     /**!
      @abstract ...
      */
-    void gotoPreviewScene();
+    void gotoPreviousScene();
     
     /**!
      @abstract ...
@@ -193,8 +192,7 @@ public:
     /**!
      @abstract ...
      */
-    Scene*
-    getSceneAtIndex(unsigned int index);
+    Scene* getSceneAtIndex(unsigned int index);
     
     /**!
      @abstract ...

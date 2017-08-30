@@ -91,7 +91,8 @@ Set::getScenesState() {
 
 
 bool Set::openSet(string _filePath) {
-    SetFile::load(_filePath);
+    json state = SetFile::load(_filePath);
+    Engine::getInstance()->setState(state);
     
     return true;
     /*
@@ -451,22 +452,22 @@ void Set::addVisualSyphonToList(string serverName, string appName){
 
 
 
-Scene* Set::addSceneToList(string sceneName, unsigned char nVisualsInScene, unsigned char *visualsInScene) {
+Scene* Set::addScene(string sceneName, unsigned char nVisualsInScene, unsigned char *visualsInScene) {
     Scene *newScene;
     
     newScene = new Scene(sceneName);
-    addSceneToList(newScene);
+    addScene(newScene);
     
     return newScene;
 }
 
-void Set::addSceneToList(Scene *newScene) {
+void Set::addScene(Scene *newScene) {
     Scenes::getInstance().add(newScene);
 }
 
 
 Scene* Set::newScene() {
-    return addSceneToList("new Scene", 0,0);
+    return addScene("new Scene", 0,0);
 }
 
 
@@ -519,7 +520,7 @@ void Set::setCurrentScene(unsigned int _sceneNumber) {
 
 
 
-void Set::gotoPreviewScene() {
+void Set::gotoPreviousScene() {
     if (currentSceneNumber>0) setCurrentScene(currentSceneNumber-1);
 }
 

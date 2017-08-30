@@ -376,27 +376,77 @@ Layer::handleAction(
 
 json Layer::getState() {
     json state;
-    
-    /*
-    state = json::object({
-        {"Alpha", properties.getAlpha()},
-        {"Brightness", properties.getBrightness()},
-        {"Contrast", properties.getContrast()},
-        {"Saturation", properties.getSaturation()},
-        {"Red", properties.getRed()},
-        {"Green", properties.getGreen()},
-        {"Blue", properties.getBlue()},
-        {"BlurH", properties.getBlurH()},
-        {"BlurV", properties.getBlurV()}
-    });
-     */
-    
+
     state = properties.getState();
     
     return state;
 }
 
 
+/*
+ {
+ "alpha": 1,
+ "brightness": 1,
+ "contrast": 1,
+ "name": "",
+ "saturation": 1,
+
+ }
+*/
+void Layer::setState(json state) {
+    //std::fixed; std::setprecision(2);
+    unsigned int precision = 2;
+    
+    if (state["width"].is_number()) {
+        properties.setWidth(state["width"].get<int>());
+    }
+    if (state["height"].is_number()) {
+        properties.setHeight(state["height"].get<int>());
+    }
+    if (state["blendMode"].is_number()) {
+        properties.setBlendMode((BlendMode) state["blendMode"].get<int>());
+    }
+    if (state["blurH"].is_number()) {
+        properties.setBlurH((BlendMode) state["blurH"].get<int>());
+    }
+    if (state["blurV"].is_number()) {
+        properties.setBlurV((BlendMode) state["blurV"].get<int>());
+    }
+
+    if (state["red"].is_number()) {
+        properties.setRed(roundWithPrecision(state["red"].get<float>(), precision));
+    }
+
+    if (state["green"].is_number()) {
+        properties.setGreen(roundWithPrecision(state["green"].get<float>(), precision));
+    }
+
+    if (state["blue"].is_number()) {
+        properties.setBlue(state["blue"].get<float>());
+    }
+
+    if (state["alpha"].is_number()) {
+        properties.setAlpha(state["alpha"].get<float>());
+    }
+
+    if (state["brightness"].is_number()) {
+        properties.setBrightness(state["brightness"].get<float>());
+    }
+
+    if (state["contrast"].is_number()) {
+        properties.setContrast(state["contrast"].get<float>());
+    }
+
+    if (state["saturation"].is_number()) {
+        properties.setSaturation(state["saturation"].get<float>());
+    }
+
+    if (state["name"].is_string()) {
+        properties.setName(state["name"].get<string>());
+    }
+
+   
+}
 
 #pragma mark Layers Implementation
 
@@ -408,8 +458,7 @@ Layers& Layers::getInstance()
 }
 
 
-Layer*
-Layers::add(bool _loadShaders) {
+Layer* Layers::add(bool _loadShaders) {
     Layer *newLayer;
     
     if (layersList.size() == MAXIMUM_NUMBER_OF_LAYERS) {
@@ -424,15 +473,14 @@ Layers::add(bool _loadShaders) {
 }
 
 
-void
-Layers::addToList(Layer *newLayer) {
+void Layers::addToList(Layer *newLayer) {
     layersList.push_back(newLayer);
 }
 
 
 
 void
-Layers::removeAll() {
+Layers::empty() {
     while (!layersList.empty()) {
         layersList.pop_front();
     }
@@ -523,3 +571,26 @@ void Layers::setCount (unsigned int _val) {
 LayersList Layers::getList() {
     return layersList;
 }
+
+
+json Layers::getState() {
+    json state;
+    
+    for(auto layer:layersList) {
+        state.push_back(layer->getState());
+    }
+    
+    return state;
+}
+
+
+void Layers::setState(json state) {
+    empty();
+    
+    for (auto& layer : state) {
+        Layer *newLayer = add();
+        newLayer->setState(layer);
+    }
+    
+}
+

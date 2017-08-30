@@ -68,6 +68,10 @@ VisualVideo::getState()
     return state;
 }
 
+void VisualVideo::setState(json state) {
+    Visual::setState(state);
+}
+
 Boolean
 VisualVideo::loadVideo(){
     return false;

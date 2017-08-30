@@ -8,6 +8,8 @@
  */
 
 #include "Scene.h"
+#include "Visuals.h"
+
 
 
 Scene::Scene(string _sceneName){
@@ -21,18 +23,31 @@ Scene::~Scene() {
 
 
 
-json
-Scene::getState() {
+json Scene::getState() {
     json state;
    
-    
     state = json::object({
         {"name", sceneName},
         {"instances", visualInstances.getState()}
     });
     
-    
     return state;
+}
+
+void Scene::setState(json state) {
+    if (!state.is_object()) throw "State isn't an object";
+    if (state["name"].is_string()) setName(state["name"].get<string>());
+    if (!state["instances"].is_array()) return;
+    
+    visualInstances.empty();
+    for(auto newVisualInstanceState:state["instances"]) {
+        Visual *visual;
+        visual = Visuals::getInstance().get(newVisualInstanceState["index"]);
+        if (visual == NULL) continue;
+        visualInstances.add(visual,
+                            newVisualInstanceState["properties"]["column"],
+                            newVisualInstanceState["properties"]["layer"]);
+    }
 }
 
 
@@ -40,102 +55,6 @@ void
 Scene::setName(string newName) {
     sceneName = newName;
 }
-
-
-/*
-VisualInstance * Scene::addVisualToInstanceList(Visual *visual, unsigned int layer, unsigned int column) {
-	
-	// check if there is already a visual and the layer/column
-	if(isVisualInstantInColumn(column, layer) == true) {
-		removeVisualInstance(layer, column);
-		
-	}
-    
-	VisualInstance *instance = new VisualInstance(visual, layer, column);
-	visualsInstanceList.push_back(instance);
-	totalVisualsOnScene = (unsigned int) visualsInstanceList.size();
-    
-    return instance;
-}
-*/
-
-/*
-void Scene::removeVisualInstance(unsigned int layer, unsigned int column) {
-    
-	for(VisualInstanceListIterator i=visualsInstanceList.begin();
-        i!=visualsInstanceList.end();
-        i++) {
-        VisualInstance *visualInstance;
-        
-		visualInstance = *i;
-		if (visualInstance->getProperties()->getLayer () == layer &&
-            visualInstance->getProperties()->getColumn () == column
-            ) {
-            visualsInstanceList.erase(i);
-		}
-	}
-}
-*/
-
-/*
-void Scene::removeVisualInstancesWithVisual(Visual *visual) {
-    for(VisualInstanceListIterator i=visualsInstanceList.begin();
-        i!=visualsInstanceList.end();
-        i++) {
-        VisualInstance *visualInstance;
-        
-        visualInstance = *i;
-        if (visualInstance->visual == visual) {
-            visualsInstanceList.erase(i);
-        }
-    }
-}
- */
-
-
-
-
-/*
-Boolean Scene::isVisualInstantInColumn(unsigned int column, unsigned int layerN) {
-	Boolean res = false;
-	for(VisualInstanceListIterator i=visualsInstanceList.begin(); i!=visualsInstanceList.end();i++) {
-		VisualInstance *visualInstance = *i;
-		if (visualInstance->getProperties()->getLayer () == layerN && visualInstance->getProperties()->getColumn () == column) res = true;
-	}
-	
-	return res;
-}
-*/
- 
-/*
-void Scene::emptyVisualInstancesList() {
-	
-    for(VisualInstanceListIterator i=visualsInstanceList.begin(); i!=visualsInstanceList.end();i++) {
-        VisualInstance *visualInstance = *i;
-
-        delete visualInstance;
-    }
-    
-    visualsInstanceList.empty();
-}
-*/
-
-/*
-int Scene::getLastColumnInLayer(unsigned int layer) {
-    int result = -1;
-    for(VisualInstanceListIterator i=visualsInstanceList.begin(); i!=visualsInstanceList.end();i++) {
-		VisualInstance *visualInstance = *i;
-        if (visualInstance->getProperties()->getLayer () == layer &&
-            visualInstance->getProperties()->getColumn () > result
-            ) {
-         result = visualInstance->getProperties()->getColumn ();
-        }
-    }
-    
-
-    return result;
-}
-*/
 
 
 /****************************************************************************/
@@ -166,6 +85,7 @@ void Scene::cleanup() {
 
 
 // columns and layerN starts in 1
+/*
 void Scene::addFreeFrameInstanceToVisualInstance(unsigned int instanceSlotNumber,
                                                  unsigned int column,
                                                  unsigned int layerN) {
@@ -176,8 +96,8 @@ void Scene::addFreeFrameInstanceToVisualInstance(unsigned int instanceSlotNumber
 	instance->addFreeFrameInstance(instanceSlotNumber);
 #endif
 }
-
-
+*/
+/*
 void Scene::removeFreeFrameInstanceToVisualInstance(
                                                     unsigned int instanceSlotNumber,
                                                     unsigned int column,
@@ -191,7 +111,7 @@ void Scene::removeFreeFrameInstanceToVisualInstance(
 #endif
 }
 
-
+*/
 
 
 #pragma mark Scenes Implementation
@@ -209,10 +129,12 @@ ScenesList Scenes::getList() {
 }
 
 
-void Scenes::newScene(string sceneTitle) {
+Scene* Scenes::newScene(string sceneTitle) {
     Scene *newScene = NULL;
     newScene = new Scene(sceneTitle);
     add(newScene);
+    
+    return newScene;
 }
 
 
@@ -248,6 +170,17 @@ Scene* Scenes::get(unsigned int index) {
         count++;
     }
     return NULL;
+}
+
+
+void Scenes::setState(json state) {
+    
+}
+
+json Scenes::getState() {
+    json state;
+    
+    return state;
 }
 
 

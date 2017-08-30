@@ -197,12 +197,24 @@ public:
     getSchedulledInstance () { return schedulledInstance; }
 	
     
+    /*!
+     @abstract ...
+     */
     ofFbo*
     getBuffer() {return buffer;}
     
     
+    /*!
+     @abstract ...
+     */
     json
     getState();
+    
+    /*!
+     @abstract ...
+     */
+    void setState(json state);
+    
     
 #pragma mark Actions
     
@@ -250,7 +262,7 @@ public:
     /*!
      @abstract ...
      */
-    void removeAll();
+    void empty();
     
     /*!
      @abstract ...
@@ -296,6 +308,19 @@ public:
      @abstract Returns the actual STL list of the layers in the app
      */
     LayersList getList();
+    
+    
+#pragma mark State Handling
+    
+    /*!
+     @abstract ...
+     */
+    void setState(json state);
+    
+    /*!
+     @abstract ...
+     */
+   json getState();
 };
 
 #endif

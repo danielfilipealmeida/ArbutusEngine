@@ -18,7 +18,7 @@ using json = nlohmann::json;
 
 class SetFile {
 public:
-    static void load(std::string path);
+    static json load(std::string path);
     static void save(std::string path, json state);
 };
 

@@ -80,6 +80,7 @@ public:
     void setFilePath (string _val) { filePath = _val; }
     
     virtual json getState();
+    virtual void setState(json state);
 
 };
 

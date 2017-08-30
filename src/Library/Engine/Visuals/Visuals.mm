@@ -33,6 +33,46 @@ json Visuals::getState()
     return state;
 }
 
+void Visuals::setState(json state)
+{
+    if (!state.is_array()) return;
+    
+    empty();
+    
+    for(auto visualState:state) {
+        if (!visualState["type"].is_number()) continue;
+        
+        switch ((VisualType) visualState["type"].get<int>()) {
+            case VisualType_Video: {
+                if (!visualState["filePath"].is_string()) break;
+                
+                VisualVideo *newVisual = new VisualVideo(visualState["filePath"].get<string>());
+                
+                newVisual->setState(visualState);
+                
+                add((Visual *)newVisual);
+                break;
+            }
+
+                
+            case VisualType_Camera: {
+                break;
+            }
+               
+                
+            case VisualType_Syphon:{
+                break;
+            }
+                
+            case VisualType_Generator:{
+                break;
+            }
+        }
+        
+        
+    }
+}
+
 
 void Visuals::add(Visual *visual)
 {
@@ -96,12 +136,6 @@ Visual* Visuals::get(int pos) {
 
 void Visuals::empty()
 {
-    /*
-    while (!visualsList.empty()){
-        Visual *visual = visualsList.pop_front();
-        delete visual;
-    }
-    */
     for (auto it = visualsList.begin();
          it!= visualsList.end();
          it++ )
@@ -120,10 +154,20 @@ void Visuals::empty()
 void Visuals::print() {
     int count = 1;
     for (auto visual:visualsList){
-        cout << endl;
-      
         cout << "VISUAL " << count << ":" << endl;
         visual->print();
         count++;
     }
+}
+
+// todo, traverse the list and search for the video. return it if it is there. if not continue the process
+
+Visual* Visuals::addVideo(std::string path) {
+    VisualVideo *video;
+    
+    
+    video = new VisualVideo(path);
+    add((Visual *) video);
+
+    return (Visual *) video;
 }

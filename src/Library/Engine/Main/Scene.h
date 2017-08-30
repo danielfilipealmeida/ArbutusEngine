@@ -55,38 +55,10 @@ public:
     /*!
      @abstract ...
      */
-    VisualInstance  *addVisualToInstanceList(Visual *visual, unsigned int layer, unsigned int column);
-	
-    
-    /*!
-     @abstract ...
-     */
-    void removeVisualInstance(unsigned int layer, unsigned int column);
+    void setState(json state);
     
     
-    
-    /*!
-     @abstract ...
-     */
-    void removeVisualInstancesWithVisual(Visual *visual);
-    
-    
-    
-    /*!
-     @abstract ...
-     */
-    Boolean isVisualInstantInColumn(
-                            unsigned int column,
-                            unsigned int layerN
-    );
-    
-    
-    
-    /*!
-     @abstract ...
-     */
-	void emptyVisualInstancesList();
-	
+   
     
     /*!
      @abstract ...
@@ -96,22 +68,20 @@ public:
     /*!
      @abstract ...
      */
+    /*
 	void addFreeFrameInstanceToVisualInstance(unsigned int instanceSlotNumber,
                                               unsigned int column,
                                               unsigned int layerN);
-    
+    */
     /*!
      @abstract ...
      */
+    /*
 	void removeFreeFrameInstanceToVisualInstance(unsigned int instanceSlotNumber,
                                                  unsigned int column,
                                                  unsigned int layerN);
-    
-    /*!
-     @abstract ...
-     */
-    int getLastColumnInLayer(unsigned int layer);
-    
+    */
+  
     /*!
      @abstract ...
      */
@@ -160,13 +130,20 @@ public:
 
     ScenesList getList();
 
-    void newScene(string sceneTitle);
+    Scene *newScene(string sceneTitle);
     void add(Scene *newScene);
     
     void empty();
     
     Scene* get(unsigned int index);
     
+    /*!
+     */
+    void setState(json state);
+
+    /*!
+     */
+    json getState();
 
 };
 

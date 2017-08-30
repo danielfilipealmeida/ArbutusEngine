@@ -32,6 +32,7 @@ public:
     ~VisualVideo();
     
     json getState();
+    void setState(json state);
     
     Boolean loadVideo();
 	Boolean closeVisual();

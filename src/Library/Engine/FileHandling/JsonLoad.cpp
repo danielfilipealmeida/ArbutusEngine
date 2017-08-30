@@ -15,6 +15,7 @@ json JsonLoad::load(std::string path) {
     }
     
     ofBuffer buffer = ofBufferFromFile(path);
+    //cout << buffer.getText() << endl;
     
     json state = json::parse(buffer.getText());
     

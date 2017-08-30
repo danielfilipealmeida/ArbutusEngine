@@ -35,6 +35,7 @@ public:
     ~VisualSyphon();
     
     json getState();
+    void setState(json state);
     
     string  getThumbnailPath();
     void    setThumbnail();

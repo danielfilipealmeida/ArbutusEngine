@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include "catch.hpp"
 #include "Engine.h"
+#include "JsonLoad.hpp"
+
 
 extern void testNewLayer(json layer);
 
@@ -39,19 +41,19 @@ TEST_CASE("State with Layers", "[getState]") {
     
     engine = new Engine();
     layer = Layers::getInstance().add(false);
+    layer->getProperties()->setName("Layer 1");
     scene = new Scene("my scene");
     visual = new VisualVideo("loop001.mov");
     Visuals::getInstance().add((Visual *)visual);
     scene->visualInstances.add(visual, 1, 1);
     
-    Set::getInstance().addSceneToList(scene);
+    Set::getInstance().addScene(scene);
     
     state = engine->getState();
     REQUIRE(state["layers"].is_null() == false);
     REQUIRE(state["layers"].size() == 1);
     testNewLayer(state["layers"][0]);
 
-    cout << state.dump() <<endl;
     REQUIRE(state["scenes"].is_null() == false);
     REQUIRE(state["scenes"].is_array() == true);
     REQUIRE(state["visuals"].is_null() == false);
@@ -65,3 +67,65 @@ TEST_CASE("State with Layers", "[getState]") {
     delete engine;
 }
 
+
+/*
+ Creates a new set with:
+ - one set
+ - two layers
+ - two visuals, one on each layer
+ 
+ saves and open the saved file. compares the state of the engine and the one loaded from the file
+ */
+TEST_CASE("Engine can create and save a set properly", "[!hide]") {
+    Engine *engine;
+    Layer *layer1, *layer2;
+    Scene *scene;
+    VisualVideo *video1, *video2;
+    
+    engine = new Engine();
+    
+    layer1 = Layers::getInstance().add(false);
+    layer2 = Layers::getInstance().add(false);
+    scene = new Scene("First Scene");
+    //Set::getInstance().addScene(scene);
+    
+    layer1->getProperties()->setName("Layer 1");
+    layer2->getProperties()->setName("Layer 2");
+    
+    video1 = new VisualVideo("loop001.mov");
+    Visuals::getInstance().add((Visual *) video1);
+    scene->visualInstances.add(video1, 0, 0);
+
+    video2 = new VisualVideo("loop002.mov");
+    Visuals::getInstance().add((Visual *) video2);
+    scene->visualInstances.add(video2, 1, 0);
+    
+    Set::getInstance().addScene(scene);
+
+    //cout << engine->getState().dump(4) << endl;
+    json currentState = engine->getState();
+    REQUIRE(currentState.is_object());
+    REQUIRE(currentState["layers"].is_array());
+    REQUIRE(currentState["scenes"].is_array());
+    REQUIRE(currentState["visuals"].is_array());
+    REQUIRE(currentState["layers"].size() == 2);
+    REQUIRE(currentState["scenes"].size() == 1);
+    REQUIRE(currentState["visuals"].size() == 2);
+    REQUIRE(currentState["scenes"].at(0)["instances"].size() == 2);
+    REQUIRE(currentState["layers"].at(0)["name"].get<string>().compare("Layer 1") == 0);
+    
+    std::string path = ofFilePath::getCurrentExeDir() + "/engine-test.json";
+    engine->saveSetAs(path);
+    json loadedState = JsonLoad::load(path);
+    
+    // Test loaded json
+    REQUIRE(loadedState.dump(4).compare(engine->getState().dump(4)) == 0);
+    
+    
+    // test opening the the file
+    engine->openSet(path);
+    
+    //cout << engine->getState().dump(4) << endl;
+    
+    delete engine;
+}

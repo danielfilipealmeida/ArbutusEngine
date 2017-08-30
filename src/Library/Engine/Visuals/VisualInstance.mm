@@ -32,7 +32,9 @@ VisualInstance::VisualInstance() {
 }
 
 VisualInstance::VisualInstance(Visual *_visual, unsigned int layer, unsigned int column) {
-	visual = _visual;
+	if (_visual == NULL) throw "Invalid visual";
+    
+    visual = _visual;
 	properties.setLayer (layer);
 	properties.setColumn (column);
 	properties.setIsPlaying (false);
@@ -627,7 +629,7 @@ VisualInstance::getState() {
     state["videoY"] = videoX;
     state["videoWidth"] = videoWidth;
     state["videoHeight"] = videoHeight;
-    state["visual"] = visual->getState();
+    state["visual"] = (visual!=NULL) ? visual->getState() : json::object();
     
     return state;
 }
