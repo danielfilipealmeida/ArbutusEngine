@@ -129,6 +129,7 @@ ScenesList Scenes::getList() {
 }
 
 
+// todo: reame to new
 Scene* Scenes::newScene(string sceneTitle) {
     Scene *newScene = NULL;
     newScene = new Scene(sceneTitle);
@@ -174,6 +175,12 @@ Scene* Scenes::get(unsigned int index) {
 
 
 void Scenes::setState(json state) {
+    //cout << state.dump(4) << endl;
+    empty();
+    for (auto newSceneState:state) {
+        Scene *scene = newScene(newSceneState["name"]);
+        scene->setState(newSceneState);
+    }
     
 }
 

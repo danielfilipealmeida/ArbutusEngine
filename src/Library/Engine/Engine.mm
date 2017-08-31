@@ -97,7 +97,7 @@ json Engine::getState() {
 
 
 void Engine::setState(json state) {
-    cout << state.dump(4) << endl;
+    //cout << state.dump(4) << endl;
     if (state["visuals"].is_array()) {
         Visuals::getInstance().setState(state["visuals"]);
     }

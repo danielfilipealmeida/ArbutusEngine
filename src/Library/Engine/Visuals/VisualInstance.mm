@@ -103,8 +103,7 @@ void VisualInstance::unload() {
 
 
 
-void
-VisualInstance::play(bool forcePlay)
+void VisualInstance::play(bool forcePlay)
 {
 	if (visual == NULL) return;
     

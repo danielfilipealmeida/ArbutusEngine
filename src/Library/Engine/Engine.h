@@ -226,62 +226,51 @@ public:
     void addVisualToSceneListInCurrentLayer(unsigned int visual, unsigned int layer, unsigned int column);
     
     
-    
     /*!
      @abstract ...
      */
     void addVisualToScene(unsigned int visual, unsigned int layer, unsigned int column);
     
     
-    
     /*!
      @abstract ...
      */
-   void
-    removeVisualFromScene(
+    void removeVisualFromScene(
                           unsigned int layer,
                           unsigned int column
     );
     
     
-    
     /*!
      @abstract ...
      */
-    Scene
-    *getCurrentScene();
-    
-    
-    
-    /*!
-     @abstract ...
-     */
-    Scene
-    *getSceneAtIndex(unsigned int index);
+    Scene *getCurrentScene();
     
     
     
     /*!
      @abstract ...
      */
-   unsigned int
-    getNumberOfVisuals();
+    Scene *getSceneAtIndex(unsigned int index);
+    
+    
+    /*!
+     @abstract ...
+     */
+    unsigned int getNumberOfVisuals();
+    
+    
+    /*!
+     @abstract ...
+     */
+    Visual *getVisualAtIndex(unsigned int index);
     
     
     
     /*!
      @abstract ...
      */
-    Visual
-    *getVisualAtIndex(unsigned int index);
-    
-    
-    
-    /*!
-     @abstract ...
-     */
-    bool
-    isSyphonInputLoaded(
+    bool isSyphonInputLoaded(
                         string serverName,
                         string appName
     );

@@ -14,8 +14,12 @@ void ofApp::setup(){
     catch (string &exception) {
         cout << "Error: " << exception << endl;
     }
+    Set::getInstance().setCurrentScene(0);
+    engine->setActiveVisualInstanceNumberForLayer(0, 0);
+    VisualInstance *visualInstance = engine->getCurrentActiveVisualInstance();
+    if (visualInstance!=NULL) visualInstance->play();
     
-    std::cout << engine->getState().dump(4) << std::endl;
+    //std::cout << engine->getState().dump(4) << std::endl;
     //json loadedState;
     //std::string filePath;
     
