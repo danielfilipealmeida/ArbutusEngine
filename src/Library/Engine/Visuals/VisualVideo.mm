@@ -26,6 +26,7 @@ VisualVideo::VisualVideo(string _filePath)
         if (!visualFile->exists()) {
             delete visualFile;
             
+            // todo: fix this!
             setFolder = ofFilePath::getEnclosingDirectory(Set::getInstance().getFilePath () );
             _filePath = ofFilePath::join(setFolder,_filePath);
             visualFile2 = new ofFile(_filePath);

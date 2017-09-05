@@ -47,9 +47,7 @@ VisualInstance::~VisualInstance() {
 
 
 bool VisualInstance::loadVideo() {
-	bool result;
-    bool fileExists;
-    string filePath;
+	string filePath;
     
 	properties.setIsPlaying ( false );
     
@@ -57,14 +55,12 @@ bool VisualInstance::loadVideo() {
     if (visual->getType () != VisualType_Video) return false;
     
     filePath = ((VisualVideo *) visual)->getFilePath ();
-    fileExists = checkFileExists(filePath);
-    result = this->video.loadMovie(filePath);
+    if (!checkFileExists(filePath)) throw "File '" + filePath + "' doesn't exist.";
+    if (!this->video.load(filePath)) throw "Error opening file '" + filePath + "'";
             
-    if (result == true) {
-        properties.setOpenedTimestampToNow();
-    }
-            
-    return result;
+    properties.setOpenedTimestampToNow();
+    
+    return true;
 }
 
 

@@ -357,8 +357,7 @@ Engine::setMixerResolution(
 /* ************************************************************************* */
 #pragma mark Visual Management
 
-void
-Engine::setActiveVisualInstanceNumberForLayer(
+void Engine::setActiveVisualInstanceNumberForLayer(
                                               unsigned int column,
                                               unsigned int layerN
 ) {

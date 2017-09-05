@@ -75,8 +75,8 @@
                              "videoY": -2139062144,
                              "visual": {
                              "address": "0x10184abe0",
-                             "caption": "loop001.mov",
-                             "filePath": "../../../data/loop001.mov",
+                             "caption": "001.mov",
+                             "filePath": "001.mov",
                              "type": 0
                              }
                              },
@@ -121,8 +121,8 @@
                              "videoY": -2139062144,
                              "visual": {
                              "address": "0x10184b320",
-                             "caption": "loop002.mov",
-                             "filePath": "../../../data/loop002.mov",
+                             "caption": "002.mov",
+                             "filePath": "002.mov",
                              "type": 0
                              }
                              }
@@ -133,14 +133,14 @@
     "visuals": [
                 {
                 "address": "0x10184abe0",
-                "caption": "loop001.mov",
-                "filePath": "../../../data/loop001.mov",
+                "caption": "001.mov",
+                "filePath": "001.mov",
                 "type": 0
                 },
                 {
                 "address": "0x10184b320",
-                "caption": "loop002.mov",
-                "filePath": "../../../data/loop002.mov",
+                "caption": "002.mov",
+                "filePath": "002.mov",
                 "type": 0
                 }
                 ]

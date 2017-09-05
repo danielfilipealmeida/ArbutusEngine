@@ -7,7 +7,9 @@
 void ofApp::setup(){
     Engine *engine = new Engine();
     string filePath = ofFilePath::getCurrentExeDir() + "../Resources/set.json";
-
+    
+    ofSetDataPathRoot("./");
+    
     try {
         engine->openSet(filePath);
     }
