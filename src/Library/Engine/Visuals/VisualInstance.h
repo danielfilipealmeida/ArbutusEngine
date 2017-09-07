@@ -185,9 +185,11 @@ public:
     json getState();
    
     /**!
-     
+     Check if a visual instance is present on a given layer and colum
+     @param layerN the number of the layer starting at 0
+     @param column the number of the column starting at 0
      */
-    Boolean inColumn(unsigned int column, unsigned int layerN);
+    Boolean inColumn(unsigned int layerN, unsigned int column);
     
     /**!
      
@@ -222,7 +224,7 @@ public:
     /**!
      
      */
-    VisualInstance* get(unsigned int column, unsigned int layerN);
+    VisualInstance* get(unsigned int layerN, unsigned int column);
     
     
     /**!

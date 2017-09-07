@@ -413,14 +413,10 @@ void Set::closeSet() {
  *
  *  @param filePath string with the file path to the visual to add
  */
-void
-Set::addVisualVideoToListFromFile(
-                                  string filePath
-                                  ) {
+void Set::addVisualVideoToListFromFile(string filePath)
+{
     VisualVideo	*visual;
-	Boolean result;
-
-	// check if the visual is already on the list
+		// check if the visual is already on the list
     if (Visuals::getInstance().isFileInList(filePath)) return;
 	
 	visual = new VisualVideo(filePath);
@@ -432,9 +428,6 @@ Set::addVisualVideoToListFromFile(
 
 void Set::addVisualCameraToList(unsigned int id, unsigned int rate, unsigned int w, unsigned int h) {
     VisualCamera *visual = NULL;
-    Boolean result;
-    
-    //if (isCameraInVisualList(id)) return;
     
     visual = new VisualCamera(id, rate, w, h);
     Visuals::getInstance().add((Visual *)visual);
@@ -531,7 +524,9 @@ void Set::gotoNextScene() {
 }
 
 
-void Set::setActiveVisualInstanceNumberForLayer(unsigned int column, unsigned int layerN){
+// todo: remove or have the code here instead of in the Engine::
+void Set::setActiveVisualInstance(unsigned int layerN, unsigned int column)
+{
         //currentLayer = layerN;
         //currentScene = column;
 
@@ -541,22 +536,22 @@ void Set::setActiveVisualInstanceNumberForLayer(unsigned int column, unsigned in
 
 
 VisualInstance*
-Set::getVisualInstanceInCorrentSet(
-                                   unsigned int column,
-                                   unsigned int layerN
-) {
+Set::getVisualInstanceInCorrentSet(unsigned int layerN, unsigned int column)
+{
 	if (currentScene==NULL) return NULL;
 	
-	return currentScene->visualInstances.get(column, layerN);
+	return currentScene->visualInstances.get(layerN, column);
 }
 
-Boolean Set::isVisualInstantInColumn(unsigned int column, unsigned int layerN) {
+Boolean Set::isVisualInstantInColumn(unsigned int layerN, unsigned int column)
+{
 	if (currentScene==NULL) return NULL;
 	
 	return currentScene->visualInstances.inColumn(column, layerN);
 }
 
-void Set::emptyVisualInstanceOnAllScenes() {
+void Set::emptyVisualInstanceOnAllScenes()
+{
 	for(auto scene:Scenes::getInstance().getList()) {
         scene->visualInstances.empty();;
 	}

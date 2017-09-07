@@ -742,7 +742,7 @@ json VisualInstances::getState() {
 
 
 VisualInstance * VisualInstances::add(Visual *visual, unsigned int layer, unsigned int column) {
-    if (inColumn(column, layer) == true) {
+    if (inColumn(layer, column) == true) {
         remove(layer, column);
 	}
  
@@ -788,7 +788,7 @@ void VisualInstances::empty() {
 }
 
 
-VisualInstance* VisualInstances::get(unsigned int column, unsigned int layerN)
+VisualInstance* VisualInstances::get(unsigned int layerN, unsigned int column)
 {
     if (count() == 0) return NULL;
     
@@ -819,7 +819,7 @@ unsigned int VisualInstances::count() {
     return (unsigned int) visualInstanceList.size();
 }
 
-Boolean VisualInstances::inColumn(unsigned int column, unsigned int layerN) {
+Boolean VisualInstances::inColumn(unsigned int layerN, unsigned int column) {
     Boolean res = false;
     for(auto visualInstance:visualInstanceList)
     {

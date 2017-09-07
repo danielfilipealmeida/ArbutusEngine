@@ -167,17 +167,17 @@ public:
     /**!
      @abstract ...
      */
-    void setActiveVisualInstanceNumberForLayer(unsigned int column, unsigned int layerN);
+    void setActiveVisualInstance(unsigned int layerN, unsigned int column);
     
     /**!
      @abstract ...
      */
-    VisualInstance *getVisualInstanceInCorrentSet(unsigned int column, unsigned int layerN);
+    VisualInstance *getVisualInstanceInCorrentSet(unsigned int layerN, unsigned int column);
  
     /**!
      @abstract ...
      */
-    Boolean isVisualInstantInColumn(unsigned int column, unsigned int layerN);
+    Boolean isVisualInstantInColumn(unsigned int layerN, unsigned int column);
     
     /**!
      @abstract ...

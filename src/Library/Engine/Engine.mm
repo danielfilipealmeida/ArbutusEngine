@@ -37,7 +37,6 @@ void Engine::setupSyphon() {
 Engine::Engine() {
     if (enginePtr != NULL) return;
     enginePtr = this;
-    
     osc = NULL;
 
     setDefaults();
@@ -60,6 +59,8 @@ Engine::Engine() {
     
     // this needs to only work on osx
     setAppSupportDir(ofFilePath::getUserHomeDir().append("/Library/Application Support/Arbutus"));
+    ofSetDataPathRoot("./");
+    
 }
 
 Engine::~Engine() {
@@ -74,8 +75,7 @@ Engine::~Engine() {
 }
 
 
-Engine*
-Engine::getInstance() {
+Engine* Engine::getInstance() {
     return enginePtr;
 }
 
@@ -97,7 +97,6 @@ json Engine::getState() {
 
 
 void Engine::setState(json state) {
-    //cout << state.dump(4) << endl;
     if (state["visuals"].is_array()) {
         Visuals::getInstance().setState(state["visuals"]);
     }
@@ -357,26 +356,28 @@ Engine::setMixerResolution(
 /* ************************************************************************* */
 #pragma mark Visual Management
 
-void Engine::setActiveVisualInstanceNumberForLayer(
-                                              unsigned int column,
-                                              unsigned int layerN
-) {
-    Layer           *layer;
-    VisualInstance  *visualInstance;
+VisualInstance* Engine::setActiveVisualInstance(unsigned int layerN, unsigned int column)
+{
+    Layer *layer;
+    VisualInstance *visualInstance = NULL;
     
     layer = Layers::getInstance().get(layerN);
-	if (layer == NULL) return;
+	if (layer == NULL) return NULL;
 		
-	visualInstance = Set::getInstance().getVisualInstanceInCorrentSet(column, layerN);
+	visualInstance = Set::getInstance().getVisualInstanceInCorrentSet(layerN, column);
     
  	
-	if(visualInstance!=NULL) {
+	if (visualInstance!=NULL) {
+        /// WHAT IS ALL THIS???? WHAT IS IT DOING. sending the one really playing?
         layer->playVisualInstance(visualInstance);
         currentVisualInstance = layer->getActiveVisualInstance();
         
         if (currentVisualInstance != NULL) {
-            EngineProperties::getInstance().setSelectedColumnNumber( currentVisualInstance->getProperties()->getColumn());
+            unsigned int currentPlayingColumn = currentVisualInstance->getProperties()->getColumn();
+            EngineProperties::getInstance().setSelectedColumnNumber( currentPlayingColumn );
         }
+        
+        return currentVisualInstance;
 	}
     else {
         if (
@@ -386,34 +387,45 @@ void Engine::setActiveVisualInstanceNumberForLayer(
             stopVisualAtLayer(layerN);
         }
     }
+    
+    return visualInstance;
+}
+
+void Engine::play(json data) {
+    unsigned int layer, column;
+    
+    if (!data.is_object()) throw "data must be an object";
+    if (!data["layer"].is_number()) throw "Layer not set";
+    layer = data["layer"].get<unsigned int>();
+    
+    if (!data["column"].is_number()) throw "column not set";
+    column = data["column"].get<unsigned int>();
+    
+    VisualInstance *visualInstance = setActiveVisualInstance(layer, column);
+    //VisualInstance *visualInstance = getCurrentActiveVisualInstance();
+    if (visualInstance==NULL) throw "Invalid visual instance";
+    visualInstance->play();
 }
 
 
-
-void
-Engine::setActiveVisualIntancesOnAllLayers(unsigned int columnN) {
+void Engine::setActiveVisualIntances(unsigned int columnN) {
     for (
-         int f=0;
-         f < Layers::getInstance().getList().size();
-         f++
+         int layer = 0;
+         layer < Layers::getInstance().getList().size();
+         layer++
     ) {
-		this->setActiveVisualInstanceNumberForLayer(columnN, f);
+		this->setActiveVisualInstance(layer, columnN);
 	}
 }
 
 
 
-void
-Engine::setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN) {
-	setActiveVisualInstanceNumberForLayer(
-                                          visualInstanceN,
-                                          EngineProperties::getInstance().getSelectedLayerNumber()
-                                          );
+void Engine::setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN) {
+	setActiveVisualInstance(EngineProperties::getInstance().getSelectedLayerNumber(), visualInstanceN);
 }
 
 
-VisualInstance*
-Engine::getCurrentActiveVisualInstance(){
+VisualInstance* Engine::getCurrentActiveVisualInstance(){
     return getVisualAtLayerAndInstanceN(
                                         EngineProperties::getInstance().getSelectedLayerNumber(),
                                         EngineProperties::getInstance().getSelectedColumnNumber()
@@ -1057,7 +1069,7 @@ void Engine::changeOscPort(int port) {
 #pragma mark parameters setters and getters
 
 VisualInstancesProperties* Engine::getPropertiesOfCurrentVisualInstance() {
-    VisualInstance          *visualInstance;
+    VisualInstance *visualInstance;
     VisualInstancesProperties *properties;
     
     visualInstance = this->getCurrentVisualInstance();
@@ -1066,6 +1078,9 @@ VisualInstancesProperties* Engine::getPropertiesOfCurrentVisualInstance() {
     return(visualInstance->getProperties());
 }
 
+VisualInstance *Engine::getCurrentVisualInstance () {
+    return currentVisualInstance;
+}
 
 float Engine::playhead() {
     VisualInstance *visualInstance;

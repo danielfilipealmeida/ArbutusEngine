@@ -170,16 +170,20 @@ public:
     
 #pragma mark Visual Instances Methods
     
+    /*!
+     @abstract ...
+     */
+    void play(json data);
     
     /*!
      @abstract ...
      */
-	void setActiveVisualInstanceNumberForLayer(unsigned int visualInstanceN, unsigned int layerN);
+	VisualInstance* setActiveVisualInstance(unsigned int layerN, unsigned int columnN);
     
     /*!
      @abstract ...
      */
-    void setActiveVisualIntancesOnAllLayers(unsigned int columnN);
+    void setActiveVisualIntances(unsigned int columnN);
     
     /*!
      @abstract ...
@@ -381,83 +385,74 @@ public:
     
  
     /*************************************************************/
-    
 #pragma mark midi & osc
 
-
-    
     void changeMidiPort(int port);
     void changeOscPort(int port);
     
     
     
 /*************************************************************/
-    
 #pragma mark getters and setters
-    
-
-    
-    //bool isCurrentSetLoaded() {return Set::getInstance().isLoaded();}
     
     
     string getCurrentFilePath () {
         return EngineProperties::getInstance().getCurrentFilePath();
     }
     
-    //Set *getCurrentSet () { return &Set::getInstance(); }
+    /*!
+     */
+    VisualInstance *getCurrentVisualInstance ();
     
-    
-    VisualInstance *getCurrentVisualInstance () { return currentVisualInstance; }
+    /*!
+     */
     VisualInstancesProperties *getPropertiesOfCurrentVisualInstance();
     
 
-
+    /*!
+     */
     ofFbo *getBuffer() { return buffer; }
     
     
     /* parameters setters and getters */
     
-    float
-    playhead();
+    /*!
+     */
+    float playhead();
     
-    
-    void
-    setPlayhead(float playhead);
-    
-    
-    float
-    start();
+    /*!
+     */
+    void setPlayhead(float playhead);
     
     
     /*!
      */
-    void
-    setStart(float start);
+    float start();
+    
+    
+    /*!
+     */
+    void setStart(float start);
 
     /*!
      */
-    float
-    end();
+    float end();
   
     /*!
      */
-    void
-    setEnd(float end);
+    void setEnd(float end);
     
     /*!
      */
-    float
-    speed();
+    float  speed();
     
     /*!
      */
-    void
-    setSpeed(float speed);
+    void setSpeed(float speed);
     
     /*!
      */
-    float
-    x();
+    float x();
     
     /*!
      */
@@ -466,71 +461,59 @@ public:
     
     /*!
      */
-    float
-    y();
+    float y();
     
     /*!
      */
-    void
-    setY(float y);
+    void  setY(float y);
     
     
     /*!
      */
-    float
-    width();
+    float width();
     
     /*!
      */
-    void
-    setWidth(float width);
+    void setWidth(float width);
     
     /*!
      */
-    float
-    height();
+    float height();
     
     /*!
      */
-    void
-    setHeight(float height);
+    void setHeight(float height);
     
     /*!
      */
-    bool
-    retrigger();
+    bool retrigger();
     
     /*!
      */
-    void
-    setRetrigger(bool retrigger);
+    void setRetrigger(bool retrigger);
 
     /*!
      */
-    bool
-    beatSnap();
+    bool beatSnap();
 
     /*!
      */
-    void
-    setBeatSnap(bool val);
+    void setBeatSnap(bool val);
     
     
     /* handling controllers */
     static void visualsKeysControlCallback(Controller *controller);
     
-    
+/*************************************************************/
 #pragma mark more stuff -- should be moved to another place. probably be made static methods
     
     /*!
      */
-    void
-    setAppSupportDir(string _dir);
+    void setAppSupportDir(string _dir);
     
     /*!
      */
-    string
-    calculateThumbnailPath(string path);
+    string calculateThumbnailPath(string path);
     
     
 #pragma mark App Callback Registration

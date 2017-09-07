@@ -8,7 +8,6 @@ void ofApp::setup(){
     Engine *engine = new Engine();
     string filePath = ofFilePath::getCurrentExeDir() + "../Resources/set.json";
     
-    ofSetDataPathRoot("./");
     
     try {
         engine->openSet(filePath);
@@ -17,10 +16,25 @@ void ofApp::setup(){
         cout << "Error: " << exception << endl;
     }
     Set::getInstance().setCurrentScene(0);
-    engine->setActiveVisualInstanceNumberForLayer(0, 0);
+    engine->play({
+        {"layer", 0},
+        {"column", 0}
+    });
+    engine->play({
+        {"layer", 1},
+        {"column", 0}
+    });
+
+    /*
+    engine->setActiveVisualInstance(0, 0);
     VisualInstance *visualInstance = engine->getCurrentActiveVisualInstance();
     if (visualInstance!=NULL) visualInstance->play();
-    
+    */
+    /*
+    engine->setActiveVisualInstance(0, 1);
+    visualInstance = engine->getCurrentActiveVisualInstance();
+    if (visualInstance!=NULL) visualInstance->play();
+*/
     //std::cout << engine->getState().dump(4) << std::endl;
     //json loadedState;
     //std::string filePath;

@@ -68,15 +68,7 @@ TEST_CASE("State with Layers", "[getState]") {
 }
 
 
-/*
- Creates a new set with:
- - one set
- - two layers
- - two visuals, one on each layer
- 
- saves and open the saved file. compares the state of the engine and the one loaded from the file
- */
-TEST_CASE("Engine can create and save a set properly", "[!hide]") {
+Engine *createTestSet() {
     Engine *engine;
     Layer *layer1, *layer2;
     Scene *scene;
@@ -95,13 +87,28 @@ TEST_CASE("Engine can create and save a set properly", "[!hide]") {
     video1 = new VisualVideo("loop001.mov");
     Visuals::getInstance().add((Visual *) video1);
     scene->visualInstances.add(video1, 0, 0);
-
+    
     video2 = new VisualVideo("loop002.mov");
     Visuals::getInstance().add((Visual *) video2);
     scene->visualInstances.add(video2, 1, 0);
     
     Set::getInstance().addScene(scene);
 
+    return engine;
+}
+
+/*
+ Creates a new set with:
+ - one set
+ - two layers
+ - two visuals, one on each layer
+ 
+ saves and open the saved file. compares the state of the engine and the one loaded from the file
+ */
+
+TEST_CASE("Engine can create and save a set properly", "[!hide]") {
+    Engine *engine = createTestSet();
+    
     //cout << engine->getState().dump(4) << endl;
     json currentState = engine->getState();
     REQUIRE(currentState.is_object());
@@ -128,4 +135,16 @@ TEST_CASE("Engine can create and save a set properly", "[!hide]") {
     //cout << engine->getState().dump(4) << endl;
     
     delete engine;
+}
+
+TEST_CASE("Engine plays videos set with json data", "[play]") {
+    Engine *engine = createTestSet();
+    
+    REQUIRE_THROWS(engine->play({}));
+    REQUIRE_THROWS(engine->play({{"column", 0}}));
+    REQUIRE_THROWS(engine->play({{"layer", 0}}));
+    REQUIRE_THROWS(engine->play({{"column", 1}, {"column", 1}}));
+    REQUIRE_NOTHROW(engine->play({{"column", 0}, {"column", 0}}));
+    
+     delete engine;
 }
