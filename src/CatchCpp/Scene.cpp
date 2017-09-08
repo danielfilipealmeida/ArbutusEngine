@@ -78,7 +78,6 @@ TEST_CASE("Setting invalid state of scene should throw", "[Scene::setState]") {
     REQUIRE(currentState["instances"].at(0)["visual"].is_object());
     //REQUIRE(currentState["instances"].at(0)["visual"]["caption"].get<string>().compare("loop001.mov"));
     
-    cout << scene->getState().dump(4) << endl;
 }
 
 

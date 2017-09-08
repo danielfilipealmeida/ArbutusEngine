@@ -76,13 +76,7 @@ public:
      */
     ~VisualInstancesProperties();
 	
-    
-    /**!
-     @abstract ...
-     */
-    static VisualInstancesProperties *getCurrent();
-    
-    
+       
     /**!
      @abstract ...
      */

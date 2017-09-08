@@ -29,9 +29,7 @@ TEST_CASE("State should be properly stored", "[setState]") {
         }
     });
     
-    cout << state.dump(4) << endl;
     Visuals::getInstance().setState(state);
-    cout << Visuals::getInstance().getState().dump(4) << endl;
     json currentVisualsState = Visuals::getInstance().getState();
     unsigned int counter = 0;
     for(auto it = state.begin();  it!=state.end(); it++) {

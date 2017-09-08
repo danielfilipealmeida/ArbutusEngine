@@ -44,7 +44,6 @@ using json = nlohmann::json;
 class Engine {
     ControllerGroup controllers;
     bool setOpened;
-    VisualInstance *currentVisualInstance;
     ofFbo *buffer;
     metronome metronomeThreadObj;
     SyphonOutputManager syphonOutputManager;
@@ -402,103 +401,10 @@ public:
     
     /*!
      */
-    VisualInstance *getCurrentVisualInstance ();
-    
-    /*!
-     */
-    VisualInstancesProperties *getPropertiesOfCurrentVisualInstance();
-    
-
-    /*!
-     */
     ofFbo *getBuffer() { return buffer; }
     
     
     /* parameters setters and getters */
-    
-    /*!
-     */
-    float playhead();
-    
-    /*!
-     */
-    void setPlayhead(float playhead);
-    
-    
-    /*!
-     */
-    float start();
-    
-    
-    /*!
-     */
-    void setStart(float start);
-
-    /*!
-     */
-    float end();
-  
-    /*!
-     */
-    void setEnd(float end);
-    
-    /*!
-     */
-    float  speed();
-    
-    /*!
-     */
-    void setSpeed(float speed);
-    
-    /*!
-     */
-    float x();
-    
-    /*!
-     */
-    void
-    setX(float x);
-    
-    /*!
-     */
-    float y();
-    
-    /*!
-     */
-    void  setY(float y);
-    
-    
-    /*!
-     */
-    float width();
-    
-    /*!
-     */
-    void setWidth(float width);
-    
-    /*!
-     */
-    float height();
-    
-    /*!
-     */
-    void setHeight(float height);
-    
-    /*!
-     */
-    bool retrigger();
-    
-    /*!
-     */
-    void setRetrigger(bool retrigger);
-
-    /*!
-     */
-    bool beatSnap();
-
-    /*!
-     */
-    void setBeatSnap(bool val);
     
     
     /* handling controllers */

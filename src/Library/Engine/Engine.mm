@@ -35,7 +35,11 @@ void Engine::setupSyphon() {
 
 
 Engine::Engine() {
-    if (enginePtr != NULL) return;
+    cout << "### Engine Started" <<endl;
+    if (enginePtr != NULL) {
+        cout << "### Found dangling Engine!" << endl;
+        delete enginePtr;
+    }
     enginePtr = this;
     osc = NULL;
 
@@ -72,6 +76,7 @@ Engine::~Engine() {
     // clean visual lists
     
     enginePtr = NULL;
+    cout << "### Engine Destroyed" <<endl;
 }
 
 
@@ -163,8 +168,7 @@ Engine::closeSet() {
     Layers::getInstance().empty();
 	Set::getInstance().closeSet();
 
-    currentVisualInstance = NULL;
-    setOpened             = false;
+    setOpened = false;
     EngineProperties::getInstance().setCurrentFilePath("");
 }
 
@@ -370,20 +374,9 @@ VisualInstance* Engine::setActiveVisualInstance(unsigned int layerN, unsigned in
 	if (visualInstance!=NULL) {
         /// WHAT IS ALL THIS???? WHAT IS IT DOING. sending the one really playing?
         layer->playVisualInstance(visualInstance);
-        currentVisualInstance = layer->getActiveVisualInstance();
-        
-        if (currentVisualInstance != NULL) {
-            unsigned int currentPlayingColumn = currentVisualInstance->getProperties()->getColumn();
-            EngineProperties::getInstance().setSelectedColumnNumber( currentPlayingColumn );
-        }
-        
-        return currentVisualInstance;
-	}
+   }
     else {
-        if (
-            currentVisualInstance != NULL &&
-            setProperties.getStopCurrentVisualIfTriggeredInvalid() == YES
-            ) {
+        if (setProperties.getStopCurrentVisualIfTriggeredInvalid() == YES) {
             stopVisualAtLayer(layerN);
         }
     }
@@ -1068,209 +1061,8 @@ void Engine::changeOscPort(int port) {
 
 #pragma mark parameters setters and getters
 
-VisualInstancesProperties* Engine::getPropertiesOfCurrentVisualInstance() {
-    VisualInstance *visualInstance;
-    VisualInstancesProperties *properties;
-    
-    visualInstance = this->getCurrentVisualInstance();
-    if  (visualInstance == NULL) return NULL;
-    
-    return(visualInstance->getProperties());
-}
-
-VisualInstance *Engine::getCurrentVisualInstance () {
-    return currentVisualInstance;
-}
-
-float Engine::playhead() {
-    VisualInstance *visualInstance;
-    
-    visualInstance = this->getCurrentVisualInstance();
-    if  (visualInstance == NULL) return 0.0;
-    
-    return visualInstance->getPercentagePlayed();
-}
 
 
-
-void Engine::setPlayhead(float playhead) {
-    VisualInstance *visualInstance;
-    
-    visualInstance = this->getCurrentVisualInstance();
-    if  (visualInstance == NULL) return;
-
-    visualInstance->setPercentagePlayed(playhead);
-}
-
-float Engine::start() {
-    VisualInstancesProperties *properties;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return NULL;
-    
-    return(properties->getStartPercentage());
-}
-
-void Engine::setStart(float start) {
-    VisualInstancesProperties *properties;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
-    
-     properties->setStartPercentage(start);
-}
-
-float Engine::end() {
-    VisualInstancesProperties *properties;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return NULL;
-    
-    return(properties->getEndPercentage());
-}
-
-void Engine::setEnd(float end) {
-    VisualInstancesProperties *properties;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
-    
-    properties->setEndPercentage(end);
-}
-
-float Engine::speed() {
-    VisualInstance *visualInstance;
-    
-    visualInstance = this->getCurrentVisualInstance();
-    if  (visualInstance == NULL) return 0.0;
-    
-    return(visualInstance->video.getSpeed());
-}
-
-void Engine::setSpeed(float speed) {
-    VisualInstance *visualInstance;
-    
-    visualInstance = this->getCurrentVisualInstance();
-    if  (visualInstance == NULL) return;
-    
-    return(visualInstance->video.setSpeed(speed));
-}
-
-float   Engine::x() {
-    VisualInstancesProperties *properties;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return NULL;
-    
-    return(properties->getCenterX());
-}
-
-void Engine::setX(float x) {
-    VisualInstancesProperties *properties;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
-    
-    properties->setCenterX(x);
-}
-
-float Engine::y()  {
-    VisualInstancesProperties *properties;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return NULL;
-    
-    return(properties->getCenterY());
-}
-
-void Engine::setY(float y)  {
-    VisualInstancesProperties *properties;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
-    
-    properties->setCenterY(y);
-}
-
-float Engine::width()  {
-    VisualInstancesProperties *properties;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return NULL;
-    
-    return(properties->getZoomX());
-}
-
-void Engine::setWidth(float width)  {
-    VisualInstancesProperties *properties;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
-    
-    properties->setZoomX(width);
-}
-
-
-float Engine::height()  {
-    VisualInstancesProperties *properties;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return NULL;
-    
-    return(properties->getZoomY());
-}
-
-
-void Engine::setHeight(float height)  {
-    VisualInstancesProperties *properties;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
-    
-    properties->setZoomY(height);
-}
-
-
-bool Engine::retrigger() {
-    VisualInstancesProperties *properties;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return NULL;
-    
-    return(properties->getRetrigger());
-}
-
-
-void Engine::setRetrigger(bool retrigger) {
-    VisualInstancesProperties *properties;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
-    
-    properties->setRetrigger(retrigger);
-}
-
-
-bool Engine::beatSnap() {
-    VisualInstancesProperties *properties;
-    Boolean                     returnedVal;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return NULL;
-    
-    returnedVal = properties->getBeatSnap();
-    return(returnedVal);
-}
-
-
-void Engine::setBeatSnap(bool val) {
-    VisualInstancesProperties *properties;
-    
-    properties = getPropertiesOfCurrentVisualInstance();
-    if (properties==NULL) return;
-    
-    properties->setBeatSnap(val);
-}
 
 
 

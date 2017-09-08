@@ -109,7 +109,6 @@ Engine *createTestSet() {
 TEST_CASE("Engine can create and save a set properly", "[!hide]") {
     Engine *engine = createTestSet();
     
-    //cout << engine->getState().dump(4) << endl;
     json currentState = engine->getState();
     REQUIRE(currentState.is_object());
     REQUIRE(currentState["layers"].is_array());
@@ -132,7 +131,6 @@ TEST_CASE("Engine can create and save a set properly", "[!hide]") {
     // test opening the the file
     engine->openSet(path);
     
-    //cout << engine->getState().dump(4) << endl;
     
     delete engine;
 }
