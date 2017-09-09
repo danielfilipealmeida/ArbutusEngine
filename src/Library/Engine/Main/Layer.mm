@@ -215,6 +215,13 @@ Layer::stopActiveVisualInstance() {
 	activeInstance = NULL;
 }
 
+void Layer::stop() {
+    VisualInstance *playingInstance = getActiveVisualInstance();
+    if (playingInstance==NULL) return;
+    playingInstance->stop();
+    activeInstance = NULL;
+    schedulledInstance = NULL;
+}
 
 
 void
@@ -594,3 +601,22 @@ void Layers::setState(json state) {
     
 }
 
+
+
+
+void Layers::stopAt(unsigned int position){
+    Layer *layer;
+    
+    layer = get(position);
+    if (layer == NULL) return;
+    
+    layer->stop();
+}
+
+
+void Layers::stopAll() {
+    for(auto layer:layersList) {
+        layer->stop();
+    }
+
+}

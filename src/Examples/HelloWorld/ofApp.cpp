@@ -24,24 +24,6 @@ void ofApp::setup(){
         {"layer", 1},
         {"column", 0}
     });
-
-    /*
-    engine->setActiveVisualInstance(0, 0);
-    VisualInstance *visualInstance = engine->getCurrentActiveVisualInstance();
-    if (visualInstance!=NULL) visualInstance->play();
-    */
-    /*
-    engine->setActiveVisualInstance(0, 1);
-    visualInstance = engine->getCurrentActiveVisualInstance();
-    if (visualInstance!=NULL) visualInstance->play();
-*/
-    //std::cout << engine->getState().dump(4) << std::endl;
-    //json loadedState;
-    //std::string filePath;
-    
-    //
-    //loadedState = JsonLoad::load(filePath);
-
 }
 
 //--------------------------------------------------------------

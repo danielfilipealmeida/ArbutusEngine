@@ -377,12 +377,13 @@ VisualInstance* Engine::setActiveVisualInstance(unsigned int layerN, unsigned in
    }
     else {
         if (setProperties.getStopCurrentVisualIfTriggeredInvalid() == YES) {
-            stopVisualAtLayer(layerN);
+            Layers::getInstance().stopAt(layerN);
         }
     }
     
     return visualInstance;
 }
+
 
 void Engine::play(json data) {
     unsigned int layer, column;
@@ -398,6 +399,20 @@ void Engine::play(json data) {
     //VisualInstance *visualInstance = getCurrentActiveVisualInstance();
     if (visualInstance==NULL) throw "Invalid visual instance";
     visualInstance->play();
+}
+
+
+void Engine::stop(json data) {
+    if (
+        data.is_object() &&
+        data["layer"].is_number()
+        )
+    {
+        Layers::getInstance().stopAt(data["layer"].get<unsigned int>());
+    }
+    else {
+        Layers::getInstance().stopAll();
+    }
 }
 
 
@@ -437,33 +452,6 @@ Engine::getVisualAtLayerAndInstanceN(
     if (currentScene == NULL) return NULL;
     return currentScene->visualInstances.get(visualInstanceN, layerN);
 }
-
-
-
-void
-Engine::stopVisualAtSelectedLayer() {
-    stopVisualAtLayer(EngineProperties::getInstance().getSelectedLayerNumber());
-}
-
-
-
-void
-Engine::stopVisualAtLayer(
-                          unsigned int layerN
-) {
-    Layer           *layer;
-    VisualInstance  *playingInstance;
-    
-    layer = Layers::getInstance().get(layerN);
-    if (layer == NULL) return;
-    
-    // get the current playing instance and stop it
-    playingInstance = layer->getActiveVisualInstance();
-    if (playingInstance==NULL) return;
-    playingInstance->stop();
-    layer->setActiveVisualInstance(NULL);
-}
-
 
 
 /* ************************************************************************** */
@@ -570,7 +558,7 @@ void Engine::removeVisualFromScene(unsigned int layer, unsigned int column) {
         layer == EngineProperties::getInstance().getSelectedLayerNumber() &&
         column == EngineProperties::getInstance().getSelectedColumnNumber()
         ) {
-        stopVisualAtSelectedLayer();
+        Layers::getInstance().stopAt(layer);
     }
     
     //VisualInstances::getInstance().remove(layer, column);

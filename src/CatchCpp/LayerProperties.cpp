@@ -15,11 +15,11 @@
 TEST_CASE("Blend mode strings are correctly generated", "[blendModeToString]") {
     std::map<BlendMode, string> testData;
     
-    testData[BLEND_ALPHA]    = "ALPHA";
-    testData[BLEND_ADD]      = "ADD";
+    testData[BLEND_ALPHA] = "ALPHA";
+    testData[BLEND_ADD] = "ADD";
     testData[BLEND_MULTIPLY] = "MULT";
     testData[BLEND_SUBTRACT] = "SUBT";
-    testData[BLEND_SCREEN]   = "SCRN";
+    testData[BLEND_SCREEN] = "SCRN";
     
     for(
         auto it = testData.begin();

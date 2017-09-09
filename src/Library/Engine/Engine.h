@@ -173,6 +173,12 @@ public:
      @abstract ...
      */
     void play(json data);
+
+    /*!
+     @abstract ...
+     */
+    void stop(json data);
+
     
     /*!
      @abstract ...
@@ -198,16 +204,6 @@ public:
      @abstract ...
      */
     VisualInstance* getVisualAtLayerAndInstanceN(unsigned int layerN, unsigned int visualInstanceN);
-  
-    /*!
-     @abstract ...
-     */
-	void stopVisualAtSelectedLayer();
-    
-    /*!
-     @abstract ...
-     */
-    void stopVisualAtLayer(unsigned int layerN);
     
     /*!
      @abstract ...
@@ -273,18 +269,12 @@ public:
     /*!
      @abstract ...
      */
-    bool isSyphonInputLoaded(
-                        string serverName,
-                        string appName
-    );
+    bool isSyphonInputLoaded(string serverName, string appName);
     
     /*!
      @abstract ...
      */
-    VisualSyphon* getSyphonInput(
-                   string serverName,
-                   string appName
-    );
+    VisualSyphon* getSyphonInput(string serverName, string appName);
     
     
 #pragma mark State Handling

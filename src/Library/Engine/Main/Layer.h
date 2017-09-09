@@ -102,6 +102,11 @@ public:
     void stopActiveVisualInstance();
 	
     /*!
+     @abstract Stop the current playing visual instance in this layer.
+     */
+    void stop();
+    
+    /*!
      @abstract ...
      */
     VisualInstance* getActiveVisualInstance() {return activeInstance;}
@@ -309,6 +314,17 @@ public:
      */
     LayersList getList();
     
+    
+    /*!
+     @abstract Stops the visual instance playing at layer position
+     */
+    void stopAt(unsigned int position);
+
+    
+    /*!
+     @abstract Stops all playing visual instances
+     */
+    void stopAll();
     
 #pragma mark State Handling
     
