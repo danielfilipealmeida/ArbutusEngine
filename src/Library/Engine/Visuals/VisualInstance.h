@@ -117,23 +117,33 @@ public:
     
 #pragma mark loop and playhead position handling */
 
-    void
-    calculateCurrentPlayeadPosition(float position);
+    /*!
+     @abstract ...
+     */
+    void calculateCurrentPlayeadPosition(float position);
     
     
-    void
-    handleNormalLoopMode(float position);
+    /*!
+     @abstract ...
+     */
+    void handleNormalLoopMode(float position);
     
     
-    void
-    handlePingPongLoopMode(float position);
+    /*!
+     @abstract ...
+     */
+    void handlePingPongLoopMode(float position);
     
     
-    void
-    handleInverseLoopMode(float position);
+    /*!
+     @abstract ...
+     */
+    void handleInverseLoopMode(float position);
 
-    VisualType
-    getVisualType();
+    /*!
+     @abstract ...
+     */
+    VisualType getVisualType();
     
     
     /** getters and setters **/

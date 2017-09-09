@@ -32,7 +32,7 @@ json Visual::getState()
 }
 
 void Visual::setState(json state) {
-    
+    if (state["caption"].is_string()) setCaption(state["caption"].get<string>());
 }
 
 // debug

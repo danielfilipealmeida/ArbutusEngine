@@ -61,7 +61,7 @@ TEST_CASE("State with Layers", "[getState]") {
     // test the visual
     REQUIRE(state["visuals"].is_array() == true);
     REQUIRE(state["visuals"][0]["caption"] == "loop001.mov");
-    REQUIRE(state["visuals"][0]["filePath"] == "../../../data/loop001.mov");
+    REQUIRE(state["visuals"][0]["filePath"] == "loop001.mov");
     REQUIRE((int) state["visuals"][0]["type"] == 0);
     
     delete engine;
@@ -84,16 +84,19 @@ Engine *createTestSet() {
     layer1->getProperties()->setName("Layer 1");
     layer2->getProperties()->setName("Layer 2");
     
-    video1 = new VisualVideo("loop001.mov");
+    video1 = new VisualVideo("Fixtures/FileHandling/001.mov");
     Visuals::getInstance().add((Visual *) video1);
     scene->visualInstances.add(video1, 0, 0);
     
-    video2 = new VisualVideo("loop002.mov");
+    video2 = new VisualVideo("Fixtures/FileHandling/002.mov");
     Visuals::getInstance().add((Visual *) video2);
     scene->visualInstances.add(video2, 1, 0);
     
     Set::getInstance().addScene(scene);
 
+    Set::getInstance().setCurrentScene(0);
+    
+    // todo: tenho de definir a current scene
     return engine;
 }
 
@@ -138,11 +141,12 @@ TEST_CASE("Engine can create and save a set properly", "[!hide]") {
 TEST_CASE("Engine plays videos set with json data", "[play]") {
     Engine *engine = createTestSet();
     
+    
     REQUIRE_THROWS(engine->play({}));
     REQUIRE_THROWS(engine->play({{"column", 0}}));
     REQUIRE_THROWS(engine->play({{"layer", 0}}));
-    REQUIRE_THROWS(engine->play({{"column", 1}, {"column", 1}}));
-    REQUIRE_NOTHROW(engine->play({{"column", 0}, {"column", 0}}));
+    REQUIRE_THROWS(engine->play({{"column", 1}, {"layer", 1}}));
+    REQUIRE_NOTHROW(engine->play({{"column", 0}, {"layer", 0}}));
     
      delete engine;
 }

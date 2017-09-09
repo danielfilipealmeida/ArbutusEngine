@@ -35,9 +35,8 @@ TEST_CASE("State should be properly stored", "[setState]") {
     for(auto it = state.begin();  it!=state.end(); it++) {
         json visualState = *it;
         REQUIRE(visualState["type"] == currentVisualsState.at(counter)["type"]);
-        REQUIRE(visualState["filePath"].get<string>().compare(currentVisualsState.at(counter)["filePath"]));
-        REQUIRE(visualState["caption"].get<string>().compare(currentVisualsState.at(counter)["caption"]));
-        
+        REQUIRE(visualState["filePath"].get<string>().compare(currentVisualsState.at(counter)["filePath"].get<string>()) == 0);
+        REQUIRE(visualState["caption"].get<string>().compare(currentVisualsState.at(counter)["caption"].get<string>()) == 0);
         counter ++;
     }
 }
