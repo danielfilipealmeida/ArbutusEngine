@@ -342,10 +342,6 @@
 		65EF0A191F424DC900C5FB69 /* Visuals.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Visuals.mm; sourceTree = "<group>"; };
 		65EF0A1A1F424DC900C5FB69 /* Visuals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Visuals.h; sourceTree = "<group>"; };
 		65F6C5401F42F08A00270C51 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		65F6C5461F43AA6900270C51 /* ofxMidiMessage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxMidiMessage.cpp; path = ../../../XCode/ArbutusEngine/Vendor/ofxMidi/src/ofxMidiMessage.cpp; sourceTree = "<group>"; };
-		65F6C5481F43AA9100270C51 /* ofxMidi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxMidi.cpp; path = ../../../XCode/ArbutusEngine/Vendor/ofxMidi/src/ofxMidi.cpp; sourceTree = "<group>"; };
-		65F6C54A1F43AA9A00270C51 /* ofxMidiOut.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxMidiOut.cpp; path = ../../../XCode/ArbutusEngine/Vendor/ofxMidi/src/ofxMidiOut.cpp; sourceTree = "<group>"; };
-		65F6C54C1F43AAA600270C51 /* ofxMidiIn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofxMidiIn.cpp; path = ../../../XCode/ArbutusEngine/Vendor/ofxMidi/src/ofxMidiIn.cpp; sourceTree = "<group>"; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -513,15 +509,15 @@
 				65BC81331DF8D94600331165 /* src */,
 			);
 			name = ofxSyphon;
-			sourceTree = "<group>";
+			path = External/ofxSyphon;
+			sourceTree = SOURCE_ROOT;
 		};
 		65BC812B1DF8D94600331165 /* libs */ = {
 			isa = PBXGroup;
 			children = (
 				65BC812C1DF8D94600331165 /* Syphon */,
 			);
-			name = libs;
-			path = ofxSyphon/libs;
+			path = libs;
 			sourceTree = "<group>";
 		};
 		65BC812C1DF8D94600331165 /* Syphon */ = {
@@ -569,8 +565,7 @@
 				65BC81391DF8D94600331165 /* ofxSyphonServerDirectory.h */,
 				65BC813A1DF8D94600331165 /* ofxSyphonServerDirectory.mm */,
 			);
-			name = src;
-			path = ofxSyphon/src;
+			path = src;
 			sourceTree = "<group>";
 		};
 		65BC813B1DF8D95600331165 /* ofxOsc */ = {
@@ -579,8 +574,9 @@
 				65BC81591DF8D96500331165 /* src */,
 				65BC813C1DF8D96500331165 /* libs */,
 			);
-			path = ofxOsc;
-			sourceTree = "<group>";
+			name = ofxOsc;
+			path = External/openFrameworks/addons/ofxOsc;
+			sourceTree = SOURCE_ROOT;
 		};
 		65BC813C1DF8D96500331165 /* libs */ = {
 			isa = PBXGroup;
@@ -684,7 +680,8 @@
 				65BC81671DF8D9CA00331165 /* src */,
 			);
 			name = ofxMidi;
-			sourceTree = "<group>";
+			path = External/ofxMidi;
+			sourceTree = SOURCE_ROOT;
 		};
 		65BC81671DF8D9CA00331165 /* src */ = {
 			isa = PBXGroup;
@@ -703,13 +700,8 @@
 				65BC81901DF8D9CA00331165 /* ofxMidiOut.cpp */,
 				65BC81911DF8D9CA00331165 /* ofxMidiOut.h */,
 				65BC81921DF8D9CA00331165 /* ofxMidiTypes.h */,
-				65F6C54C1F43AAA600270C51 /* ofxMidiIn.cpp */,
-				65F6C54A1F43AA9A00270C51 /* ofxMidiOut.cpp */,
-				65F6C5481F43AA9100270C51 /* ofxMidi.cpp */,
-				65F6C5461F43AA6900270C51 /* ofxMidiMessage.cpp */,
 			);
-			name = src;
-			path = ofxMidi/src;
+			path = src;
 			sourceTree = "<group>";
 		};
 		65BC81681DF8D9CA00331165 /* desktop */ = {
@@ -747,8 +739,9 @@
 				65BC81941DF8D9D600331165 /* libs */,
 				65BC81991DF8D9D600331165 /* src */,
 			);
-			path = ofxXmlSettings;
-			sourceTree = "<group>";
+			name = ofxXmlSettings;
+			path = External/openFrameworks/addons/ofxXmlSettings;
+			sourceTree = SOURCE_ROOT;
 		};
 		65BC81941DF8D9D600331165 /* libs */ = {
 			isa = PBXGroup;
@@ -1173,7 +1166,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Creating Vendors folder\"\nmkdir -p Vendor\n\necho \"Copy ofxMidi files\"\ncp -R \"$OF_ADDONS_PATH/ofxMidi\" Vendor/ofxMidi\n\necho \"Copy ofxSyphon files\"\ncp -R \"$OF_ADDONS_PATH/ofxSyphon\" Vendor/ofxSyphon\n\necho \"Copy ofxXmlSettings files\"\ncp -R \"$OF_ADDONS_PATH/ofxXmlSettings\" Vendor/ofxXmlSettings\n\necho \"Copy ofxOsc files\"\ncp -R \"$OF_ADDONS_PATH/ofxOsc\" Vendor/ofxOsc\n\necho \"Copying needed files\"\nmkdir -p Vendor/fmodex\ncp \"$OF_PATH/libs/fmodex/lib/osx/libfmodex.dylib\" Vendor/fmodex/\n";
+			shellScript = "echo \"Creating Vendors folder\"\nmkdir -p Vendor\n\necho \"Copy ofxMidi files\"\ncp -R \"$EXTERNAL_LIBS_PATH/ofxMidi\" Vendor/ofxMidi\n\necho \"Copy ofxSyphon files\"\ncp -R \"$EXTERNAL_LIBS_PATH/ofxSyphon\" Vendor/ofxSyphon\n\necho \"Copy ofxXmlSettings files\"\ncp -R \"$OF_ADDONS_PATH/ofxXmlSettings\" Vendor/ofxXmlSettings\n\necho \"Copy ofxOsc files\"\ncp -R \"$OF_ADDONS_PATH/ofxOsc\" Vendor/ofxOsc\n\necho \"Copying needed files\"\nmkdir -p Vendor/fmodex\ncp \"$OF_PATH/libs/fmodex/lib/osx/libfmodex.dylib\" Vendor/fmodex/\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1830,6 +1823,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				EXECUTABLE_PREFIX = lib;
+				EXTERNAL_LIBS_PATH = External/;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
@@ -1875,6 +1869,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OF_ADDONS_PATH = "$(OF_PATH)/addons";
 				OF_LIBS_PATH = "$(OF_PATH)/libs";
+				OF_PATH = "$(EXTERNAL_LIBS_PATH)/openFrameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1906,6 +1901,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_PREFIX = lib;
+				EXTERNAL_LIBS_PATH = External/;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
@@ -1946,6 +1942,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OF_ADDONS_PATH = "$(OF_PATH)/addons";
 				OF_LIBS_PATH = "$(OF_PATH)/libs";
+				OF_PATH = "$(EXTERNAL_LIBS_PATH)/openFrameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -1977,7 +1974,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"\"$(SRCROOT)/../../../addons/ofxSyphon/libs/Syphon/lib/osx\"",
+					"\"$(EXTERNAL_LIBS_PATH)/ofxSyphon/libs/Syphon/lib/osx\"",
 					"\"$(OF_ADDONS_PATH)/ofxSyphon/libs/Syphon/lib/osx/\"",
 					"\"$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/\"",
 				);
@@ -1990,7 +1987,7 @@
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
@@ -2019,7 +2016,7 @@
 					"$(OF_ADDONS_PATH)/ofxOsc/src",
 					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/osc",
 					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/**",
-					"$(OF_ADDONS_PATH)/ofxSyphon/src",
+					"$(EXTERNAL_LIBS_PATH)/ofxSyphon/src",
 					"$(SRCROOT)/libs/**",
 					src,
 					"$(OF_LIBS_PATH)/glew/include",
@@ -2097,7 +2094,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"\"$(SRCROOT)/../../../addons/ofxSyphon/libs/Syphon/lib/osx\"",
+					"\"$(EXTERNAL_LIBS_PATH)/ofxSyphon/libs/Syphon/lib/osx\"",
 					"\"$(OF_ADDONS_PATH)/ofxSyphon/libs/Syphon/lib/osx/\"",
 					"\"$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/\"",
 				);
@@ -2105,7 +2102,7 @@
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
@@ -2134,7 +2131,7 @@
 					"$(OF_ADDONS_PATH)/ofxOsc/src",
 					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/osc",
 					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/**",
-					"$(OF_ADDONS_PATH)/ofxSyphon/src",
+					"$(EXTERNAL_LIBS_PATH)/ofxSyphon/src",
 					"$(SRCROOT)/libs/**",
 					src,
 					"$(OF_LIBS_PATH)/glew/include",
@@ -2192,6 +2189,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_TESTABILITY = YES;
+				EXTERNAL_LIBS_PATH = External/;
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
@@ -2213,7 +2211,7 @@
 				OF_ADDONS_PATH = "$(OF_PATH)/addons";
 				OF_CORE_LIBS = "$(LIB_POCO) $(LIB_TESS) $(LIB_GLEW) $(LIB_CAIRO1) $(LIB_CAIRO2) $(LIB_CAIRO3) $(LIB_FMODEX) $(LIB_RTAUDIO) $(LIB_OPENSSL1) $(LIB_OPENSSL2) $(LIB_GLFW) $(LIB_FREEIMAGE) $(LIB_FREETYPE) $(LIB_BOOST_FS) $(LIB_BOOST_SYSTEM)";
 				OF_LIBS_PATH = "$(OF_PATH)/libs";
-				OF_PATH = ../of_v0.9.8_osx_release;
+				OF_PATH = "$(EXTERNAL_LIBS_PATH)/openFrameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
@@ -2231,6 +2229,7 @@
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
+				EXTERNAL_LIBS_PATH = External/;
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
@@ -2253,7 +2252,7 @@
 				OF_ADDONS_PATH = "$(OF_PATH)/addons";
 				OF_CORE_LIBS = "$(LIB_POCO) $(LIB_TESS) $(LIB_GLEW) $(LIB_CAIRO1) $(LIB_CAIRO2) $(LIB_CAIRO3) $(LIB_FMODEX) $(LIB_RTAUDIO) $(LIB_OPENSSL1) $(LIB_OPENSSL2) $(LIB_GLFW) $(LIB_FREEIMAGE) $(LIB_FREETYPE) $(LIB_BOOST_FS) $(LIB_BOOST_SYSTEM)";
 				OF_LIBS_PATH = "$(OF_PATH)/libs";
-				OF_PATH = ../of_v0.9.8_osx_release;
+				OF_PATH = "$(EXTERNAL_LIBS_PATH)/openFrameworks";
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-mtune=native",
@@ -2272,6 +2271,7 @@
 				650455691F47085D00CB3BE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		650455861F47A9FE00CB3BE5 /* Build configuration list for PBXNativeTarget "Empty" */ = {
 			isa = XCConfigurationList;

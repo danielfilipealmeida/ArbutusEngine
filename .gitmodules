@@ -1,0 +1,9 @@
+[submodule "External/openFrameworks"]
+	path = External/openFrameworks
+	url = git://github.com/openframeworks/openFrameworks.git
+[submodule "External/ofxMidi"]
+	path = External/ofxMidi
+	url = git://github.com/danomatika/ofxMidi.git
+[submodule "External/ofxSyphon"]
+	path = External/ofxSyphon
+	url = git://github.com/astellato/ofxSyphon.git
