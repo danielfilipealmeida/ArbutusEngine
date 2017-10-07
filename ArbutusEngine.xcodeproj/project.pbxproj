@@ -125,6 +125,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0CE0424F1F88522C005B8253 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4B27C1510CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
+		0CE042511F885244005B8253 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
 		650455721F470F8F00CB3BE5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E4B69B4C0A3A1720003C02F2 /* Project object */;
@@ -174,6 +188,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = External/openFrameworks/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = "<group>"; };
 		650455591F47085D00CB3BE5 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6504556B1F47090700CB3BE5 /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofApp.cpp; path = src/Examples/HelloWorld/ofApp.cpp; sourceTree = SOURCE_ROOT; };
 		6504556C1F47090700CB3BE5 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofApp.h; path = src/Examples/HelloWorld/ofApp.h; sourceTree = SOURCE_ROOT; };
@@ -390,6 +405,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CE0424C1F88522C005B8253 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0CE042501F88522C005B8253 /* openFrameworksDebug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		6504556A1F4708EF00CB3BE5 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
@@ -956,6 +979,7 @@
 				6504CA6A1ECE4DCC00355E4A /* Test Data */,
 				650455591F47085D00CB3BE5 /* HelloWorld.app */,
 				650455891F47A9FE00CB3BE5 /* Empty.app */,
+				0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1056,6 +1080,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0CE042521F885244005B8253 /* PBXTargetDependency */,
 				65E896761E733026000D470B /* PBXTargetDependency */,
 			);
 			name = "Catch Tests";
@@ -1099,6 +1124,12 @@
 			mainGroup = E4B69B4A0A3A1720003C02F2;
 			productRefGroup = E4B69B4A0A3A1720003C02F2;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0CE0424C1F88522C005B8253 /* Products */;
+					ProjectRef = 0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				65A1865F1DF8DF9200BE0219 /* ArbutusLib */,
@@ -1108,6 +1139,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0CE042501F88522C005B8253 /* openFrameworksDebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = openFrameworksDebug.a;
+			remoteRef = 0CE0424F1F88522C005B8253 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		650455571F47085D00CB3BE5 /* Resources */ = {
@@ -1293,6 +1334,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0CE042521F885244005B8253 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openFrameworks;
+			targetProxy = 0CE042511F885244005B8253 /* PBXContainerItemProxy */;
+		};
 		650455731F470F8F00CB3BE5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 65A1865F1DF8DF9200BE0219 /* ArbutusLib */;
