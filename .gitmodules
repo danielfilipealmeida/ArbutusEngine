@@ -7,3 +7,9 @@
 [submodule "External/ofxSyphon"]
 	path = External/ofxSyphon
 	url = git://github.com/astellato/ofxSyphon.git
+[submodule "External/Catch"]
+	path = External/Catch
+	url = https://github.com/philsquared/Catch.git
+[submodule "External/json"]
+	path = External/json
+	url = https://github.com/nlohmann/json.git

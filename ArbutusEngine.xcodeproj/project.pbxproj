@@ -188,6 +188,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C71D3C31F8A6901006126A5 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = External/openFrameworks/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = "<group>"; };
 		650455591F47085D00CB3BE5 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6504556B1F47090700CB3BE5 /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofApp.cpp; path = src/Examples/HelloWorld/ofApp.cpp; sourceTree = SOURCE_ROOT; };
@@ -962,6 +963,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				0C71D3C31F8A6901006126A5 /* CMakeLists.txt */,
 				65E6BD471F464F4E008E4F9E /* Syphon.framework */,
 				65E6BD451F464E83008E4F9E /* libfmodex.dylib */,
 				65F6C5401F42F08A00270C51 /* README.md */,
@@ -1901,7 +1903,8 @@
 					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/osc",
 					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/ip",
 					"$(OF_ADDONS_PATH)/ofxSyphon/src",
-					"$(SRCROOT)/libs/**",
+					"$(LIB_CATCH_PATH)",
+					"$(LIB_JSON_PATH)",
 					src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -1974,7 +1977,8 @@
 					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/osc",
 					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/ip",
 					"$(OF_ADDONS_PATH)/ofxSyphon/src",
-					"$(SRCROOT)/libs/**",
+					"$(LIB_CATCH_PATH)",
+					"$(LIB_JSON_PATH)",
 					src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -2050,6 +2054,7 @@
 					"$(OF_LIBS_PATH)/glfw/include",
 					"$(OF_LIBS_PATH)/openssl/include",
 					"$(OF_ADDONS_PATH)/ofxMidi/src",
+					"$(LIB_CATCH_PATH)",
 					"$(OF_ADDONS_PATH)/ofxMidi/libs/rtmidi",
 					"$(OF_ADDONS_PATH)/ofxXmlSettings/src",
 					"$(OF_ADDONS_PATH)/ofxXmlSettings/libs",
@@ -2057,10 +2062,10 @@
 					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/osc",
 					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/**",
 					"$(LIB_OFXSYPHON_PATH)/src",
-					"$(SRCROOT)/libs/**",
 					src,
 					"$(OF_LIBS_PATH)/glew/include",
 					"$(OF_LIBS_PATH)/tess2/include/**",
+					"$(LIB_JSON_PATH)",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2165,6 +2170,7 @@
 					"$(OF_LIBS_PATH)/glfw/include",
 					"$(OF_LIBS_PATH)/openssl/include",
 					"$(OF_ADDONS_PATH)/ofxMidi/src",
+					"$(LIB_CATCH_PATH)",
 					"$(OF_ADDONS_PATH)/ofxMidi/libs/rtmidi",
 					"$(OF_ADDONS_PATH)/ofxXmlSettings/src",
 					"$(OF_ADDONS_PATH)/ofxXmlSettings/libs",
@@ -2172,10 +2178,10 @@
 					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/osc",
 					"$(OF_ADDONS_PATH)/ofxOsc/libs/oscpack/src/**",
 					"$(LIB_OFXSYPHON_PATH)/src",
-					"$(SRCROOT)/libs/**",
 					src,
 					"$(OF_LIBS_PATH)/glew/include",
 					"$(OF_LIBS_PATH)/tess2/include/**",
+					"$(LIB_JSON_PATH)",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2245,7 +2251,11 @@
 					"$(OF_PATH)/libs/openframeworks/**",
 					"$(OF_PATH)/libs/glew/include/**",
 					src,
+					"$(LIB_JSON_PATH)",
+					"$(LIB_CATCH_PATH)",
 				);
+				LIB_CATCH_PATH = "$(EXTERNAL_LIBS_PATH)/Catch/single_include/";
+				LIB_JSON_PATH = "$(EXTERNAL_LIBS_PATH)/json/src";
 				LIB_OFXSYPHON_PATH = "$(EXTERNAL_LIBS_PATH)/ofxSyphon";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OF_ADDONS_PATH = "$(OF_PATH)/addons";
@@ -2287,7 +2297,11 @@
 					"$(OF_PATH)/libs/openframeworks/**",
 					"$(OF_PATH)/libs/glew/include/**",
 					src,
+					"$(LIB_JSON_PATH)",
+					"$(LIB_CATCH_PATH)",
 				);
+				LIB_CATCH_PATH = "$(EXTERNAL_LIBS_PATH)/Catch/single_include/";
+				LIB_JSON_PATH = "$(EXTERNAL_LIBS_PATH)/json/src";
 				LIB_OFXSYPHON_PATH = "$(EXTERNAL_LIBS_PATH)/ofxSyphon";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OF_ADDONS_PATH = "$(OF_PATH)/addons";
