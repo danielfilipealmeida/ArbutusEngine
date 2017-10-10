@@ -188,6 +188,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C1E77CC1F8D4E8F005507CF /* run_cmake.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = run_cmake.sh; sourceTree = "<group>"; };
 		0C71D3C31F8A6901006126A5 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = External/openFrameworks/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = "<group>"; };
 		650455591F47085D00CB3BE5 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -964,6 +965,7 @@
 			isa = PBXGroup;
 			children = (
 				0C71D3C31F8A6901006126A5 /* CMakeLists.txt */,
+				0C1E77CC1F8D4E8F005507CF /* run_cmake.sh */,
 				65E6BD471F464F4E008E4F9E /* Syphon.framework */,
 				65E6BD451F464E83008E4F9E /* libfmodex.dylib */,
 				65F6C5401F42F08A00270C51 /* README.md */,
