@@ -68,15 +68,14 @@ void VisualSyphon::saveThumbnail() {
 void VisualSyphon::createThumbnail() {
     Visual::createThumbnail();
     
-    
 	screenshot.allocate(client.getWidth(), client.getHeight(), OF_IMAGE_COLOR);
     screenshot.clear();
    
-    ofTexture texture = client.getTextureReference();
+    ofTexture texture = client.getTexture();
     if (texture.texData.bAllocated==false) return;
     
     ofPixels pixels;
-    client.getTextureReference().readToPixels(pixels);
+    client.getTexture().readToPixels(pixels);
     screenshot.setFromPixels(pixels);
     /*
     ofFbo fbo;

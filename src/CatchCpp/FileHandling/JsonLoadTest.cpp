@@ -116,6 +116,11 @@ TEST_CASE("Open a file and check the imported state is correct","[open]") {
     {
         REQUIRE(element["name"].get<string>().compare(result["scenes"][counter]["name"]) == 0);
         //std::cout << element << std::endl;
+        std::string expectedName = element["name"].get<string>();
+        std::string name = result["scenes"][counter]["name"];
+        REQUIRE(expectedName.compare(name) == 0);
+        std::cout << element << std::endl;
+
         counter++;
     }
 
