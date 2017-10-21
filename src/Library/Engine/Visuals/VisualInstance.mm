@@ -794,12 +794,12 @@ VisualInstance* VisualInstances::get(unsigned int layerN, unsigned int column)
     
     for(auto visualInstance:visualInstanceList)
     {
-        VisualInstancesProperties properties;
+        //VisualInstancesProperties properties;
         
-        properties = *visualInstance->getProperties();
+        //properties = *visualInstance->getProperties();
         
-        if (properties.getLayer()  == layerN &&
-            properties.getColumn() == column)
+        if (visualInstance->getProperties()->getLayer()  == layerN &&
+            visualInstance->getProperties()->getColumn() == column)
         {
             return visualInstance;
         }

@@ -37,9 +37,9 @@ using json = nlohmann::json;
 
 
 /*!
- @class Engine
- @abstract The main class, used to control all aspects of the Arbutus VJing Library.
- @discussion This class implements the singleton pattƒLayerern to create one object used to manage all aspects of the Arbutus Engine.
+ \brief The main class, used to control all aspects of the Arbutus VJing Library.
+ 
+ This class implements the singleton pattƒLayerern to create one object used to manage all aspects of the Arbutus Engine.
  */
 class Engine {
     ControllerGroup controllers;

@@ -249,8 +249,7 @@ json VisualInstancesProperties::getState() {
     json state;
     
     state = Properties::getState();
-    state["width"] = getWidth();
-    state["height"] = getHeight();
+    state = SizeProperties::getState(state);
     state["zoomX"] = getZoomX();
     state["zoomY"] = getZoomY();
     state["centerX"] = getCenterX();
@@ -275,5 +274,14 @@ json VisualInstancesProperties::getState() {
     
     
     return state;
+}
+
+json VisualInstancesProperties::getFullState() {
+    json fullState;
     
+    fullState = Properties::getFullState();
+
+    fullState = SizeProperties::getFullState(fullState);
+    
+    return fullState;
 }

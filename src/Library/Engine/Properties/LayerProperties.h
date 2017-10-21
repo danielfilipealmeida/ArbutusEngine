@@ -13,7 +13,10 @@
 #define __LAYERPROPERTIES_H__
 
 
+
+
 #include "Properties.h"
+#include "SizeProperties.h"
 
 
 typedef enum {
@@ -26,15 +29,19 @@ typedef enum {
 
 
 /*!
- @class LayerProperties
- @abstract ...
- @discussion ...
+ \brief Stores and handles the properties of a Layer
  */
-class LayerProperties : public Properties {
-    unsigned int    width;
-    unsigned int    height;
+class LayerProperties : public Properties, public SizeProperties {
+protected:
+    //unsigned int    width;
+    //unsigned int    height;
     BlendMode       blendMode;
     float           blurH, blurV;
+    
+    //const uintLimits widthLimits = {0, PROPERTY_MAX_WIDTH};
+    //const uintLimits heightLimits = {0, PROPERTY_MAX_HEIGHT};
+    const floatLimits blurHLimits = {0, 10};
+    const floatLimits blurVLimits = {0, 10};
     
 public:
 
@@ -77,26 +84,26 @@ public:
     /**!
      @abstract ...
      */
-    unsigned int getWidth();
+    //unsigned int getWidth();
     
     
     /**!
      @abstract ...
      */
-    void setWidth(unsigned int _width);
+    //void setWidth(unsigned int _width);
     
     
     
     /**!
      @abstract ...
      */
-    unsigned int getHeight();
+    //unsigned int getHeight();
     
     
     /**!
      @abstract ...
      */
-    void setHeight(unsigned int _height);
+    //void setHeight(unsigned int _height);
     
     
     
@@ -140,6 +147,13 @@ public:
     
     
     json getState();
+    
+    /**
+     \brief Returns the complete state information
+     
+     The complete state isn't changeable. It contains the datatype and the limits.
+     */
+    json getFullState();
 };
 
 

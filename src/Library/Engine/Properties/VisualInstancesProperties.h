@@ -14,6 +14,7 @@
 
 
 #include "Properties.h"
+#include "SizeProperties.h"
 #include "json.hpp"
 
 
@@ -45,7 +46,7 @@ typedef enum {
  @abstract ...
  @discussion ...
  */
-class VisualInstancesProperties : public Properties {
+class VisualInstancesProperties : public Properties, public SizeProperties {
     int width, height;
     float zoomX, zoomY;
     float centerX, centerY;
@@ -352,6 +353,13 @@ public:
      @abstract ...
      */
     json getState();
+    
+    /**
+     \brief Returns the complete state information
+     
+     The complete state isn't changeable. It contains the datatype and the limits.
+     */
+    json getFullState();
     
 };
 

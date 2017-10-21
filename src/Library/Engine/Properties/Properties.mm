@@ -9,7 +9,10 @@
 
 #include "Properties.h"
 
+
+
 Properties::Properties(){
+    setLimits();
     reset();
 }
 
@@ -17,10 +20,21 @@ Properties::~Properties() {
 	
 }
 
+void Properties::setLimits() {
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("alpha", {0.0, 1.0}));
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("red", {-1.0, 1.0}));
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("green", {-1.0, 1.0}));
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("blue", {-1.0, 1.0}));
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("brightness", {-1.0, 1.0}));
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("contrast", {-1.0, 1.0}));
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("saturation", {-1.0, 1.0}));
+}
+
 void Properties::reset() {
+    
     alpha = 1.0;
-    red = 1.0; green = 1.0; blue = 1.0;
-    brightness = 1.0; contrast = 1.0; saturation = 1.0;
+    red = green = blue = 0.0;
+    brightness = contrast = saturation = 0.0;
 }
 
 
@@ -48,7 +62,7 @@ float Properties::getAlpha() {
 
 
 void Properties::setAlpha(float _input) {
-    alpha = _input;
+    alpha = ofClamp(_input, floatPropertiesLimits["alpha"].min, floatPropertiesLimits["alpha"].max);
 }
 
 
@@ -58,7 +72,7 @@ float Properties::getRed() {
 
 
 void Properties::setRed(float _input) {
-    red = ofClamp(_input, -1.0, 1.0);
+    red = ofClamp(_input, floatPropertiesLimits["red"].min, floatPropertiesLimits["red"].max);
 }
 
 float Properties::getGreen() {
@@ -67,7 +81,7 @@ float Properties::getGreen() {
 
 
 void Properties::setGreen(float _input) {
-    green = ofClamp(_input, -1.0, 1.0);
+    green = ofClamp(_input, floatPropertiesLimits["green"].min, floatPropertiesLimits["green"].max);
 }
 
 
@@ -77,7 +91,7 @@ float Properties::getBlue() {
 
 
 void Properties::setBlue(float _input) {
-    blue = ofClamp(_input, -1.0, 1.0);
+    blue = ofClamp(_input, floatPropertiesLimits["blue"].min, floatPropertiesLimits["blue"].max);
 }
 
 
@@ -87,7 +101,7 @@ float Properties::getBrightness() {
 
 
 void Properties::setBrightness(float _input) {
-    brightness = ofClamp(_input, -1.0, 1.0);
+    brightness = ofClamp(_input, floatPropertiesLimits["brightness"].min, floatPropertiesLimits["brightness"].max);
 }
 
 
@@ -97,7 +111,7 @@ float Properties::getContrast() {
 
 
 void Properties::setContrast(float _input) {
-    contrast = ofClamp(_input, -1.0, 1.0);
+    contrast = ofClamp(_input,  floatPropertiesLimits["contrast"].min,  floatPropertiesLimits["contrast"].max);
 }
 
 
@@ -107,7 +121,7 @@ float Properties::getSaturation() {
 
 
 void Properties::setSaturation(float _input) {
-    saturation = ofClamp(_input, -1.0, 1.0);
+    saturation = ofClamp(_input,  floatPropertiesLimits["saturation"].min,  floatPropertiesLimits["saturation"].max);
 }
 
 
@@ -121,5 +135,74 @@ json Properties::getState() {
         {"brightness" , getBrightness()},
         {"contrast", getContrast()},
         {"saturation", getSaturation()}
+    };
+}
+
+
+json Properties::getFullState() {
+    return {
+        { "name",
+            {
+                {"type", typeid(name).name()},
+                {"value", getName()}
+            }
+        },
+        { "alpha",
+            {
+                {"type", typeid(alpha).name()},
+                {"value", getAlpha()},
+                {"min", floatPropertiesLimits["alpha"].min},
+                {"max", floatPropertiesLimits["alpha"].max}
+            }
+        },
+        { "red",
+            {
+                {"type", typeid(red).name()},
+                {"value", getRed()},
+                {"min", floatPropertiesLimits["red"].min},
+                {"max", floatPropertiesLimits["red"].max}
+            }
+        },
+        { "green",
+            {
+                {"type", typeid(green).name()},
+                {"value", getGreen()},
+                {"min", floatPropertiesLimits["green"].min},
+                {"max", floatPropertiesLimits["green"].max}
+            }
+        },
+        { "blue",
+            {
+                {"type", typeid(blue).name()},
+                {"value", getBlue()},
+                {"min", floatPropertiesLimits["blue"].min},
+                {"max", floatPropertiesLimits["blue"].max}
+            }
+        },
+        { "brightness",
+            {
+                {"type", typeid(blue).name()},
+                {"value", getBrightness()},
+                {"min", floatPropertiesLimits["brightness"].min},
+                {"max", floatPropertiesLimits["brightness"].max}
+            }
+        },
+        { "saturation",
+            {
+                {"type", typeid(saturation).name()},
+                {"value", getSaturation()},
+                {"min", floatPropertiesLimits["saturation"].min},
+                {"max", floatPropertiesLimits["saturation"].max}
+            }
+        },
+        { "contrast",
+            {
+                {"type", typeid(contrast).name()},
+                {"value", getContrast()},
+                {"min", floatPropertiesLimits["contrast"].min},
+                {"max", floatPropertiesLimits["contrast"].max}
+            }
+        }
+
     };
 }

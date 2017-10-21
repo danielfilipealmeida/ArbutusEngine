@@ -17,9 +17,7 @@
 
 
 /*!
- @class SetProperties
- @abstract
- @discussion
+ \brief Stores and handles properties of a Set
  */
 class SetProperties {
     bool stopCurrentVisualIfTriggeredInvalid;
