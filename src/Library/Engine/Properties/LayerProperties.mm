@@ -160,18 +160,21 @@ json LayerProperties::getFullState() {
     };
      */
     fullState["blurH"] =  {
+        {"title", "Horizontal Blur"},
         {"type", typeid(blurH).name()},
         {"value", getBlurH()},
         {"min", blurHLimits.min},
         {"max", blurHLimits.max}
     };
     fullState["blurV"] =  {
+        {"title", "Vertical Blur"},
         {"type", typeid(blurV).name()},
         {"value", getBlurV()},
         {"min", blurVLimits.min},
         {"max", blurVLimits.max}
     };
     fullState["blendMode"] =  {
+        {"title", "Blend Mode"},
         {"type", typeid(blendMode).name()},
         {"value", getBlendMode()},
         {"min", BLEND_ALPHA},

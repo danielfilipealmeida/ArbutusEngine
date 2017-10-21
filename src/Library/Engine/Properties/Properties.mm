@@ -143,12 +143,14 @@ json Properties::getFullState() {
     return {
         { "name",
             {
+                {"title", "Name"},
                 {"type", typeid(name).name()},
                 {"value", getName()}
             }
         },
         { "alpha",
             {
+                {"title", "Alpha"},
                 {"type", typeid(alpha).name()},
                 {"value", getAlpha()},
                 {"min", floatPropertiesLimits["alpha"].min},
@@ -157,6 +159,7 @@ json Properties::getFullState() {
         },
         { "red",
             {
+                {"title", "Red"},
                 {"type", typeid(red).name()},
                 {"value", getRed()},
                 {"min", floatPropertiesLimits["red"].min},
@@ -165,6 +168,7 @@ json Properties::getFullState() {
         },
         { "green",
             {
+                {"title", "Green"},
                 {"type", typeid(green).name()},
                 {"value", getGreen()},
                 {"min", floatPropertiesLimits["green"].min},
@@ -173,6 +177,7 @@ json Properties::getFullState() {
         },
         { "blue",
             {
+                {"title", "Blue"},
                 {"type", typeid(blue).name()},
                 {"value", getBlue()},
                 {"min", floatPropertiesLimits["blue"].min},
@@ -181,6 +186,7 @@ json Properties::getFullState() {
         },
         { "brightness",
             {
+                {"title", "Brightness"},
                 {"type", typeid(blue).name()},
                 {"value", getBrightness()},
                 {"min", floatPropertiesLimits["brightness"].min},
@@ -189,6 +195,7 @@ json Properties::getFullState() {
         },
         { "saturation",
             {
+                {"title", "Saturation"},
                 {"type", typeid(saturation).name()},
                 {"value", getSaturation()},
                 {"min", floatPropertiesLimits["saturation"].min},
@@ -197,6 +204,7 @@ json Properties::getFullState() {
         },
         { "contrast",
             {
+                {"title", "Contrast"},
                 {"type", typeid(contrast).name()},
                 {"value", getContrast()},
                 {"min", floatPropertiesLimits["contrast"].min},
