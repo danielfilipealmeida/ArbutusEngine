@@ -27,7 +27,8 @@ TEST_CASE("Setting invalid state of scene should throw", "[Scene::setState]") {
     };
     scene->setState(state);
     json currentState = scene->getState();
-    REQUIRE(currentState["name"].get<string>().compare(state["name"]) == 0);
+    std::string name = currentState["name"].get<string>();
+    REQUIRE(name.compare(state["name"].get<string>()) == 0);
 
 
     state = {

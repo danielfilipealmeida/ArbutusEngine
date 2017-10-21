@@ -16,6 +16,10 @@ SizeProperties::SizeProperties() {
         width = EngineProperties::getInstance().getMixerWidth();
         height = EngineProperties::getInstance().getMixerHeight();
     }
+    else {
+        width = PROPERTY_MAX_WIDTH;
+        height = PROPERTY_MAX_HEIGHT;
+    }
 }
 
 SizeProperties::~SizeProperties() {}

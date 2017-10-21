@@ -12,6 +12,7 @@
 		0C628F051F9BC82800ADB871 /* SizeProperties.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0C628F011F9BC82800ADB871 /* SizeProperties.mm */; };
 		0C628F061F9BC82800ADB871 /* SizeProperties.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0C628F011F9BC82800ADB871 /* SizeProperties.mm */; };
 		0C628F071F9BC82800ADB871 /* SizeProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C628F021F9BC82800ADB871 /* SizeProperties.h */; };
+		0C628F091F9BE78A00ADB871 /* PropertiesTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C628F081F9BE78A00ADB871 /* PropertiesTest.cpp */; };
 		0C71D3C21F8A518C006126A5 /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E6BD471F464F4E008E4F9E /* Syphon.framework */; };
 		6504556D1F47090700CB3BE5 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6504556B1F47090700CB3BE5 /* ofApp.cpp */; };
 		6504556E1F470EA300CB3BE5 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BFAF81E7355BD00B74446 /* CoreMIDI.framework */; };
@@ -230,6 +231,7 @@
 		0C628F001F9B954400ADB871 /* doxygenconf */ = {isa = PBXFileReference; lastKnownFileType = text; path = doxygenconf; sourceTree = "<group>"; };
 		0C628F011F9BC82800ADB871 /* SizeProperties.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SizeProperties.mm; sourceTree = "<group>"; };
 		0C628F021F9BC82800ADB871 /* SizeProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SizeProperties.h; sourceTree = "<group>"; };
+		0C628F081F9BE78A00ADB871 /* PropertiesTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PropertiesTest.cpp; path = Properties/PropertiesTest.cpp; sourceTree = "<group>"; };
 		0C71D3C31F8A6901006126A5 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = External/openFrameworks/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = "<group>"; };
 		650455591F47085D00CB3BE5 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -504,6 +506,7 @@
 			isa = PBXGroup;
 			children = (
 				6511F61A1F388F7000B750C2 /* VisualInstancesPropertiesTest.cpp */,
+				0C628F081F9BE78A00ADB871 /* PropertiesTest.cpp */,
 			);
 			name = Properties;
 			sourceTree = "<group>";
@@ -1399,6 +1402,7 @@
 				65E896911E733DD2000D470B /* ofxOscMessage.cpp in Sources */,
 				65E896921E734275000D470B /* ofxOscReceiver.cpp in Sources */,
 				655BFAFB1E735A3D00B74446 /* IpEndpointName.cpp in Sources */,
+				0C628F091F9BE78A00ADB871 /* PropertiesTest.cpp in Sources */,
 				65E6BD3A1F44691E008E4F9E /* tinyxml.cpp in Sources */,
 				653BB8C01F4F771300D25053 /* UtilsTests.cpp in Sources */,
 				65E6BD3B1F44691E008E4F9E /* tinyxmlerror.cpp in Sources */,

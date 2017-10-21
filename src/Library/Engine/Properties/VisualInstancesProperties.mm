@@ -13,27 +13,47 @@
 extern Engine *enginePtr;
 
 VisualInstancesProperties::VisualInstancesProperties() {
-	width = 640; height = 480;
+	//width = 640; height = 480;
     reset();
 }
 
 
-void
-VisualInstancesProperties::reset() {
+void VisualInstancesProperties::reset() {
     zoomX = zoomY = 1;
     centerX = 0.0; centerY = 0.0;
-    x =0; y = 0;
+    x = 0; y = 0; // limits? is this actually used?
     retrigger = true;
     effects_drywet = 0.5;
     isPlaying = false;
     startPercentage = 0.0;
     endPercentage = 1.0;
+    percentagePlayed = 0.0;
+    
     loopMode = LoopMode_Normal;
     direction = Direction_Left;
+    
     beatSnap = isTriggered = false;
     triggerMode = TriggerMode_MouseDown;
+    
     column = layer = 0;
-    percentagePlayed = 0;
+    
+}
+
+void VisualInstancesProperties::setLimits() {
+    floatPropertiesLimitsVisualInstances.insert(std::pair<string, floatLimits>("zoomX", {0.0, 8.0}));
+    floatPropertiesLimitsVisualInstances.insert(std::pair<string, floatLimits>("zoomY", {0.0, 8.0}));
+
+    floatPropertiesLimitsVisualInstances.insert(std::pair<string, floatLimits>("centerX", {-2.0, 2.0}));
+    floatPropertiesLimitsVisualInstances.insert(std::pair<string, floatLimits>("centerY", {-2.0, 2.0}));
+
+    floatPropertiesLimitsVisualInstances.insert(std::pair<string, floatLimits>("startPercentage", {0.0, 1.0}));
+    floatPropertiesLimitsVisualInstances.insert(std::pair<string, floatLimits>("endPercentage", {0.0, 1.0}));
+    floatPropertiesLimitsVisualInstances.insert(std::pair<string, floatLimits>("percentagePlayed", {0.0, 1.0}));
+    
+    floatPropertiesLimitsVisualInstances.insert(std::pair<string, floatLimits>("effects_drywet", {0.0, 1.0}));
+
+
+
 }
 
 VisualInstancesProperties::~VisualInstancesProperties() {
@@ -45,8 +65,8 @@ VisualInstancesProperties::~VisualInstancesProperties() {
 void VisualInstancesProperties::print() {
 	Properties::print();
 	
-    cout << "      width: " << width << endl;
-    cout << "     height: " << height <<endl;
+    cout << "      width: " << getWidth() << endl;
+    cout << "     height: " << getHeight() <<endl;
 	cout << "center(X,Y): " << centerX <<", "<<centerY<<endl;
 	cout << "      (x,y): " << x <<", "<<y<<endl;
 	cout << "      layer: " << layer <<endl;
@@ -90,10 +110,17 @@ void VisualInstancesProperties::setBeatSnap (Boolean _val )
     beatSnap = _val;
 }
 
+
+/*
 int VisualInstancesProperties::getWidth () {
-    return width; }
+    return width;
+}
+
 int VisualInstancesProperties::getHeight () {
-    return height; }
+    return height;
+    
+}
+*/
 
 float VisualInstancesProperties::getZoomX () {
     return zoomX; }
@@ -190,11 +217,17 @@ void VisualInstancesProperties::setPercentagePlayed ( float _val ) {
 
 void VisualInstancesProperties::setStartPercentage ( float _val ) {
     startPercentage = ofClamp(_val, 0.0, 1.0);
+    if (startPercentage > endPercentage) {
+        startPercentage = endPercentage;
+    }
 }
 
 
 void VisualInstancesProperties::setEndPercentage ( float _val ) {
     endPercentage = ofClamp(_val, 0.0, 1.0);
+    if (endPercentage < startPercentage) {
+        endPercentage = startPercentage;
+    }
 }
 
 
@@ -245,6 +278,14 @@ void VisualInstancesProperties::setTriggerMode ( TriggerMode _val ) {
 }
 
 
+float VisualInstancesProperties::getEffectMix() {
+    return effects_drywet;
+}
+
+void VisualInstancesProperties::setEffectMix(float _val) {
+    effects_drywet = ofClamp(_val, floatPropertiesLimitsVisualInstances["effects_drywet"].min, floatPropertiesLimitsVisualInstances["effects_drywet"].max);
+}
+
 json VisualInstancesProperties::getState() {
     json state;
     
@@ -282,6 +323,76 @@ json VisualInstancesProperties::getFullState() {
     fullState = Properties::getFullState();
 
     fullState = SizeProperties::getFullState(fullState);
+    fullState["zoomX"] =  {
+        {"type", typeid(zoomX).name()},
+        {"value", getZoomX()},
+        {"min", floatPropertiesLimits["zoomX"].min},
+        {"max", floatPropertiesLimits["zoomX"].max}
+    };
+    fullState["zoomY"] =  {
+        {"type", typeid(zoomY).name()},
+        {"value", getZoomY()},
+        {"min", floatPropertiesLimits["zoomY"].min},
+        {"max", floatPropertiesLimits["zoomY"].max}
+    };
     
+    fullState["centerX"] =  {
+        {"type", typeid(centerX).name()},
+        {"value", getCenterX()},
+        {"min", floatPropertiesLimits["centerX"].min},
+        {"max", floatPropertiesLimits["centerX"].max}
+    };
+    fullState["centerY"] =  {
+        {"type", typeid(centerY).name()},
+        {"value", getCenterY()},
+        {"min", floatPropertiesLimits["centerY"].min},
+        {"max", floatPropertiesLimits["centerY"].max}
+    };
+    
+    fullState["startPercentage"] =  {
+        {"type", typeid(startPercentage).name()},
+        {"value", getStartPercentage()},
+        {"min", floatPropertiesLimits["startPercentage"].min},
+        {"max", floatPropertiesLimits["startPercentage"].max}
+    };
+    fullState["endPercentage"] =  {
+        {"type", typeid(endPercentage).name()},
+        {"value", getEndPercentage()},
+        {"min", floatPropertiesLimits["endPercentage"].min},
+        {"max", floatPropertiesLimits["endPercentage"].max}
+    };
+    fullState["percentagePlayed"] =  {
+        {"type", typeid(percentagePlayed).name()},
+        {"value", getPercentagePlayed()},
+        {"min", floatPropertiesLimits["percentagePlayed"].min},
+        {"max", floatPropertiesLimits["percentagePlayed"].max}
+    };
+
+    fullState["effects_drywet"] =  {
+        {"type", typeid(effects_drywet).name()},
+        {"value", getEffectMix()},
+        {"min", floatPropertiesLimitsVisualInstances["effects_drywet"].min},
+        {"max", floatPropertiesLimitsVisualInstances["effects_drywet"].max}
+    };
+
+    fullState["loopMode"] =  {
+        {"type", typeid(loopMode).name()},
+        {"value", getLoopMode()},
+        {"min", loopModeLimits.min},
+        {"max", loopModeLimits.max}
+    };
+    fullState["direction"] =  {
+        {"type", typeid(direction).name()},
+        {"value", getDirection()},
+        {"min", playheadDirectionLimits.min},
+        {"max", playheadDirectionLimits.max}
+    };
+    fullState["triggerMode"] =  {
+        {"type", typeid(triggerMode).name()},
+        {"value", getTriggerMode()},
+        {"min", triggerModeLimits.min},
+        {"max", triggerModeLimits.max}
+    };
+        
     return fullState;
 }

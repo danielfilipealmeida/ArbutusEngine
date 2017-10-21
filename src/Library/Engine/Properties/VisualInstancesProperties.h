@@ -42,26 +42,31 @@ typedef enum {
 
 
 /*!
- @class VisualInstancesProperties
- @abstract ...
- @discussion ...
+ \brief Stores and handles properties of a visual instance
  */
 class VisualInstancesProperties : public Properties, public SizeProperties {
-    int width, height;
     float zoomX, zoomY;
     float centerX, centerY;
     int x, y, layer, column;
     Boolean retrigger, isPlaying;
     float percentagePlayed, startPercentage, endPercentage, effects_drywet;
+    
     LoopMode loopMode;
     PlayheadDirection direction;
+    TriggerMode triggerMode;
 
     Boolean beatSnap;
     Boolean isTriggered;
 
     unsigned long long openedTimestamp, lastPlayedTimestamp;
 
-    TriggerMode triggerMode;
+    
+    
+    std::map<string, floatLimits> floatPropertiesLimitsVisualInstances;
+    const uintLimits loopModeLimits = {LoopMode_Normal, LoopMode_Inverse};
+    const uintLimits playheadDirectionLimits = {Direction_Left, Direction_Right};
+    const uintLimits triggerModeLimits = {TriggerMode_MouseDown, TriggerMode_Piano};
+
 
 public:
 	
@@ -78,12 +83,16 @@ public:
     ~VisualInstancesProperties();
 	
        
-    /**!
-     @abstract ...
+    /*!
+     \brief Set all properties to default values
      */
     void reset();
     
-    
+    /*!
+    \brief Set minimum and maximum valies of properties
+    */
+    void setLimits();
+
     /**!
      @abstract ...
      */
@@ -105,13 +114,13 @@ public:
     /**!
      @abstract ...
      */
-    int getWidth ();
+    //int getWidth ();
     
     
     /**!
      @abstract ...
      */
-    int getHeight ();
+    //int getHeight ();
     
     
     
@@ -253,104 +262,113 @@ public:
     float getEndPercentage ();
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setPercentagePlayed ( float _val );
     
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setStartPercentage ( float _val );
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setEndPercentage ( float _val );
     
     
-  
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
+     */
+    float getEffectMix();
+    
+    /*!
+     \brief ...
+     */
+    void setEffectMix(float _val);
+    
+    /*!
+     \brief ...
      */
     PlayheadDirection getDirection ();
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setDirection ( PlayheadDirection _val );
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     Boolean getBeatSnap ();
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setBeatSnap (Boolean _val );
     
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     Boolean getIsTriggered ();
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setIsTriggered (Boolean _val );
     
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     unsigned long long getOpenedTimestamp ();
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     unsigned long long getLastPlayedTimestamp ();
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setOpenedTimestampToNow ();
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setLastPlayedTimestampToNow ();
     
     
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     TriggerMode getTriggerMode ();
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setTriggerMode ( TriggerMode _val );
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     json getState();
     
