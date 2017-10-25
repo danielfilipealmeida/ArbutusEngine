@@ -171,6 +171,9 @@ public:
      The complete state isn't changeable. It contains the datatype and the limits.
      */
     json getFullState();
+
+
+    virtual void set(string property, float value);
 };
 
 #endif

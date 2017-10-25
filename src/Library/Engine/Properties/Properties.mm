@@ -8,6 +8,7 @@
  */
 
 #include "Properties.h"
+#include "Utils.h"
 
 
 
@@ -213,4 +214,30 @@ json Properties::getFullState() {
         }
 
     };
+}
+
+void Properties::set(string property, float value) {
+    switch (str2int(property.c_str())) {
+    case str2int("alpha"):
+        setAlpha(value);
+        break;
+    case str2int("red"):
+        setRed(value);
+        break;
+    case str2int("green"):
+        setGreen(value);
+        break;
+    case str2int("blue"):
+        setBlue(value);
+        break;
+    case str2int("brightness"):
+        setBrightness(value);
+        break;
+    case str2int("contrast"):
+        setContrast(value);
+        break;
+    case str2int("saturation"):
+        setSaturation(value);
+        break;
+    }
 }
