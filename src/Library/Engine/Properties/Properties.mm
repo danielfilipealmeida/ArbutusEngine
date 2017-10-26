@@ -26,9 +26,9 @@ void Properties::setLimits() {
     floatPropertiesLimits.insert(std::pair<string, floatLimits>("red", {-1.0, 1.0}));
     floatPropertiesLimits.insert(std::pair<string, floatLimits>("green", {-1.0, 1.0}));
     floatPropertiesLimits.insert(std::pair<string, floatLimits>("blue", {-1.0, 1.0}));
-    floatPropertiesLimits.insert(std::pair<string, floatLimits>("brightness", {-1.0, 1.0}));
-    floatPropertiesLimits.insert(std::pair<string, floatLimits>("contrast", {-1.0, 1.0}));
-    floatPropertiesLimits.insert(std::pair<string, floatLimits>("saturation", {-1.0, 1.0}));
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("brightness", {0.0, 2.0}));
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("contrast", {0.0, 2.0}));
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("saturation", {0.0, 2.0}));
 }
 
 void Properties::reset() {

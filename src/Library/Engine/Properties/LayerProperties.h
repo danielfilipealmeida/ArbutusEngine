@@ -141,7 +141,7 @@ public:
     
     
     /**!
-     @abstract ...
+     \brief ...
      */
     void setBlurV(unsigned int _blurV);
     
@@ -154,6 +154,11 @@ public:
      The complete state isn't changeable. It contains the datatype and the limits.
      */
     json getFullState();
+    
+    /**!
+     \brief ...
+     */
+    void set(string property, float value);
 };
 
 

@@ -183,3 +183,8 @@ json LayerProperties::getFullState() {
     
     return fullState;
 }
+
+
+void  LayerProperties::set(string property, float value) {
+    Properties::set(property, value);
+}
