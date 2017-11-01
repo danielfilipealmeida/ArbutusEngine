@@ -388,24 +388,62 @@ json VisualInstancesProperties::getFullState() {
 
     fullState["loopMode"] =  {
         {"title", "Loop Mode"},
-        {"type", typeid(loopMode).name()},
+        {"type", "button_group"},
         {"value", getLoopMode()},
-        {"min", loopModeLimits.min},
-        {"max", loopModeLimits.max}
+        {"options",
+            {
+                {
+                    {"title", "Normal"},
+                    {"value", LoopMode_Normal}
+                },
+                {
+                    {"title", "Ping Ping"},
+                    {"value", LoopMode_PingPong}
+                },
+                {
+                    {"title", "Inverse"},
+                    {"value", LoopMode_Inverse}
+                }
+            }
+        }
     };
     fullState["direction"] =  {
         {"title", "Direction"},
-        {"type", typeid(direction).name()},
+        {"type", "button_group"},
         {"value", getDirection()},
-        {"min", playheadDirectionLimits.min},
-        {"max", playheadDirectionLimits.max}
+        {"options",
+            {
+                {
+                    {"title", "Left"},
+                    {"value", Direction_Left}
+                },
+                {
+                    {"title", "Right"},
+                    {"value", Direction_Right}
+                }
+            }
+        }
     };
     fullState["triggerMode"] =  {
         {"title", "Trigger Mode"},
-        {"type", typeid(triggerMode).name()},
+        {"type", "button_group"},
         {"value", getTriggerMode()},
-        {"min", triggerModeLimits.min},
-        {"max", triggerModeLimits.max}
+        {"options",
+            {
+                {
+                    {"title", "Mouse Down"},
+                    {"value", TriggerMode_MouseDown}
+                },
+                {
+                    {"title", "Mouse Up"},
+                    {"value", TriggerMode_MouseUp}
+                },
+                {
+                    {"title", "Piano"},
+                    {"value", TriggerMode_Piano}
+                }
+            }
+        }
     };
         
     return fullState;
