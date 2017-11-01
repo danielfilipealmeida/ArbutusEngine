@@ -72,17 +72,15 @@ public:
 	
 	
     /**!
-     @abstract ...
+     \brief ...
      */
 	VisualInstancesProperties();
 
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     ~VisualInstancesProperties();
 	
-       
     /*!
      \brief Set all properties to default values
      */
@@ -94,25 +92,23 @@ public:
     void setLimits();
 
     /**!
-     @abstract ...
+     \brief ...
      */
     void setLoopMode(LoopMode _loopMode);
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     LoopMode getLoopMode();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
 	void print();
     
     
     /**!
-     @abstract ...
+     \brief ...
      */
     //int getWidth ();
     
@@ -122,145 +118,115 @@ public:
      */
     //int getHeight ();
     
-    
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     float getZoomX ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setZoomX (float _zoomX);
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     float getZoomY ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setZoomY (float _zoomY);
     
-    
-    
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     float getCenterX();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     float getCenterY();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     ofPoint getCenter();
     
-    
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setCenterX(float _centerX);
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setCenterY(float _centerY);
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     int getX ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     int getY ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     int getLayer ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setLayer (int _layer);
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     int getColumn ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setColumn (int _column);
     
-    
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     Boolean getRetrigger ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setRetrigger (bool _retrigger);
     
-    
-
     /**!
-     @abstract ...
+     \brief ...
      */
     Boolean getIsPlaying();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setIsPlaying ( Boolean _isPlaying );
     
-    
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     float getPercentagePlayed ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     float getStartPercentage ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     float getEndPercentage ();
-    
     
     /*!
      \brief ...
@@ -268,18 +234,15 @@ public:
     void setPercentagePlayed ( float _val );
     
     
-    
     /*!
      \brief ...
      */
     void setStartPercentage ( float _val );
     
-    
     /*!
      \brief ...
      */
     void setEndPercentage ( float _val );
-    
     
     /*!
      \brief ...
@@ -296,64 +259,50 @@ public:
      */
     PlayheadDirection getDirection ();
     
-    
     /*!
      \brief ...
      */
     void setDirection ( PlayheadDirection _val );
-    
     
     /*!
      \brief ...
      */
     Boolean getBeatSnap ();
     
-    
     /*!
      \brief ...
      */
     void setBeatSnap (Boolean _val );
-    
-    
     
     /*!
      \brief ...
      */
     Boolean getIsTriggered ();
     
-    
     /*!
      \brief ...
      */
     void setIsTriggered (Boolean _val );
-    
-    
     
     /*!
      \brief ...
      */
     unsigned long long getOpenedTimestamp ();
     
-    
     /*!
      \brief ...
      */
     unsigned long long getLastPlayedTimestamp ();
-    
     
     /*!
      \brief ...
      */
     void setOpenedTimestampToNow ();
     
-    
     /*!
      \brief ...
      */
     void setLastPlayedTimestampToNow ();
-    
-    
-    
     
     /*!
      \brief ...
@@ -378,6 +327,11 @@ public:
      The complete state isn't changeable. It contains the datatype and the limits.
      */
     json getFullState();
+    
+    /*!
+     \brief Sets a property
+     */
+    void set(string property, float value);
     
 };
 

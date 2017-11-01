@@ -9,6 +9,7 @@
 
 #include "LayerProperties.h"
 #include "Engine.h"
+#include "Utils.h"
 
 //extern ofApp	*app;
 
@@ -187,4 +188,12 @@ json LayerProperties::getFullState() {
 
 void  LayerProperties::set(string property, float value) {
     Properties::set(property, value);
+    switch (str2int(property.c_str())) {
+        case str2int("blurH"):
+            setBlurH((unsigned int) round(value));
+        break;
+        case str2int("blurV"):
+            setBlurV((unsigned int) round(value));
+            break;
+    }
 }

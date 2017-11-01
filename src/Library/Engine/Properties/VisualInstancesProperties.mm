@@ -9,12 +9,14 @@
 
 #include "VisualInstancesProperties.h"
 #include "Engine.h"
+#include "Utils.h"
 
 extern Engine *enginePtr;
 
 VisualInstancesProperties::VisualInstancesProperties() {
 	//width = 640; height = 480;
     reset();
+    setLimits();
 }
 
 
@@ -36,7 +38,6 @@ void VisualInstancesProperties::reset() {
     triggerMode = TriggerMode_MouseDown;
     
     column = layer = 0;
-    
 }
 
 void VisualInstancesProperties::setLimits() {
@@ -216,10 +217,13 @@ void VisualInstancesProperties::setPercentagePlayed ( float _val ) {
 
 
 void VisualInstancesProperties::setStartPercentage ( float _val ) {
+    /*
     startPercentage = ofClamp(_val, 0.0, 1.0);
     if (startPercentage > endPercentage) {
         startPercentage = endPercentage;
     }
+     */
+    startPercentage = (startPercentage <= endPercentage) ? ofClamp(_val, 0.0, 1.0) : endPercentage;
 }
 
 
@@ -313,7 +317,6 @@ json VisualInstancesProperties::getState() {
     state["lastPlayedTimestamp"] = getLastPlayedTimestamp();
     state["triggerMode"] = getTriggerMode();
     
-    
     return state;
 }
 
@@ -324,51 +327,59 @@ json VisualInstancesProperties::getFullState() {
 
     fullState = SizeProperties::getFullState(fullState);
     fullState["zoomX"] =  {
+        {"title", "Zoom X"},
         {"type", typeid(zoomX).name()},
         {"value", getZoomX()},
-        {"min", floatPropertiesLimits["zoomX"].min},
-        {"max", floatPropertiesLimits["zoomX"].max}
+        {"min", floatPropertiesLimitsVisualInstances["zoomX"].min},
+        {"max", floatPropertiesLimitsVisualInstances["zoomX"].max}
     };
     fullState["zoomY"] =  {
+        {"title", "Zoom Y"},
         {"type", typeid(zoomY).name()},
         {"value", getZoomY()},
-        {"min", floatPropertiesLimits["zoomY"].min},
-        {"max", floatPropertiesLimits["zoomY"].max}
+        {"min", floatPropertiesLimitsVisualInstances["zoomY"].min},
+        {"max", floatPropertiesLimitsVisualInstances["zoomY"].max}
     };
     
     fullState["centerX"] =  {
+        {"title", "Center X"},
         {"type", typeid(centerX).name()},
         {"value", getCenterX()},
-        {"min", floatPropertiesLimits["centerX"].min},
-        {"max", floatPropertiesLimits["centerX"].max}
+        {"min", floatPropertiesLimitsVisualInstances["centerX"].min},
+        {"max", floatPropertiesLimitsVisualInstances["centerX"].max}
     };
     fullState["centerY"] =  {
+        {"title", "Center Y"},
         {"type", typeid(centerY).name()},
         {"value", getCenterY()},
-        {"min", floatPropertiesLimits["centerY"].min},
-        {"max", floatPropertiesLimits["centerY"].max}
+        {"min", floatPropertiesLimitsVisualInstances["centerY"].min},
+        {"max", floatPropertiesLimitsVisualInstances["centerY"].max}
     };
     
     fullState["startPercentage"] =  {
+        {"title", "Start"},
         {"type", typeid(startPercentage).name()},
         {"value", getStartPercentage()},
-        {"min", floatPropertiesLimits["startPercentage"].min},
-        {"max", floatPropertiesLimits["startPercentage"].max}
+        {"min", floatPropertiesLimitsVisualInstances["startPercentage"].min},
+        {"max", floatPropertiesLimitsVisualInstances["startPercentage"].max}
     };
     fullState["endPercentage"] =  {
+        {"title", "End"},
         {"type", typeid(endPercentage).name()},
         {"value", getEndPercentage()},
-        {"min", floatPropertiesLimits["endPercentage"].min},
-        {"max", floatPropertiesLimits["endPercentage"].max}
+        {"min", floatPropertiesLimitsVisualInstances["endPercentage"].min},
+        {"max", floatPropertiesLimitsVisualInstances["endPercentage"].max}
     };
     fullState["percentagePlayed"] =  {
+        {"title", "Percentage Played"},
         {"type", typeid(percentagePlayed).name()},
         {"value", getPercentagePlayed()},
-        {"min", floatPropertiesLimits["percentagePlayed"].min},
-        {"max", floatPropertiesLimits["percentagePlayed"].max}
+        {"min", floatPropertiesLimitsVisualInstances["percentagePlayed"].min},
+        {"max", floatPropertiesLimitsVisualInstances["percentagePlayed"].max}
     };
 
     fullState["effects_drywet"] =  {
+        {"title", "Dry/Wet"},
         {"type", typeid(effects_drywet).name()},
         {"value", getEffectMix()},
         {"min", floatPropertiesLimitsVisualInstances["effects_drywet"].min},
@@ -376,18 +387,21 @@ json VisualInstancesProperties::getFullState() {
     };
 
     fullState["loopMode"] =  {
+        {"title", "Loop Mode"},
         {"type", typeid(loopMode).name()},
         {"value", getLoopMode()},
         {"min", loopModeLimits.min},
         {"max", loopModeLimits.max}
     };
     fullState["direction"] =  {
+        {"title", "Direction"},
         {"type", typeid(direction).name()},
         {"value", getDirection()},
         {"min", playheadDirectionLimits.min},
         {"max", playheadDirectionLimits.max}
     };
     fullState["triggerMode"] =  {
+        {"title", "Trigger Mode"},
         {"type", typeid(triggerMode).name()},
         {"value", getTriggerMode()},
         {"min", triggerModeLimits.min},
@@ -395,4 +409,34 @@ json VisualInstancesProperties::getFullState() {
     };
         
     return fullState;
+}
+
+void VisualInstancesProperties::set(string property, float value) {
+    Properties::set(property, value);
+    switch (str2int(property.c_str())) {
+        case str2int("zoomX"):
+            setZoomX(value);
+            break;
+        case str2int("zoomY"):
+            setZoomY(value);
+            break;
+        case str2int("centerX"):
+            setCenterX(value);
+            break;
+        case str2int("centerY"):
+            setCenterY(value);
+            break;
+        case str2int("percentagePlayed"):
+            setPercentagePlayed(value);
+            break;
+        case str2int("startPercentage"):
+            setStartPercentage(value);
+            break;
+        case str2int("endPercentage"):
+            setEndPercentage(value);
+            break;
+        case str2int("effects_drywet"):
+            setEffectMix(value);
+            break;
+    }
 }
