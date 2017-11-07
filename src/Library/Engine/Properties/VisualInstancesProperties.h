@@ -329,9 +329,11 @@ public:
     json getFullState();
     
     /*!
-     \brief Sets a property
+     \brief Sets a property with a float value
      */
     void set(string property, float value);
+    
+    void set(string property, unsigned int value);
     
 };
 

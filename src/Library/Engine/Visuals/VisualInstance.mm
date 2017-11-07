@@ -106,7 +106,6 @@ void VisualInstance::play(bool forcePlay)
     properties.setIsTriggered (false);
     properties.setLastPlayedTimestampToNow ();
     
-    
     if (visual->getType () == VisualType_Video) {
         if (video.isLoaded()==false) loadVideo();
         if (video.isLoaded()==false) return;
@@ -154,14 +153,17 @@ void VisualInstance::retrigger() {
 
 void VisualInstance::stop() {
 	if (visual == NULL) return;
-    if (visual->getType () == VisualType_Video) {
+    
+    if (visual->getType () == VisualType_Video)
+    {
         if (video.isLoaded()==false) return;
         video.stop();
     }
-    if (visual->getType () == VisualType_Camera) {
+    
+    if (visual->getType () == VisualType_Camera)
+    {
         VisualCamera *camera;
         camera = (VisualCamera *)visual;
-        //camera->close();
     }
 
 	properties.setIsPlaying ( false );
@@ -177,9 +179,6 @@ void VisualInstance::autoLoadAndAutoPlayVideo() {
     if (visual->getType () != VisualType_Video) return;
     if (video.isLoaded() == false) loadVideo();
     if (video.isPlaying() == false || properties.getIsPlaying() == false) play();
-        
-    
- 
 }
 
 bool VisualInstance::isFreeFrameFilterActive() {
@@ -210,18 +209,11 @@ bool VisualInstance::isFreeFrameFilterActive() {
  * @param width the width
  * @param height the height
  */
-void VisualInstance::draw(unsigned int x,
-                          unsigned int y,
-                          unsigned int width,
-                          unsigned int height
-                          ) {
-    
-    //int videoX, videoY, videoWidth, videoHeight;
-    
-	if (visual==NULL) return;
+void VisualInstance::draw(unsigned int x, unsigned int y, unsigned int width, unsigned int height)
+{
+ 	if (visual==NULL) return;
     autoLoadAndAutoPlayVideo();
 	update();
-	
 	
 	// check if there are free frame videos active
 #ifdef _FREEFRAMEFILTER_H_
@@ -271,9 +263,8 @@ void VisualInstance::draw(unsigned int x,
 
 
 
-void VisualInstance::calculateDisplayRect(unsigned int width,
-                                          unsigned int height
-                                          ) {
+void VisualInstance::calculateDisplayRect(unsigned int width, unsigned int height )
+{
     
     /*
     static int magicNumber;
@@ -287,18 +278,14 @@ void VisualInstance::calculateDisplayRect(unsigned int width,
     videoWidth  = this->properties.getWidth () * this->properties.getZoomX ();
     videoHeight = this->properties.getHeight () * this->properties.getZoomY ();
     
-    videoX      = (int) (((float) width / 2.0) - ( (float) (this->properties.getWidth () * this->properties.getZoomX () ) ) / 2.0 ) + (this->properties.getCenterX ()  *  ( (float) width / 2.0) );
-    videoY      = (int) (((float) height / 2.0) - ( (float) (this->properties.getHeight () * this->properties.getZoomY () ) ) / 2.0 ) + (this->properties.getCenterY ()  *  ( (float) height / 2.0) );
+    videoX = (int) (((float) width / 2.0) - ( (float) (this->properties.getWidth () * this->properties.getZoomX () ) ) / 2.0 ) + (this->properties.getCenterX ()  *  ( (float) width / 2.0) );
+    videoY = (int) (((float) height / 2.0) - ( (float) (this->properties.getHeight () * this->properties.getZoomY () ) ) / 2.0 ) + (this->properties.getCenterY ()  *  ( (float) height / 2.0) );
 }
 
 
 
-void VisualInstance::drawVisualScreenshot(
-                                          unsigned int x,
-                                          unsigned int y,
-                                          unsigned int width,
-                                          unsigned int height
-                                          ) {
+void VisualInstance::drawVisualScreenshot( unsigned int x, unsigned int y, unsigned int width, unsigned int height )
+{
 	visual->drawScreenshot(x, y, width, height);
 }
 
@@ -356,7 +343,6 @@ void VisualInstance::handlePingPongLoopMode(float position) {
             if (position>properties.getEndPercentage ()) {
                 properties.setDirection (Direction_Left);
                 position = properties.getEndPercentage ();
-                    //video.setSpeed(video.getSpeed() * -1.0);
                 if(video.getSpeed()>0) video.setSpeed( -1.0 * video.getSpeed());
                 video.setPosition(position);
             }
@@ -450,28 +436,38 @@ void VisualInstance::handleVideoGoingRight() {
 
 */
 
-void
-VisualInstance::updateVideo() {
+void VisualInstance::handleDirectionChange() {
+    if (properties.getDirection() == Direction_Left && video.getSpeed() > 0) return;
+    if (properties.getDirection() == Direction_Right && video.getSpeed() < 0) return;
+       
+    video.setSpeed(video.getSpeed() * -1.0);
+}
+
+void VisualInstance::handleLoopModeChange() {
+    LoopMode previousLoopMode = LoopMode_Normal;
+    LoopMode currentLoopMode = properties.getLoopMode();
+    
+    if (previousLoopMode != currentLoopMode) {
+        setLoopMode(currentLoopMode);
+    }
+    
+    previousLoopMode = currentLoopMode;
+}
+
+void VisualInstance::updateVideo() {
     if (visual->getType() != VisualType_Video) return;
     if (video.isLoaded()==false) return;
     if (video.isPlaying()==false) return;
-        
-    video.update();
-        
-        
-        
-    // THIS NEEDS TO BE TESTED
-    //float currentVideoPosition = video.getPosition();
-    //calculateCurrentPlayeadPosition(currentVideoPosition);
     
+    handleDirectionChange();
+    handleLoopModeChange();
+    video.update();
 }
 
 void
 VisualInstance::update() {
 	if (visual==NULL) return;
     updateVideo();
-    
-
     
     if (visual->getType() == VisualType_Camera) {
         ((VisualCamera *)visual)->update();
@@ -493,10 +489,8 @@ VisualInstance::update() {
 				activeFreeFrameFilters = true;
 				
 				unsigned int pluginNumber = instance->filter->number;
-				//instance->host->ffHost.setPluginActive(pluginNumber, true);
 				app->engine.freeFrameHost.ffHost.setPluginActive(pluginNumber, true);
 			}
-			
 		}
 	}
 	if (activeFreeFrameFilters==true) {
@@ -512,10 +506,8 @@ VisualInstance::update() {
 			FreeFrameFilterInstance *instance = *it;
 			if (instance->filter->active == true) {
 				unsigned int pluginNumber = instance->filter->number;
-				//instance->host->ffHost.setPluginActive(pluginNumber, false);
 				app->engine.freeFrameHost.ffHost.setPluginActive(pluginNumber, false);
 			}
-			
 		}
 	}
 #endif
@@ -547,7 +539,7 @@ VisualInstance::print()
 
 
 void VisualInstance::setLoopMode(LoopMode _loopMode) {
-	properties.setLoopMode(_loopMode);
+	//properties.setLoopMode(_loopMode);
 	if (_loopMode == LoopMode_Normal) {
 		this->video.setLoopState(OF_LOOP_NORMAL);
 		this->video.setSpeed(abs(this->video.getSpeed()));

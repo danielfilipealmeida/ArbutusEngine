@@ -241,3 +241,8 @@ void Properties::set(string property, float value) {
         break;
     }
 }
+
+void Properties::set(string property, unsigned int value) {
+    
+}
+

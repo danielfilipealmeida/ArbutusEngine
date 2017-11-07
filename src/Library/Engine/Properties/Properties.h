@@ -174,6 +174,8 @@ public:
 
 
     virtual void set(string property, float value);
+    
+    virtual void set(string property, unsigned int value);
 };
 
 #endif

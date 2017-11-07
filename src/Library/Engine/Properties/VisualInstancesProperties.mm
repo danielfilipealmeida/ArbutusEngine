@@ -388,7 +388,7 @@ json VisualInstancesProperties::getFullState() {
 
     fullState["loopMode"] =  {
         {"title", "Loop Mode"},
-        {"type", "button_group"},
+        {"type", "toggle_button_group"},
         {"value", getLoopMode()},
         {"options",
             {
@@ -409,7 +409,7 @@ json VisualInstancesProperties::getFullState() {
     };
     fullState["direction"] =  {
         {"title", "Direction"},
-        {"type", "button_group"},
+        {"type", "toggle_button_group"},
         {"value", getDirection()},
         {"options",
             {
@@ -426,7 +426,7 @@ json VisualInstancesProperties::getFullState() {
     };
     fullState["triggerMode"] =  {
         {"title", "Trigger Mode"},
-        {"type", "button_group"},
+        {"type", "toggle_button_group"},
         {"value", getTriggerMode()},
         {"options",
             {
@@ -475,6 +475,21 @@ void VisualInstancesProperties::set(string property, float value) {
             break;
         case str2int("effects_drywet"):
             setEffectMix(value);
+            break;
+       
+    }
+}
+
+void VisualInstancesProperties::set(string property, unsigned int value) {
+    switch (str2int(property.c_str())) {
+        case str2int("direction"):
+            setDirection((PlayheadDirection) value);
+            break;
+        case str2int("loopMode"):
+            setLoopMode((LoopMode) value);
+            break;
+        case str2int("triggerMode"):
+            setTriggerMode((TriggerMode) value);
             break;
     }
 }
