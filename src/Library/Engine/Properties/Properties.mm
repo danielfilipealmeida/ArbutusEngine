@@ -155,7 +155,8 @@ json Properties::getFullState() {
                 {"type", typeid(alpha).name()},
                 {"value", getAlpha()},
                 {"min", floatPropertiesLimits["alpha"].min},
-                {"max", floatPropertiesLimits["alpha"].max}
+                {"max", floatPropertiesLimits["alpha"].max},
+                {"defaultValue", floatPropertiesLimits["alpha"].max}
             }
         },
         { "red",
@@ -164,7 +165,8 @@ json Properties::getFullState() {
                 {"type", typeid(red).name()},
                 {"value", getRed()},
                 {"min", floatPropertiesLimits["red"].min},
-                {"max", floatPropertiesLimits["red"].max}
+                {"max", floatPropertiesLimits["red"].max},
+                {"defaultValue", floatPropertiesLimits["red"].max}
             }
         },
         { "green",
@@ -173,7 +175,8 @@ json Properties::getFullState() {
                 {"type", typeid(green).name()},
                 {"value", getGreen()},
                 {"min", floatPropertiesLimits["green"].min},
-                {"max", floatPropertiesLimits["green"].max}
+                {"max", floatPropertiesLimits["green"].max},
+                {"defaultValue", floatPropertiesLimits["green"].max}
             }
         },
         { "blue",
@@ -182,7 +185,8 @@ json Properties::getFullState() {
                 {"type", typeid(blue).name()},
                 {"value", getBlue()},
                 {"min", floatPropertiesLimits["blue"].min},
-                {"max", floatPropertiesLimits["blue"].max}
+                {"max", floatPropertiesLimits["blue"].max},
+                {"defaultValue", floatPropertiesLimits["blue"].max}
             }
         },
         { "brightness",
