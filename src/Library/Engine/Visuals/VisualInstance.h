@@ -43,7 +43,6 @@ class VisualInstance {
     VisualInstancesProperties properties;
     int videoX, videoY, videoWidth, videoHeight;
     
-    
 public:
 	Visual *visual;
 	ofAVFoundationPlayer video;
@@ -62,17 +61,23 @@ public:
     
     
 	/* actions */
-	bool
-    loadVideo();
+	bool loadVideo();
     
-    bool
-    checkFileExists(string path);
+    bool checkFileExists(string path);
     
-	bool
-    unloadVideo();
+	bool unloadVideo();
     
-    void
-    unload();
+    /*!
+     \brief Checks and invert direction if needed
+     */
+    void handleDirectionChange();
+    
+    /*!
+     \brief Checks and updates the loop mode if needed
+     */
+    void handleLoopModeChange();
+    
+    void unload();
     
 	void play(bool forcePlay = false);
     void retrigger();

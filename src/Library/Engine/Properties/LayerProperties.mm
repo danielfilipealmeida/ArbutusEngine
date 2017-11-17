@@ -9,19 +9,15 @@
 
 #include "LayerProperties.h"
 #include "Engine.h"
+#include "Utils.h"
 
 //extern ofApp	*app;
 
-#define PROPERTY_MAX_WIDTH  1920
-#define PROPERTY_MAX_HEIGHT 1080
+
 
 extern Engine *enginePtr;
 
 LayerProperties::LayerProperties() {
-    if (enginePtr != NULL) {
-        width = EngineProperties::getInstance().getMixerWidth();
-        height = EngineProperties::getInstance().getMixerHeight();
-    }
     blendMode   = BLEND_ADD;
     reset();
 }
@@ -30,16 +26,16 @@ LayerProperties::~LayerProperties() {}
 
 void LayerProperties::reset() {
     Properties::reset();
-    setAlpha (1.0);
+    //setAlpha (1.0);
     setBlurH (0.0);
     setBlurV (0.0);
     setAlpha (1.0);
-    setRed (1.0);
-    setGreen (1.0);
-    setBlue (1.0);
-    setBrightness (1.0);
-    setContrast (1.0);
-    setSaturation (1.0);
+    //setRed (1.0);
+    //setGreen (1.0);
+    //setBlue (1.0);
+    //setBrightness (1.0);
+    //setContrast (1.0);
+    //setSaturation (1.0);
     setBlurH (0.0);
     setBlurV (0.0);
 
@@ -77,13 +73,14 @@ string LayerProperties::blendModeToString(BlendMode mode) {
     }
 }
 
+/*
 unsigned int LayerProperties::getWidth() {
     return width;
 }
 
 
 void LayerProperties::setWidth(unsigned int _width) {
-    width = ofClamp(_width, 0, PROPERTY_MAX_WIDTH);
+    width = ofClamp(_width, widthLimits.min, widthLimits.max);
 }
 
 
@@ -93,9 +90,9 @@ unsigned int LayerProperties::getHeight() {
 
 
 void LayerProperties::setHeight(unsigned int _height) {
-    height = ofClamp(_height, 0, PROPERTY_MAX_HEIGHT);
+    height = ofClamp(_height, heightLimits.min, heightLimits.max);
 }
-
+*/
 
 BlendMode LayerProperties::getBlendMode() {
     return blendMode;
@@ -103,6 +100,8 @@ BlendMode LayerProperties::getBlendMode() {
 
 
 void LayerProperties::setBlendMode(BlendMode _blendMode) {
+    if (_blendMode < OF_BLENDMODE_DISABLED) _blendMode = BLEND_ALPHA;
+    if (_blendMode > OF_BLENDMODE_SCREEN) _blendMode = BLEND_SCREEN;
     blendMode = _blendMode;
 }
 
@@ -113,7 +112,7 @@ unsigned int LayerProperties::getBlurH() {
 
 
 void LayerProperties::setBlurH(unsigned int _blurH) {
-    blurH = ofClamp(_blurH, 0, 10);
+    blurH = ofClamp(_blurH, blurHLimits.min, blurHLimits.max);
 }
 
 
@@ -123,7 +122,7 @@ unsigned int LayerProperties::getBlurV() {
 
 
 void LayerProperties::setBlurV(unsigned int _blurV) {
-    blurV = ofClamp(_blurV, 0, 10);
+    blurV = ofClamp(_blurV, blurVLimits.min, blurVLimits.max);
 }
 
 
@@ -131,11 +130,73 @@ json LayerProperties::getState() {
     json state;
     
     state = Properties::getState();
-    state["width"] = getWidth();
-    state["height"] = getHeight();
+    state = SizeProperties::getState(state);
+    //state["width"] = getWidth();
+    //state["height"] = getHeight();
     state["blendMode"] = getBlendMode();
     state["blurH"] = getBlurH();
     state["blurV"] = getBlurV();
     
     return state;
+}
+
+
+json LayerProperties::getFullState() {
+    json fullState;
+    
+    fullState = Properties::getFullState();
+    fullState = SizeProperties::getFullState(fullState);
+    /*
+    fullState["width"] =  {
+            {"type", typeid(width).name()},
+            {"value", getWidth()},
+            {"min", widthLimits.min},
+            {"max", widthLimits.max}
+    };
+    fullState["height"] =  {
+        {"type", typeid(height).name()},
+        {"value", getHeight()},
+        {"min", heightLimits.min},
+        {"max", heightLimits.max}
+    };
+     */
+    fullState["blurH"] =  {
+        {"title", "Horizontal Blur"},
+        {"type", typeid(blurH).name()},
+        {"value", getBlurH()},
+        {"min", blurHLimits.min},
+        {"max", blurHLimits.max},
+        {"defaultValue", 0}
+    };
+    fullState["blurV"] =  {
+        {"title", "Vertical Blur"},
+        {"type", typeid(blurV).name()},
+        {"value", getBlurV()},
+        {"min", blurVLimits.min},
+        {"max", blurVLimits.max},
+        {"defaultValue", 0}
+    };
+    fullState["blendMode"] =  {
+        {"title", "Blend Mode"},
+        {"type", typeid(blendMode).name()},
+        {"value", getBlendMode()},
+        {"min", BLEND_ALPHA},
+        {"max", BLEND_SCREEN},
+        {"defaultValue", BLEND_ALPHA}
+    };
+    
+    return fullState;
+}
+
+
+void  LayerProperties::set(string property, float value) {
+    Properties::set(property, value);
+    switch (str2int(property.c_str())) {
+        case str2int("blurH"):
+            setBlurH((unsigned int) round(value));
+        break;
+        case str2int("blurV"):
+            setBlurV((unsigned int) round(value));
+            break;
+    }
 }

@@ -457,8 +457,7 @@ void Layer::setState(json state) {
 
 #pragma mark Layers Implementation
 
-Layers& Layers::getInstance()
-{
+Layers& Layers::getInstance() {
     static Layers instance;
     
     return instance;

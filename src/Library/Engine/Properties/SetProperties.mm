@@ -9,21 +9,13 @@
 #include "SetProperties.h"
 
 
-
-
-
-
 SetProperties::SetProperties() {
     stopCurrentVisualIfTriggeredInvalid = true;
 }
 
-
-
 void SetProperties::setStopCurrentVisualIfTriggeredInvalid(bool val) {
     stopCurrentVisualIfTriggeredInvalid = val;
 }
-
-
 
 bool SetProperties::getStopCurrentVisualIfTriggeredInvalid() {
     return stopCurrentVisualIfTriggeredInvalid;

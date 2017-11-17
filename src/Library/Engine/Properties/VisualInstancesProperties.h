@@ -14,6 +14,7 @@
 
 
 #include "Properties.h"
+#include "SizeProperties.h"
 #include "json.hpp"
 
 
@@ -41,317 +42,298 @@ typedef enum {
 
 
 /*!
- @class VisualInstancesProperties
- @abstract ...
- @discussion ...
+ \brief Stores and handles properties of a visual instance
  */
-class VisualInstancesProperties : public Properties {
-    int width, height;
+class VisualInstancesProperties : public Properties, public SizeProperties {
     float zoomX, zoomY;
     float centerX, centerY;
     int x, y, layer, column;
     Boolean retrigger, isPlaying;
     float percentagePlayed, startPercentage, endPercentage, effects_drywet;
+    
     LoopMode loopMode;
     PlayheadDirection direction;
+    TriggerMode triggerMode;
 
     Boolean beatSnap;
     Boolean isTriggered;
 
     unsigned long long openedTimestamp, lastPlayedTimestamp;
 
-    TriggerMode triggerMode;
+    
+    
+    std::map<string, floatLimits> floatPropertiesLimitsVisualInstances;
+    const uintLimits loopModeLimits = {LoopMode_Normal, LoopMode_Inverse};
+    const uintLimits playheadDirectionLimits = {Direction_Left, Direction_Right};
+    const uintLimits triggerModeLimits = {TriggerMode_MouseDown, TriggerMode_Piano};
+
 
 public:
 	
 	
     /**!
-     @abstract ...
+     \brief ...
      */
 	VisualInstancesProperties();
 
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     ~VisualInstancesProperties();
 	
-       
-    /**!
-     @abstract ...
+    /*!
+     \brief Set all properties to default values
      */
     void reset();
     
-    
+    /*!
+    \brief Set minimum and maximum valies of properties
+    */
+    void setLimits();
+
     /**!
-     @abstract ...
+     \brief ...
      */
     void setLoopMode(LoopMode _loopMode);
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     LoopMode getLoopMode();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
 	void print();
     
     
     /**!
-     @abstract ...
+     \brief ...
      */
-    int getWidth ();
+    //int getWidth ();
     
     
     /**!
      @abstract ...
      */
-    int getHeight ();
-    
-    
+    //int getHeight ();
     
     /**!
-     @abstract ...
+     \brief ...
      */
     float getZoomX ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setZoomX (float _zoomX);
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     float getZoomY ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setZoomY (float _zoomY);
     
-    
-    
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     float getCenterX();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     float getCenterY();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     ofPoint getCenter();
     
-    
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setCenterX(float _centerX);
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setCenterY(float _centerY);
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     int getX ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     int getY ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     int getLayer ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setLayer (int _layer);
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     int getColumn ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setColumn (int _column);
     
-    
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     Boolean getRetrigger ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setRetrigger (bool _retrigger);
     
-    
-
     /**!
-     @abstract ...
+     \brief ...
      */
     Boolean getIsPlaying();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     void setIsPlaying ( Boolean _isPlaying );
     
-    
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     float getPercentagePlayed ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     float getStartPercentage ();
     
-    
     /**!
-     @abstract ...
+     \brief ...
      */
     float getEndPercentage ();
     
-    
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setPercentagePlayed ( float _val );
     
     
-    
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setStartPercentage ( float _val );
     
-    
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setEndPercentage ( float _val );
     
+    /*!
+     \brief ...
+     */
+    float getEffectMix();
     
-  
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
+     */
+    void setEffectMix(float _val);
+    
+    /*!
+     \brief ...
      */
     PlayheadDirection getDirection ();
     
-    
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setDirection ( PlayheadDirection _val );
     
-    
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     Boolean getBeatSnap ();
     
-    
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setBeatSnap (Boolean _val );
     
-    
-    
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     Boolean getIsTriggered ();
     
-    
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setIsTriggered (Boolean _val );
     
-    
-    
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     unsigned long long getOpenedTimestamp ();
     
-    
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     unsigned long long getLastPlayedTimestamp ();
     
-    
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setOpenedTimestampToNow ();
     
-    
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setLastPlayedTimestampToNow ();
     
-    
-    
-    
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     TriggerMode getTriggerMode ();
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void setTriggerMode ( TriggerMode _val );
     
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     json getState();
+    
+    /**
+     \brief Returns the complete state information
+     
+     The complete state isn't changeable. It contains the datatype and the limits.
+     */
+    json getFullState();
+    
+    /*!
+     \brief Sets a property with a float value
+     */
+    void set(string property, float value);
+    
+    void set(string property, unsigned int value);
     
 };
 

@@ -642,16 +642,7 @@ void Engine::render(){
 	
 	// render each layer - transform into a private method
     unsigned int layerCount = 0;
-    /*
-    for (
-         LayersListIterator i = layersList.begin();
-         i!=layersList.end();
-         i++
-    ) {
-        Layer *layer;
-       */
     for (auto layer:Layers::getInstance().getList()) {
-		//layer = (*i);
 		layer->render();
         if (layerCount < N_SYPHON_CHANNEL_OUTPUTS) {
             syphonOutputManager.publishChannelOutputScreen(layerCount, layer->getTexture());
@@ -689,35 +680,27 @@ void Engine::render(){
 
 
 
-void
-Engine::drawOutput(
-                   int x,
-                   int y,
-                   int width,
-                   int height
-){
-    if (buffer==NULL) {
-        return;
-    }
+void Engine::drawOutput(int x, int y, int width, int height)
+{
+    if (buffer==NULL) return;
     
+    width = (width == 0) ? ofGetWidth() - x : width;
+    height = (height == 0)  ? ofGetHeight() - y : height;
+    
+    /*
     if (width == 0) {
         width = ofGetWidth() - x;
     }
     if (height == 0) {
         height = ofGetHeight() - y;
     }
+     */
 	buffer->draw(x, y, width, height);
 }
 
 
-void
-Engine::drawLayer(
-                  int layerNumber,
-                  int x,
-                  int y,
-                  int width,
-                  int height
-) {
+void Engine::drawLayer(int layerNumber, int x, int y, int width, int height)
+{
     Layer *layer;
     
     if (layerNumber<=1) {

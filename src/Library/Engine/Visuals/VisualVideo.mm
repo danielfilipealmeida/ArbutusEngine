@@ -134,7 +134,6 @@ VisualVideo::createThumbnail(){
     Visual::createThumbnail();
 	if(fileExists() == false) return;
     
-    
     ofVideoPlayer video;
     video.loadMovie(filePath);
     video.setFrame(2);
@@ -142,8 +141,6 @@ VisualVideo::createThumbnail(){
     screenshot.allocate(video.getWidth(), video.getHeight(), OF_IMAGE_COLOR);
     screenshot.setFromPixels(video.getPixels().getData(), video.getWidth(), video.getHeight(), OF_IMAGE_COLOR, true);
     screenshot.resize(THUMBNAIL_WIDTH, THUMBNAIL_WIDTH * (screenshot.getHeight() / screenshot.getWidth()));
-  
-    
 }
 
 void
@@ -154,7 +151,6 @@ VisualVideo::print(){
 	cout << "loaded: ";
 	if(VisualVideo::loaded == true) cout << "Yes"; else cout << "No";
 	cout << endl;
-	
 }
 
 

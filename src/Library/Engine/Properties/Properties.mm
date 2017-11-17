@@ -8,8 +8,12 @@
  */
 
 #include "Properties.h"
+#include "Utils.h"
+
+
 
 Properties::Properties(){
+    setLimits();
     reset();
 }
 
@@ -17,10 +21,21 @@ Properties::~Properties() {
 	
 }
 
+void Properties::setLimits() {
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("alpha", {0.0, 1.0}));
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("red", {-1.0, 1.0}));
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("green", {-1.0, 1.0}));
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("blue", {-1.0, 1.0}));
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("brightness", {0.0, 2.0}));
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("contrast", {0.0, 2.0}));
+    floatPropertiesLimits.insert(std::pair<string, floatLimits>("saturation", {0.0, 2.0}));
+}
+
 void Properties::reset() {
+    
     alpha = 1.0;
-    red = 1.0; green = 1.0; blue = 1.0;
-    brightness = 1.0; contrast = 1.0; saturation = 1.0;
+    red = green = blue = 0.0;
+    brightness = contrast = saturation = 0.0;
 }
 
 
@@ -48,7 +63,7 @@ float Properties::getAlpha() {
 
 
 void Properties::setAlpha(float _input) {
-    alpha = _input;
+    alpha = ofClamp(_input, floatPropertiesLimits["alpha"].min, floatPropertiesLimits["alpha"].max);
 }
 
 
@@ -58,7 +73,7 @@ float Properties::getRed() {
 
 
 void Properties::setRed(float _input) {
-    red = ofClamp(_input, -1.0, 1.0);
+    red = ofClamp(_input, floatPropertiesLimits["red"].min, floatPropertiesLimits["red"].max);
 }
 
 float Properties::getGreen() {
@@ -67,7 +82,7 @@ float Properties::getGreen() {
 
 
 void Properties::setGreen(float _input) {
-    green = ofClamp(_input, -1.0, 1.0);
+    green = ofClamp(_input, floatPropertiesLimits["green"].min, floatPropertiesLimits["green"].max);
 }
 
 
@@ -77,7 +92,7 @@ float Properties::getBlue() {
 
 
 void Properties::setBlue(float _input) {
-    blue = ofClamp(_input, -1.0, 1.0);
+    blue = ofClamp(_input, floatPropertiesLimits["blue"].min, floatPropertiesLimits["blue"].max);
 }
 
 
@@ -87,7 +102,7 @@ float Properties::getBrightness() {
 
 
 void Properties::setBrightness(float _input) {
-    brightness = ofClamp(_input, -1.0, 1.0);
+    brightness = ofClamp(_input, floatPropertiesLimits["brightness"].min, floatPropertiesLimits["brightness"].max);
 }
 
 
@@ -97,7 +112,7 @@ float Properties::getContrast() {
 
 
 void Properties::setContrast(float _input) {
-    contrast = ofClamp(_input, -1.0, 1.0);
+    contrast = ofClamp(_input,  floatPropertiesLimits["contrast"].min,  floatPropertiesLimits["contrast"].max);
 }
 
 
@@ -107,7 +122,7 @@ float Properties::getSaturation() {
 
 
 void Properties::setSaturation(float _input) {
-    saturation = ofClamp(_input, -1.0, 1.0);
+    saturation = ofClamp(_input,  floatPropertiesLimits["saturation"].min,  floatPropertiesLimits["saturation"].max);
 }
 
 
@@ -123,3 +138,115 @@ json Properties::getState() {
         {"saturation", getSaturation()}
     };
 }
+
+
+json Properties::getFullState() {
+    return {
+        { "name",
+            {
+                {"title", "Name"},
+                {"type", typeid(name).name()},
+                {"value", getName()}
+            }
+        },
+        { "alpha",
+            {
+                {"title", "Alpha"},
+                {"type", typeid(alpha).name()},
+                {"value", getAlpha()},
+                {"min", floatPropertiesLimits["alpha"].min},
+                {"max", floatPropertiesLimits["alpha"].max},
+                {"defaultValue", floatPropertiesLimits["alpha"].max}
+            }
+        },
+        { "red",
+            {
+                {"title", "Red"},
+                {"type", typeid(red).name()},
+                {"value", getRed()},
+                {"min", floatPropertiesLimits["red"].min},
+                {"max", floatPropertiesLimits["red"].max},
+                {"defaultValue", floatPropertiesLimits["red"].max}
+            }
+        },
+        { "green",
+            {
+                {"title", "Green"},
+                {"type", typeid(green).name()},
+                {"value", getGreen()},
+                {"min", floatPropertiesLimits["green"].min},
+                {"max", floatPropertiesLimits["green"].max},
+                {"defaultValue", floatPropertiesLimits["green"].max}
+            }
+        },
+        { "blue",
+            {
+                {"title", "Blue"},
+                {"type", typeid(blue).name()},
+                {"value", getBlue()},
+                {"min", floatPropertiesLimits["blue"].min},
+                {"max", floatPropertiesLimits["blue"].max},
+                {"defaultValue", floatPropertiesLimits["blue"].max}
+            }
+        },
+        { "brightness",
+            {
+                {"title", "Brightness"},
+                {"type", typeid(blue).name()},
+                {"value", getBrightness()},
+                {"min", floatPropertiesLimits["brightness"].min},
+                {"max", floatPropertiesLimits["brightness"].max}
+            }
+        },
+        { "saturation",
+            {
+                {"title", "Saturation"},
+                {"type", typeid(saturation).name()},
+                {"value", getSaturation()},
+                {"min", floatPropertiesLimits["saturation"].min},
+                {"max", floatPropertiesLimits["saturation"].max}
+            }
+        },
+        { "contrast",
+            {
+                {"title", "Contrast"},
+                {"type", typeid(contrast).name()},
+                {"value", getContrast()},
+                {"min", floatPropertiesLimits["contrast"].min},
+                {"max", floatPropertiesLimits["contrast"].max}
+            }
+        }
+
+    };
+}
+
+void Properties::set(string property, float value) {
+    switch (str2int(property.c_str())) {
+    case str2int("alpha"):
+        setAlpha(value);
+        break;
+    case str2int("red"):
+        setRed(value);
+        break;
+    case str2int("green"):
+        setGreen(value);
+        break;
+    case str2int("blue"):
+        setBlue(value);
+        break;
+    case str2int("brightness"):
+        setBrightness(value);
+        break;
+    case str2int("contrast"):
+        setContrast(value);
+        break;
+    case str2int("saturation"):
+        setSaturation(value);
+        break;
+    }
+}
+
+void Properties::set(string property, unsigned int value) {
+    
+}
+
