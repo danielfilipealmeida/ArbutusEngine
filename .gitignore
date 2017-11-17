@@ -5,4 +5,5 @@ bin
 **/.DS_Store
 bin/*
 Vendor
- 
+ArbutusEngine.xcodeproj/**
+ArbutusEngine.xcodeproj 
