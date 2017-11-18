@@ -2,8 +2,8 @@
 //THIS NEEDS TO BE DEFINED BEFORE CoreOF.xcconfig IS INCLUDED
 OF_PATH = ../../..
 
-//THIS HAS ALL THE HEADER AND LIBS FOR OF CORE
-#include "../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig"
+//ibs/openFrameworksCompiled/project/osx/CoreOF.xcconfigTHIS HAS ALL THE HEADER AND LIBS FOR OF CORE
+#include "External/openFrameworks/libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig"
 
 //ICONS - NEW IN 0072 
 ICON_NAME_DEBUG = icon-debug.icns
