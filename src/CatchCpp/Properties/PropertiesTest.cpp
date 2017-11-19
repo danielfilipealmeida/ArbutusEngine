@@ -17,9 +17,9 @@ TEST_CASE("Getters return correct values after creation","[getters]") {
     REQUIRE(properties.getRed() == 0.0);
     REQUIRE(properties.getGreen() == 0.0);
     REQUIRE(properties.getBlue() == 0.0);
-    REQUIRE(properties.getBrightness() == 0.0);
-    REQUIRE(properties.getSaturation() == 0.0);
-    REQUIRE(properties.getContrast() == 0.0);
+    REQUIRE(properties.getBrightness() == 1.0);
+    REQUIRE(properties.getSaturation() == 1.0);
+    REQUIRE(properties.getContrast() == 1.0);
 }
 
 
@@ -49,18 +49,17 @@ TEST_CASE("Full state must be correct after properties object created","[getFull
     REQUIRE(fullState["blue"]["value"] == 0.0);
 
     // BRIGHTNESS
-    REQUIRE(fullState["brightness"]["max"] == 1.0);
-    REQUIRE(fullState["brightness"]["min"] == -1.0);
-    REQUIRE(fullState["brightness"]["value"] == 0.0);
+    REQUIRE(fullState["brightness"]["max"] == 2.0);
+    REQUIRE(fullState["brightness"]["min"] == 0.0);
+    REQUIRE(fullState["brightness"]["value"] == 1.0);
 
     // SATURATION
-    REQUIRE(fullState["saturation"]["max"] == 1.0);
-    REQUIRE(fullState["saturation"]["min"] == -1.0);
-    REQUIRE(fullState["saturation"]["value"] == 0.0);
+    REQUIRE(fullState["saturation"]["max"] == 2.0);
+    REQUIRE(fullState["saturation"]["min"] == 0.0);
+    REQUIRE(fullState["saturation"]["value"] == 1.0);
 
     // CONTRAST
-    REQUIRE(fullState["contrast"]["max"] == 1.0);
-    REQUIRE(fullState["contrast"]["min"] == -1.0);
-    REQUIRE(fullState["contrast"]["value"] == 0.0);
-    //cout << fullState.dump(4) << endl;
+    REQUIRE(fullState["contrast"]["max"] == 2.0);
+    REQUIRE(fullState["contrast"]["min"] == 0.0);
+    REQUIRE(fullState["contrast"]["value"] == 1.0);
 }

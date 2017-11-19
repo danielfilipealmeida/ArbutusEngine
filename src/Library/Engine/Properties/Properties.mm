@@ -35,7 +35,7 @@ void Properties::reset() {
     
     alpha = 1.0;
     red = green = blue = 0.0;
-    brightness = contrast = saturation = 0.0;
+    brightness = contrast = saturation = 1.0;
 }
 
 

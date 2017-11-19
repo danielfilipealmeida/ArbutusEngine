@@ -8,11 +8,11 @@
 #include "SizeProperties.h"
 #include "Engine.h"
 
-extern Engine *enginePtr;
+//extern Engine *enginePtr;
 
 
 SizeProperties::SizeProperties() {
-    if (enginePtr != NULL) {
+    if (Engine::getInstance() != NULL) {
         width = EngineProperties::getInstance().getMixerWidth();
         height = EngineProperties::getInstance().getMixerHeight();
     }

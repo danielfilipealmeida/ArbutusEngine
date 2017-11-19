@@ -48,6 +48,7 @@ class ofApp : public ofBaseApp{
      Replies to the user if necessary
      
      @param json request
+     @return json
     */
-    void handleJSONRequestForClient(json request);
+    json handleJSONRequestForClient(json request);
 };

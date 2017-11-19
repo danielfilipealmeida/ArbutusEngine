@@ -1,7 +1,8 @@
 #include "ofApp.h"
 #include "Engine.h"
 #include "JsonLoad.hpp"
-
+#include "Utils.h"
+#include "Messages.hpp"
 
 
 void ofApp::initEngine() {
@@ -41,35 +42,27 @@ void ofApp::updateTCPServer() {
             string str = TCP.receive(i);
             if( str.length() > 0 ) {
                 json jsonRequest = json::parse(str);
+                json jsonResponse;
                 
                 if (jsonRequest.is_object()) {
                     try {
-                        
+                        jsonResponse = handleJSONRequestForClient(jsonRequest);
                     }
-                    catch (string e) {
-                        json response = {
+                    catch (std::exception &e) {
+                        jsonResponse = {
                             {"success", false},
-                            {"message", e},
+                            {"message", e.what()},
                             {"data", {}}
                         };
-                        TCP.send(i, response.dump());
                     }
-                    // handle a json request here
+                     TCP.send(i, jsonResponse.dump());
                 }
-                //msgRx = str;
-                cout << str << endl;
             }
-            
-            
-            //TCP.send(i, "hello client - you are connected on port - "+ofToString(TCP.getClientPort(i)) );
         }
         lastSent = now;
     }
 }
 
-void ofApp::handleJSONRequestForClient(json request) {
-    if (!request["action"].is_string()) throw "No action defined";
-}
 
 //--------------------------------------------------------------
 void ofApp::setup(){

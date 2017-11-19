@@ -100,10 +100,6 @@ TEST_CASE("Open a file and check the imported state is correct","[open]") {
         {"visuals", expectedVisuals}
     };
 
-    //std::cout << expectedState.dump()<< endl;
-    //std::cout << result.dump()<< endl;
-    //REQUIRE(result.dump().compare(expectedState.dump()) == 0);
-    
     // check expected Layers
     REQUIRE(result["layers"].dump().compare(expectedLayers.dump()) == 0);
     
@@ -115,12 +111,10 @@ TEST_CASE("Open a file and check the imported state is correct","[open]") {
     for (auto  &element:expectedScenes)
     {
         REQUIRE(element["name"].get<string>().compare(result["scenes"][counter]["name"].get<string>()) == 0);
-        //std::cout << element << std::endl;
         std::string expectedName = element["name"].get<string>();
         std::string name = result["scenes"][counter]["name"];
         REQUIRE(expectedName.compare(name) == 0);
-        std::cout << element << std::endl;
-
+     
         counter++;
     }
 

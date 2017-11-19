@@ -16,14 +16,13 @@ using json = nlohmann::json;
 
 
 void testNewLayer(json layer) {
-    //cout << layer.dump();
     REQUIRE(layer["alpha"].get<float>() == 1.0);
     REQUIRE(layer["brightness"].get<float>() == 1.0);
     REQUIRE(layer["contrast"].get<float>() == 1.0);
     REQUIRE(layer["saturation"].get<float>() == 1.0);
-    REQUIRE(layer["red"].get<float>() == 1.0);
-    REQUIRE(layer["green"].get<float>() == 1.0);
-    REQUIRE(layer["blue"].get<float>() == 1.0);
+    REQUIRE(layer["red"].get<float>() == 0.0);
+    REQUIRE(layer["green"].get<float>() == 0.0);
+    REQUIRE(layer["blue"].get<float>() == 0.0);
     REQUIRE(layer["blurH"].get<float>() == 0.0);
     REQUIRE(layer["blurV"].get<float>() == 0.0);
     
@@ -83,15 +82,10 @@ TEST_CASE("Layer label should be properly created", "[label]") {
         properties->setBlendMode((BlendMode) element["blendMode"].get<int>());
         properties->setAlpha(element["alpha"]);
         
-        //std::cout <<layer->label()<<" -- "<<element["expectedResult"].get<std::string>()<<std::endl;
-        
-        
         REQUIRE(layer->label().compare(element["expectedResult"].get<std::string>()) == 0);
         
         delete layer;
     }
-    
-   // std::cout << layer->label() << std::endl;
 }
 
 TEST_CASE("State should be properly set", "[getState]") {
@@ -110,10 +104,11 @@ TEST_CASE("State should be properly set", "[getState]") {
         {"blurV", 2},
         {"brightness", 0.4f},
         {"saturation", 0.2f},
-        {"contrast", -0.20f},
+        {"contrast", 0.20f},
         {"width", 320},
         {"height", 240},
     });
+    
     layer->setState(state);
-    REQUIRE(layer->getState().dump(4).compare(state.dump(4)) == 0);
+    REQUIRE(json::diff(layer->getState(), state) == "[]"_json);
 }

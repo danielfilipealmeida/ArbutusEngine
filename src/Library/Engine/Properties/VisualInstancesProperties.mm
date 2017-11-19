@@ -14,7 +14,6 @@
 extern Engine *enginePtr;
 
 VisualInstancesProperties::VisualInstancesProperties() {
-	//width = 640; height = 480;
     reset();
     setLimits();
 }

@@ -54,5 +54,4 @@ TEST_CASE("Full state is correct", "[getFullState]") {
     REQUIRE(fullState["height"]["max"] == 1080.0);
 
     delete engine;
-    cout << fullState.dump(4) << endl;
 }

@@ -28,7 +28,6 @@ TEST_CASE("Invalid path to file throws","[save]") {
         {"visuals", {}}
     };
     
-    //std::cout << path << std::endl;
     REQUIRE_THROWS_WITH(JsonSave::save(path, state), "Path to file doesn't exist");
 }
 
@@ -50,8 +49,6 @@ TEST_CASE("throws if state isn't an object","[save]") {
 
 
 TEST_CASE("valid state and path should save","[save]") {
-    
-    //cout << Visuals::getInstance().getState().dump()<< endl;
     std::string path = ofFilePath::getCurrentExeDir() + "/mytestset.json";
     json state = {
         {"layers", {}},
