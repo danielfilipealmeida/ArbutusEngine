@@ -26,9 +26,28 @@ json handleJSONRequestForClient(json request) {
             response["data"] = Engine::getInstance()->getState();
             break;
             
+        case str2int("setState"):
+            response["data"] = handleSetState(request);
+            break;
+            
+        case str2int("getFullState"):
+            response["data"] = Engine::getInstance()->getFullState();
+            break;
+            
         default:
             throw new std::runtime_error("Action not supported");
             break;
     }
     return response;
+}
+
+json handleSetState(json request) {
+    json result;
+    
+    if (!request["data"].is_object()) throw std::runtime_error("No data sent for state change.");
+    
+   Engine::getInstance()->setState(request["data"]);
+    
+    
+    return result;
 }

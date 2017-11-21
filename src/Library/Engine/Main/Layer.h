@@ -46,6 +46,8 @@ public:
 	
     
     void loadShaders();
+    void loadShadersFromOSXBundle();
+    
     
 	// render
 	void render();
@@ -337,6 +339,8 @@ public:
      @abstract ...
      */
    json getState();
+    
+    json getFullState();
 };
 
 #endif

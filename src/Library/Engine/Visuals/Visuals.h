@@ -25,11 +25,29 @@ public:
     Visuals(Visuals const&) = delete;
     void operator=(Visuals const&) = delete;
     
+    /*!
+     Returns the state of all the visuals on the running Engine
+     */
     json getState();
+    
+    /*!
+     Sets the state of the visuals
+     */
     void setState(json state);
     
+    /*!
+     Adds a visual
+     */
     void add(Visual *visual);
+    
+    /*!
+    Checks if a file in in the list of visuals
+     */
     Boolean isFileInList(string filePath);
+    
+    /*!
+     returns the count of visuals. is this really needed? TODO: check if needed
+     */
     unsigned int count();
     
     /*!
@@ -37,8 +55,14 @@ public:
      */
     Visual* get(int pos);
     
+    /*!
+     Empties the visuals
+     */
     void empty();
     
+    /*!
+     Print debug information regarding visuals into the console
+     */
     void print();
     
     

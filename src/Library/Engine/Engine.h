@@ -287,6 +287,11 @@ public:
     /*!
      @abstract ...
      */
+    json getFullState();
+    
+    /*!
+     @abstract ...
+     */
     void setState(json state);
 
     

@@ -113,6 +113,14 @@ void Engine::setState(json state) {
     }
 }
 
+json Engine::getFullState() {
+    json state;
+    
+    state["layers"] = Layers::getInstance().getFullState();
+    state["activeVisualInstance"] = Engine::getInstance()->getCurrentActiveVisualInstance()->getProperties()->getFullState();
+    
+    return state;
+}
 
 
 // TODO: move this to the Layers class

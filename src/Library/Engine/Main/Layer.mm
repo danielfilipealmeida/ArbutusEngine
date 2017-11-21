@@ -21,8 +21,10 @@ Layer::Layer(bool _loadShaders) {
 	activeInstance = NULL;
     schedulledInstance = NULL;
     
-    if (_loadShaders == true) loadShaders();
-   
+    if (_loadShaders == true) {
+        loadShaders();
+    }
+    
     initBuffer();
 }
 
@@ -33,23 +35,23 @@ Layer::~Layer() {
 
 
 
-void
-Layer::loadShaders() {
+void Layer::loadShaders() {
+    loadShadersFromOSXBundle();
+}
+
+void Layer::loadShadersFromOSXBundle() {
     string bundlePath;
     NSBundle *bundle;
     NSString *vertShaderNSPath, *fragShaderNSPath;
     string vertShaderPath, fragShaderPath;
    
-    
     bundle     = [NSBundle mainBundle];
     bundlePath = [[bundle bundlePath] UTF8String];
     
     if (!ofFile::doesFileExist(bundlePath)) throw new std::runtime_error("Bundle path doesn't exist");
     
-    vertShaderNSPath = [bundle pathForResource:@"layerShader"
-                                        ofType:@"vert"];
-    fragShaderNSPath = [bundle pathForResource:@"layerShader"
-                                        ofType:@"frag"];
+    vertShaderNSPath = [bundle pathForResource:@"layerShader" ofType:@"vert"];
+    fragShaderNSPath = [bundle pathForResource:@"layerShader" ofType:@"frag"];
     
     if (vertShaderNSPath == nil) throw new std::runtime_error("Vert shader path doesn't exist");
     if (fragShaderNSPath == nil) throw new std::runtime_error("Frag shader path doesn't exist");
@@ -58,7 +60,6 @@ Layer::loadShaders() {
     fragShaderPath = [fragShaderNSPath UTF8String];
     
     shader.load(vertShaderPath, fragShaderPath);
-
 }
 
 
@@ -589,6 +590,15 @@ json Layers::getState() {
     return state;
 }
 
+json Layers::getFullState() {
+    json state;
+    
+    for(auto layer:layersList) {
+        state.push_back(layer->getProperties()->getFullState());
+    }
+    
+    return state;
+}
 
 void Layers::setState(json state) {
     empty();

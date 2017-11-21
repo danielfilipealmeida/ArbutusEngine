@@ -43,12 +43,4 @@ class ofApp : public ofBaseApp{
      */
     void updateTCPServer();
     
-    /*!
-     Parses a json request comming from a client and acts upon it.
-     Replies to the user if necessary
-     
-     @param json request
-     @return json
-    */
-    json handleJSONRequestForClient(json request);
 };

@@ -44,11 +44,9 @@ class Visual {
 
 public:
     ofImage screenshot;
-    
 	
 	Visual();
 	virtual ~Visual();
-	
 	
 		
 	// debug

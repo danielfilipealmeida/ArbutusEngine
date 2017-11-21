@@ -535,8 +535,7 @@ void Set::setActiveVisualInstance(unsigned int layerN, unsigned int column)
 
 
 
-VisualInstance*
-Set::getVisualInstanceInCorrentSet(unsigned int layerN, unsigned int column)
+VisualInstance* Set::getVisualInstanceInCorrentSet(unsigned int layerN, unsigned int column)
 {
 	if (currentScene==NULL) return NULL;
 	

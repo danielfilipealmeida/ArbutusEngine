@@ -55,8 +55,10 @@
 		0C0B84FA1FC0864100BEF796 /* ofxTCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B84F31FC0864100BEF796 /* ofxTCPServer.cpp */; };
 		0C0B84FB1FC0864100BEF796 /* ofxUDPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B84F51FC0864100BEF796 /* ofxUDPManager.cpp */; };
 		0C0B84FF1FC1D2DF00BEF796 /* messages.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B84FE1FC1D2DF00BEF796 /* messages.cpp */; };
-		0C0B85021FC1D62400BEF796 /* Messages.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B85001FC1D62400BEF796 /* Messages.cpp */; };
-		0C0B85031FC1D62400BEF796 /* Messages.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B85001FC1D62400BEF796 /* Messages.cpp */; };
+		0C197EC91FC43AEC007F72D2 /* Messages.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C197EC81FC43AEC007F72D2 /* Messages.cpp */; };
+		0C197ECA1FC43AEC007F72D2 /* Messages.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C197EC81FC43AEC007F72D2 /* Messages.cpp */; };
+		0C197ECD1FC48FF5007F72D2 /* layerShader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 651F5CCA1F504974006F103F /* layerShader.frag */; };
+		0C197ECE1FC48FF5007F72D2 /* layerShader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 651F5CCB1F504974006F103F /* layerShader.vert */; };
 		0C628F031F9BC82800ADB871 /* SizeProperties.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0C628F011F9BC82800ADB871 /* SizeProperties.mm */; };
 		0C628F041F9BC82800ADB871 /* SizeProperties.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0C628F011F9BC82800ADB871 /* SizeProperties.mm */; };
 		0C628F051F9BC82800ADB871 /* SizeProperties.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0C628F011F9BC82800ADB871 /* SizeProperties.mm */; };
@@ -219,6 +221,13 @@
 			remoteGlobalIDString = 65A1865F1DF8DF9200BE0219;
 			remoteInfo = ArbutusLib;
 		};
+		0C197ECB1FC43BCC007F72D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
 		0CE0424F1F88522C005B8253 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */;
@@ -263,6 +272,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				0C197ECD1FC48FF5007F72D2 /* layerShader.frag in CopyFiles */,
+				0C197ECE1FC48FF5007F72D2 /* layerShader.vert in CopyFiles */,
 				6504CA6E1ECE4E0000355E4A /* Loop001.mp4 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,8 +316,8 @@
 		0C0B84F61FC0864100BEF796 /* ofxUDPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUDPManager.h; sourceTree = "<group>"; };
 		0C0B84FC1FC1C97600BEF796 /* DevNotes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DevNotes.md; sourceTree = "<group>"; };
 		0C0B84FE1FC1D2DF00BEF796 /* messages.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = messages.cpp; path = Server/messages.cpp; sourceTree = "<group>"; };
-		0C0B85001FC1D62400BEF796 /* Messages.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Messages.cpp; path = src/Apps/Server/Messages.cpp; sourceTree = SOURCE_ROOT; };
-		0C0B85011FC1D62400BEF796 /* Messages.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Messages.hpp; path = src/Apps/Server/Messages.hpp; sourceTree = SOURCE_ROOT; };
+		0C197EC71FC43AEC007F72D2 /* Messages.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Messages.hpp; path = src/Apps/Server/Messages.hpp; sourceTree = SOURCE_ROOT; };
+		0C197EC81FC43AEC007F72D2 /* Messages.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Messages.cpp; path = src/Apps/Server/Messages.cpp; sourceTree = SOURCE_ROOT; };
 		0C1E77CC1F8D4E8F005507CF /* run_cmake.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = run_cmake.sh; sourceTree = "<group>"; };
 		0C628F001F9B954400ADB871 /* doxygenconf */ = {isa = PBXFileReference; lastKnownFileType = text; path = doxygenconf; sourceTree = "<group>"; };
 		0C628F011F9BC82800ADB871 /* SizeProperties.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SizeProperties.mm; sourceTree = "<group>"; };
@@ -626,8 +637,8 @@
 				0C0B84D51FC0793900BEF796 /* ofApp.h */,
 				0C0B84D61FC0793900BEF796 /* README.md */,
 				0C0B84D71FC0793A00BEF796 /* set.json */,
-				0C0B85001FC1D62400BEF796 /* Messages.cpp */,
-				0C0B85011FC1D62400BEF796 /* Messages.hpp */,
+				0C197EC81FC43AEC007F72D2 /* Messages.cpp */,
+				0C197EC71FC43AEC007F72D2 /* Messages.hpp */,
 			);
 			path = Server;
 			sourceTree = SOURCE_ROOT;
@@ -1276,6 +1287,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0C197ECC1FC43BCC007F72D2 /* PBXTargetDependency */,
 				0C0B84A11FC078FD00BEF796 /* PBXTargetDependency */,
 			);
 			name = Server;
@@ -1508,13 +1520,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C0B84E51FC0828000BEF796 /* ofxMidiMessage.cpp in Sources */,
-				0C0B85031FC1D62400BEF796 /* Messages.cpp in Sources */,
 				0C0B84F91FC0864100BEF796 /* ofxTCPManager.cpp in Sources */,
 				0C0B84A41FC078FD00BEF796 /* ofxMidi.cpp in Sources */,
 				0C0B84A51FC078FD00BEF796 /* tinyxml.cpp in Sources */,
 				0C0B84A61FC078FD00BEF796 /* OscReceivedElements.cpp in Sources */,
 				0C0B84A71FC078FD00BEF796 /* ofxMidiIn.cpp in Sources */,
 				0C0B84A81FC078FD00BEF796 /* ofxRtMidiOut.cpp in Sources */,
+				0C197ECA1FC43AEC007F72D2 /* Messages.cpp in Sources */,
 				0C0B84AA1FC078FD00BEF796 /* OscPrintReceivedElements.cpp in Sources */,
 				0C0B84AB1FC078FD00BEF796 /* OscTypes.cpp in Sources */,
 				0C0B84DB1FC0793A00BEF796 /* main.cpp in Sources */,
@@ -1651,7 +1663,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				65E6BD3F1F446BB5008E4F9E /* NetworkingUtils.cpp in Sources */,
-				0C0B85021FC1D62400BEF796 /* Messages.cpp in Sources */,
 				65E6BD3E1F4469DB008E4F9E /* ofxXmlSettings.cpp in Sources */,
 				65E6BD321F4467A0008E4F9E /* ofxMidiMessage.cpp in Sources */,
 				65E6BD331F4467B1008E4F9E /* ofxMidi.cpp in Sources */,
@@ -1680,6 +1691,7 @@
 				65E8969C1E734ED7000D470B /* ofxRtMidiOut.cpp in Sources */,
 				65E8969A1E734482000D470B /* ofxBaseMidi.cpp in Sources */,
 				65E896661E730453000D470B /* main.cpp in Sources */,
+				0C197EC91FC43AEC007F72D2 /* Messages.cpp in Sources */,
 				65E896891E733C88000D470B /* LayerProperties.cpp in Sources */,
 				651E5BA91F2E1673008B4FEF /* Utils.mm in Sources */,
 				655BFB001E735F3E00B74446 /* Engine.cpp in Sources */,
@@ -1704,6 +1716,11 @@
 			isa = PBXTargetDependency;
 			target = 65A1865F1DF8DF9200BE0219 /* ArbutusLib */;
 			targetProxy = 0C0B84A21FC078FD00BEF796 /* PBXContainerItemProxy */;
+		};
+		0C197ECC1FC43BCC007F72D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openFrameworks;
+			targetProxy = 0C197ECB1FC43BCC007F72D2 /* PBXContainerItemProxy */;
 		};
 		0CE042521F885244005B8253 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
