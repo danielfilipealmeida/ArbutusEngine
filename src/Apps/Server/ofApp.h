@@ -6,15 +6,18 @@
 
 using json = nlohmann::json;
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp {
     ofxTCPServer TCP;
     vector <string> storeText;
     uint64_t lastSent;
+    
+    unsigned int serverPort = 18082;
     
 	public:
 		void setup();
 		void update();
 		void draw();
+    void close();
 		
 		void keyPressed(int key);
 		void keyReleased(int key);

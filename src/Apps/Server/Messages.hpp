@@ -23,9 +23,27 @@ using json = nlohmann::json;
 json handleJSONRequestForClient(json request);
 
 /*!
- Hanldes requests the ask to set the state
+ Handles requests the ask to set the state
  */
 json handleSetState(json request);
 
+
+/*!
+ Sets the value of a controller
+ 
+ @param json data for changing a layer 
+ @return json
+ */
+json setLayerControl(json data);
+
+/*!
+ Traverses the input data and sets those parameters, returning the final set value to the client
+ 
+ @param json data for changing a state
+ @return json
+ */
+json updateState(json data);
+
+json updateLayers(json layerData);
 
 #endif /* messages_hpp */

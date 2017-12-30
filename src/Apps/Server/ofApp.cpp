@@ -6,6 +6,7 @@
 
 
 void ofApp::initEngine() {
+    ofSetFrameRate(30);
     Engine *engine = new Engine();
     string filePath = ofFilePath::getCurrentExeDir() + "../Resources/set.json";
     
@@ -28,7 +29,7 @@ void ofApp::initEngine() {
 }
 
 void ofApp::initTCPServer() {
-    TCP.setup(8080);
+    TCP.setup(serverPort);
     TCP.setMessageDelimiter("\n");
     lastSent = 0;
 }
@@ -40,10 +41,14 @@ void ofApp::updateTCPServer() {
             if( !TCP.isClientConnected(i) ) continue;
             
             string str = TCP.receive(i);
+            
             if( str.length() > 0 ) {
+                //cout << "message received: " << str << endl;
+                
                 json jsonRequest = json::parse(str);
                 json jsonResponse;
                 
+               
                 if (jsonRequest.is_object()) {
                     try {
                         jsonResponse = handleJSONRequestForClient(jsonRequest);
@@ -55,7 +60,9 @@ void ofApp::updateTCPServer() {
                             {"data", {}}
                         };
                     }
-                     TCP.send(i, jsonResponse.dump());
+                    // cout << "message sent: " << jsonResponse.dump(4) << endl;
+                    
+                    TCP.send(i, jsonResponse.dump());
                 }
             }
         }
@@ -78,8 +85,14 @@ void ofApp::update(){
     Engine::getInstance()->render();
 }
 
+
+void ofApp::close(){
+    TCP.close();
+}
+
 //--------------------------------------------------------------
 void ofApp::draw(){
+    ofClear(0,0,0);
     Engine::getInstance()->drawOutput();
 }
 

@@ -6,18 +6,23 @@ Along with the Library, a TCP Server is also implemented for rendering video out
 
 ## Work todo
 
-- Implement a TCP server that will be used for network-based VJing apps.
 - continue working on the cmake configuration but for cross compiling to Linux and raspberry pi
 - prepare a vagrant box to compile this project inside
 
 
-## Installing
+## Compiling
 
 This project uses submodules. When cloning this from Github please do the following:
 
     git clone --recursive https://github.com/danielfilipealmeida/ArbutusEngine.git
     
-A XCode projec exist inside the folder called ``
+There are several targets on XCode:
+
+* the Library
+* an Hello world app
+* a TCP server that can be used as an example and a real app.
+
+All dependencies will be retrieve from github and present inside the `External`  folder. Everything is ready for compiling.
 
 ## Updating
 
