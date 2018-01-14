@@ -155,9 +155,10 @@ json LayerProperties::getFullState() {
         {"max", blurVLimits.max},
         {"defaultValue", 0}
     };
+    // todo: convert this to a toggle button group!
     fullState["blendMode"] =  {
         {"title", "Blend Mode"},
-        {"type",  Utils::getStateTypeForTypeidName(typeid(blendMode).name())},
+        {"type",  StateType_Integer},
         {"value", getBlendMode()},
         {"min", BLEND_ALPHA},
         {"max", BLEND_SCREEN},

@@ -64,6 +64,6 @@ TEST_CASE("Full state is correct", "[getFullState]") {
     REQUIRE(fullState["blendMode"]["min"] == 1);
     REQUIRE(fullState["blendMode"]["max"] == 5);
     REQUIRE(fullState["blendMode"]["defaultValue"] == 1);
-    REQUIRE(fullState["blendMode"]["type"] == StateType_BlendMode);
+    REQUIRE(fullState["blendMode"]["type"] == StateType_Integer);
     REQUIRE(fullState["blendMode"]["title"].get<std::string>().compare("Blend Mode") == 0);
 }

@@ -16,7 +16,7 @@ typedef enum StateType {
     StateType_Integer,
     StateType_Float,
     StateType_String,
-    StateType_BlendMode,
+    StateType_ButtonGroup,
     StateType_ToggleButtonGroup
     
 };

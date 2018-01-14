@@ -40,7 +40,6 @@ StateType Utils::getStateTypeForTypeidName(string typeidName)
     if (typeidName.compare("f") == 0) return StateType_Float;
     if (typeidName.compare("j") == 0) return StateType_Integer;
     if (typeidName.find("basic_string") != string::npos) return StateType_String;
-    if (typeidName.find("BlendMode") != string::npos) return StateType_BlendMode;
     
     return StateType_Invalid;
 }
