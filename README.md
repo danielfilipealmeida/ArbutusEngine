@@ -4,10 +4,6 @@ The Arbutus Engine is a C++ library that uses openFrameworks for creating Real-t
 Along with the Library, a TCP Server is also implemented for rendering video output.
 
 
-## Work todo
-
-- continue working on the cmake configuration but for cross compiling to Linux and raspberry pi
-- prepare a vagrant box to compile this project inside
 
 
 ## Compiling
@@ -42,4 +38,15 @@ xcodebuild -list -project ArbutusEngine.xcodeproj/
 
 xcodebuild -scheme ArbutusLib build
 
+
+
+## Work todo
+
+- fix generated json of the state
+- break the current shader into parts. have one shader per effect
+- create a shader for helping on the transitions: a shader that applies a grayscale fbo to the alpha channel of another fbo
+- create a transition object, that receives: channel A fbo, channel B fbo, transition visual, visual position. it can also receive a transition duration. (maybe another method)
+- save output to disk
+- continue working on the cmake configuration but for cross compiling to Linux and raspberry pi
+- prepare a vagrant box to compile this project inside
 

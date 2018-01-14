@@ -9,11 +9,7 @@
 #ifndef SetProperties_hpp
 #define SetProperties_hpp
 
-
-
-
 #include <stdio.h>
-
 
 
 /*!
@@ -23,15 +19,18 @@ class SetProperties {
     bool stopCurrentVisualIfTriggeredInvalid;
     
 public:
+    /**!
+     \brief Constructure of the SetProperties object
+     */
     SetProperties();
     
     /**!
-     @abstract ...
+     \brief ...
      */
     void setStopCurrentVisualIfTriggeredInvalid(bool val);
 
     /**!
-     @abstract ...
+     \brief ...
      */
     bool getStopCurrentVisualIfTriggeredInvalid();
 };

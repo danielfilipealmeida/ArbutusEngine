@@ -327,14 +327,14 @@ json VisualInstancesProperties::getFullState() {
     fullState = SizeProperties::getFullState(fullState);
     fullState["zoomX"] =  {
         {"title", "Zoom X"},
-        {"type", typeid(zoomX).name()},
+        {"type", Utils::getStateTypeForTypeidName(typeid(zoomX).name())},
         {"value", getZoomX()},
         {"min", floatPropertiesLimitsVisualInstances["zoomX"].min},
         {"max", floatPropertiesLimitsVisualInstances["zoomX"].max}
     };
     fullState["zoomY"] =  {
         {"title", "Zoom Y"},
-        {"type", typeid(zoomY).name()},
+        {"type", Utils::getStateTypeForTypeidName(typeid(zoomY).name())},
         {"value", getZoomY()},
         {"min", floatPropertiesLimitsVisualInstances["zoomY"].min},
         {"max", floatPropertiesLimitsVisualInstances["zoomY"].max}
@@ -342,14 +342,14 @@ json VisualInstancesProperties::getFullState() {
     
     fullState["centerX"] =  {
         {"title", "Center X"},
-        {"type", typeid(centerX).name()},
+        {"type", Utils::getStateTypeForTypeidName(typeid(centerX).name())},
         {"value", getCenterX()},
         {"min", floatPropertiesLimitsVisualInstances["centerX"].min},
         {"max", floatPropertiesLimitsVisualInstances["centerX"].max}
     };
     fullState["centerY"] =  {
         {"title", "Center Y"},
-        {"type", typeid(centerY).name()},
+        {"type", Utils::getStateTypeForTypeidName(typeid(centerY).name())},
         {"value", getCenterY()},
         {"min", floatPropertiesLimitsVisualInstances["centerY"].min},
         {"max", floatPropertiesLimitsVisualInstances["centerY"].max}
@@ -357,21 +357,21 @@ json VisualInstancesProperties::getFullState() {
     
     fullState["startPercentage"] =  {
         {"title", "Start"},
-        {"type", typeid(startPercentage).name()},
+        {"type", Utils::getStateTypeForTypeidName(typeid(startPercentage).name())},
         {"value", getStartPercentage()},
         {"min", floatPropertiesLimitsVisualInstances["startPercentage"].min},
         {"max", floatPropertiesLimitsVisualInstances["startPercentage"].max}
     };
     fullState["endPercentage"] =  {
         {"title", "End"},
-        {"type", typeid(endPercentage).name()},
+        {"type", Utils::getStateTypeForTypeidName(typeid(endPercentage).name())},
         {"value", getEndPercentage()},
         {"min", floatPropertiesLimitsVisualInstances["endPercentage"].min},
         {"max", floatPropertiesLimitsVisualInstances["endPercentage"].max}
     };
     fullState["percentagePlayed"] =  {
         {"title", "Percentage Played"},
-        {"type", typeid(percentagePlayed).name()},
+        {"type", Utils::getStateTypeForTypeidName(typeid(percentagePlayed).name())},
         {"value", getPercentagePlayed()},
         {"min", floatPropertiesLimitsVisualInstances["percentagePlayed"].min},
         {"max", floatPropertiesLimitsVisualInstances["percentagePlayed"].max}
@@ -379,7 +379,7 @@ json VisualInstancesProperties::getFullState() {
 
     fullState["effects_drywet"] =  {
         {"title", "Dry/Wet"},
-        {"type", typeid(effects_drywet).name()},
+        {"type", Utils::getStateTypeForTypeidName(typeid(effects_drywet).name())},
         {"value", getEffectMix()},
         {"min", floatPropertiesLimitsVisualInstances["effects_drywet"].min},
         {"max", floatPropertiesLimitsVisualInstances["effects_drywet"].max}
@@ -387,7 +387,7 @@ json VisualInstancesProperties::getFullState() {
 
     fullState["loopMode"] =  {
         {"title", "Loop Mode"},
-        {"type", "toggle_button_group"},
+        {"type", StateType_ToggleButtonGroup},
         {"value", getLoopMode()},
         {"options",
             {
@@ -396,7 +396,7 @@ json VisualInstancesProperties::getFullState() {
                     {"value", LoopMode_Normal}
                 },
                 {
-                    {"title", "Ping Ping"},
+                    {"title", "Ping Pong"},
                     {"value", LoopMode_PingPong}
                 },
                 {
@@ -408,7 +408,7 @@ json VisualInstancesProperties::getFullState() {
     };
     fullState["direction"] =  {
         {"title", "Direction"},
-        {"type", "toggle_button_group"},
+        {"type", StateType_ToggleButtonGroup},
         {"value", getDirection()},
         {"options",
             {
@@ -425,7 +425,7 @@ json VisualInstancesProperties::getFullState() {
     };
     fullState["triggerMode"] =  {
         {"title", "Trigger Mode"},
-        {"type", "toggle_button_group"},
+        {"type", StateType_ToggleButtonGroup},
         {"value", getTriggerMode()},
         {"options",
             {

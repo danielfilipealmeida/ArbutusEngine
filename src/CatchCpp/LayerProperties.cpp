@@ -10,6 +10,7 @@
 #include "catch.hpp"
 #include "Engine.h"
 #include "LayerProperties.h"
+#include "Utils.h"
 
 
 
@@ -36,22 +37,33 @@ TEST_CASE("Blend mode strings are correctly generated", "[blendModeToString]") {
 }
 
 TEST_CASE("Full state is correct", "[getFullState]") {
-    Engine *engine = new Engine();
     LayerProperties properties;
     
     json fullState = properties.getFullState();
     
-    REQUIRE(fullState["alpha"]["value"] == 1.0);
-    REQUIRE(fullState["alpha"]["min"] == 0.0);
-    REQUIRE(fullState["alpha"]["max"] == 1.0);
+    std::cout << fullState.dump(4) << std::endl;
+    
+    // BLURH
+    REQUIRE(fullState["blurH"]["value"] == 0.0);
+    REQUIRE(fullState["blurH"]["min"] == 0.0);
+    REQUIRE(fullState["blurH"]["max"] == 10.0);
+    REQUIRE(fullState["blurH"]["defaultValue"] == 0.0);
+    REQUIRE(fullState["blurH"]["type"] == StateType_Float);
+    REQUIRE(fullState["blurH"]["title"].get<std::string>().compare("Horizontal Blur") == 0);
 
-    REQUIRE(fullState["width"]["value"] == 640.0);
-    REQUIRE(fullState["width"]["min"] == 0.0);
-    REQUIRE(fullState["width"]["max"] == 1920.0);
-
-    REQUIRE(fullState["height"]["value"] == 480.0);
-    REQUIRE(fullState["height"]["min"] == 0.0);
-    REQUIRE(fullState["height"]["max"] == 1080.0);
-
-    delete engine;
+    // BLURV
+    REQUIRE(fullState["blurV"]["value"] == 0.0);
+    REQUIRE(fullState["blurV"]["min"] == 0.0);
+    REQUIRE(fullState["blurV"]["max"] == 10.0);
+    REQUIRE(fullState["blurV"]["defaultValue"] == 0.0);
+    REQUIRE(fullState["blurV"]["type"] == StateType_Float);
+    REQUIRE(fullState["blurV"]["title"].get<std::string>().compare("Vertical Blur") == 0);
+    
+    // BLEND MODE
+    REQUIRE(fullState["blendMode"]["value"] == 2);
+    REQUIRE(fullState["blendMode"]["min"] == 1);
+    REQUIRE(fullState["blendMode"]["max"] == 5);
+    REQUIRE(fullState["blendMode"]["defaultValue"] == 1);
+    REQUIRE(fullState["blendMode"]["type"] == StateType_BlendMode);
+    REQUIRE(fullState["blendMode"]["title"].get<std::string>().compare("Blend Mode") == 0);
 }

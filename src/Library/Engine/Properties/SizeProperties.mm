@@ -7,9 +7,7 @@
 
 #include "SizeProperties.h"
 #include "Engine.h"
-
-//extern Engine *enginePtr;
-
+#include "Utils.h"
 
 SizeProperties::SizeProperties() {
     if (Engine::getInstance() != NULL) {
@@ -50,13 +48,15 @@ json SizeProperties::getState(json state) {
 
 json SizeProperties::getFullState(json fullState) {
     fullState["width"] =  {
-        {"type", typeid(width).name()},
+        {"title", "Width"},
+        {"type", Utils::getStateTypeForTypeidName(typeid(width).name())},
         {"value", getWidth()},
         {"min", widthLimits.min},
         {"max", widthLimits.max}
     };
     fullState["height"] =  {
-        {"type", typeid(height).name()},
+        {"title", "Height"},
+        {"type", Utils::getStateTypeForTypeidName(typeid(height).name())},
         {"value", getHeight()},
         {"min", heightLimits.min},
         {"max", heightLimits.max}

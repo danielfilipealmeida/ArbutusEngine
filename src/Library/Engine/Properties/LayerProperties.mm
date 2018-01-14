@@ -11,10 +11,6 @@
 #include "Engine.h"
 #include "Utils.h"
 
-//extern ofApp	*app;
-
-
-
 extern Engine *enginePtr;
 
 LayerProperties::LayerProperties() {
@@ -115,24 +111,19 @@ void LayerProperties::setBlurH(unsigned int _blurH) {
     blurH = ofClamp(_blurH, blurHLimits.min, blurHLimits.max);
 }
 
-
 unsigned int LayerProperties::getBlurV() {
     return blurV;
 }
 
-
 void LayerProperties::setBlurV(unsigned int _blurV) {
     blurV = ofClamp(_blurV, blurVLimits.min, blurVLimits.max);
 }
-
 
 json LayerProperties::getState() {
     json state;
     
     state = Properties::getState();
     state = SizeProperties::getState(state);
-    //state["width"] = getWidth();
-    //state["height"] = getHeight();
     state["blendMode"] = getBlendMode();
     state["blurH"] = getBlurH();
     state["blurV"] = getBlurV();
@@ -146,23 +137,11 @@ json LayerProperties::getFullState() {
     
     fullState = Properties::getFullState();
     fullState = SizeProperties::getFullState(fullState);
-    /*
-    fullState["width"] =  {
-            {"type", typeid(width).name()},
-            {"value", getWidth()},
-            {"min", widthLimits.min},
-            {"max", widthLimits.max}
-    };
-    fullState["height"] =  {
-        {"type", typeid(height).name()},
-        {"value", getHeight()},
-        {"min", heightLimits.min},
-        {"max", heightLimits.max}
-    };
-     */
+
+    
     fullState["blurH"] =  {
         {"title", "Horizontal Blur"},
-        {"type", typeid(blurH).name()},
+        {"type",  Utils::getStateTypeForTypeidName(typeid(blurH).name())},
         {"value", getBlurH()},
         {"min", blurHLimits.min},
         {"max", blurHLimits.max},
@@ -170,7 +149,7 @@ json LayerProperties::getFullState() {
     };
     fullState["blurV"] =  {
         {"title", "Vertical Blur"},
-        {"type", typeid(blurV).name()},
+        {"type",  Utils::getStateTypeForTypeidName(typeid(blurV).name())},
         {"value", getBlurV()},
         {"min", blurVLimits.min},
         {"max", blurVLimits.max},
@@ -178,7 +157,7 @@ json LayerProperties::getFullState() {
     };
     fullState["blendMode"] =  {
         {"title", "Blend Mode"},
-        {"type", typeid(blendMode).name()},
+        {"type",  Utils::getStateTypeForTypeidName(typeid(blendMode).name())},
         {"value", getBlendMode()},
         {"min", BLEND_ALPHA},
         {"max", BLEND_SCREEN},

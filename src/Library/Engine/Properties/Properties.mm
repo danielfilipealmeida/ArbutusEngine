@@ -56,11 +56,9 @@ void Properties::setName(string _input) {
     name = _input;
 }
 
-
 float Properties::getAlpha() {
     return alpha;
 }
-
 
 void Properties::setAlpha(float _input) {
     alpha = ofClamp(_input, floatPropertiesLimits["alpha"].min, floatPropertiesLimits["alpha"].max);
@@ -139,20 +137,19 @@ json Properties::getState() {
     };
 }
 
-
 json Properties::getFullState() {
     return {
         { "name",
             {
                 {"title", "Name"},
-                {"type", typeid(name).name()},
+                {"type", Utils::getStateTypeForTypeidName(typeid(name).name())},
                 {"value", getName()}
             }
         },
         { "alpha",
             {
                 {"title", "Alpha"},
-                {"type", typeid(alpha).name()},
+                {"type",  Utils::getStateTypeForTypeidName(typeid(alpha).name())},
                 {"value", getAlpha()},
                 {"min", floatPropertiesLimits["alpha"].min},
                 {"max", floatPropertiesLimits["alpha"].max},
@@ -162,7 +159,7 @@ json Properties::getFullState() {
         { "red",
             {
                 {"title", "Red"},
-                {"type", typeid(red).name()},
+                {"type",  Utils::getStateTypeForTypeidName(typeid(red).name())},
                 {"value", getRed()},
                 {"min", floatPropertiesLimits["red"].min},
                 {"max", floatPropertiesLimits["red"].max},
@@ -172,7 +169,7 @@ json Properties::getFullState() {
         { "green",
             {
                 {"title", "Green"},
-                {"type", typeid(green).name()},
+                {"type",  Utils::getStateTypeForTypeidName(typeid(green).name())},
                 {"value", getGreen()},
                 {"min", floatPropertiesLimits["green"].min},
                 {"max", floatPropertiesLimits["green"].max},
@@ -182,7 +179,7 @@ json Properties::getFullState() {
         { "blue",
             {
                 {"title", "Blue"},
-                {"type", typeid(blue).name()},
+                {"type",  Utils::getStateTypeForTypeidName(typeid(blue).name())},
                 {"value", getBlue()},
                 {"min", floatPropertiesLimits["blue"].min},
                 {"max", floatPropertiesLimits["blue"].max},
@@ -192,7 +189,7 @@ json Properties::getFullState() {
         { "brightness",
             {
                 {"title", "Brightness"},
-                {"type", typeid(blue).name()},
+                {"type",  Utils::getStateTypeForTypeidName(typeid(blue).name())},
                 {"value", getBrightness()},
                 {"min", floatPropertiesLimits["brightness"].min},
                 {"max", floatPropertiesLimits["brightness"].max}
@@ -201,7 +198,7 @@ json Properties::getFullState() {
         { "saturation",
             {
                 {"title", "Saturation"},
-                {"type", typeid(saturation).name()},
+                {"type",  Utils::getStateTypeForTypeidName(typeid(saturation).name())},
                 {"value", getSaturation()},
                 {"min", floatPropertiesLimits["saturation"].min},
                 {"max", floatPropertiesLimits["saturation"].max}
@@ -210,7 +207,7 @@ json Properties::getFullState() {
         { "contrast",
             {
                 {"title", "Contrast"},
-                {"type", typeid(contrast).name()},
+                {"type",  Utils::getStateTypeForTypeidName(typeid(contrast).name())},
                 {"value", getContrast()},
                 {"min", floatPropertiesLimits["contrast"].min},
                 {"max", floatPropertiesLimits["contrast"].max}

@@ -11,12 +11,34 @@
 
 #include <string>
 
+typedef enum StateType {
+    StateType_Invalid = 0,
+    StateType_Integer,
+    StateType_Float,
+    StateType_String,
+    StateType_BlendMode,
+    StateType_ToggleButtonGroup
+    
+};
 
 class Utils {
     
 public:
-    static std::string
-    md5(std::string message);
+    
+    /*!
+     \brief Calculate the md5 of a given message.
+     \params message the message to encode
+     \returns a string with the md5 of the given message
+     */
+    static std::string md5(std::string message);
+    
+    /*!
+     \brief Returns the StateType associated with a given
+     
+     \param typeidName the dynamic type name of the variable, retrieved using `typeid(<var>).name()`
+     \returns the StateType
+     */
+    static StateType getStateTypeForTypeidName(std::string typeidName);
 };
 
 

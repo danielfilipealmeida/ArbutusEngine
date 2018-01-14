@@ -66,6 +66,7 @@
 		0C628F071F9BC82800ADB871 /* SizeProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C628F021F9BC82800ADB871 /* SizeProperties.h */; };
 		0C628F091F9BE78A00ADB871 /* PropertiesTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C628F081F9BE78A00ADB871 /* PropertiesTest.cpp */; };
 		0C71D3C21F8A518C006126A5 /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E6BD471F464F4E008E4F9E /* Syphon.framework */; };
+		0CD96A12200A721600EC5665 /* SizeProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0CD96A11200A721600EC5665 /* SizeProperties.cpp */; };
 		6504556D1F47090700CB3BE5 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6504556B1F47090700CB3BE5 /* ofApp.cpp */; };
 		6504556E1F470EA300CB3BE5 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BFAF81E7355BD00B74446 /* CoreMIDI.framework */; };
 		6504556F1F470EAC00CB3BE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E8967B1E73311F000D470B /* Foundation.framework */; };
@@ -327,6 +328,7 @@
 		0CC065D51FBFAD6A0094744E /* Empty copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Empty copy-Info.plist"; path = "/Users/daniel.almeida/Personal/ArbutusEngine/Empty copy-Info.plist"; sourceTree = "<absolute>"; };
 		0CC066061FBFAE0F0094744E /* HelloWorld copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HelloWorld copy-Info.plist"; path = "/Users/daniel.almeida/Personal/ArbutusEngine/HelloWorld copy-Info.plist"; sourceTree = "<absolute>"; };
 		0CC066391FBFB2050094744E /* HelloWorld copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HelloWorld copy2-Info.plist"; path = "/Users/daniel.almeida/Personal/ArbutusEngine/HelloWorld copy2-Info.plist"; sourceTree = "<absolute>"; };
+		0CD96A11200A721600EC5665 /* SizeProperties.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SizeProperties.cpp; sourceTree = "<group>"; };
 		0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = External/openFrameworks/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = "<group>"; };
 		650455591F47085D00CB3BE5 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6504556B1F47090700CB3BE5 /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofApp.cpp; path = src/Examples/HelloWorld/ofApp.cpp; sourceTree = SOURCE_ROOT; };
@@ -691,6 +693,7 @@
 				65E8966C1E730C45000D470B /* LayerProperties.cpp */,
 				6511F61A1F388F7000B750C2 /* VisualInstancesPropertiesTest.cpp */,
 				0C628F081F9BE78A00ADB871 /* PropertiesTest.cpp */,
+				0CD96A11200A721600EC5665 /* SizeProperties.cpp */,
 			);
 			name = Properties;
 			sourceTree = "<group>";
@@ -1699,6 +1702,7 @@
 				655BFB021E73673000B74446 /* Layer.cpp in Sources */,
 				65E21BC81EC6764F006D1C37 /* ofApp.cpp in Sources */,
 				0C628F041F9BC82800ADB871 /* SizeProperties.mm in Sources */,
+				0CD96A12200A721600EC5665 /* SizeProperties.cpp in Sources */,
 				65CCD0391F2C7EA600EB2AC5 /* JsonLoadTest.cpp in Sources */,
 				65D3A5D61F2A9BCF00CE6885 /* JsonSave.cpp in Sources */,
 				6511F61B1F388F7000B750C2 /* VisualInstancesPropertiesTest.cpp in Sources */,

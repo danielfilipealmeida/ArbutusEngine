@@ -156,7 +156,9 @@ public:
     json getFullState();
     
     /**!
-     \brief ...
+     \brief sets a property value
+     \param property
+     \param value
      */
     void set(string property, float value);
     

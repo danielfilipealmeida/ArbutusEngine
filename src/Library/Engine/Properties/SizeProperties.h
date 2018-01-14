@@ -39,26 +39,24 @@ public:
      */
     unsigned int getWidth();
     
-    
     /*!
-      \brief
+      \brief Sets the width
      */
     void setWidth(unsigned int _width);
-    
-    
     
     /*!
       \brief returns the height
      */
     unsigned int getHeight();
     
-    
     /*!
       \brief
      */
     void setHeight(unsigned int _height);
     
-    
+    /*!
+     \brief
+     */
     json getState(json state);
     
     /*!

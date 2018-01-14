@@ -59,18 +59,14 @@ class VisualInstancesProperties : public Properties, public SizeProperties {
     Boolean isTriggered;
 
     unsigned long long openedTimestamp, lastPlayedTimestamp;
-
-    
     
     std::map<string, floatLimits> floatPropertiesLimitsVisualInstances;
     const uintLimits loopModeLimits = {LoopMode_Normal, LoopMode_Inverse};
     const uintLimits playheadDirectionLimits = {Direction_Left, Direction_Right};
     const uintLimits triggerModeLimits = {TriggerMode_MouseDown, TriggerMode_Piano};
 
-
 public:
-	
-	
+		
     /**!
      \brief ...
      */
