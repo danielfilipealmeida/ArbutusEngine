@@ -123,6 +123,87 @@ ArbutusEngine/fast:
 	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/build
 .PHONY : ArbutusEngine/fast
 
+src/Apps/Server/Messages.o: src/Apps/Server/Messages.cpp.o
+
+.PHONY : src/Apps/Server/Messages.o
+
+# target to build an object file
+src/Apps/Server/Messages.cpp.o:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/Apps/Server/Messages.cpp.o
+.PHONY : src/Apps/Server/Messages.cpp.o
+
+src/Apps/Server/Messages.i: src/Apps/Server/Messages.cpp.i
+
+.PHONY : src/Apps/Server/Messages.i
+
+# target to preprocess a source file
+src/Apps/Server/Messages.cpp.i:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/Apps/Server/Messages.cpp.i
+.PHONY : src/Apps/Server/Messages.cpp.i
+
+src/Apps/Server/Messages.s: src/Apps/Server/Messages.cpp.s
+
+.PHONY : src/Apps/Server/Messages.s
+
+# target to generate assembly for a file
+src/Apps/Server/Messages.cpp.s:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/Apps/Server/Messages.cpp.s
+.PHONY : src/Apps/Server/Messages.cpp.s
+
+src/Apps/Server/main.o: src/Apps/Server/main.cpp.o
+
+.PHONY : src/Apps/Server/main.o
+
+# target to build an object file
+src/Apps/Server/main.cpp.o:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/Apps/Server/main.cpp.o
+.PHONY : src/Apps/Server/main.cpp.o
+
+src/Apps/Server/main.i: src/Apps/Server/main.cpp.i
+
+.PHONY : src/Apps/Server/main.i
+
+# target to preprocess a source file
+src/Apps/Server/main.cpp.i:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/Apps/Server/main.cpp.i
+.PHONY : src/Apps/Server/main.cpp.i
+
+src/Apps/Server/main.s: src/Apps/Server/main.cpp.s
+
+.PHONY : src/Apps/Server/main.s
+
+# target to generate assembly for a file
+src/Apps/Server/main.cpp.s:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/Apps/Server/main.cpp.s
+.PHONY : src/Apps/Server/main.cpp.s
+
+src/Apps/Server/ofApp.o: src/Apps/Server/ofApp.cpp.o
+
+.PHONY : src/Apps/Server/ofApp.o
+
+# target to build an object file
+src/Apps/Server/ofApp.cpp.o:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/Apps/Server/ofApp.cpp.o
+.PHONY : src/Apps/Server/ofApp.cpp.o
+
+src/Apps/Server/ofApp.i: src/Apps/Server/ofApp.cpp.i
+
+.PHONY : src/Apps/Server/ofApp.i
+
+# target to preprocess a source file
+src/Apps/Server/ofApp.cpp.i:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/Apps/Server/ofApp.cpp.i
+.PHONY : src/Apps/Server/ofApp.cpp.i
+
+src/Apps/Server/ofApp.s: src/Apps/Server/ofApp.cpp.s
+
+.PHONY : src/Apps/Server/ofApp.s
+
+# target to generate assembly for a file
+src/Apps/Server/ofApp.cpp.s:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/Apps/Server/ofApp.cpp.s
+.PHONY : src/Apps/Server/ofApp.cpp.s
+
 src/CatchCpp/Engine.o: src/CatchCpp/Engine.cpp.o
 
 .PHONY : src/CatchCpp/Engine.o
@@ -258,6 +339,33 @@ src/CatchCpp/LayerProperties.cpp.s:
 	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/LayerProperties.cpp.s
 .PHONY : src/CatchCpp/LayerProperties.cpp.s
 
+src/CatchCpp/Properties/PropertiesTest.o: src/CatchCpp/Properties/PropertiesTest.cpp.o
+
+.PHONY : src/CatchCpp/Properties/PropertiesTest.o
+
+# target to build an object file
+src/CatchCpp/Properties/PropertiesTest.cpp.o:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/Properties/PropertiesTest.cpp.o
+.PHONY : src/CatchCpp/Properties/PropertiesTest.cpp.o
+
+src/CatchCpp/Properties/PropertiesTest.i: src/CatchCpp/Properties/PropertiesTest.cpp.i
+
+.PHONY : src/CatchCpp/Properties/PropertiesTest.i
+
+# target to preprocess a source file
+src/CatchCpp/Properties/PropertiesTest.cpp.i:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/Properties/PropertiesTest.cpp.i
+.PHONY : src/CatchCpp/Properties/PropertiesTest.cpp.i
+
+src/CatchCpp/Properties/PropertiesTest.s: src/CatchCpp/Properties/PropertiesTest.cpp.s
+
+.PHONY : src/CatchCpp/Properties/PropertiesTest.s
+
+# target to generate assembly for a file
+src/CatchCpp/Properties/PropertiesTest.cpp.s:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/Properties/PropertiesTest.cpp.s
+.PHONY : src/CatchCpp/Properties/PropertiesTest.cpp.s
+
 src/CatchCpp/Properties/VisualInstancesPropertiesTest.o: src/CatchCpp/Properties/VisualInstancesPropertiesTest.cpp.o
 
 .PHONY : src/CatchCpp/Properties/VisualInstancesPropertiesTest.o
@@ -284,6 +392,141 @@ src/CatchCpp/Properties/VisualInstancesPropertiesTest.s: src/CatchCpp/Properties
 src/CatchCpp/Properties/VisualInstancesPropertiesTest.cpp.s:
 	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/Properties/VisualInstancesPropertiesTest.cpp.s
 .PHONY : src/CatchCpp/Properties/VisualInstancesPropertiesTest.cpp.s
+
+src/CatchCpp/Scene.o: src/CatchCpp/Scene.cpp.o
+
+.PHONY : src/CatchCpp/Scene.o
+
+# target to build an object file
+src/CatchCpp/Scene.cpp.o:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/Scene.cpp.o
+.PHONY : src/CatchCpp/Scene.cpp.o
+
+src/CatchCpp/Scene.i: src/CatchCpp/Scene.cpp.i
+
+.PHONY : src/CatchCpp/Scene.i
+
+# target to preprocess a source file
+src/CatchCpp/Scene.cpp.i:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/Scene.cpp.i
+.PHONY : src/CatchCpp/Scene.cpp.i
+
+src/CatchCpp/Scene.s: src/CatchCpp/Scene.cpp.s
+
+.PHONY : src/CatchCpp/Scene.s
+
+# target to generate assembly for a file
+src/CatchCpp/Scene.cpp.s:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/Scene.cpp.s
+.PHONY : src/CatchCpp/Scene.cpp.s
+
+src/CatchCpp/Server/messages.o: src/CatchCpp/Server/messages.cpp.o
+
+.PHONY : src/CatchCpp/Server/messages.o
+
+# target to build an object file
+src/CatchCpp/Server/messages.cpp.o:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/Server/messages.cpp.o
+.PHONY : src/CatchCpp/Server/messages.cpp.o
+
+src/CatchCpp/Server/messages.i: src/CatchCpp/Server/messages.cpp.i
+
+.PHONY : src/CatchCpp/Server/messages.i
+
+# target to preprocess a source file
+src/CatchCpp/Server/messages.cpp.i:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/Server/messages.cpp.i
+.PHONY : src/CatchCpp/Server/messages.cpp.i
+
+src/CatchCpp/Server/messages.s: src/CatchCpp/Server/messages.cpp.s
+
+.PHONY : src/CatchCpp/Server/messages.s
+
+# target to generate assembly for a file
+src/CatchCpp/Server/messages.cpp.s:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/Server/messages.cpp.s
+.PHONY : src/CatchCpp/Server/messages.cpp.s
+
+src/CatchCpp/SizeProperties.o: src/CatchCpp/SizeProperties.cpp.o
+
+.PHONY : src/CatchCpp/SizeProperties.o
+
+# target to build an object file
+src/CatchCpp/SizeProperties.cpp.o:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/SizeProperties.cpp.o
+.PHONY : src/CatchCpp/SizeProperties.cpp.o
+
+src/CatchCpp/SizeProperties.i: src/CatchCpp/SizeProperties.cpp.i
+
+.PHONY : src/CatchCpp/SizeProperties.i
+
+# target to preprocess a source file
+src/CatchCpp/SizeProperties.cpp.i:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/SizeProperties.cpp.i
+.PHONY : src/CatchCpp/SizeProperties.cpp.i
+
+src/CatchCpp/SizeProperties.s: src/CatchCpp/SizeProperties.cpp.s
+
+.PHONY : src/CatchCpp/SizeProperties.s
+
+# target to generate assembly for a file
+src/CatchCpp/SizeProperties.cpp.s:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/SizeProperties.cpp.s
+.PHONY : src/CatchCpp/SizeProperties.cpp.s
+
+src/CatchCpp/UtilsTests.o: src/CatchCpp/UtilsTests.cpp.o
+
+.PHONY : src/CatchCpp/UtilsTests.o
+
+# target to build an object file
+src/CatchCpp/UtilsTests.cpp.o:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/UtilsTests.cpp.o
+.PHONY : src/CatchCpp/UtilsTests.cpp.o
+
+src/CatchCpp/UtilsTests.i: src/CatchCpp/UtilsTests.cpp.i
+
+.PHONY : src/CatchCpp/UtilsTests.i
+
+# target to preprocess a source file
+src/CatchCpp/UtilsTests.cpp.i:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/UtilsTests.cpp.i
+.PHONY : src/CatchCpp/UtilsTests.cpp.i
+
+src/CatchCpp/UtilsTests.s: src/CatchCpp/UtilsTests.cpp.s
+
+.PHONY : src/CatchCpp/UtilsTests.s
+
+# target to generate assembly for a file
+src/CatchCpp/UtilsTests.cpp.s:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/UtilsTests.cpp.s
+.PHONY : src/CatchCpp/UtilsTests.cpp.s
+
+src/CatchCpp/Visuals.o: src/CatchCpp/Visuals.cpp.o
+
+.PHONY : src/CatchCpp/Visuals.o
+
+# target to build an object file
+src/CatchCpp/Visuals.cpp.o:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/Visuals.cpp.o
+.PHONY : src/CatchCpp/Visuals.cpp.o
+
+src/CatchCpp/Visuals.i: src/CatchCpp/Visuals.cpp.i
+
+.PHONY : src/CatchCpp/Visuals.i
+
+# target to preprocess a source file
+src/CatchCpp/Visuals.cpp.i:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/Visuals.cpp.i
+.PHONY : src/CatchCpp/Visuals.cpp.i
+
+src/CatchCpp/Visuals.s: src/CatchCpp/Visuals.cpp.s
+
+.PHONY : src/CatchCpp/Visuals.s
+
+# target to generate assembly for a file
+src/CatchCpp/Visuals.cpp.s:
+	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/CatchCpp/Visuals.cpp.s
+.PHONY : src/CatchCpp/Visuals.cpp.s
 
 src/CatchCpp/main.o: src/CatchCpp/main.cpp.o
 
@@ -528,33 +771,6 @@ src/Library/Engine/FileHandling/SetFile.cpp.s:
 	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/Library/Engine/FileHandling/SetFile.cpp.s
 .PHONY : src/Library/Engine/FileHandling/SetFile.cpp.s
 
-src/Library/Engine/Misc/Utils.o: src/Library/Engine/Misc/Utils.cpp.o
-
-.PHONY : src/Library/Engine/Misc/Utils.o
-
-# target to build an object file
-src/Library/Engine/Misc/Utils.cpp.o:
-	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/Library/Engine/Misc/Utils.cpp.o
-.PHONY : src/Library/Engine/Misc/Utils.cpp.o
-
-src/Library/Engine/Misc/Utils.i: src/Library/Engine/Misc/Utils.cpp.i
-
-.PHONY : src/Library/Engine/Misc/Utils.i
-
-# target to preprocess a source file
-src/Library/Engine/Misc/Utils.cpp.i:
-	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/Library/Engine/Misc/Utils.cpp.i
-.PHONY : src/Library/Engine/Misc/Utils.cpp.i
-
-src/Library/Engine/Misc/Utils.s: src/Library/Engine/Misc/Utils.cpp.s
-
-.PHONY : src/Library/Engine/Misc/Utils.s
-
-# target to generate assembly for a file
-src/Library/Engine/Misc/Utils.cpp.s:
-	$(MAKE) -f CMakeFiles/ArbutusEngine.dir/build.make CMakeFiles/ArbutusEngine.dir/src/Library/Engine/Misc/Utils.cpp.s
-.PHONY : src/Library/Engine/Misc/Utils.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -564,6 +780,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... ArbutusEngine"
+	@echo "... src/Apps/Server/Messages.o"
+	@echo "... src/Apps/Server/Messages.i"
+	@echo "... src/Apps/Server/Messages.s"
+	@echo "... src/Apps/Server/main.o"
+	@echo "... src/Apps/Server/main.i"
+	@echo "... src/Apps/Server/main.s"
+	@echo "... src/Apps/Server/ofApp.o"
+	@echo "... src/Apps/Server/ofApp.i"
+	@echo "... src/Apps/Server/ofApp.s"
 	@echo "... src/CatchCpp/Engine.o"
 	@echo "... src/CatchCpp/Engine.i"
 	@echo "... src/CatchCpp/Engine.s"
@@ -579,9 +804,27 @@ help:
 	@echo "... src/CatchCpp/LayerProperties.o"
 	@echo "... src/CatchCpp/LayerProperties.i"
 	@echo "... src/CatchCpp/LayerProperties.s"
+	@echo "... src/CatchCpp/Properties/PropertiesTest.o"
+	@echo "... src/CatchCpp/Properties/PropertiesTest.i"
+	@echo "... src/CatchCpp/Properties/PropertiesTest.s"
 	@echo "... src/CatchCpp/Properties/VisualInstancesPropertiesTest.o"
 	@echo "... src/CatchCpp/Properties/VisualInstancesPropertiesTest.i"
 	@echo "... src/CatchCpp/Properties/VisualInstancesPropertiesTest.s"
+	@echo "... src/CatchCpp/Scene.o"
+	@echo "... src/CatchCpp/Scene.i"
+	@echo "... src/CatchCpp/Scene.s"
+	@echo "... src/CatchCpp/Server/messages.o"
+	@echo "... src/CatchCpp/Server/messages.i"
+	@echo "... src/CatchCpp/Server/messages.s"
+	@echo "... src/CatchCpp/SizeProperties.o"
+	@echo "... src/CatchCpp/SizeProperties.i"
+	@echo "... src/CatchCpp/SizeProperties.s"
+	@echo "... src/CatchCpp/UtilsTests.o"
+	@echo "... src/CatchCpp/UtilsTests.i"
+	@echo "... src/CatchCpp/UtilsTests.s"
+	@echo "... src/CatchCpp/Visuals.o"
+	@echo "... src/CatchCpp/Visuals.i"
+	@echo "... src/CatchCpp/Visuals.s"
 	@echo "... src/CatchCpp/main.o"
 	@echo "... src/CatchCpp/main.i"
 	@echo "... src/CatchCpp/main.s"
@@ -609,9 +852,6 @@ help:
 	@echo "... src/Library/Engine/FileHandling/SetFile.o"
 	@echo "... src/Library/Engine/FileHandling/SetFile.i"
 	@echo "... src/Library/Engine/FileHandling/SetFile.s"
-	@echo "... src/Library/Engine/Misc/Utils.o"
-	@echo "... src/Library/Engine/Misc/Utils.i"
-	@echo "... src/Library/Engine/Misc/Utils.s"
 .PHONY : help
 
 

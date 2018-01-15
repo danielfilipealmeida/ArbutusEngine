@@ -2,13 +2,31 @@ cmake_minimum_required (VERSION 3.1)
 project (ArbutusEngine)
 
 set (CMAKE_CXX_STANDARD 11)
-set (CMAKE_OSX_ARCHITECTURES "x86_64;i386")
+#set (CMAKE_OSX_ARCHITECTURES "x86_64 i386")
+set (CMAKE_OSX_ARCHITECTURES "i386")
 set(CMAKE_BUILD_TYPE Release)
 #set(ENGINE_PATH "src/Library/Engine/")
 #include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_definitions(-DSDK_ROOT=macosx)
+add_definitions(-DONLY_ACTIVE_ARCHS=YES)
+add_definitions(-DSUPPORTED_PLATFORMS=macosx)
+add_definitions(-Dintel)
+add_definitions(-DGCC_WARN_UNKNOWN_PRAGMAS=NO)
+add_definitions(-DSTRINGS_FILE_OUTPUT_ENCODING=UTF-16)
+add_definitions(-DGCC_DYNAMIC_NO_PIC=NO)
+add_definitions(-DNO_COMMON_BLOCKS=YES)
+add_definitions(-DCLANG_CXX_LIBRARY=libc++)
+add_definitions(-DCLANG_ENABLE_MODULES=YES)
+add_definitions(-DGCC_ENABLE_CPP_EXCEPTIONS=YES)
+add_definitions(-DGCC_ENABLE_CPP_RTTI=YES)
+add_definitions(-D__CORESERVICES__)
+add_definitions(-D__MACOSX_CORE__)
+add_definitions(-mtune=native)
+add_definitions(-DOTHER_CPLUSPLUS_FLAGS="-D__MACOSX_CORE__ -mtune=native")
 
 
-## Catch an add all Project files
+
+## Catch and add all Project files
 file(GLOB_RECURSE ArbutusEngine_SOURCES "src/*.cpp")
 file(GLOB_RECURSE ArbutusEngine_HEADERS "src/*.h")
 
@@ -52,6 +70,7 @@ include_directories(External/openFrameworks/libs/poco/include)
 include_directories(External/openFrameworks/libs/quicktime/include)
 include_directories(External/openFrameworks/libs/rtAudio/include)
 include_directories(External/openFrameworks/libs/videoInput/include)
+include_directories(External/json/src)
 
 
 add_library(ArbutusEngine STATIC ${ArbutusEngine_SOURCES})
