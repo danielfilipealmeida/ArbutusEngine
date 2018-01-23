@@ -228,11 +228,7 @@ public:
     /*!
      @abstract ...
      */
-    void
-    handleAction(
-                 string parameter,
-                 json data
-                 );
+    void handleAction(string parameter, json data);
     
 };
 
