@@ -544,6 +544,10 @@ Layer* Layers::getSelected() {
 void Layers::setActive (unsigned int activeLayer) {
     unsigned int layerSize;
     
+    if (activeLayer == 0) {
+        return;
+    }
+    
     layerSize = layersList.size();
     if ( activeLayer > layerSize ) {
         activeLayer = layerSize;
@@ -628,4 +632,28 @@ void Layers::stopAll() {
         layer->stop();
     }
 
+}
+
+
+void Layers::activateFirst()
+{
+    setActive(1);
+}
+
+void Layers::activatePrevious()
+{
+    unsigned int currentId = getCurrentId();
+    
+    setActive(currentId);
+}
+
+
+void Layers::activateNext()
+{
+    setActive(getCurrentId() + 2);
+}
+
+void Layers::activateLast()
+{
+    setActive(count());
 }

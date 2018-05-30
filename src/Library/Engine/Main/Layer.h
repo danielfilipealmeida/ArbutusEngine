@@ -236,6 +236,8 @@ typedef std::list<Layer *> LayersList;
 typedef LayersList::iterator LayersListIterator;
 typedef LayersList::reverse_iterator LayersListReverseIterator;
 
+
+
 /**!
  */
 class Layers {
@@ -297,8 +299,30 @@ public:
      */
     void setActive (unsigned int activeLayer);
     
+    
     /*!
-     @abstract ...
+     @brief ...
+     */
+    void activateFirst();
+    
+    /*!
+     @brief ...
+     */
+    void activatePrevious();
+    
+    /*!
+     @brief ...
+     */
+    void activateNext();
+    
+    /*!
+     @brief ...
+     */
+    void activateLast();
+    
+    /*!
+     @brief Returns the number of layers
+     @returns the number of layers
      */
     int count();
     
@@ -334,8 +358,11 @@ public:
     /*!
      @abstract ...
      */
-   json getState();
+    json getState();
     
+    /*!
+     @abstract ...
+     */
     json getFullState();
 };
 
