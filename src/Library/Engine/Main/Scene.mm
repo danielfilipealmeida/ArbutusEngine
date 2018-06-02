@@ -42,13 +42,19 @@ void Scene::setState(json state) {
     visualInstances.empty();
     for(auto newVisualInstanceState:state["instances"]) {
         Visual *visual;
+        unsigned int layer, column;
+        string name;
+        
         visual = Visuals::getInstance().get(newVisualInstanceState["index"]);
         if (visual == NULL) continue;
         
-        unsigned int layer, column;
+        
+        
         layer = newVisualInstanceState["properties"]["layer"];
         column = newVisualInstanceState["properties"]["column"];
-        visualInstances.add(visual, layer, column);
+        name = newVisualInstanceState["properties"]["name"];
+        
+        visualInstances.add(visual, layer, column, name);
     }
 }
 

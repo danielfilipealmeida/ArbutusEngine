@@ -206,10 +206,19 @@ public:
      */
     Boolean inColumn(unsigned int layerN, unsigned int column);
     
-    /**!
-     
+    /*!
+     \brief Adds a new visual instance to the engine from a visual
+     \param visual the visual to add an instance of
+     \param layer the layer that will receive the instance
+     \param column the column that will receive the instance
+     \param name the name of the instance. This is used for deferentiating instances
      */    
-    VisualInstance* add(Visual *visual, unsigned int layer, unsigned int column);
+    VisualInstance* add(
+                        Visual *visual,
+                        unsigned int layer,
+                        unsigned int column,
+                        string name = ""
+                        );
 
     /**!
      Load the actual file for each Visual Instance in the list

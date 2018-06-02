@@ -720,7 +720,8 @@ unsigned int VisualInstances::getIndex(VisualInstance *instance) {
     return counter;
 }
 
-json VisualInstances::getState() {
+json VisualInstances::getState()
+{
     json state;
 
     for(auto visualInstance:visualInstanceList) {
@@ -733,18 +734,26 @@ json VisualInstances::getState() {
 }
 
 
-VisualInstance * VisualInstances::add(Visual *visual, unsigned int layer, unsigned int column) {
+VisualInstance *VisualInstances::add(
+                                      Visual *visual,
+                                      unsigned int layer,
+                                      unsigned int column,
+                                      string name
+                                      )
+{
     if (inColumn(layer, column) == true) {
         remove(layer, column);
 	}
  
 	VisualInstance *instance = new VisualInstance(visual, layer, column);
+    instance->getProperties()->setName(name);
 	visualInstanceList.push_back(instance);
 	
     return instance;
  }
 
-void VisualInstances::remove(unsigned int layer, unsigned int column) {
+void VisualInstances::remove(unsigned int layer, unsigned int column)
+{
     
     for(VisualInstanceListIterator it = visualInstanceList.begin();
         it !=visualInstanceList.end();
