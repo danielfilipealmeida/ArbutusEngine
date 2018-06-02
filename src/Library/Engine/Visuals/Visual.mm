@@ -60,15 +60,13 @@ void Visual::drawThumbnail(float x, float y, float w, float h) {
 
 
 /**
- *  Setup the thumbnail. First checks if it already is set. if yes, get it, if not, create it and save it
+ *  Setup the thumbnail. 
+First checks if it already is set. if yes, get it, if not, create it and save it
  */
 void Visual::setThumbnail()  {
     thumbnailPath = getThumbnailPath();
-        //cout << thumbnailPath << endl;
-    
-    
-    
 }
+
 
 /**
  *  Save the thumbnail on the apps preferences folder

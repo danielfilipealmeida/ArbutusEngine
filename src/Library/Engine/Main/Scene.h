@@ -36,29 +36,27 @@ public:
 	VisualInstances visualInstances;
 
     /*!
-     @abstract Scene Object constructor
-     @param  _sceneName a string for the name of the new scene
+     \brief Scene Object constructor
+     \param  _sceneName a string for the name of the new scene
      */
 	Scene(string _sceneName);
 	
 
     /*!
-     @abstract ...
+     \brief Destructor
      */
     ~Scene();
 	
     /*!
-     @abstract ...
+     \brief ...
      */
     json getState();
     
     /*!
-     @abstract ...
+     \brief ...
      */
     void setState(json state);
     
-    
-   
     
     /*!
      @abstract ...

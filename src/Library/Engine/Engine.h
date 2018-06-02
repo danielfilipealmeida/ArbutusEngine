@@ -191,9 +191,34 @@ public:
     void setActiveVisualIntances(unsigned int columnN);
     
     /*!
-     @abstract ...
+     \brief Plays a visual instance on the current active layer, specified by its index number
+     \param visualInstanceN
+     \todo: rename and change attribute name to index
      */
     void setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN);
+    
+    
+    /*!
+     \brief Plays the first Visual Instance on the current Active Layer
+     */
+    void playFirstVisualInstanceOnActiveLayer();
+
+    /*!
+     \brief Plays the last Visual Instance on the current Active Layer
+     */
+    void playLastVisualInstanceOnActiveLayer();
+
+    /*!
+     \brief Plays the previous Visual Instance on the current Active Layer
+     */
+    void playPreviousVisualInstanceOnActiveLayer();
+
+    /*!
+     \brief Plays the next Visual Instance on the current Active Layer
+     */
+    void playNextVisualInstanceOnActiveLayer();
+
+    
     
     /*!
      @abstract ...
@@ -234,17 +259,13 @@ public:
     /*!
      @abstract ...
      */
-    void removeVisualFromScene(
-                          unsigned int layer,
-                          unsigned int column
-    );
+    void removeVisualFromScene(unsigned int layer, unsigned int column);
     
     
     /*!
      @abstract ...
      */
     Scene *getCurrentScene();
-    
     
     
     /*!
@@ -433,6 +454,8 @@ public:
     
 private:
     Layer*  getLayerForActionHandler (json data);
+    unsigned int getSelectedLayerNumber();
+    unsigned int getSelectedColumnNumber();
 };
 
 

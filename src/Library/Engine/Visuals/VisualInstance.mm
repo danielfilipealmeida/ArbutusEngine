@@ -820,6 +820,20 @@ unsigned int VisualInstances::count() {
     return (unsigned int) visualInstanceList.size();
 }
 
+unsigned int VisualInstances::countInLayer(unsigned int layer)
+{
+    unsigned int count = 0;
+    
+    for(auto visualInstance:visualInstanceList) {
+        if (visualInstance->getProperties()->getLayer() == layer) {
+            count++;
+        }
+    }
+    
+    return count;
+}
+
+
 Boolean VisualInstances::inColumn(unsigned int layerN, unsigned int column) {
     Boolean res = false;
     for(auto visualInstance:visualInstanceList)
@@ -850,6 +864,9 @@ int VisualInstances::getLastColumnInLayer(unsigned int layer) {
     
     return result;
 }
+
+
+
 
 
 void VisualInstances::cleanup() {

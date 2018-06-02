@@ -38,12 +38,7 @@ VisualVideo::VisualVideo(string _filePath)
             delete visualFile;
         }
         
-   /*
-    }
-    catch (int e) {
-        cout << "Exception " << e <<"\n";
-     }
-    */
+
     filePath = _filePath;
 	loaded   = false;
     setThumbnail();

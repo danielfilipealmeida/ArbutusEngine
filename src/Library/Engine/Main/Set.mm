@@ -401,11 +401,12 @@ void Set::setActiveVisualInstance(unsigned int layerN, unsigned int column)
 
 
 
-VisualInstance* Set::getVisualInstanceInCorrentSet(unsigned int layerN, unsigned int column)
+
+VisualInstance* Set::getVisualInstanceInCorrentSet(unsigned int layer, unsigned int column)
 {
 	if (currentScene==NULL) return NULL;
 	
-	return currentScene->visualInstances.get(layerN, column);
+	return currentScene->visualInstances.get(layer, column);
 }
 
 Boolean Set::isVisualInstantInColumn(unsigned int layerN, unsigned int column)

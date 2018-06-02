@@ -188,14 +188,15 @@ class VisualInstances {
     VisualInstanceList visualInstanceList;
     
 public:
+
     
-    /**!
-     
+    /*!
+     \brief returns the index of a given visual instance
      */
     unsigned int getIndex(VisualInstance *instance);
 
     /**!
-     
+     \brief Returns the state of the visual instances
      */
     json getState();
    
@@ -251,10 +252,16 @@ public:
     VisualInstance* get(unsigned int layerN, unsigned int column);
     
     
-    /**!
-        Returns the number if Visual Instances in the list
+    /*!
+     \brief Returns the number if Visual Instances in the list
      */
     unsigned int count();
+    
+    
+    /*!
+     \brief Returns the number if Visual Instances in the list
+     */
+    unsigned int countInLayer(unsigned int layer);
     
     /**!
      

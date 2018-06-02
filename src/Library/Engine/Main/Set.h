@@ -44,58 +44,67 @@ class Set {
     
 public:
 
+    /*!
+     \brief ...
+     */
     static Set& getInstance();
+    
+    /*!
+     \brief Constructor
+     */
     Set(Set const&) = delete;
+    
+    /*!
+     \brief Destructor
+     */
+    ~Set();
+    
+    /*!
+     \brief ...
+     */
     void operator=(Set const&) = delete;
     
-    
-    /**!
-     @abstract ...
-     */
-	~Set();
-    
-    
-    
-    /**!
-     @abstract ...
+   
+    /*!
+     \brief ...
      */
     json getScenesState();
     
 
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     bool openSet(string _filePath);
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     bool openSet_old(string _filePath);
 	
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void closeSet();
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void newSet(unsigned int _width, unsigned int _height, unsigned int _nLayers);
     
     /*!
-     *  traverse set data and generate a xml document
+     \brief traverse set data and generate a xml document
      */
 	void saveSet();
 	
     
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
     void saveSetAs(string _filePath);
     
 	
-    /**!
-     @abstract ...
+    /*!
+     \brief ...
      */
 	void addVisualVideoToListFromFile(string filePath);
     
@@ -159,32 +168,35 @@ public:
      */
     void gotoPreviousScene();
     
-    /**!
+    /*!
      @abstract ...
      */
     void gotoNextScene();
     
-    /**!
+    /*!
      @abstract ...
      */
     void setActiveVisualInstance(unsigned int layerN, unsigned int column);
     
-    /**!
-     @abstract ...
+    /*!
+     \brief Returns a Visual instance in a given layer and column. 
+     \param layer
+     \param columbm
      */
-    VisualInstance *getVisualInstanceInCorrentSet(unsigned int layerN, unsigned int column);
+    VisualInstance *getVisualInstanceInCorrentSet(unsigned int layer, unsigned int column);
  
-    /**!
+    
+    /*!
      @abstract ...
      */
     Boolean isVisualInstantInColumn(unsigned int layerN, unsigned int column);
     
-    /**!
+    /*!
      @abstract ...
      */
     void emptyVisualInstanceOnAllScenes();
     
-    /**!
+    /*!
      @abstract ...
      */
     unsigned int getTotalScenes();

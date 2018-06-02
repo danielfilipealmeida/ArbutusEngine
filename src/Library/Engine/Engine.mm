@@ -437,15 +437,52 @@ void Engine::setActiveVisualIntances(unsigned int columnN) {
 
 
 void Engine::setActiveVisualIntanceOnActiveLayer(unsigned int visualInstanceN) {
-	setActiveVisualInstance(EngineProperties::getInstance().getSelectedLayerNumber(), visualInstanceN);
+	setActiveVisualInstance(getSelectedLayerNumber(), visualInstanceN);
+}
+
+
+void Engine::playFirstVisualInstanceOnActiveLayer()
+{
+    setActiveVisualIntanceOnActiveLayer(0);
+}
+
+void Engine::playLastVisualInstanceOnActiveLayer()
+{
+    unsigned int count;
+    
+    count = Set::getInstance().getCurrentScene()->visualInstances.countInLayer(getSelectedLayerNumber());
+    
+    setActiveVisualIntanceOnActiveLayer(count-1);
+}
+
+void Engine::playPreviousVisualInstanceOnActiveLayer()
+{
+    unsigned int column = getSelectedColumnNumber();
+    
+    if (column <= 0) return;
+    
+    setActiveVisualIntanceOnActiveLayer(getSelectedColumnNumber() - 1);
+}
+
+
+
+void Engine::playNextVisualInstanceOnActiveLayer()
+{
+    unsigned int column;
+    unsigned int count;
+    
+    column = getSelectedColumnNumber();
+    count = Set::getInstance().getCurrentScene()->visualInstances.countInLayer(getSelectedLayerNumber());
+    
+    if (column >= count-1) return;
+    
+    setActiveVisualIntanceOnActiveLayer(getSelectedColumnNumber() + 1);
+
 }
 
 
 VisualInstance* Engine::getCurrentActiveVisualInstance(){
-    return getVisualAtLayerAndInstanceN(
-                                        EngineProperties::getInstance().getSelectedLayerNumber(),
-                                        EngineProperties::getInstance().getSelectedColumnNumber()
-                                        );
+    return getVisualAtLayerAndInstanceN(getSelectedLayerNumber(), getSelectedColumnNumber());
 }
 
 
@@ -530,7 +567,7 @@ Engine::addVisualToSceneListInCurrentLayer(
     if (visualToAdd == NULL)  return;
     
     if (layer <= 0) {
-        layer = EngineProperties::getInstance().getSelectedLayerNumber();
+        layer = getSelectedLayerNumber();
     }
     if (layer > Layers::getInstance().count()) {
         layer =  Layers::getInstance().count();
@@ -563,8 +600,8 @@ void Engine::removeVisualFromScene(unsigned int layer, unsigned int column) {
     currentScene = getCurrentScene();
     
     if (
-        layer == EngineProperties::getInstance().getSelectedLayerNumber() &&
-        column == EngineProperties::getInstance().getSelectedColumnNumber()
+        layer == getSelectedLayerNumber() &&
+        column == getSelectedColumnNumber()
         ) {
         Layers::getInstance().stopAt(layer);
     }
@@ -849,8 +886,8 @@ void Engine::resetMetronome() {
 }
 
 
-void
-Engine::tap() {
+void Engine::tap()
+{
     unsigned int newBPM;
     
     newBPM = EngineProperties::getInstance().tap();
@@ -858,36 +895,6 @@ Engine::tap() {
     if (newBPM) setBPM(newBPM);
     
     setBPM((unsigned int) round(newBPM));
-    /*
-    unsigned long long elapsedTime = ofGetElapsedTimeMillis();
- 
-    engineProperties.incrementTap();
-    
-    
-    taps[currentTapIndex] = elapsedTime;
-    
-   
-
-    // calculate bpm
-    if (currentTapIndex == 3) {
-        unsigned long  long a, b, c;
-        float newBpm;
-        a = taps[1] - taps[0];
-        b = taps[2] - taps[1];
-        c = taps[3] - taps[2];
-        
-        //printf("%3llu %3llu %3llu \n", a,b,c);
-        
-        // eesta formula está errada
-        newBpm = (((float)(a+b+c) / 3.0 ));
-        newBpm = (60000.0 / (float) (newBpm));
-        setBPM((unsigned int) round(newBpm));
-        //cout << "\nbpm - "<<newBpm;
-        
-        // reset
-        currentTapIndex=-1;
-    }
-     */
 }
 
 
@@ -1050,8 +1057,11 @@ void Engine::changeOscPort(int port) {
 #pragma mark controllers handling
 
 void Engine::visualsKeysControlCallback(Controller *controller) {
-    enginePtr->setActiveVisualIntanceOnActiveLayer(controller->getValue());
+    Engine::getInstance()->setActiveVisualIntanceOnActiveLayer(controller->getValue());
 }
+
+
+
 
 /*************************************************************/
     
@@ -1077,3 +1087,15 @@ void Engine::registerAppBeatCallback(void (*callback)(void)) {
 }
 
 
+#pragma mark private stuff
+
+unsigned int Engine::getSelectedLayerNumber()
+{
+    return EngineProperties::getInstance().getSelectedLayerNumber();
+}
+
+
+unsigned int Engine::getSelectedColumnNumber()
+{
+    return EngineProperties::getInstance().getSelectedColumnNumber();
+}

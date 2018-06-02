@@ -36,7 +36,7 @@ float roundWithPrecision(float input, int precision) {
 
 StateType Utils::getStateTypeForTypeidName(string typeidName)
 {
-    cout << typeidName << endl;
+    //cout << typeidName << endl;
     if (typeidName.compare("f") == 0) return StateType_Float;
     if (typeidName.compare("j") == 0) return StateType_Integer;
     if (typeidName.find("basic_string") != string::npos) return StateType_String;
