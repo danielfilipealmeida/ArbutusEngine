@@ -15,8 +15,7 @@ Visual::Visual() {
 }
 
 
-Visual::~Visual() {
-}
+Visual::~Visual() {}
 
 json Visual::getState()
 {
@@ -42,6 +41,11 @@ void Visual::print(){
 
 }
 
+ofImage* Visual::getScreenshot()
+{
+    return &screenshot;
+}
+
 void Visual::drawScreenshot(float x, float y, float w, float h){
     if (screenshot.bAllocated() == false) {
         return;
@@ -53,7 +57,6 @@ void Visual::drawThumbnail(float x, float y, float w, float h) {
     if (this->screenshot.bAllocated() == false) {
         return;
     }
-	//GUIThumbnail(&screenshot, x, y, w, h);
 }
 
 
@@ -73,7 +76,6 @@ void Visual::setThumbnail()  {
  */
 void Visual::saveThumbnail() {
     screenshot.saveImage(thumbnailPath);
-   
 }
 
 

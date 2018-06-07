@@ -577,6 +577,10 @@ Engine::addVisualToSceneListInCurrentLayer(
 }
 
 
+VisualInstances* Engine::getCurrentVisualInstances() {
+    return &Set::getInstance().getCurrentScene()->visualInstances;
+}
+
 
 void Engine::addVisualToScene(unsigned int visual, unsigned int layer, unsigned int column) {
     Visual *visualToAdd = Visuals::getInstance().get(visual);
@@ -589,7 +593,8 @@ void Engine::addVisualToScene(unsigned int visual, unsigned int layer, unsigned 
             }
         }
         
-        Set::getInstance().getCurrentScene()->visualInstances.add(visualToAdd, layer, column);
+        //Set::getInstance().getCurrentScene()->visualInstances.add(visualToAdd, layer, column);
+        getCurrentVisualInstances()->add(visualToAdd, layer, column);
     }
 }
 

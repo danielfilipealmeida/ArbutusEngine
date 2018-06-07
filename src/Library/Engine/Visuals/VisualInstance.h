@@ -214,30 +214,28 @@ public:
      \param column the column that will receive the instance
      \param name the name of the instance. This is used for deferentiating instances
      */    
-    VisualInstance* add(
-                        Visual *visual,
-                        unsigned int layer,
-                        unsigned int column,
-                        string name = ""
-                        );
+    VisualInstance* add(Visual *visual, unsigned int layer, unsigned int column, string name = "");
 
     /**!
      Load the actual file for each Visual Instance in the list
      */
     void loadAll();
     
-    /**!
-     
+    /*!
+     \brief Remove a visual instance
+     \param layer the layer where the visual instance is
+     \param column the column where the visual is
      */
     void remove(unsigned int layer, unsigned int column);
 
-    /**!
-     
+    /*!
+     \brief Remove a visual instance
+     \param visual
      */
     void remove(Visual *visual);
     
-    /**!
-     
+    /*!
+     \brief Removes all visual instances
      */
     void empty();
 

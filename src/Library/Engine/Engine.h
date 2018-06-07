@@ -181,6 +181,12 @@ public:
 
     
     /*!
+     \brief Gets the Visual Instances of the current scene
+     \return VisualInstances*
+     */
+    VisualInstances* getCurrentVisualInstances();
+    
+    /*!
      @abstract ...
      */
 	VisualInstance* setActiveVisualInstance(unsigned int layerN, unsigned int columnN);

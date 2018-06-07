@@ -23,7 +23,7 @@ using json = nlohmann::json;
 
 /*!
  @class Layer
- @abstract ...
+ \brief ...
  @discussion ...
  */
 class Layer {
@@ -36,106 +36,110 @@ class Layer {
 public:
     
     /*!
-     @abstract Layer constructor
-     @param _loadShaders a boolean to set if the shaders should be loaded when creating a new layer
+     \brief Layer constructor
+     \param _loadShaders a boolean to set if the shaders should be loaded when creating a new layer
      */
 	Layer(bool _loadShaders = true);
     
-    
+    /*!
+     \brief Destructor
+     */
 	~Layer();
 	
     
+    /*!
+     \brief ...
+     */
     void loadShaders();
+
+    /*!
+     \brief ...
+     */
     void loadShadersFromOSXBundle();
     
     
-	// render
+    /*!
+     \brief ...
+     */
 	void render();
-    
-    
     
     /*!
      @abstact Draws the layer buffer
-     @param x ...
-     @param y ...
-     @param width ...
-     @param height ...
+     \param x ...
+     \param y ...
+     \param width ...
+     \param height ...
     */
 	void
-    draw(
-         int x,
-         int y,
-         int width,
-         int height
-    );
+    draw(int x, int y, int width, int height);
 	
     
     /*!
-     @abstract returns a label to be used on the frontend to tag the layer
+     \brief returns a label to be used on the frontend to tag the layer
      @discussion Concat several information regarding the layer, like ID, blend mode and transparency.
      */
     string label();
     
     /*!
-     @abstract ...
+     \brief ...
      */
 	void print();
 	
     /*!
-     @abstract ...
+     \brief ...
      */
 	void initBuffer();
     
     /*!
-     @abstract ...
+     \brief ...
      */
 	void destroyBuffer();
 	
 #pragma mark Video Instances
     
     /*!
-     @abstract ...
+     \brief ...
      */
 	void setActiveVisualInstance(VisualInstance *_activeInstance);
 	
     /*!
-     @abstract ...
+     \brief ...
      */
     void stopActiveVisualInstance();
 	
     /*!
-     @abstract Stop the current playing visual instance in this layer.
+     \brief Stop the current playing visual instance in this layer.
      */
     void stop();
     
     /*!
-     @abstract ...
+     \brief ...
      */
     VisualInstance* getActiveVisualInstance() {return activeInstance;}
     
     /*!
-     @abstract ...
+     \brief ...
      */
     void
     schedulleInstance(VisualInstance *_instance);
     
     /*!
-     @abstract ...
+     \brief ...
      */
     void
     activateSchedulledInstance();
     
     /*!
-     @abstract ...
+     \brief ...
      */
     void
     playVisualInstance(VisualInstance *newInstance);
     
     /*!
-     @abstract ...
+     \brief Gets the current textue
+     \returns ofTexture*
      */
-    ofTexture*
-    getTexture();
+    ofTexture* getTexture();
         
     
 
@@ -146,19 +150,19 @@ public:
     FreeFrameFilterInstanceList freeFrameInstanceList;
 
     /*!
-     @abstract
+     \brief
      */
 	void
     addFreeFrameInstance(unsigned int instanceSlotNumber);
     
     /*!
-     @abstract
+     \brief
      */
     void
     removeFreeFrameInstance(unsigned int instanceSlotNumber);
 	
     /*!
-     @abstract
+     \brief
      */
     FreeFrameFilterInstance*
     getFilterInstance(unsigned int instanceSlotNumber);
@@ -170,55 +174,55 @@ public:
 #pragma mark Getters and setters
     
     /*!
-     @abstract ...
+     \brief ...
      */
     LayerProperties*
     getProperties () { return &properties; }
     
     
     /*!
-     @abstract ...
+     \brief ...
      */
     unsigned int
     getLayerNumber () { return layerNumber; }
     
     
     /*!
-     @abstract ...
+     \brief ...
      */
     void
     setLayerNumber ( unsigned int _input ) { layerNumber = _input;}
     
     
     /*!
-     @abstract ...
+     \brief ...
      */
     VisualInstance*
     getActiveInstance () { return activeInstance; }
     
     
     /*!
-     @abstract ...
+     \brief ...
      */
     VisualInstance*
     getSchedulledInstance () { return schedulledInstance; }
 	
     
     /*!
-     @abstract ...
+     \brief ...
      */
     ofFbo*
     getBuffer() {return buffer;}
     
     
     /*!
-     @abstract ...
+     \brief ...
      */
     json
     getState();
     
     /*!
-     @abstract ...
+     \brief ...
      */
     void setState(json state);
     
@@ -226,7 +230,7 @@ public:
 #pragma mark Actions
     
     /*!
-     @abstract ...
+     \brief ...
      */
     void handleAction(string parameter, json data);
     
@@ -253,49 +257,49 @@ public:
     void operator=(Layers const&) = delete;
     
     /*!
-     @abstract ...
+     \brief ...
      */
     Layer*
     add(bool _loadShaders = true);
     
     /*!
-     @abstract ...
+     \brief ...
      */
     void
     addToList(Layer *newLayer);
     
     /*!
-     @abstract ...
+     \brief ...
      */
     void empty();
     
     /*!
-     @abstract ...
+     \brief ...
      */
     void remove(unsigned int layerN);
     
     /*!
-     @abstract ...
+     \brief ...
      */
     Layer* get(unsigned int layerN);
     
     /*!
-     @abstract ...
+     \brief ...
      */
     Layer* getCurrent();
     
     /*!
-     @abstract ...
+     \brief ...
      */
     unsigned int getCurrentId();
     
     /*!
-     @abstract NOTE!!! isn't getSelectedLayer == getCurrentLayer
+     \brief NOTE!!! isn't getSelectedLayer == getCurrentLayer
      */
     Layer* getSelected();
     
     /*!
-     @abstract ...
+     \brief ...
      */
     void setActive (unsigned int activeLayer);
     
@@ -327,41 +331,41 @@ public:
     int count();
     
     /*!
-     @abstract ...
+     \brief ...
      */
     void setCount (unsigned int _val);
 
     /*!
-     @abstract Returns the actual STL list of the layers in the app
+     \brief Returns the actual STL list of the layers in the app
      */
     LayersList getList();
     
     
     /*!
-     @abstract Stops the visual instance playing at layer position
+     \brief Stops the visual instance playing at layer position
      */
     void stopAt(unsigned int position);
 
     
     /*!
-     @abstract Stops all playing visual instances
+     \brief Stops all playing visual instances
      */
     void stopAll();
     
 #pragma mark State Handling
     
     /*!
-     @abstract ...
+     \brief ...
      */
     void setState(json state);
     
     /*!
-     @abstract ...
+     \brief ...
      */
     json getState();
     
     /*!
-     @abstract ...
+     \brief ...
      */
     json getFullState();
 };

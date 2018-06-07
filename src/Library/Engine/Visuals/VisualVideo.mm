@@ -129,9 +129,12 @@ VisualVideo::createThumbnail(){
     Visual::createThumbnail();
 	if(fileExists() == false) return;
     
+    unsigned int middleFrame;
+    
     ofVideoPlayer video;
     video.loadMovie(filePath);
-    video.setFrame(2);
+    middleFrame = (unsigned int) round(video.getTotalNumFrames() / 2.0);
+    video.setFrame(middleFrame);
     video.update();
     screenshot.allocate(video.getWidth(), video.getHeight(), OF_IMAGE_COLOR);
     screenshot.setFromPixels(video.getPixels().getData(), video.getWidth(), video.getHeight(), OF_IMAGE_COLOR, true);
