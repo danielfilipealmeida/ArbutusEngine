@@ -41,8 +41,6 @@ TEST_CASE("Full state is correct", "[getFullState]") {
     
     json fullState = properties.getFullState();
     
-    std::cout << fullState.dump(4) << std::endl;
-    
     // BLURH
     REQUIRE(fullState["blurH"]["value"] == 0.0);
     REQUIRE(fullState["blurH"]["min"] == 0.0);

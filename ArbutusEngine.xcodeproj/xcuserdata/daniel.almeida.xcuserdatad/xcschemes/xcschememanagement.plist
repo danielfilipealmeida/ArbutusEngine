@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>ArbutusLib.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Catch Tests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>Empty.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>HelloWorld copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>HelloWorld.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Server.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>0CC065A81FBFAB590094744E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0CC065D61FBFAE0E0094744E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>650455581F47085D00CB3BE5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>650455791F47A9FE00CB3BE5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>65A1865F1DF8DF9200BE0219</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>65E8965B1E72F3FF000D470B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

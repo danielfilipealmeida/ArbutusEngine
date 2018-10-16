@@ -43,6 +43,10 @@ void Visual::print(){
 
 ofImage* Visual::getScreenshot()
 {
+    if (!screenshot.isAllocated()) {
+        
+    }
+    
     return &screenshot;
 }
 
@@ -67,15 +71,17 @@ void Visual::drawThumbnail(float x, float y, float w, float h) {
 First checks if it already is set. if yes, get it, if not, create it and save it
  */
 void Visual::setThumbnail()  {
+    /// ???? WHAT IS THIS??? THIS IS CRAP! TODO: FIX
     thumbnailPath = getThumbnailPath();
 }
 
 
-/**
- *  Save the thumbnail on the apps preferences folder
- */
 void Visual::saveThumbnail() {
-    screenshot.saveImage(thumbnailPath);
+    if (!ofDirectory::doesDirectoryExist(ofFilePath::getEnclosingDirectory(thumbnailPath, false)))
+    {
+        ofFilePath::createEnclosingDirectory(thumbnailPath, false, true);
+    }
+    screenshot.save(thumbnailPath);
 }
 
 
@@ -95,11 +101,42 @@ void Visual::createThumbnail(){
 
 /** geters and setters ***/
 
+VisualType Visual::getType ()
+{
+    return type;
+}
+
+void Visual::setType (VisualType _val)
+{
+    type = _val;
+}
 
 string Visual::getCaption()
 {
     return caption;
 }
 
+void Visual::setCaption(string _val)
+{
+    caption = _val;
+}
 
+string Visual::getThumbnailPath()
+{
+    return thumbnailPath;
+}
+
+void Visual::setThumbnailPath(string _val)
+{
+    thumbnailPath = _val;
+}
+
+string Visual::getFilePath () {
+    return filePath;
+}
+
+void Visual::setFilePath (string _val)
+{
+    filePath = _val;
+}
 

@@ -1,0 +1,60 @@
+{
+    "layers" : [
+    {
+                "layer" : "layer 1",
+                "alpha" : 1.0,
+                "brightness": 0.0,
+                "contrast": 0.0,
+                "saturation": 0.0,
+                "red": 1.0,
+                "green": 1.0,
+                "blue": 1.0,
+                "blurH": 1.0,
+                "blurV": 1.0
+    },
+    {
+                "layer" : "layer 2",
+                "alpha" : 1.0,
+                "brightness": 0.0,
+                "contrast": 0.0,
+                "saturation": 0.0,
+                "red": 1.0,
+                "green": 1.0,
+                "blue": 1.0,
+                "blurH": 1.0,
+                "blurV": 1.0
+    }
+    ],
+    "scenes": [
+    {
+               "name": "scene 1",
+               "instances" : [
+               
+               ]
+    },
+    {
+               "name": "scene 2",
+               "instances" : [
+               
+               ]
+    }],
+    "visuals": [
+    {
+                "type" : 0,
+                "caption" : "Visual 1",
+                "filePath" : "001.mov"
+    },
+    {
+                "type" : 0,
+                "caption" : "Visual 2",
+                "filePath" : "002.mov"
+    
+    },
+    {
+                "type" : 0,
+                "caption" : "Visual 3",
+                "filePath" : "003.mov"
+    
+    }
+    ]
+}

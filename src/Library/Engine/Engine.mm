@@ -35,9 +35,7 @@ void Engine::setupSyphon() {
 
 
 Engine::Engine() {
-    cout << "### Engine Started" <<endl;
     if (enginePtr != NULL) {
-        cout << "### Found dangling Engine!" << endl;
         delete enginePtr;
     }
     enginePtr = this;
@@ -62,7 +60,7 @@ Engine::Engine() {
     setupSyphon();
     
     // this needs to only work on osx
-    setAppSupportDir(ofFilePath::getUserHomeDir().append("/Library/Application Support/Arbutus"));
+    //setAppSupportDir(ofFilePath::getUserHomeDir().append("/Library/Application Support/Arbutus"));
     ofSetDataPathRoot("./");
     
 }
@@ -76,7 +74,6 @@ Engine::~Engine() {
     // clean visual lists
     
     enginePtr = NULL;
-    cout << "### Engine Destroyed" <<endl;
 }
 
 
@@ -1072,15 +1069,16 @@ void Engine::visualsKeysControlCallback(Controller *controller) {
     
 #pragma mark other stuff
 
-void Engine::setAppSupportDir(string _dir) {
-    EngineProperties::getInstance().setAppSupportDir(_dir);
-}
-
-string
-Engine::calculateThumbnailPath(string path) {
+string Engine::calculateThumbnailPath(string path) {
+    if (path.empty()) {
+        throw std::invalid_argument("Path is empty.");
+    }
+    
     string md5FileName = Utils::md5(ofFilePath::getFileName(path));
-
-    return EngineProperties::getInstance().getAppSupportDir() + "/cache/thumbnails/" + md5FileName + ".jpg";
+    string appSupportDir = EngineProperties::getInstance().getAppSupportDir();
+    string thumbPath = appSupportDir + "cache/thumbnails/" + md5FileName + ".jpg";
+    
+    return thumbPath;
     
 }
 

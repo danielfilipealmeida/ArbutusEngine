@@ -435,9 +435,7 @@ public:
 /*************************************************************/
 #pragma mark more stuff -- should be moved to another place. probably be made static methods
     
-    /*!
-     */
-    void setAppSupportDir(string _dir);
+
     
     /*!
      */

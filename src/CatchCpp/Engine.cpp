@@ -150,3 +150,20 @@ TEST_CASE("Engine plays videos set with json data", "[play]") {
     
      delete engine;
 }
+
+
+TEST_CASE("Engine ", "[calculateThumbnailPath]") {
+    // calculateThumbnailPath
+    Engine *engine = createTestSet();
+
+    REQUIRE_THROWS(engine->calculateThumbnailPath(""));
+    REQUIRE_NOTHROW(engine->calculateThumbnailPath("cache/testfile.png"));
+                    
+    string path = engine->calculateThumbnailPath("cache/testfile.png");
+    
+    REQUIRE(!path.empty());
+    //REQUIRE(path.find_first_of(EngineProperties::getInstance().getAppSupportPath()) == 0);
+                
+    
+    delete engine;
+}

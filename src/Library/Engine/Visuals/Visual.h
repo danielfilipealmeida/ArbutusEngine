@@ -59,7 +59,7 @@ public:
 	
 		
     /*!
-     \brief ...
+     \brief Prints debug information of the Visual
      */
     void print();
 	
@@ -84,7 +84,8 @@ public:
     void setThumbnail();
 
     /*!
-     \brief ...
+     \brief Save the thumbnail on the apps preferences folder.
+     Creates recusively the enclosing directory if needed
      */
     void saveThumbnail();
 	
@@ -110,12 +111,12 @@ public:
      \brief ...
      */
 
-    VisualType getType () { return type; }
+    VisualType getType ();
 
     /*!
      \brief ...
      */
-    void setType (VisualType _val) { type = _val; }
+    void setType (VisualType _val);
     
     /*!
      \brief ...
@@ -125,28 +126,28 @@ public:
     /*!
      \brief ...
      */
-    void setCaption(string _val) { caption = _val; }
+    void setCaption(string _val);
     
     /*!
      \brief ...
      */
-    string getThumbnailPath() { return thumbnailPath; }
+    string getThumbnailPath();
     
     /*!
      \brief ...
      */
-    void setThumbnailPath(string _val) { thumbnailPath = _val; }
+    void setThumbnailPath(string _val);
     
     
     /*!
      \brief ...
      */
-    string getFilePath () { return filePath; }
+    string getFilePath ();
     
     /*!
      \brief ...
      */
-    void setFilePath (string _val) { filePath = _val; }
+    void setFilePath (string _val);
     
     /*!
      \brief ...

@@ -63,8 +63,7 @@ TEST_CASE("VisualInstancesProperties full state should be correct","[init]") {
     VisualInstancesProperties properties;
     json fullState = properties.getFullState();
     
-    cout << fullState.dump(4) ;
-    
+
     // Zoom X
     REQUIRE(fullState["zoomX"]["max"] == 8.0);
     REQUIRE(fullState["zoomX"]["min"] == 0.0);

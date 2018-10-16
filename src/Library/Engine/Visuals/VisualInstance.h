@@ -51,21 +51,36 @@ public:
 	FreeFrameFilterInstanceList freeFrameInstanceList;
 #endif 
     
-    /*! @brief Simple constructor for the VisualInstance Object */
+    /*! 
+     @brief Simple constructor for the VisualInstance Object 
+     */
 	VisualInstance();
     
-    /*! @brief Standard constructor that allows more information */
+    /*! 
+     @brief Standard constructor that allows more information 
+     */
 	VisualInstance(Visual *_visual, unsigned int layer, unsigned int column);
+    
+    /*!
+     @brief ...
+     */
 	~VisualInstance();
 	
     
-    
-	/* actions */
+    /*!
+     @brief ...
+     */
 	bool loadVideo();
     
+    /*!
+     @brief ...
+     */
     bool checkFileExists(string path);
     
-	bool unloadVideo();
+    /*!
+     @brief ...
+     */
+    bool unloadVideo();
     
     /*!
      \brief Checks and invert direction if needed
@@ -77,45 +92,95 @@ public:
      */
     void handleLoopModeChange();
     
+    /*!
+     @brief ...
+     */
     void unload();
     
-	void play(bool forcePlay = false);
+    /*!
+     @brief ...
+     */
+    void play(bool forcePlay = false);
+    
+    /*!
+     @brief ...
+     */
     void retrigger();
-	void stop();
+	
+    /*!
+     @brief ...
+     */
+    void stop();
 	
     
-    /**
-     *
+    /*!
+     @brief ...
      */
     void update();
 	
+    /*!
+     @brief ...
+     */
     void updateVideo();
     
     
-    /* processing */
-    
+    /*!
+     @brief ...
+     */
     void calculateDisplayRect(unsigned int width, unsigned int height);
     
-	/* draw */
-	void draw(unsigned int x, unsigned int y, unsigned int width, unsigned int height);
-	void drawVisualScreenshot(unsigned int x, unsigned int y, unsigned int width, unsigned int height);
-	void drawVisualThumbnail(unsigned int x, unsigned int y, unsigned int width, unsigned int height);
+    /*!
+     @brief ...
+     */
+    void draw(unsigned int x, unsigned int y, unsigned int width, unsigned int height);
 	
-	//debug
-	void print();
+    /*!
+     @brief ...
+     */
+    void drawVisualScreenshot(unsigned int x, unsigned int y, unsigned int width, unsigned int height);
 	
-	/* set & get options */
-	void setLoopMode(LoopMode _loopMode);
+    /*!
+     @brief ...
+     */
+    void drawVisualThumbnail(unsigned int x, unsigned int y, unsigned int width, unsigned int height);
+	
+    /*!
+     @brief ...
+     */
+    void print();
+	
+    /*!
+     @brief ...
+     */
+    void setLoopMode(LoopMode _loopMode);
 	
 	/* free frame */
 #ifdef _FREEFRAMEFILTER_H_
-	void addFreeFrameInstance(unsigned int instanceSlotNumber);
-	void removeFreeFrameInstance(unsigned int instanceSlotNumber);
+	
+    /*!
+     @brief ...
+     */
+    void addFreeFrameInstance(unsigned int instanceSlotNumber);
+	
+    /*!
+     @brief ...
+     */
+    void removeFreeFrameInstance(unsigned int instanceSlotNumber);
 #endif
     
-	/* information */
+    /*!
+     @brief ...
+     */
     float   getPercentagePlayed();
+    
+    /*!
+     @brief ...
+     */
     void    setPercentagePlayed(float percentage);
+    
+    /*!
+     @brief ...
+     */
     bool    checkCloseCondition();
     
     
@@ -176,7 +241,15 @@ public:
     void handleAction(string parameter, json data);
     
 private:
+    
+    /*!
+     @brief ...
+     */
     void autoLoadAndAutoPlayVideo();
+    
+    /*!
+     @brief ...
+     */
     bool isFreeFrameFilterActive();
 };
 

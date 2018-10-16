@@ -1,6 +1,3 @@
-[submodule "External/openFrameworks"]
-	path = External/openFrameworks
-	url = https://github.com/openframeworks/openFrameworks.git
 [submodule "External/ofxMidi"]
 	path = External/ofxMidi
 	url = https://github.com/danomatika/ofxMidi.git

@@ -49,7 +49,6 @@
 		0C0B84E11FC0794A00BEF796 /* layerShader.frag in Resources */ = {isa = PBXBuildFile; fileRef = 0C0B84DF1FC0794A00BEF796 /* layerShader.frag */; };
 		0C0B84E21FC0794A00BEF796 /* layerShader.vert in Resources */ = {isa = PBXBuildFile; fileRef = 0C0B84E01FC0794A00BEF796 /* layerShader.vert */; };
 		0C0B84E51FC0828000BEF796 /* ofxMidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC818E1DF8D9CA00331165 /* ofxMidiMessage.cpp */; };
-		0C0B84F71FC0864100BEF796 /* Instructions.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0C0B84EB1FC0864100BEF796 /* Instructions.txt */; };
 		0C0B84F81FC0864100BEF796 /* ofxTCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B84EF1FC0864100BEF796 /* ofxTCPClient.cpp */; };
 		0C0B84F91FC0864100BEF796 /* ofxTCPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B84F11FC0864100BEF796 /* ofxTCPManager.cpp */; };
 		0C0B84FA1FC0864100BEF796 /* ofxTCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B84F31FC0864100BEF796 /* ofxTCPServer.cpp */; };
@@ -127,6 +126,7 @@
 		655BFB001E735F3E00B74446 /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E8966A1E73098F000D470B /* Engine.cpp */; };
 		655BFB021E73673000B74446 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 655BFB011E73673000B74446 /* Layer.cpp */; };
 		657E13FA1E85D6D900DDE6D2 /* Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 657E13F91E85D6D900DDE6D2 /* Utils.h */; };
+		658E93BD21769DBD00A8E6E1 /* ofxMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81891DF8D9CA00331165 /* ofxMidi.cpp */; };
 		65B29FAF1F537550006FDBA0 /* Visuals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65B29FAE1F537550006FDBA0 /* Visuals.cpp */; };
 		65CCD0391F2C7EA600EB2AC5 /* JsonLoadTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65CCD0381F2C7EA600EB2AC5 /* JsonLoadTest.cpp */; };
 		65CCD0471F2CACA900EB2AC5 /* Engine.h in Headers */ = {isa = PBXBuildFile; fileRef = 65CCD0461F2CACA900EB2AC5 /* Engine.h */; };
@@ -138,6 +138,7 @@
 		65D3A5D71F2A9BCF00CE6885 /* JsonSave.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 65D3A5D41F2A9BCF00CE6885 /* JsonSave.hpp */; };
 		65D3A5DB1F2AA13100CE6885 /* JsonSaveTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5D91F2AA13100CE6885 /* JsonSaveTest.cpp */; };
 		65D3A5DC1F2AA13100CE6885 /* JsonSaveTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D3A5D91F2AA13100CE6885 /* JsonSaveTest.cpp */; };
+		65D76D312115E4C700D3D135 /* VisualVideoTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D76D302115E4C700D3D135 /* VisualVideoTests.cpp */; };
 		65E21BC81EC6764F006D1C37 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65E21BC61EC6764F006D1C37 /* ofApp.cpp */; };
 		65E6BD321F4467A0008E4F9E /* ofxMidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC818E1DF8D9CA00331165 /* ofxMidiMessage.cpp */; };
 		65E6BD331F4467B1008E4F9E /* ofxMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81891DF8D9CA00331165 /* ofxMidi.cpp */; };
@@ -222,25 +223,11 @@
 			remoteGlobalIDString = 65A1865F1DF8DF9200BE0219;
 			remoteInfo = ArbutusLib;
 		};
-		0C197ECB1FC43BCC007F72D2 /* PBXContainerItemProxy */ = {
+		6500382321760A7F00E748E7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
-			remoteInfo = openFrameworks;
-		};
-		0CE0424F1F88522C005B8253 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */;
+			containerPortal = 6500381F21760A7F00E748E7 /* openFrameworksLib.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = E4B27C1510CBEB8E00536013;
-			remoteInfo = openFrameworks;
-		};
-		0CE042511F885244005B8253 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
 			remoteInfo = openFrameworks;
 		};
 		650455721F470F8F00CB3BE5 /* PBXContainerItemProxy */ = {
@@ -294,8 +281,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0C0B84CF1FC078FD00BEF796 /* Server.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Server.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0C0B84D01FC078FE00BEF796 /* HelloWorld copy3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HelloWorld copy3-Info.plist"; path = "/Users/daniel.almeida/Personal/ArbutusEngine/HelloWorld copy3-Info.plist"; sourceTree = "<absolute>"; };
 		0C0B84D21FC0793900BEF796 /* Server-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Server-Info.plist"; path = "src/Apps/Server/Server-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0C0B84D31FC0793900BEF796 /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofApp.cpp; path = src/Apps/Server/ofApp.cpp; sourceTree = SOURCE_ROOT; };
 		0C0B84D41FC0793900BEF796 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/Apps/Server/main.cpp; sourceTree = SOURCE_ROOT; };
@@ -304,7 +289,6 @@
 		0C0B84D71FC0793A00BEF796 /* set.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = set.json; path = src/Apps/Server/set.json; sourceTree = SOURCE_ROOT; };
 		0C0B84DF1FC0794A00BEF796 /* layerShader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = layerShader.frag; sourceTree = "<group>"; };
 		0C0B84E01FC0794A00BEF796 /* layerShader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = layerShader.vert; sourceTree = "<group>"; };
-		0C0B84EB1FC0864100BEF796 /* Instructions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Instructions.txt; sourceTree = "<group>"; };
 		0C0B84ED1FC0864100BEF796 /* ofxNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxNetwork.h; sourceTree = "<group>"; };
 		0C0B84EE1FC0864100BEF796 /* ofxNetworkUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxNetworkUtils.h; sourceTree = "<group>"; };
 		0C0B84EF1FC0864100BEF796 /* ofxTCPClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTCPClient.cpp; sourceTree = "<group>"; };
@@ -325,11 +309,8 @@
 		0C628F021F9BC82800ADB871 /* SizeProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SizeProperties.h; sourceTree = "<group>"; };
 		0C628F081F9BE78A00ADB871 /* PropertiesTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PropertiesTest.cpp; path = Properties/PropertiesTest.cpp; sourceTree = "<group>"; };
 		0C71D3C31F8A6901006126A5 /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
-		0CC065D51FBFAD6A0094744E /* Empty copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Empty copy-Info.plist"; path = "/Users/daniel.almeida/Personal/ArbutusEngine/Empty copy-Info.plist"; sourceTree = "<absolute>"; };
-		0CC066061FBFAE0F0094744E /* HelloWorld copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HelloWorld copy-Info.plist"; path = "/Users/daniel.almeida/Personal/ArbutusEngine/HelloWorld copy-Info.plist"; sourceTree = "<absolute>"; };
-		0CC066391FBFB2050094744E /* HelloWorld copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HelloWorld copy2-Info.plist"; path = "/Users/daniel.almeida/Personal/ArbutusEngine/HelloWorld copy2-Info.plist"; sourceTree = "<absolute>"; };
 		0CD96A11200A721600EC5665 /* SizeProperties.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SizeProperties.cpp; sourceTree = "<group>"; };
-		0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = External/openFrameworks/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = "<group>"; };
+		6500381F21760A7F00E748E7 /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../of_v0.9.8_osx_release/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = "<group>"; };
 		650455591F47085D00CB3BE5 /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6504556B1F47090700CB3BE5 /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofApp.cpp; path = src/Examples/HelloWorld/ofApp.cpp; sourceTree = SOURCE_ROOT; };
 		6504556C1F47090700CB3BE5 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofApp.h; path = src/Examples/HelloWorld/ofApp.h; sourceTree = SOURCE_ROOT; };
@@ -361,6 +342,7 @@
 		655BFAF81E7355BD00B74446 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		655BFB011E73673000B74446 /* Layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = "<group>"; };
 		657E13F91E85D6D900DDE6D2 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		658CF59C2118E99900CA7C6F /* Server.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Server.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		659E25D51E70BCAE00217A12 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		65A186601DF8DF9200BE0219 /* libArbutusLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libArbutusLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		65B29FAE1F537550006FDBA0 /* Visuals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Visuals.cpp; sourceTree = "<group>"; };
@@ -488,6 +470,7 @@
 		65D3A5D31F2A9BCF00CE6885 /* JsonSave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonSave.cpp; sourceTree = "<group>"; };
 		65D3A5D41F2A9BCF00CE6885 /* JsonSave.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = JsonSave.hpp; sourceTree = "<group>"; };
 		65D3A5D91F2AA13100CE6885 /* JsonSaveTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JsonSaveTest.cpp; path = FileHandling/JsonSaveTest.cpp; sourceTree = "<group>"; };
+		65D76D302115E4C700D3D135 /* VisualVideoTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VisualVideoTests.cpp; path = Visual/VisualVideoTests.cpp; sourceTree = "<group>"; };
 		65E21BC61EC6764F006D1C37 /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofApp.cpp; sourceTree = "<group>"; };
 		65E21BC71EC6764F006D1C37 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofApp.h; sourceTree = "<group>"; };
 		65E6BD361F44691E008E4F9E /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
@@ -495,7 +478,7 @@
 		65E6BD381F44691E008E4F9E /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
 		65E6BD391F44691E008E4F9E /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		65E6BD431F463A15008E4F9E /* openFrameworksDebug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = openFrameworksDebug.a; path = ../of_v0.9.3_osx_release/libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a; sourceTree = "<group>"; };
-		65E6BD451F464E83008E4F9E /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodex.dylib; path = External/openFrameworks/libs/fmodex/lib/osx/libfmodex.dylib; sourceTree = "<group>"; };
+		65E6BD451F464E83008E4F9E /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodex.dylib; path = ../of_v0.9.8_osx_release/libs/fmodex/lib/osx/libfmodex.dylib; sourceTree = "<group>"; };
 		65E6BD471F464F4E008E4F9E /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Syphon.framework; path = External/ofxSyphon/libs/Syphon/lib/osx/Syphon.framework; sourceTree = "<group>"; };
 		65E896531E72E85B000D470B /* makedocs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = makedocs.sh; sourceTree = "<group>"; };
 		65E896631E72F420000D470B /* Catch Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Catch Tests"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -504,7 +487,6 @@
 		65E8966C1E730C45000D470B /* LayerProperties.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayerProperties.cpp; sourceTree = "<group>"; };
 		65E8967B1E73311F000D470B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65E896851E733920000D470B /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Syphon.framework; path = External/ofxSyphon/libs/Syphon/lib/osx/Syphon.framework; sourceTree = "<group>"; };
-		65E896871E733975000D470B /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodex.dylib; path = ../../../libs/fmodex/lib/osx/libfmodex.dylib; sourceTree = "<group>"; };
 		65EF0A191F424DC900C5FB69 /* Visuals.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Visuals.mm; sourceTree = "<group>"; };
 		65EF0A1A1F424DC900C5FB69 /* Visuals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Visuals.h; sourceTree = "<group>"; };
 		65F6C5401F42F08A00270C51 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -580,20 +562,11 @@
 		0C0B84E91FC0864100BEF796 /* ofxNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				0C0B84EA1FC0864100BEF796 /* docs */,
 				0C0B84EC1FC0864100BEF796 /* src */,
 			);
 			name = ofxNetwork;
-			path = External/openFrameworks/addons/ofxNetwork;
+			path = ../of_v0.9.8_osx_release/addons/ofxNetwork;
 			sourceTree = SOURCE_ROOT;
-		};
-		0C0B84EA1FC0864100BEF796 /* docs */ = {
-			isa = PBXGroup;
-			children = (
-				0C0B84EB1FC0864100BEF796 /* Instructions.txt */,
-			);
-			path = docs;
-			sourceTree = "<group>";
 		};
 		0C0B84EC1FC0864100BEF796 /* src */ = {
 			isa = PBXGroup;
@@ -645,10 +618,10 @@
 			path = Server;
 			sourceTree = SOURCE_ROOT;
 		};
-		0CE0424C1F88522C005B8253 /* Products */ = {
+		6500382021760A7F00E748E7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0CE042501F88522C005B8253 /* openFrameworksDebug.a */,
+				6500382421760A7F00E748E7 /* openFrameworksDebug.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -734,7 +707,6 @@
 			isa = PBXGroup;
 			children = (
 				65E6BD431F463A15008E4F9E /* openFrameworksDebug.a */,
-				65E896871E733975000D470B /* libfmodex.dylib */,
 				65E896851E733920000D470B /* Syphon.framework */,
 				655BFAF81E7355BD00B74446 /* CoreMIDI.framework */,
 				65E8967B1E73311F000D470B /* Foundation.framework */,
@@ -861,7 +833,7 @@
 				65BC813C1DF8D96500331165 /* libs */,
 			);
 			name = ofxOsc;
-			path = External/openFrameworks/addons/ofxOsc;
+			path = ../of_v0.9.8_osx_release/addons/ofxOsc;
 			sourceTree = SOURCE_ROOT;
 		};
 		65BC813C1DF8D96500331165 /* libs */ = {
@@ -1016,7 +988,7 @@
 				65BC81991DF8D9D600331165 /* src */,
 			);
 			name = ofxXmlSettings;
-			path = External/openFrameworks/addons/ofxXmlSettings;
+			path = ../of_v0.9.8_osx_release/addons/ofxXmlSettings;
 			sourceTree = SOURCE_ROOT;
 		};
 		65BC81941DF8D9D600331165 /* libs */ = {
@@ -1158,6 +1130,14 @@
 			name = FileHandling;
 			sourceTree = "<group>";
 		};
+		65D76D2E2115E43A00D3D135 /* Visuals */ = {
+			isa = PBXGroup;
+			children = (
+				65D76D302115E4C700D3D135 /* VisualVideoTests.cpp */,
+			);
+			name = Visuals;
+			sourceTree = "<group>";
+		};
 		65E896521E72E839000D470B /* scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1179,6 +1159,7 @@
 		65E896641E730453000D470B /* CatchCpp */ = {
 			isa = PBXGroup;
 			children = (
+				65D76D2E2115E43A00D3D135 /* Visuals */,
 				0C0B84FD1FC1D23400BEF796 /* Server */,
 				6511F6181F388F2400B750C2 /* Properties */,
 				651767101F2BF3720011D409 /* Fixtures */,
@@ -1213,12 +1194,13 @@
 				65BC812A1DF8D8E400331165 /* ofxSyphon */,
 			);
 			name = addons;
-			path = Vendor;
+			path = External;
 			sourceTree = "<group>";
 		};
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				6500381F21760A7F00E748E7 /* openFrameworksLib.xcodeproj */,
 				65F6C5401F42F08A00270C51 /* README.md */,
 				0C0B84FC1FC1C97600BEF796 /* DevNotes.md */,
 				0C628F001F9B954400ADB871 /* doxygenconf */,
@@ -1239,12 +1221,7 @@
 				6504CA6A1ECE4DCC00355E4A /* Test Data */,
 				650455591F47085D00CB3BE5 /* HelloWorld.app */,
 				650455891F47A9FE00CB3BE5 /* Empty.app */,
-				0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */,
-				0CC065D51FBFAD6A0094744E /* Empty copy-Info.plist */,
-				0CC066061FBFAE0F0094744E /* HelloWorld copy-Info.plist */,
-				0CC066391FBFB2050094744E /* HelloWorld copy2-Info.plist */,
-				0C0B84CF1FC078FD00BEF796 /* Server.app */,
-				0C0B84D01FC078FE00BEF796 /* HelloWorld copy3-Info.plist */,
+				658CF59C2118E99900CA7C6F /* Server.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1290,12 +1267,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				0C197ECC1FC43BCC007F72D2 /* PBXTargetDependency */,
 				0C0B84A11FC078FD00BEF796 /* PBXTargetDependency */,
 			);
 			name = Server;
 			productName = HelloWorld;
-			productReference = 0C0B84CF1FC078FD00BEF796 /* Server.app */;
+			productReference = 658CF59C2118E99900CA7C6F /* Server.app */;
 			productType = "com.apple.product-type.application";
 		};
 		650455581F47085D00CB3BE5 /* HelloWorld */ = {
@@ -1366,7 +1342,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				0CE042521F885244005B8253 /* PBXTargetDependency */,
 				65E896761E733026000D470B /* PBXTargetDependency */,
 			);
 			name = "Catch Tests";
@@ -1383,8 +1358,7 @@
 				LastUpgradeCheck = 0910;
 				TargetAttributes = {
 					0C0B84A01FC078FD00BEF796 = {
-						DevelopmentTeam = NJJLX74WDH;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					650455581F47085D00CB3BE5 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1416,8 +1390,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 0CE0424C1F88522C005B8253 /* Products */;
-					ProjectRef = 0CE0424B1F88522C005B8253 /* openFrameworksLib.xcodeproj */;
+					ProductGroup = 6500382021760A7F00E748E7 /* Products */;
+					ProjectRef = 6500381F21760A7F00E748E7 /* openFrameworksLib.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1432,11 +1406,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		0CE042501F88522C005B8253 /* openFrameworksDebug.a */ = {
+		6500382421760A7F00E748E7 /* openFrameworksDebug.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = openFrameworksDebug.a;
-			remoteRef = 0CE0424F1F88522C005B8253 /* PBXContainerItemProxy */;
+			remoteRef = 6500382321760A7F00E748E7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1452,7 +1426,6 @@
 				0C0B84D91FC0793A00BEF796 /* Server-Info.plist in Resources */,
 				0C0B84E21FC0794A00BEF796 /* layerShader.vert in Resources */,
 				0C0B84C91FC078FD00BEF796 /* layerShader.vert in Resources */,
-				0C0B84F71FC0864100BEF796 /* Instructions.txt in Resources */,
 				0C0B84DC1FC0793A00BEF796 /* README.md in Resources */,
 				0C0B84CA1FC078FD00BEF796 /* layerShader.frag in Resources */,
 				0C0B84DD1FC0793A00BEF796 /* set.json in Resources */,
@@ -1655,6 +1628,7 @@
 				651E5BA81F2E1673008B4FEF /* Utils.mm in Sources */,
 				65EE9AA71E15AA89008C2091 /* VisualSyphon.h in Sources */,
 				65EE9AA81E15AA89008C2091 /* VisualSyphon.mm in Sources */,
+				658E93BD21769DBD00A8E6E1 /* ofxMidi.cpp in Sources */,
 				65EE9AA91E15AA89008C2091 /* VisualVideo.h in Sources */,
 				65EE9AAA1E15AA89008C2091 /* VisualVideo.mm in Sources */,
 				65EF0A1B1F424DC900C5FB69 /* Visuals.mm in Sources */,
@@ -1676,6 +1650,7 @@
 				65E896A11E734F37000D470B /* RtMidi.cpp in Sources */,
 				65E896911E733DD2000D470B /* ofxOscMessage.cpp in Sources */,
 				65E896921E734275000D470B /* ofxOscReceiver.cpp in Sources */,
+				65D76D312115E4C700D3D135 /* VisualVideoTests.cpp in Sources */,
 				0C0B84FF1FC1D2DF00BEF796 /* messages.cpp in Sources */,
 				655BFAFB1E735A3D00B74446 /* IpEndpointName.cpp in Sources */,
 				0C628F091F9BE78A00ADB871 /* PropertiesTest.cpp in Sources */,
@@ -1721,16 +1696,6 @@
 			target = 65A1865F1DF8DF9200BE0219 /* ArbutusLib */;
 			targetProxy = 0C0B84A21FC078FD00BEF796 /* PBXContainerItemProxy */;
 		};
-		0C197ECC1FC43BCC007F72D2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = openFrameworks;
-			targetProxy = 0C197ECB1FC43BCC007F72D2 /* PBXContainerItemProxy */;
-		};
-		0CE042521F885244005B8253 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = openFrameworks;
-			targetProxy = 0CE042511F885244005B8253 /* PBXContainerItemProxy */;
-		};
 		650455731F470F8F00CB3BE5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 65A1865F1DF8DF9200BE0219 /* ArbutusLib */;
@@ -1775,7 +1740,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = NJJLX74WDH;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1903,7 +1868,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = NJJLX74WDH;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2563,7 +2528,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OF_ADDONS_PATH = "$(OF_PATH)/addons";
 				OF_LIBS_PATH = "$(OF_PATH)/libs";
-				OF_PATH = "$(EXTERNAL_LIBS_PATH)/openFrameworks";
+				OF_PATH = "$(PROJECT_DIR)/../of_v0.9.8_osx_release";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2637,7 +2602,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OF_ADDONS_PATH = "$(OF_PATH)/addons";
 				OF_LIBS_PATH = "$(OF_PATH)/libs";
-				OF_PATH = "$(EXTERNAL_LIBS_PATH)/openFrameworks";
+				OF_PATH = "$(PROJECT_DIR)/../of_v0.9.8_osx_release";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -2681,6 +2646,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					"TEST_FILES_PATH=\"$(TEST_FILES_PATH)\"",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = NO;
@@ -2753,11 +2719,13 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OF_CORE_FRAMEWORKS = "$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a -framework Accelerate -framework AGL -framework AppKit -framework ApplicationServices -framework AudioToolbox -framework AVFoundation -framework Cocoa -framework CoreAudio -framework CoreFoundation -framework CoreMedia -framework CoreServices -framework CoreVideo -framework IOKit -framework OpenGL -framework QuartzCore -framework QuickTime -framework QTKit -framework GLUT";
+				OF_PATH = "$(PROJECT_DIR)/../of_v0.9.8_osx_release";
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_FILES_PATH = "$(PROJECT_DIR)/TestData/";
 			};
 			name = Debug;
 		};
@@ -2869,11 +2837,13 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OF_CORE_FRAMEWORKS = "$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/openFrameworks.a -framework Accelerate -framework AGL -framework AppKit -framework ApplicationServices -framework AudioToolbox -framework AVFoundation -framework Cocoa -framework CoreAudio -framework CoreFoundation -framework CoreMedia -framework CoreServices -framework CoreVideo -framework IOKit -framework OpenGL -framework QuartzCore -framework QuickTime -framework QTKit -framework GLUT";
+				OF_PATH = "$(PROJECT_DIR)/../of_v0.9.8_osx_release";
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_FILES_PATH = "$(PROJECT_DIR)/TestData/";
 			};
 			name = Release;
 		};
@@ -2934,7 +2904,7 @@
 				OF_ADDONS_PATH = "$(OF_PATH)/addons";
 				OF_CORE_LIBS = "$(LIB_POCO) $(LIB_TESS) $(LIB_GLEW) $(LIB_CAIRO1) $(LIB_CAIRO2) $(LIB_CAIRO3) $(LIB_FMODEX) $(LIB_RTAUDIO) $(LIB_OPENSSL1) $(LIB_OPENSSL2) $(LIB_GLFW) $(LIB_FREEIMAGE) $(LIB_FREETYPE) $(LIB_BOOST_FS) $(LIB_BOOST_SYSTEM)";
 				OF_LIBS_PATH = "$(OF_PATH)/libs";
-				OF_PATH = "$(EXTERNAL_LIBS_PATH)/openFrameworks";
+				OF_PATH = "$(PROJECT_DIR)/../of_v0.9.8_osx_release";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
@@ -3001,7 +2971,7 @@
 				OF_ADDONS_PATH = "$(OF_PATH)/addons";
 				OF_CORE_LIBS = "$(LIB_POCO) $(LIB_TESS) $(LIB_GLEW) $(LIB_CAIRO1) $(LIB_CAIRO2) $(LIB_CAIRO3) $(LIB_FMODEX) $(LIB_RTAUDIO) $(LIB_OPENSSL1) $(LIB_OPENSSL2) $(LIB_GLFW) $(LIB_FREEIMAGE) $(LIB_FREETYPE) $(LIB_BOOST_FS) $(LIB_BOOST_SYSTEM)";
 				OF_LIBS_PATH = "$(OF_PATH)/libs";
-				OF_PATH = "$(EXTERNAL_LIBS_PATH)/openFrameworks";
+				OF_PATH = "$(PROJECT_DIR)/../of_v0.9.8_osx_release";
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-mtune=native",

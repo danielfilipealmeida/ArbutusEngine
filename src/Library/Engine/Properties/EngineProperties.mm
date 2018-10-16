@@ -8,8 +8,8 @@
 
 #include "EngineProperties.h"
 
-EngineProperties&
-EngineProperties::getInstance() {
+EngineProperties& EngineProperties::getInstance()
+{
     static EngineProperties instance;
     
     instance.setDefaults();
@@ -17,8 +17,8 @@ EngineProperties::getInstance() {
     return instance;
 }
 
-void
-EngineProperties::setDefaults() {
+void EngineProperties::setDefaults()
+{
     mixerWidth=640;
     mixerHeight=480;
     mixerNLayers = 3;
@@ -26,11 +26,11 @@ EngineProperties::setDefaults() {
     beatSnapInProgress = false;
     currentFilePath = "";
     runMode = PLAY_MODE;
+    appSupportDir = getAppSupportPath();
  
 }
 
-void
-EngineProperties::beat() {
+void EngineProperties::beat() {
     triggeringBeat = false;
     
     ++beatsCounter;
@@ -82,117 +82,128 @@ EngineProperties::tap() {
 
 
 // getters
-unsigned int
-EngineProperties::getMixerWidth() {
+unsigned int EngineProperties::getMixerWidth()
+{
     return mixerWidth;
 };
 
-unsigned int
-EngineProperties::getMixerHeight() {
+unsigned int EngineProperties::getMixerHeight()
+{
     return mixerHeight;
 };
 
-int
-EngineProperties::getSelectedLayerNumber () {
+int EngineProperties::getSelectedLayerNumber ()
+{
     return selectedLayer;
 }
 
-int
-EngineProperties::getSelectedColumnNumber () {
+int EngineProperties::getSelectedColumnNumber ()
+{
     return selectedColumn;
 }
 
-unsigned int
-EngineProperties::getBeatsToSnap() {
+unsigned int EngineProperties::getBeatsToSnap() {
     return beatsToSnap;
 }
 
-unsigned int
-EngineProperties::getBeatsCounter() {
+unsigned int EngineProperties::getBeatsCounter() {
     return beatsCounter;
 }
 
-Boolean
-EngineProperties::isMetronomeOn () {
+Boolean EngineProperties::isMetronomeOn () {
     return metronomeOn;
 }
 
-Boolean
-EngineProperties::isTriggeringBeat () {
+Boolean EngineProperties::isTriggeringBeat () {
     return triggeringBeat;
 }
 
-string
-EngineProperties::getCurrentFilePath() {
+string EngineProperties::getCurrentFilePath() {
     return currentFilePath;
 }
 
-Boolean
-EngineProperties::isBeatSnapInProgress() {
+Boolean EngineProperties::isBeatSnapInProgress() {
     return beatSnapInProgress;
 }
 
-string
-EngineProperties::getAppSupportDir() {
+string EngineProperties::getAppSupportDir() {
     return appSupportDir;
 }
 
 
 // setters
-void
-EngineProperties::setMixerWidth ( unsigned int _width ) {
+void EngineProperties::setMixerWidth ( unsigned int _width )
+{
     mixerWidth = _width;
 }
 
-void
-EngineProperties::setMixerHeight ( unsigned int _height ) {
+void EngineProperties::setMixerHeight ( unsigned int _height )
+{
     mixerHeight = _height;
 }
 
-void
-EngineProperties::setSelectedLayerNumber ( int val ) {
+void EngineProperties::setSelectedLayerNumber ( int val )
+{
     selectedLayer = val;
 }
 
 void
-EngineProperties::setSelectedColumnNumber ( int val ) {
+EngineProperties::setSelectedColumnNumber ( int val )
+{
     selectedColumn = val; }
 
-void
-EngineProperties::setBeatsToSnap ( unsigned int val ) {
+void EngineProperties::setBeatsToSnap ( unsigned int val )
+{
     beatsToSnap = val; }
 
-void
-EngineProperties::setBeatsCounter ( unsigned int val ) {
+void EngineProperties::setBeatsCounter ( unsigned int val )
+{
     beatsCounter = val;
 }
 
-void
-EngineProperties::setMetronomeOn ( Boolean val ) {
+void EngineProperties::setMetronomeOn ( Boolean val )
+{
     metronomeOn = val;
 }
 
-void
-EngineProperties::setTriggeringBeat ( Boolean val ) {
+void EngineProperties::setTriggeringBeat ( Boolean val )
+{
     triggeringBeat = val;
 }
 
-void
-EngineProperties::setNumberOfLayers(unsigned int _numLayers) {
+void EngineProperties::setNumberOfLayers(unsigned int _numLayers)
+{
     mixerNLayers = _numLayers; }
 
-void
-EngineProperties::setCurrentFilePath(string _path) {
+void EngineProperties::setCurrentFilePath(string _path)
+{
     currentFilePath = _path;
 }
 
-void
-EngineProperties::setIsBeatSnapInProgress(Boolean _val) {
+void EngineProperties::setIsBeatSnapInProgress(Boolean _val) {
     beatSnapInProgress = _val;
 }
 
-void
-EngineProperties::setAppSupportDir(string _path) {
+void EngineProperties::setAppSupportDir(string _path)
+{
     appSupportDir = _path;
+}
+
+string EngineProperties::getOSXAppSupportPath() {
+    //return ofFilePath::getUserHomeDir() + "/Library/Application Support/Arbutus/";
+    return ofFilePath::join(
+                            ofFilePath::getUserHomeDir(),
+                            "/Library/Application Support/Arbutus/"
+                            );
+}
+
+string EngineProperties::getAppSupportPath()
+{
+    if (ofGetTargetPlatform() == OF_TARGET_OSX)
+    {
+        return getOSXAppSupportPath();
+    }
+        
+    return "";
 }
 

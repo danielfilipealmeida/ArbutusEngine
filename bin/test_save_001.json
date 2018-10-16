@@ -1,0 +1,151 @@
+{
+    "layers": [
+        {
+            "alpha": 1.0,
+            "blendMode": 2,
+            "blue": 0.0,
+            "blurH": 0,
+            "blurV": 0,
+            "brightness": 1.0,
+            "contrast": 1.0,
+            "green": 0.0,
+            "height": 480,
+            "name": "",
+            "red": 0.0,
+            "saturation": 1.0,
+            "width": 640
+        },
+        {
+            "alpha": 1.0,
+            "blendMode": 2,
+            "blue": 0.0,
+            "blurH": 0,
+            "blurV": 0,
+            "brightness": 1.0,
+            "contrast": 1.0,
+            "green": 0.0,
+            "height": 480,
+            "name": "",
+            "red": 0.0,
+            "saturation": 1.0,
+            "width": 640
+        }
+    ],
+    "scenes": [
+        {
+            "instances": [
+                {
+                    "index": 0,
+                    "properties": {
+                        "alpha": 1.0,
+                        "beatSnap": 0,
+                        "blue": 0.0,
+                        "brightness": 1.0,
+                        "centerX": 0.0,
+                        "centerY": 0.0,
+                        "column": 0,
+                        "contrast": 1.0,
+                        "direction": 1,
+                        "effects_drywet": 0.5,
+                        "endPercentage": 1.0,
+                        "green": 0.0,
+                        "height": 480,
+                        "isPlaying": 0,
+                        "isTriggered": 0,
+                        "lastPlayedTimestamp": 140735138553184,
+                        "layer": 0,
+                        "loopMode": 1,
+                        "name": "",
+                        "openedTimestamp": 0,
+                        "percentagePlayed": 0.0,
+                        "red": 0.0,
+                        "retrigger": 1,
+                        "saturation": 1.0,
+                        "startPercentage": 0.0,
+                        "triggerMode": 1,
+                        "width": 640,
+                        "x": 0,
+                        "y": 0,
+                        "zoomX": 1.0,
+                        "zoomY": 1.0
+                    },
+                    "videoHeight": 1701998435,
+                    "videoWidth": 778398832,
+                    "videoX": 1868759616,
+                    "videoY": 1868759616,
+                    "visual": {
+                        "address": "0x10199f7a0",
+                        "caption": "001",
+                        "filePath": "Fixtures/FileHandling/001.mov",
+                        "type": 0
+                    }
+                },
+                {
+                    "index": 1,
+                    "properties": {
+                        "alpha": 1.0,
+                        "beatSnap": 0,
+                        "blue": 0.0,
+                        "brightness": 1.0,
+                        "centerX": 0.0,
+                        "centerY": 0.0,
+                        "column": 0,
+                        "contrast": 1.0,
+                        "direction": 1,
+                        "effects_drywet": 0.5,
+                        "endPercentage": 1.0,
+                        "green": 0.0,
+                        "height": 480,
+                        "isPlaying": 0,
+                        "isTriggered": 0,
+                        "lastPlayedTimestamp": 0,
+                        "layer": 1,
+                        "loopMode": 1,
+                        "name": "",
+                        "openedTimestamp": 0,
+                        "percentagePlayed": 0.0,
+                        "red": 0.0,
+                        "retrigger": 1,
+                        "saturation": 1.0,
+                        "startPercentage": 0.0,
+                        "triggerMode": 1,
+                        "width": 640,
+                        "x": 0,
+                        "y": 0,
+                        "zoomX": 1.0,
+                        "zoomY": 1.0
+                    },
+                    "videoHeight": 0,
+                    "videoWidth": 0,
+                    "videoX": 0,
+                    "videoY": 0,
+                    "visual": {
+                        "address": "0x1019894c0",
+                        "caption": "002",
+                        "filePath": "Fixtures/FileHandling/002.mov",
+                        "type": 0
+                    }
+                }
+            ],
+            "name": "Scene 1"
+        },
+        {
+            "instances": null,
+            "name": "scene 2"
+        }
+    ],
+    "visuals": [
+        {
+            "address": "0x10199f7a0",
+            "caption": "001",
+            "filePath": "Fixtures/FileHandling/001.mov",
+            "type": 0
+        },
+        {
+            "address": "0x1019894c0",
+            "caption": "002",
+            "filePath": "Fixtures/FileHandling/002.mov",
+            "type": 0
+        }
+    ]
+}

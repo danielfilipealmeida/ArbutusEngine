@@ -19,70 +19,83 @@ VisualVideo::VisualVideo(string _filePath)
     ofFile *visualFile2;
     
     Visual::Visual();
-    
-    // ATENCAO AQUI QUE ESTÁ A DAR ERRO
-    //try {
-        ofFile *visualFile = new ofFile(_filePath);
-        if (!visualFile->exists()) {
-            delete visualFile;
-            
-            // todo: fix this!
-            setFolder = ofFilePath::getEnclosingDirectory(Set::getInstance().getFilePath () );
-            _filePath = ofFilePath::join(setFolder,_filePath);
-            visualFile2 = new ofFile(_filePath);
-            setCaption (visualFile2->getFileName());
-            delete visualFile2;
-        }
-        else {
-            setCaption (visualFile->getFileName());
-            delete visualFile;
-        }
-        
 
-    filePath = _filePath;
+    filePath = findAbsolutePath(_filePath);
 	loaded   = false;
+    
+    setCaption(getCaptionFromPath(filePath));
+    
     setThumbnail();
     setType (VisualType_Video);
 }
 
 
 
-VisualVideo::~VisualVideo() {
+string VisualVideo::findAbsolutePath(string path)
+{
+    if (ofFile::doesFileExist(path, false))
+    {
+        return path;
+    }
+    
+    string setFolder;
+    
+    setFolder = ofFilePath::getEnclosingDirectory(Set::getInstance().getFilePath ());
+    path = ofFilePath::join(setFolder,path);
+    if (ofFile::doesFileExist(path, false)) {
+        return path;
+    }
+
+    path.clear();
+    
+    return path;
+}
+
+string VisualVideo::getCaptionFromPath(string path)
+{
+    if (path.empty()) {
+        return "---";
+    }
+ 
+    return ofFilePath::getBaseName(path);
+}
+
+VisualVideo::~VisualVideo()
+{
 	if (loaded == true) closeVisual();
 }
 
 
-json
-VisualVideo::getState()
+json VisualVideo::getState()
 {
     json state;
     
     state = Visual::getState();
-    
     state["filePath"] = filePath;
     
     return state;
 }
 
-void VisualVideo::setState(json state) {
+void VisualVideo::setState(json state)
+{
     Visual::setState(state);
 }
 
-Boolean
-VisualVideo::loadVideo(){
+bool VisualVideo::loadVideo()
+{
     return false;
 }
 
 
-Boolean
-VisualVideo::closeVisual(){
+bool VisualVideo::closeVisual()
+{
     return false;
     
 }
 
 
-Boolean
-VisualVideo::fileExists() {
+bool VisualVideo::fileExists()
+{
 	// check if file exists
 	fstream fin;
 	string fileNameInOF = ofToDataPath(filePath);
@@ -92,63 +105,97 @@ VisualVideo::fileExists() {
 		return true;
 	}
 
-        //string curentSetPath = ofFilePath::getPathForDirectory(_engine->currentSet.filePath);    ;
-    
+
 	return false;
 }
 
+void VisualVideo::saveThumbnail()
+{
+    Visual::saveThumbnail();
+}
 
+void VisualVideo::deleteThumbnail() {
+    if (!ofFile::doesFileExist(getThumbnailPath())) {
+        return;
+    }
+    
+    ofFile::removeFile(getThumbnailPath());
+}
 
-
-
-void
-VisualVideo::setThumbnail() {
+void VisualVideo::setThumbnail()
+{
     string newThumbnailPath;
     
-   // thumbnailPath = Visual::getThumbnailPath ();
     newThumbnailPath = enginePtr->calculateThumbnailPath(filePath);
-    
     setThumbnailPath (newThumbnailPath);
     if (!this->screenshot.loadImage(newThumbnailPath)) {
         createThumbnail();
         Visual::saveThumbnail();
     }
-
 }
 
-void
-VisualVideo::saveThumbnail() {
-    Visual::saveThumbnail();
-}
-
-
-
-
-void
-VisualVideo::createThumbnail(){
-    Visual::createThumbnail();
-	if(fileExists() == false) return;
+unsigned int VisualVideo::getVideoMiddleFrame(ofVideoPlayer video)
+{
+    if (!video.isLoaded()) {
+        return 0;
+    }
     
-    unsigned int middleFrame;
+    return (unsigned int) round (video.getTotalNumFrames()  / 2.0);
+    
+}
+
+void VisualVideo::createThumbnail()
+{
+    Visual::createThumbnail();
+    
+    if(fileExists() == false) {
+        return;
+    }
     
     ofVideoPlayer video;
+    
     video.loadMovie(filePath);
-    middleFrame = (unsigned int) round(video.getTotalNumFrames() / 2.0);
-    video.setFrame(middleFrame);
+    video.setFrame(getVideoMiddleFrame(video));
     video.update();
     screenshot.allocate(video.getWidth(), video.getHeight(), OF_IMAGE_COLOR);
     screenshot.setFromPixels(video.getPixels().getData(), video.getWidth(), video.getHeight(), OF_IMAGE_COLOR, true);
     screenshot.resize(THUMBNAIL_WIDTH, THUMBNAIL_WIDTH * (screenshot.getHeight() / screenshot.getWidth()));
+    video.close();
 }
 
-void
-VisualVideo::print(){
+void VisualVideo::print()
+{
     Visual::print();
+    
     cout << "type: Video" <<endl;
 	cout << "file path: "<<VisualVideo::filePath<<endl;
 	cout << "loaded: ";
-	if(VisualVideo::loaded == true) cout << "Yes"; else cout << "No";
-	cout << endl;
+	
+    if(VisualVideo::loaded == true) cout << "Yes"; else cout << "No";
+	
+    cout << endl;
 }
 
+bool VisualVideo::isLoaded ()
+{
+    return loaded;
+}
+
+
+void VisualVideo::setLoaded(bool _val)
+{
+    loaded = _val;
+}
+
+
+string VisualVideo::getFilePath ()
+{
+    return filePath;
+}
+
+
+void VisualVideo::setFilePath ( string _input )
+{
+    filePath = _input;
+}
 

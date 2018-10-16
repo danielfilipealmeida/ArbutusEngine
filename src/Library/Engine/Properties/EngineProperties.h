@@ -192,8 +192,18 @@ public:
     /*!
      \brief
      */
-    void  beat();
+    void beat();
     
+    /*!
+     \brief Returns the folder where the settings and caches are stored on OSX
+     */
+    string getOSXAppSupportPath();
+    
+    
+    /*!
+     \brief Returns the folder where the settings and caches are stored
+     */
+    string getAppSupportPath();
 };
 
 #endif /* EngineProperties_h */
