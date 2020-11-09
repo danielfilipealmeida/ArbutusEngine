@@ -9,11 +9,8 @@
 #include <stdio.h>
 #include "catch.hpp"
 #include "Layer.h"
-#include "json.hpp"
 
 using json = nlohmann::json;
-
-
 
 void testNewLayer(json layer) {
     REQUIRE(layer["alpha"].get<float>() == 1.0);

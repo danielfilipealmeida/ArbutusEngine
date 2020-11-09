@@ -42,6 +42,11 @@ xcodebuild -scheme ArbutusLib build
 
 ## Work todo
 
+
+- Compile all again
+- add documentation placemarks on all functions
+- implement IPC 
+
 - fix generated json of the state
 - break the current shader into parts. have one shader per effect
 - create a shader for helping on the transitions: a shader that applies a grayscale fbo to the alpha channel of another fbo

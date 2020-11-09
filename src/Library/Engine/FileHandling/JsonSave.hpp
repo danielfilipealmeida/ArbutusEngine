@@ -10,9 +10,7 @@
 #define JsonSave_hpp
 
 #include <stdio.h>
-#include "json.hpp"
-
-using json = nlohmann::json;
+#include "ofJson.h"
 
 class JsonSave {
 public:
@@ -20,7 +18,7 @@ public:
     @abstract Saves the state into a file located at the given path
      */
     static void
-    save(std::string path, json state);
+    save(std::string path, ofJson state);
     
     
 private:
@@ -28,7 +26,7 @@ private:
     /* this should be moved somewhere else to be used to validate the state
      */
     static void
-    validateState(json state);
+    validateState(ofJson state);
 };
 
 #endif /* JsonSave_hpp */

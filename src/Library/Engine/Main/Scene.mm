@@ -48,8 +48,6 @@ void Scene::setState(json state) {
         visual = Visuals::getInstance().get(newVisualInstanceState["index"]);
         if (visual == NULL) continue;
         
-        
-        
         layer = newVisualInstanceState["properties"]["layer"];
         column = newVisualInstanceState["properties"]["column"];
         name = newVisualInstanceState["properties"]["name"];
@@ -70,7 +68,7 @@ Scene::setName(string newName) {
 
 
 void Scene::print(){
-	cout << "scene name: "<<sceneName<<endl;
+	cout << "scene name: " << sceneName << endl;
 	cout << "total visuals: " << visualInstances.count() << endl;
     visualInstances.print();
 }

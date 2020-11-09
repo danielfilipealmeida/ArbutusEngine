@@ -23,7 +23,6 @@
 #include "Controller.h"
 #include "SyphonOutputManager.h"
 #include "AppProtocol.h"
-#include "json.hpp"
 #include "EngineProperties.h"
 #include "Visuals.h"
 

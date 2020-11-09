@@ -39,14 +39,14 @@ void SizeProperties::setHeight(unsigned int _height) {
     height = ofClamp(_height, heightLimits.min, heightLimits.max);
 }
 
-json SizeProperties::getState(json state) {
+ofJson SizeProperties::getState(ofJson state) {
     state["width"] = getWidth();
     state["height"] = getHeight();
     
     return state;
 }
 
-json SizeProperties::getFullState(json fullState) {
+ofJson SizeProperties::getFullState(ofJson fullState) {
     fullState["width"] =  {
         {"title", "Width"},
         {"type", Utils::getStateTypeForTypeidName(typeid(width).name())},

@@ -9,15 +9,14 @@
 #include "JsonLoad.hpp"
 #include "ofMain.h"
 
-json JsonLoad::load(std::string path) {
+ofJson JsonLoad::load(std::string path) {
     if (!ofFile::doesFileExist(path)) {
         throw "File does not exist";
     }
     
     ofBuffer buffer = ofBufferFromFile(path);
-    //cout << buffer.getText() << endl;
-    
-    json state = json::parse(buffer.getText());
+
+    ofJson state = ofJson::parse(buffer.getText());
     
     // should validate the state
     return state;

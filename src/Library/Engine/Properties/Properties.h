@@ -12,7 +12,6 @@
 #define __PROPERTIES_H__
 
 #include "ofMain.h"
-#include "json.hpp"
 
 using json = nlohmann::json;
 

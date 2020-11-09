@@ -9,9 +9,8 @@
 #define SizeProperties_h
 
 #include <stdio.h>
-#include "json.hpp"
+#include "ofJson.h"
 
-using json = nlohmann::json;
 
 typedef struct {
     unsigned int min;
@@ -57,14 +56,14 @@ public:
     /*!
      \brief
      */
-    json getState(json state);
+    ofJson getState(ofJson state);
     
     /*!
      \brief Returns the complete state information
      
      The complete state isn't changeable. It contains the datatype and the limits.
      */
-    json getFullState(json fullState);
+    ofJson getFullState(ofJson fullState);
     
 };
 

@@ -14,7 +14,6 @@
 #include "LayerProperties.h"
 #include <stdlib.h>
 #include "VisualInstance.h"
-#include "json.hpp"
 #include "EngineProperties.h"
 
 

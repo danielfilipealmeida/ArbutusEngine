@@ -10,16 +10,14 @@
 #define JsonLoad_hpp
 
 #include <stdio.h>
-#include "json.hpp"
-
-using json = nlohmann::json;
+#include "ofJson.h"
 
 class JsonLoad {
 public:
     /**!
      @abstract Loads the state from a file located at the given path
      */
-    static json
+    static ofJson
     load(std::string path);
 
 };

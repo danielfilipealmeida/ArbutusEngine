@@ -20,9 +20,6 @@
 #include "VisualSyphon.h"
 #include "VisualInstancesProperties.h"
 #include "FreeFrameFilters.h"
-#include "json.hpp"
-
-
 
 using json = nlohmann::json;
 

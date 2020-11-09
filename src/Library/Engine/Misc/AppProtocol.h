@@ -19,9 +19,9 @@ class AppProtocol {
     
 public:
     virtual void beat();
-    virtual void newMidiMessage(string msg);
-    virtual void newOscMessage(string msg);
-    virtual string getThumbnailPath(string filePath);
+    virtual void newMidiMessage(std::string msg);
+    virtual void newOscMessage(std::string msg);
+    virtual std::string getThumbnailPath(std::string filePath);
     
 };
 

@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 #include "ofxTCPServer.h"
-#include "json.hpp"
 
 using json = nlohmann::json;
 

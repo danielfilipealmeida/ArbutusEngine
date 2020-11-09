@@ -29,53 +29,35 @@ public:
     static Osc* getInstance(int port);
 
     /*!
-     
      */
-
     Osc(int port);
     
     
     /*!
      
      */
-
     ~Osc();
     
-    
     /*!
-     
      */
-    
     static  Osc *getOscInstance();
     
-    
     /*!
-     
      */
-
     void    update();
     
     
     /*!
-     
      */
-
     void    checkVisualTrigger(ofxOscMessage msg);
     
-    
+    /*!
+     */
+    std::string  getVisualTriggerActionString(ofxOscMessage msg);
     
     /*!
-     
      */
-
-    string  getVisualTriggerActionString(ofxOscMessage msg);
-    
-    
-    /*!
-     
-     */
-    
-    string  description(ofxOscMessage msg);
+    std::string  description(ofxOscMessage msg);
 };
 
 #endif /* defined(__VJApp__Osc__) */

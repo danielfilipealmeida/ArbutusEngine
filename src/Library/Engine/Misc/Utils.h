@@ -18,7 +18,6 @@ typedef enum StateType {
     StateType_String,
     StateType_ButtonGroup,
     StateType_ToggleButtonGroup
-    
 };
 
 class Utils {

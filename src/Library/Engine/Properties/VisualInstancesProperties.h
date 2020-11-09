@@ -15,8 +15,6 @@
 
 #include "Properties.h"
 #include "SizeProperties.h"
-#include "json.hpp"
-
 
 using json = nlohmann::json;
 

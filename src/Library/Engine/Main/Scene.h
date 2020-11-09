@@ -17,7 +17,6 @@
 #include <stdlib.h>
 #include "VisualInstance.h"
 #include "Visual.h"
-#include "json.hpp"
 
 
 using json = nlohmann::json;

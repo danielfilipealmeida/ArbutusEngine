@@ -55,18 +55,18 @@ Midi::~Midi() {
 
 void Midi::list() {
     ofxMidiIn _midiIn;
-    _midiIn.listPorts();
+    _midiIn.listInPorts();
     
 }
 
 int Midi::getNumPorts() {
     ofxMidiIn _midiIn;
-    return _midiIn.getNumPorts();
+    return _midiIn.getNumInPorts();
 }
 
 string Midi::getPortName(unsigned int portNumber) {
     ofxMidiIn _midiIn;
-    return _midiIn.getPortName(portNumber);
+    return _midiIn.getInPortName(portNumber);
 }
 
 

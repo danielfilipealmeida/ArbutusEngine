@@ -11,15 +11,13 @@
 
 #include <stdio.h>
 #include <string>
-#include "json.hpp"
-
-using json = nlohmann::json;
+#include "ofJson.h"
 
 
 class SetFile {
 public:
-    static json load(std::string path);
-    static void save(std::string path, json state);
+    static ofJson load(std::string path);
+    static void save(std::string path, ofJson state);
 };
 
 #endif /* FileLoader_hpp */

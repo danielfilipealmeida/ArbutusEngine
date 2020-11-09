@@ -17,7 +17,7 @@ VisualCamera::VisualCamera(
 ) {
     vector<ofVideoDevice> listDevices;
     ofVideoDevice         device;
-    Visual::Visual();
+    Visual();
 
     // protection
     listDevices = videoGrabber.listDevices();

@@ -18,7 +18,7 @@ VisualVideo::VisualVideo(string _filePath)
     string setFolder;
     ofFile *visualFile2;
     
-    Visual::Visual();
+    Visual();
 
     filePath = findAbsolutePath(_filePath);
 	loaded   = false;

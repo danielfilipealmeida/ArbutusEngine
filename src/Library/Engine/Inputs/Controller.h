@@ -51,8 +51,8 @@ public:
 	void setCallback(void (*_callback)(Controller *controller));
     
 	
-	string getControlString();
-	string getConfigFolder();
+	std::string getControlString();
+	std::string getConfigFolder();
 	
 	/* debug */
 	void printInfo();
@@ -111,6 +111,6 @@ public:
 };
 
 
-string getMIDIKeyName(int position);
+std::string getMIDIKeyName(int position);
 
 #endif

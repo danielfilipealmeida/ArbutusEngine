@@ -13,11 +13,8 @@
 
 #include "ofMain.h"
 #include <stdlib.h>
-#include "json.hpp"
-
 
 using json = nlohmann::json;
-
 
 typedef enum VisualType {
     VisualType_Video = 0,

@@ -10,10 +10,10 @@
 #include "JsonSave.hpp"
 #include "JsonLoad.hpp"
 
-json SetFile::load(std::string path) {
+ofJson SetFile::load(std::string path) {
     return JsonLoad::load(path);
 }
 
-void SetFile::save(std::string path, json state) {
+void SetFile::save(std::string path, ofJson state) {
     JsonSave::save(path, state);
 }
