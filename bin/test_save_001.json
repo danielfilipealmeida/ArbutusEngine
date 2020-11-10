@@ -52,11 +52,11 @@
                         "height": 480,
                         "isPlaying": 0,
                         "isTriggered": 0,
-                        "lastPlayedTimestamp": 140735138553184,
+                        "lastPlayedTimestamp": 4333346128,
                         "layer": 0,
                         "loopMode": 1,
                         "name": "",
-                        "openedTimestamp": 0,
+                        "openedTimestamp": 4333345664,
                         "percentagePlayed": 0.0,
                         "red": 0.0,
                         "retrigger": 1,
@@ -69,12 +69,12 @@
                         "zoomX": 1.0,
                         "zoomY": 1.0
                     },
-                    "videoHeight": 1701998435,
-                    "videoWidth": 778398832,
-                    "videoX": 1868759616,
-                    "videoY": 1868759616,
+                    "videoHeight": 0,
+                    "videoWidth": 18,
+                    "videoX": 0,
+                    "videoY": 0,
                     "visual": {
-                        "address": "0x10199f7a0",
+                        "address": "0x102382100",
                         "caption": "001",
                         "filePath": "Fixtures/FileHandling/001.mov",
                         "type": 0
@@ -102,7 +102,7 @@
                         "layer": 1,
                         "loopMode": 1,
                         "name": "",
-                        "openedTimestamp": 0,
+                        "openedTimestamp": 6373760,
                         "percentagePlayed": 0.0,
                         "red": 0.0,
                         "retrigger": 1,
@@ -115,12 +115,12 @@
                         "zoomX": 1.0,
                         "zoomY": 1.0
                     },
-                    "videoHeight": 0,
-                    "videoWidth": 0,
+                    "videoHeight": -2,
+                    "videoWidth": -92471282,
                     "videoX": 0,
                     "videoY": 0,
                     "visual": {
-                        "address": "0x1019894c0",
+                        "address": "0x102494ff0",
                         "caption": "002",
                         "filePath": "Fixtures/FileHandling/002.mov",
                         "type": 0
@@ -136,13 +136,13 @@
     ],
     "visuals": [
         {
-            "address": "0x10199f7a0",
+            "address": "0x102382100",
             "caption": "001",
             "filePath": "Fixtures/FileHandling/001.mov",
             "type": 0
         },
         {
-            "address": "0x1019894c0",
+            "address": "0x102494ff0",
             "caption": "002",
             "filePath": "Fixtures/FileHandling/002.mov",
             "type": 0

@@ -51,7 +51,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
             endingLineNumber = "129"
-            landmarkName = "Visual::setThumbnailPath(string _val)"
+            landmarkName = "Visual::setThumbnailPath(_val)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -59,7 +59,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "8C8F6814-07D2-475D-9104-CB818BD86848"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Library/Engine/Visuals/Visual.mm"
@@ -76,7 +76,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "ADEA2C53-C233-4CFE-9DD1-049AEC775C7D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "src/Library/Engine/Visuals/VisualVideo.mm"

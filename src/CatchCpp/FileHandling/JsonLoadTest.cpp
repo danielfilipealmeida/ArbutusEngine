@@ -10,23 +10,24 @@
 #include "catch.hpp"
 #include "JsonLoad.hpp"
 #include "ofMain.h"
+#include "ofJson.h"
 
 TEST_CASE("Invalid file path throws","[open]") {
-    std::string path = ofFilePath::getCurrentExeDir() + "/some_bad_folder/myset.json";
+    std::string path = ofFilePath::getCurrentExeDir() + "/some_bad_folder/myset.ofJson";
     
     REQUIRE_THROWS_WITH(JsonLoad::load(path), "File does not exist");
 }
 
 TEST_CASE("File path does not throws","[open]") {
-    std::string path = ofFilePath::getCurrentExeDir() + "/Fixtures/FileHandling/test001.json";
-    json result;
+    std::string path = ofFilePath::getCurrentExeDir() + "/Fixtures/FileHandling/test001.ofJson";
+    ofJson result;
     
     REQUIRE_NOTHROW(result = JsonLoad::load(path));
     
-    json expectedState = {
-        {"layers", json::array()},
-        {"scenes", json::array()},
-        {"visuals", json::array()}
+    ofJson expectedState = {
+        {"layers", ofJson::array()},
+        {"scenes", ofJson::array()},
+        {"visuals", ofJson::array()}
     };
      
     REQUIRE(result.dump().compare(expectedState.dump()) == 0);
@@ -36,12 +37,12 @@ TEST_CASE("File path does not throws","[open]") {
                         
                         
 TEST_CASE("Open a file and check the imported state is correct","[open]") {
-    std::string path = ofFilePath::getCurrentExeDir() + "/Fixtures/FileHandling/test002.json";
-    json result;
+    std::string path = ofFilePath::getCurrentExeDir() + "/Fixtures/FileHandling/test002.ofJson";
+    ofJson result;
     
     REQUIRE_NOTHROW(result = JsonLoad::load(path));
     
-    json expectedLayers = {
+    ofJson expectedLayers = {
         {
             {"layer", "layer 1"},
             {"alpha", 1.0},
@@ -67,7 +68,7 @@ TEST_CASE("Open a file and check the imported state is correct","[open]") {
             {"blurV", 1.0}
         }
     };
-    json expectedVisuals = {
+    ofJson expectedVisuals = {
         {
             {"type", 0},
             {"caption", "Visual 1"},
@@ -84,17 +85,17 @@ TEST_CASE("Open a file and check the imported state is correct","[open]") {
             {"filePath", "003.mov"}
         }
     };
-    json expectedScenes = {
+    ofJson expectedScenes = {
         {
             {"name", "scene 1"},
-            {"instances", json::array()}
+            {"instances", ofJson::array()}
         },
         {
             {"name", "scene 2"},
-            {"instances", json::array()}
+            {"instances", ofJson::array()}
         }
     };
-    json expectedState = {
+    ofJson expectedState = {
         {"layers", expectedLayers},
         {"scenes", expectedScenes},
         {"visuals", expectedVisuals}

@@ -9,40 +9,40 @@
 #define Messages_hpp
 
 #include <stdio.h>
+#include "ofJson.h"
 
-using json = nlohmann::json;
 
 /*!
- Parses a json request comming from a client and acts upon it.
+ Parses a ofJson request comming from a client and acts upon it.
  Replies to the user if necessary
  
- @param json request
- @return json
+ @param ofJson request
+ @return ofJson
  */
-json handleJSONRequestForClient(json request);
+ofJson handleJSONRequestForClient(ofJson request);
 
 /*!
  Handles requests the ask to set the state
  */
-json handleSetState(json request);
+ofJson handleSetState(ofJson request);
 
 
 /*!
  Sets the value of a controller
  
- @param json data for changing a layer 
- @return json
+ @param ofJson data for changing a layer
+ @return ofJson
  */
-json setLayerControl(json data);
+ofJson setLayerControl(ofJson data);
 
 /*!
  Traverses the input data and sets those parameters, returning the final set value to the client
  
- @param json data for changing a state
- @return json
+ @param ofJson data for changing a state
+ @return ofJson
  */
-json updateState(json data);
+ofJson updateState(ofJson data);
 
-json updateLayers(json layerData);
+ofJson updateLayers(ofJson layerData);
 
 #endif /* messages_hpp */

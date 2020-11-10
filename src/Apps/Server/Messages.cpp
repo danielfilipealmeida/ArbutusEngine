@@ -8,9 +8,10 @@
 #include "Messages.hpp"
 #include "Engine.h"
 #include "Utils.h"
+#include "ofJson.h"
 
-json handleJSONRequestForClient(json request) {
-    json response = {
+ofJson handleJSONRequestForClient(ofJson request) {
+    ofJson response = {
         {"success", true},
         {"message", ""},
         {"data", {}}
@@ -51,8 +52,8 @@ json handleJSONRequestForClient(json request) {
     return response;
 }
 
-json handleSetState(json request) {
-    json result;
+ofJson handleSetState(ofJson request) {
+    ofJson result;
     
     if (!request["data"].is_object()) throw std::runtime_error("No data sent for state change.");
 
@@ -61,19 +62,19 @@ json handleSetState(json request) {
     return result;
 }
 
-json setLayerControl(json data) {
-    json result;
+ofJson setLayerControl(ofJson data) {
+    ofJson result;
     string controlName = data["name"].get<string>();
     float value = ofToFloat(data["value"].get<string>());
     
-    json newLayerControlState = {
+    ofJson newLayerControlState = {
         {controlName, value}
     };
     
     Layer *layer = Layers::getInstance().get(data["layer"].get<int>());
     
     layer->setState(newLayerControlState);
-    json newState = layer->getState();
+    ofJson newState = layer->getState();
     
     result = {
         {"result", value == newState["alpha"].get<float>()}
@@ -82,8 +83,8 @@ json setLayerControl(json data) {
     return result;
 }
 
-json updateState(json data) {
-    json result;
+ofJson updateState(ofJson data) {
+    ofJson result;
     
     result["layers"] = updateLayers(data["layers"]);
     result = {
@@ -92,12 +93,12 @@ json updateState(json data) {
     return result;
 }
 
-json updateLayers(json layerData) {
-    json result;
+ofJson updateLayers(ofJson layerData) {
+    ofJson result;
     
     unsigned int currentLayerIndex = 0;
     for(auto layer:layerData) {
-        json layerResult;
+        ofJson layerResult;
         
         Layer *currentLayer = Layers::getInstance().get(currentLayerIndex);
         currentLayer->setState(layer);

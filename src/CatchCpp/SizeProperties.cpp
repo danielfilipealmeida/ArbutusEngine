@@ -9,11 +9,12 @@
 #include "catch.hpp"
 #include "SizeProperties.h"
 #include "Utils.h"
+#include "ofJson.h"
 
 
 TEST_CASE("Can get well defined size properties state","[getFullState]") {
     SizeProperties sizeProperties;
-    json fullState = sizeProperties.getFullState({});
+    ofJson fullState = sizeProperties.getFullState({});
     
     // WIDTH
     REQUIRE(fullState["width"]["max"] == 1920);
@@ -28,7 +29,4 @@ TEST_CASE("Can get well defined size properties state","[getFullState]") {
     REQUIRE(fullState["height"]["value"] == 1080);
     REQUIRE(fullState["height"]["type"] == StateType_Integer);
     REQUIRE(fullState["height"]["title"].get<std::string>().compare("Height") == 0);
-    
-    
-   
 }
