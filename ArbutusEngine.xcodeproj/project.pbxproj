@@ -25,9 +25,6 @@
 		0C0B84C41FC078FD00BEF796 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BFAF81E7355BD00B74446 /* CoreMIDI.framework */; };
 		0C0B84C61FC078FD00BEF796 /* 001.mov in Resources */ = {isa = PBXBuildFile; fileRef = 65276BBF1F48730800949383 /* 001.mov */; };
 		0C0B84C71FC078FD00BEF796 /* 002.mov in Resources */ = {isa = PBXBuildFile; fileRef = 65276BC01F48730800949383 /* 002.mov */; };
-		0C0B84C81FC078FD00BEF796 /* set.json in Resources */ = {isa = PBXBuildFile; fileRef = 65276BBB1F4871BD00949383 /* set.json */; };
-		0C0B84C91FC078FD00BEF796 /* layerShader.vert in Resources */ = {isa = PBXBuildFile; fileRef = 651F5CCB1F504974006F103F /* layerShader.vert */; };
-		0C0B84CA1FC078FD00BEF796 /* layerShader.frag in Resources */ = {isa = PBXBuildFile; fileRef = 651F5CCA1F504974006F103F /* layerShader.frag */; };
 		0C0B84D91FC0793A00BEF796 /* Server-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C0B84D21FC0793900BEF796 /* Server-Info.plist */; };
 		0C0B84DA1FC0793A00BEF796 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B84D31FC0793900BEF796 /* ofApp.cpp */; };
 		0C0B84DB1FC0793A00BEF796 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C0B84D41FC0793900BEF796 /* main.cpp */; };
@@ -1284,13 +1281,13 @@
 			isa = PBXGroup;
 			children = (
 				658017E4255AD34F00D8BAE2 /* libfmodex.dylib */,
+				65E6BD471F464F4E008E4F9E /* Syphon.framework */,
 				651CFE8225571AB900DAC431 /* openFrameworksLib.xcodeproj */,
 				65F6C5401F42F08A00270C51 /* README.md */,
 				0C0B84FC1FC1C97600BEF796 /* DevNotes.md */,
 				0C628F001F9B954400ADB871 /* doxygenconf */,
 				0C71D3C31F8A6901006126A5 /* CMakeLists.txt */,
 				0C1E77CC1F8D4E8F005507CF /* run_cmake.sh */,
-				65E6BD471F464F4E008E4F9E /* Syphon.framework */,
 				65E6BD451F464E83008E4F9E /* libfmodex.dylib */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
@@ -1450,11 +1447,16 @@
 				LastUpgradeCheck = 0910;
 				TargetAttributes = {
 					0C0B84A01FC078FD00BEF796 = {
+						DevelopmentTeam = NJJLX74WDH;
 						ProvisioningStyle = Automatic;
 					};
 					650455581F47085D00CB3BE5 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = NJJLX74WDH;
 						ProvisioningStyle = Automatic;
+					};
+					650455791F47A9FE00CB3BE5 = {
+						DevelopmentTeam = NJJLX74WDH;
 					};
 					65A1865F1DF8DF9200BE0219 = {
 						CreatedOnToolsVersion = 8.1;
@@ -1514,15 +1516,12 @@
 			files = (
 				0C0B84C61FC078FD00BEF796 /* 001.mov in Resources */,
 				0C0B84C71FC078FD00BEF796 /* 002.mov in Resources */,
-				0C0B84C81FC078FD00BEF796 /* set.json in Resources */,
 				0C0B84D91FC0793A00BEF796 /* Server-Info.plist in Resources */,
 				0C0B84E21FC0794A00BEF796 /* layerShader.vert in Resources */,
-				0C0B84C91FC078FD00BEF796 /* layerShader.vert in Resources */,
+				0C0B84E11FC0794A00BEF796 /* layerShader.frag in Resources */,
 				0C0B84DC1FC0793A00BEF796 /* README.md in Resources */,
-				0C0B84CA1FC078FD00BEF796 /* layerShader.frag in Resources */,
 				0C0B84DD1FC0793A00BEF796 /* set.json in Resources */,
 				658017B4255A19AC00D8BAE2 /* addon_config.mk in Resources */,
-				0C0B84E11FC0794A00BEF796 /* layerShader.frag in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1893,11 +1892,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = NJJLX74WDH;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1944,7 +1943,7 @@
 					"$(LIB_JSON_PATH)",
 					"$(OF_CORE_HEADERS)",
 				);
-				INFOPLIST_FILE = "HelloWorld copy3-Info.plist";
+				INFOPLIST_FILE = "src/Apps/Server/Server-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/\"",
@@ -1970,7 +1969,7 @@
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DanielFilipeA.HelloWorld;
+				PRODUCT_BUNDLE_IDENTIFIER = DanielFilipeA.Server;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -1998,12 +1997,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = NJJLX74WDH;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2046,7 +2045,7 @@
 					"$(LIB_JSON_PATH)",
 					"$(OF_CORE_HEADERS)",
 				);
-				INFOPLIST_FILE = "HelloWorld copy3-Info.plist";
+				INFOPLIST_FILE = "src/Apps/Server/Server-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/\"",
@@ -2072,7 +2071,7 @@
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DanielFilipeA.HelloWorld;
+				PRODUCT_BUNDLE_IDENTIFIER = DanielFilipeA.Server;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -2103,6 +2102,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = NJJLX74WDH;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2206,6 +2206,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = NJJLX74WDH;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2304,6 +2305,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = NJJLX74WDH;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2407,6 +2409,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = NJJLX74WDH;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
