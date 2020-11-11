@@ -12,6 +12,10 @@
 		<data>
 		t3YoURMXoVlcNHGRqRGqlw++ZQo=
 		</data>
+		<key>Resources/addon_config.mk</key>
+		<data>
+		SWjyrj+F9JHOWcUZ6JFP/1GFfQQ=
+		</data>
 		<key>Resources/layerShader.frag</key>
 		<data>
 		qbm7dXKAmwJHVfVB+Tigp1sOqzk=
@@ -47,6 +51,17 @@
 			<key>hash2</key>
 			<data>
 			L4p1T99ZRkPn9IphxwTL+FUrUnKckUX9yqwixE4p36I=
+			</data>
+		</dict>
+		<key>Resources/addon_config.mk</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			SWjyrj+F9JHOWcUZ6JFP/1GFfQQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			2jly6WNH6H51zzLaVaGyq3qVGq8tsO9WQ7n40/AmZXk=
 			</data>
 		</dict>
 		<key>Resources/layerShader.frag</key>
@@ -100,6 +115,11 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
+		</dict>
+		<key>^Resources/Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
 		</dict>
 		<key>^version.plist$</key>
 		<true/>
@@ -159,6 +179,11 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
+		</dict>
+		<key>^Resources/Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
 		</dict>
 		<key>^[^/]+$</key>
 		<dict>
