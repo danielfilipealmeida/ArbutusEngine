@@ -89,24 +89,55 @@ class ControllerGroup
     Boolean         isAllocated ;
 
 public:
-	
+    
+    /*!
+     @abstract constructor
+     */
 	ControllerGroup();
+    
+    /*!
+     @abstract destructor
+     */
 	~ControllerGroup();
     
+    /*!
+     */
     void initDefaultControllers();
 	
+    /*!
+     @param controller
+     */
 	void addController(Controller *controller);
-	void handleControllers();
 
+    /*!
+     */
+    void handleControllers();
+
+    /*!
+     @param key
+     */
 	void handleKeyboardControllers(int key);
-	void handleMIDIController(ofxMidiMessage& eventArgs);
-	void print();
+
+    /*!
+     @param eventArgs
+     */
+    void handleMIDIController(ofxMidiMessage& eventArgs);
+
+    /*!
+     */
+    void print();
 	
+    /*!
+     */
 	int getRecordNum();
 	
+    /*!
+     @param recordNum
+     */
 	Controller *getRecord(int recordNum);
 	
-	/* debug */
+    /*!
+     */
 	void printInfo();
 };
 

@@ -21,7 +21,6 @@
 #include "VisualInstancesProperties.h"
 #include "FreeFrameFilters.h"
 
-using json = nlohmann::json;
 
 /*!
  @header VisualInstance.h
@@ -223,7 +222,7 @@ public:
     /*!
      @abstract Returns the state of this visual instance
      */
-    json getState();
+    ofJson getState();
     
     
 #pragma mark Actions
@@ -233,9 +232,9 @@ public:
      @param parameter
         a string containing the name of what parameter to manipulate
      @param data
-        a json object with the change to be executed
+        a ofJson object with the change to be executed
      */
-    void handleAction(string parameter, json data);
+    void handleAction(string parameter, ofJson data);
     
 private:
     
@@ -268,7 +267,7 @@ public:
     /**!
      \brief Returns the state of the visual instances
      */
-    json getState();
+    ofJson getState();
    
     /**!
      Check if a visual instance is present on a given layer and colum

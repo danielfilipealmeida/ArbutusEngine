@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/include/zmq.h
+errno.h
+-
+stddef.h
+-
+stdio.h
+-
+inttypes.h
+-
+stdint.h
+-
+poll.h
+-
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/perf/inproc_lat.cpp
+../include/zmq.h
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/include/zmq.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+platform.hpp
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/perf/platform.hpp
+windows.h
+-
+process.h
+-
+pthread.h
+-
+
+platform.hpp
+

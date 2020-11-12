@@ -12,46 +12,47 @@
 
 extern Engine *enginePtr;
 
-TriggerVisualAction::TriggerVisualAction(int _layer, int _column) {
+TriggerVisualAction::TriggerVisualAction(int _layer, int _column)
+{
     layer   = _layer;
     column  = _column;
 }
 
 
-
-bool
-TriggerVisualAction::run()  {
+bool TriggerVisualAction::run()
+{
     return (enginePtr==NULL) ? false:true;
 }
 
 
 
-ChangeLayerAction::ChangeLayerAction(int _layer) {
+ChangeLayerAction::ChangeLayerAction(int _layer)
+{
     layer = _layer;
 }
 
 
 
-bool
-ChangeLayerAction::run() {
+bool ChangeLayerAction::run()
+{
     if (enginePtr==NULL) return false;
     Layers::getInstance().setActive(layer);
     return true;
 }
 
 
-Action::Action(ActionType _type) {
+Action::Action(ActionType _type)
+{
     type = _type;
     triggerVisualAction = NULL;
     changeLayerAction   = NULL;
 };
 
 
-Action*
-Action::newTriggerVisualAction(
+Action* Action::newTriggerVisualAction(
                                int _layer,
-                               int _column
-) {
+                               int _column)
+{
     Action              *newAction;
     TriggerVisualAction *visualAction;
     
@@ -64,10 +65,8 @@ Action::newTriggerVisualAction(
 
 
 
-Action*
-Action::newChangeLayerAction(
-                             int _layer
-) {
+Action* Action::newChangeLayerAction(int _layer)
+{
     Action              *newAction;
     ChangeLayerAction   *layerAction;
     
@@ -81,7 +80,8 @@ Action::newChangeLayerAction(
 
 
 
-bool Action::run() {
+bool Action::run()
+{
     if (type == TriggerVisual) return triggerVisualAction->run();
     if (type == ChangeLayer) return changeLayerAction->run();
     return false;
@@ -89,7 +89,8 @@ bool Action::run() {
 
 
 
-void Action::setTriggerVisualAction(TriggerVisualAction *action) {
+void Action::setTriggerVisualAction(TriggerVisualAction *action)
+{
     if (triggerVisualAction!=NULL) delete triggerVisualAction;
     triggerVisualAction = action;
 }

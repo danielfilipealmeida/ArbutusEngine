@@ -13,7 +13,7 @@
 
 #include "Visual.h"
 #include "ofxSyphon.h"
-
+#include "ofJson.h"
 
 
 /*!
@@ -34,8 +34,8 @@ public:
     VisualSyphon(string _serverName, string _appName);
     ~VisualSyphon();
     
-    json getState();
-    void setState(json state);
+    ofJson getState();
+    void setState(ofJson state);
     
     string  getThumbnailPath();
     void    setThumbnail();

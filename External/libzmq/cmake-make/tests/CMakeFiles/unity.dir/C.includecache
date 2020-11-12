@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/external/unity/unity.c
+unity.h
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/external/unity/unity.h
+stddef.h
+-
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/external/unity/unity.h
+unity_internals.h
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/external/unity/unity_internals.h
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/external/unity/unity_internals.h
+unity_config.h
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/external/unity/unity_config.h
+setjmp.h
+-
+math.h
+-
+stdint.h
+-
+limits.h
+-
+stdio.h
+-
+stdio.h
+-
+

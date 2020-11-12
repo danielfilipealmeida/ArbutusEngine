@@ -66,15 +66,15 @@ public:
     ~VisualVideo();
     
     /*!
-     \brief Gets the state of the VisualVideo in json format
+     \brief Gets the state of the VisualVideo in ofJson format
      */
-    json getState();
+    ofJson getState();
     
     /*!
-     \brief Specifies the state of the VisualVideo using a json as input parameter
-     \param state a json that has the data that will update the state
+     \brief Specifies the state of the VisualVideo using a ofJson as input parameter
+     \param state a ofJson that has the data that will update the state
      */
-    void setState(json state);
+    void setState(ofJson state);
     
     /*!
      \brief loads a video

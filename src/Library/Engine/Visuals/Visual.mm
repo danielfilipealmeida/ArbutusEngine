@@ -17,11 +17,11 @@ Visual::Visual() {
 
 Visual::~Visual() {}
 
-json Visual::getState()
+ofJson Visual::getState()
 {
-    json state;
+    ofJson state;
     
-    state = json::object({
+    state = ofJson::object({
         {"type", getType()},
         {"caption", getCaption()},
         {"address", ofToString(this)}
@@ -30,7 +30,7 @@ json Visual::getState()
     return state;
 }
 
-void Visual::setState(json state) {
+void Visual::setState(ofJson state) {
     if (state["caption"].is_string()) setCaption(state["caption"].get<string>());
 }
 

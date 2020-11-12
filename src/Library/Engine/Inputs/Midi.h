@@ -18,8 +18,7 @@
 
 /*!
  @class Midi
- @abstract
- @discussion
+ @abstract Handles MIDI messages sent to the server
  */
 class Midi : ofxMidiListener {
     ofxMidiIn       midiIn;
@@ -174,26 +173,62 @@ class Midi : ofxMidiListener {
 
     };
 public:
+    /*!
+     @param port 
+     */
     Midi(int port);
+    
+    /*!
+     */
     ~Midi();
     
+    /*!
+     @param port
+     */
     static Midi *getInstance(int port);
+    
+    /*!
+     */
     static Midi *getMidiInstance();
     
-    // forward methods form ofxMidiIn
+    /*!
+     */
     static void list();
+
+    /*!
+     */
     static int getNumPorts();
+
+    /*!
+     @param portNumber
+     */
     static string getPortName(unsigned int portNumber);
 
     
+    /*!
+     @param eventArgs
+     */
     void newMidiMessage(ofxMidiMessage& eventArgs);
+
+    /*!
+     */
     void print();
     
-    //static NSString *actionString(ofxMidiMessage &message);
+    /*!
+     @param message <#message description#>
+     @return the action string
+     */
     static string getActionString(ofxMidiMessage &message);
+
+    /*!
+     @param val <#val description#>
+     @return the key name
+     */
     static string keyName (int val);
     
-    // getters & setters
+    /*!
+     @return the port
+     */
     int port()  { return _port;}
     
 };

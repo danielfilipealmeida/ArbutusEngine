@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/src/tweetnacl.c
+platform.hpp
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/src/platform.hpp
+tweetnacl.h
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/src/tweetnacl.h
+windows.h
+-
+wincrypt.h
+-
+unistd.h
+-
+assert.h
+-
+sys/random.h
+-
+sys/types.h
+-
+sys/stat.h
+-
+fcntl.h
+-
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/src/tweetnacl.h
+
+platform.hpp
+

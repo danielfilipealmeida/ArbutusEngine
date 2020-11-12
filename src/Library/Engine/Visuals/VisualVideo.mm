@@ -66,9 +66,9 @@ VisualVideo::~VisualVideo()
 }
 
 
-json VisualVideo::getState()
+ofJson VisualVideo::getState()
 {
-    json state;
+    ofJson state;
     
     state = Visual::getState();
     state["filePath"] = filePath;
@@ -76,7 +76,7 @@ json VisualVideo::getState()
     return state;
 }
 
-void VisualVideo::setState(json state)
+void VisualVideo::setState(ofJson state)
 {
     Visual::setState(state);
 }

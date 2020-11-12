@@ -14,19 +14,24 @@
 
 class JsonSave {
 public:
-    /**!
-    @abstract Saves the state into a file located at the given path
+    /**
+     !
+     @abstract Saves the state into a file located at the given path
+     @param path
+     @param state
      */
-    static void
-    save(std::string path, ofJson state);
+    static void save(std::string path, ofJson state);
     
     
 private:
     
     /* this should be moved somewhere else to be used to validate the state
      */
-    static void
-    validateState(ofJson state);
+    
+    /*!
+     @param state 
+     */
+    static void validateState(ofJson state);
 };
 
 #endif /* JsonSave_hpp */

@@ -15,6 +15,7 @@
 
 
 
+
 /*!
  @class VisualCamera
  @abstract
@@ -40,8 +41,8 @@ public:
                  unsigned int _height       = 480);
     ~VisualCamera();
 
-    json getState();
-    void setState(json state);
+    ofJson getState();
+    void setState(ofJson state);
     
     string getThumbnailPath();
     void setThumbnail();

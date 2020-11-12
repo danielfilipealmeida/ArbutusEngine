@@ -606,17 +606,17 @@ VisualInstance::getVisualType()
 #pragma mark State Handling
 
 
-json
+ofJson
 VisualInstance::getState() {
-    json state;
+    ofJson state;
     
-    state = json::object();
+    state = ofJson::object();
     state["properties"] = properties.getState();
     state["videoX"] = videoX;
     state["videoY"] = videoX;
     state["videoWidth"] = videoWidth;
     state["videoHeight"] = videoHeight;
-    state["visual"] = (visual!=NULL) ? visual->getState() : json::object();
+    state["visual"] = (visual!=NULL) ? visual->getState() : ofJson::object();
     
     return state;
 }
@@ -624,7 +624,7 @@ VisualInstance::getState() {
 
 #pragma mark Actions
 
-void VisualInstance::handleAction(string parameter, json data) {
+void VisualInstance::handleAction(string parameter, ofJson data) {
     
     float value;
     //cout << data.dump() << endl;
@@ -720,12 +720,12 @@ unsigned int VisualInstances::getIndex(VisualInstance *instance) {
     return counter;
 }
 
-json VisualInstances::getState()
+ofJson VisualInstances::getState()
 {
-    json state;
+    ofJson state;
 
     for(auto visualInstance:visualInstanceList) {
-        json instanteState = visualInstance->getState();
+        ofJson instanteState = visualInstance->getState();
         instanteState["index"] = getIndex(visualInstance);
         state.push_back(instanteState);
     }

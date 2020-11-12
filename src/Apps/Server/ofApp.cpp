@@ -1,20 +1,20 @@
 #include "ofApp.h"
-#include "Engine.h"
 #include "JsonLoad.hpp"
 #include "Utils.h"
 #include "Messages.hpp"
+#include "zmq.h"
 
 
-void ofApp::initEngine() {
-    ofSetFrameRate(30);
-    Engine *engine = new Engine();
+
+
+void ofApp::setupTestSet() {
     string filePath = ofFilePath::getCurrentExeDir() + "../Resources/set.json";
     
     try {
         engine->openSet(filePath);
     }
     catch (string &exception) {
-        cout << "Error: " << exception << endl;
+        ofLog(ofLogLevel::OF_LOG_ERROR, exception);
     }
     Set::getInstance().setCurrentScene(0);
     engine->play({
@@ -25,7 +25,13 @@ void ofApp::initEngine() {
         {"layer", 1},
         {"column", 0}
     });
+}
 
+void ofApp::initEngine() {
+    ofSetFrameRate(DEFAULT_FRAME_RATE);
+    this->engine = new Engine();
+    
+    setupTestSet();
 }
 
 void ofApp::initTCPServer() {
@@ -43,7 +49,6 @@ void ofApp::updateTCPServer() {
             string str = TCP.receive(i);
             
             if( str.length() > 0 ) {
-                //cout << "message received: " << str << endl;
                 
                 json jsonRequest = json::parse(str);
                 json jsonResponse;
@@ -71,10 +76,19 @@ void ofApp::updateTCPServer() {
 }
 
 
+void ofApp::initIPC()
+{
+    void *context = zmq_ctx_new ();
+    void *responder = zmq_socket (context, ZMQ_REP);
+    int rc = zmq_bind (responder, "ipc:///tmp/arbutus-state");
+    assert (rc == 0);
+}
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     initEngine();
     initTCPServer();
+    initIPC();
 }
 
 //--------------------------------------------------------------

@@ -33,10 +33,10 @@ VisualSyphon::~VisualSyphon() {
     
 }
 
-json
+ofJson
 VisualSyphon::getState()
 {
-    json state;
+    ofJson state;
     
     state = Visual::getState();
     
@@ -46,7 +46,7 @@ VisualSyphon::getState()
     return state;
 }
 
-void VisualSyphon::setState(json state) {
+void VisualSyphon::setState(ofJson state) {
     Visual::setState(state);
 }
 

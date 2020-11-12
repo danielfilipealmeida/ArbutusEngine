@@ -1,0 +1,106 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../external/unity/unity.h
+unity_internals.h
+../external/unity/unity_internals.h
+
+../external/unity/unity_internals.h
+unity_config.h
+../external/unity/unity_config.h
+setjmp.h
+-
+math.h
+-
+stdint.h
+-
+limits.h
+-
+stdio.h
+-
+stdio.h
+-
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/include/zmq.h
+errno.h
+-
+stddef.h
+-
+stdio.h
+-
+inttypes.h
+-
+stdint.h
+-
+poll.h
+-
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/src/stdint.hpp
+inttypes.h
+-
+stdint.h
+-
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/src/windows.hpp
+winsock2.h
+-
+windows.h
+-
+mswsock.h
+-
+iphlpapi.h
+-
+mstcpip.h
+-
+ws2tcpip.h
+-
+ipexport.h
+-
+process.h
+-
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/tests/test_security_no_zap_handler.cpp
+testutil.hpp
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/tests/testutil.hpp
+testutil_unity.hpp
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/tests/testutil_unity.hpp
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/tests/testutil.hpp
+platform.hpp
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/tests/platform.hpp
+../src/platform.hpp
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/src/platform.hpp
+../include/zmq.h
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/include/zmq.h
+../src/stdint.hpp
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/src/stdint.hpp
+../src/windows.hpp
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/src/windows.hpp
+arpa/inet.h
+-
+unistd.h
+-
+stdlib.h
+-
+winsock2.h
+-
+ws2tcpip.h
+-
+stdexcept
+-
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/tests/testutil_unity.hpp
+../include/zmq.h
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/include/zmq.h
+testutil.hpp
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/tests/testutil.hpp
+unity.h
+-
+
+platform.hpp
+

@@ -16,7 +16,15 @@
 
 class SetFile {
 public:
+    /*!
+     @param path
+     */
     static ofJson load(std::string path);
+    
+    /*!
+     @param path
+     @param state
+     */
     static void save(std::string path, ofJson state);
 };
 

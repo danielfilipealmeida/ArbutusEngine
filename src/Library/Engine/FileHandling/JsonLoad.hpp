@@ -14,12 +14,12 @@
 
 class JsonLoad {
 public:
-    /**!
+    /**
+     !
      @abstract Loads the state from a file located at the given path
+     @param path <#path description#>
      */
-    static ofJson
-    load(std::string path);
-
+    static ofJson load(std::string path);
 };
 
 #endif /* JsonLoad_hpp */

@@ -1,0 +1,534 @@
+Determining if files windows.h exist failed with the following output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f8169/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_f8169.dir/build.make CMakeFiles/cmTC_f8169.dir/build
+Building C object CMakeFiles/cmTC_f8169.dir/ZMQ_HAVE_WINDOWS.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=gnu11 -Wno-tautological-constant-compare  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_f8169.dir/ZMQ_HAVE_WINDOWS.c.o   -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CheckIncludeFiles/ZMQ_HAVE_WINDOWS.c"
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CheckIncludeFiles/ZMQ_HAVE_WINDOWS.c:2:10: fatal error: 'windows.h' file not found
+#include <windows.h>
+         ^~~~~~~~~~~
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_f8169.dir/ZMQ_HAVE_WINDOWS.c.o] Error 1
+make: *** [cmTC_f8169/fast] Error 2
+
+
+Source:
+/* */
+#include <windows.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/eventfd.h exist failed with the following output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8c006/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_8c006.dir/build.make CMakeFiles/cmTC_8c006.dir/build
+Building C object CMakeFiles/cmTC_8c006.dir/ZMQ_HAVE_EVENTFD.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=gnu11 -Wno-tautological-constant-compare  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_8c006.dir/ZMQ_HAVE_EVENTFD.c.o   -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CheckIncludeFiles/ZMQ_HAVE_EVENTFD.c"
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CheckIncludeFiles/ZMQ_HAVE_EVENTFD.c:2:10: fatal error: 'sys/eventfd.h' file not found
+#include <sys/eventfd.h>
+         ^~~~~~~~~~~~~~~
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_8c006.dir/ZMQ_HAVE_EVENTFD.c.o] Error 1
+make: *** [cmTC_8c006/fast] Error 2
+
+
+Source:
+/* */
+#include <sys/eventfd.h>
+
+
+int main(void){return 0;}
+
+Determining if the SO_PEERCRED exist failed with the following output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_58c54/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_58c54.dir/build.make CMakeFiles/cmTC_58c54.dir/build
+Building CXX object CMakeFiles/cmTC_58c54.dir/CheckSymbolExists.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -std=gnu++11 -Wno-tautological-constant-compare  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_58c54.dir/CheckSymbolExists.cxx.o -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx"
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: use of undeclared identifier 'SO_PEERCRED'
+  return ((int*)(&SO_PEERCRED))[argc];
+                  ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_58c54.dir/CheckSymbolExists.cxx.o] Error 1
+make: *** [cmTC_58c54/fast] Error 2
+
+
+File /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <sys/socket.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef SO_PEERCRED
+  return ((int*)(&SO_PEERCRED))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the LOCAL_PEERCRED exist failed with the following output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b3d54/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_b3d54.dir/build.make CMakeFiles/cmTC_b3d54.dir/build
+Building CXX object CMakeFiles/cmTC_b3d54.dir/CheckSymbolExists.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -std=gnu++11 -Wno-tautological-constant-compare  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_b3d54.dir/CheckSymbolExists.cxx.o -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx"
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: use of undeclared identifier 'LOCAL_PEERCRED'
+  return ((int*)(&LOCAL_PEERCRED))[argc];
+                  ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_b3d54.dir/CheckSymbolExists.cxx.o] Error 1
+make: *** [cmTC_b3d54/fast] Error 2
+
+
+File /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <sys/socket.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef LOCAL_PEERCRED
+  return ((int*)(&LOCAL_PEERCRED))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the clock_gettime exist failed with the following output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9de74/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_9de74.dir/build.make CMakeFiles/cmTC_9de74.dir/build
+Building CXX object CMakeFiles/cmTC_9de74.dir/CheckSymbolExists.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -std=gnu++11 -Wno-tautological-constant-compare  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_9de74.dir/CheckSymbolExists.cxx.o -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx"
+Linking CXX executable cmTC_9de74
+/usr/local/Cellar/cmake/3.15.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9de74.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -std=gnu++11 -Wno-tautological-constant-compare  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14 -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_9de74.dir/CheckSymbolExists.cxx.o  -o cmTC_9de74 -lrt 
+ld: library not found for -lrt
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [cmTC_9de74] Error 1
+make: *** [cmTC_9de74/fast] Error 2
+
+
+File /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <time.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef clock_gettime
+  return ((int*)(&clock_gettime))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the gethrtime exist failed with the following output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b1a07/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_b1a07.dir/build.make CMakeFiles/cmTC_b1a07.dir/build
+Building CXX object CMakeFiles/cmTC_b1a07.dir/CheckSymbolExists.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -std=gnu++11 -Wno-tautological-constant-compare  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_b1a07.dir/CheckSymbolExists.cxx.o -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx"
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: use of undeclared identifier 'gethrtime'; did you mean 'getitimer'?
+  return ((int*)(&gethrtime))[argc];
+                  ^~~~~~~~~
+                  getitimer
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/sys/time.h:196:9: note: 'getitimer' declared here
+int     getitimer(int, struct itimerval *);
+        ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_b1a07.dir/CheckSymbolExists.cxx.o] Error 1
+make: *** [cmTC_b1a07/fast] Error 2
+
+
+File /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <sys/time.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef gethrtime
+  return ((int*)(&gethrtime))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the mkdtemp exist failed with the following output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f0a06/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_f0a06.dir/build.make CMakeFiles/cmTC_f0a06.dir/build
+Building CXX object CMakeFiles/cmTC_f0a06.dir/CheckSymbolExists.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -std=gnu++11 -Wno-tautological-constant-compare  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_f0a06.dir/CheckSymbolExists.cxx.o -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx"
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: use of undeclared identifier 'mkdtemp'
+  return ((int*)(&mkdtemp))[argc];
+                  ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_f0a06.dir/CheckSymbolExists.cxx.o] Error 1
+make: *** [cmTC_f0a06/fast] Error 2
+
+
+File /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef mkdtemp
+  return ((int*)(&mkdtemp))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the accept4 exist failed with the following output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d81aa/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_d81aa.dir/build.make CMakeFiles/cmTC_d81aa.dir/build
+Building CXX object CMakeFiles/cmTC_d81aa.dir/CheckSymbolExists.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -std=gnu++11 -Wno-tautological-constant-compare  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_d81aa.dir/CheckSymbolExists.cxx.o -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx"
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: use of undeclared identifier 'accept4'; did you mean 'accept'?
+  return ((int*)(&accept4))[argc];
+                  ^~~~~~~
+                  accept
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/sys/socket.h:691:9: note: 'accept' declared here
+int     accept(int, struct sockaddr * __restrict, socklen_t * __restrict)
+        ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_d81aa.dir/CheckSymbolExists.cxx.o] Error 1
+make: *** [cmTC_d81aa/fast] Error 2
+
+
+File /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <sys/socket.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef accept4
+  return ((int*)(&accept4))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Performing C SOURCE FILE Test ZMQ_HAVE_SOCK_CLOEXEC failed with the following compile output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_34e05/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_34e05.dir/build.make CMakeFiles/cmTC_34e05.dir/build
+Building C object CMakeFiles/cmTC_34e05.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=gnu11 -Wno-tautological-constant-compare -DZMQ_HAVE_SOCK_CLOEXEC -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_34e05.dir/src.c.o   -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c"
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c:7:43: error: use of undeclared identifier 'SOCK_CLOEXEC'
+    int s = socket(PF_INET, SOCK_STREAM | SOCK_CLOEXEC, 0);
+                                          ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_34e05.dir/src.c.o] Error 1
+make: *** [cmTC_34e05/fast] Error 2
+
+
+...and run output:
+
+Return value: 1
+Source file was:
+
+#include <sys/types.h>
+#include <sys/socket.h>
+
+int main(int argc, char *argv [])
+{
+    int s = socket(PF_INET, SOCK_STREAM | SOCK_CLOEXEC, 0);
+    return(s == -1);
+}
+
+Performing C SOURCE FILE Test ZMQ_HAVE_SO_BINDTODEVICE failed with the following compile output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1a56a/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_1a56a.dir/build.make CMakeFiles/cmTC_1a56a.dir/build
+Building C object CMakeFiles/cmTC_1a56a.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=gnu11 -Wno-tautological-constant-compare -DZMQ_HAVE_SO_BINDTODEVICE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_1a56a.dir/src.c.o   -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c"
+Linking C executable cmTC_1a56a
+/usr/local/Cellar/cmake/3.15.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1a56a.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -std=gnu11 -Wno-tautological-constant-compare -DZMQ_HAVE_SO_BINDTODEVICE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14 -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_1a56a.dir/src.c.o  -o cmTC_1a56a 
+
+
+...and run output:
+
+Return value: 1
+Source file was:
+
+#include <sys/socket.h>
+
+int main(int argc, char *argv [])
+{
+/* Actually making the setsockopt() call requires CAP_NET_RAW */
+#ifndef SO_BINDTODEVICE
+    return 1;
+#else
+    return 0;
+#endif
+}
+
+Performing C SOURCE FILE Test ZMQ_HAVE_TCP_KEEPIDLE failed with the following compile output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8b7fa/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_8b7fa.dir/build.make CMakeFiles/cmTC_8b7fa.dir/build
+Building C object CMakeFiles/cmTC_8b7fa.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=gnu11 -Wno-tautological-constant-compare -DZMQ_HAVE_TCP_KEEPIDLE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_8b7fa.dir/src.c.o   -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c"
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c:13:42: error: use of undeclared identifier 'TCP_KEEPIDLE'
+       ((rc = setsockopt(s, IPPROTO_TCP, TCP_KEEPIDLE,(char*) &opt, sizeof(int))) == -1)
+                                         ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_8b7fa.dir/src.c.o] Error 1
+make: *** [cmTC_8b7fa/fast] Error 2
+
+
+...and run output:
+
+Return value: 1
+Source file was:
+
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+
+int main(int argc, char *argv [])
+{
+    int s, rc, opt = 1;
+    return(
+       ((s = socket(PF_INET, SOCK_STREAM, 0)) == -1) ||
+       ((rc = setsockopt(s, SOL_SOCKET, SO_KEEPALIVE,(char*) &opt, sizeof(int))) == -1) ||
+       ((rc = setsockopt(s, IPPROTO_TCP, TCP_KEEPIDLE,(char*) &opt, sizeof(int))) == -1)
+    );
+}
+
+Performing C SOURCE FILE Test ZMQ_HAVE_TIPC failed with the following compile output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_81b6a/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_81b6a.dir/build.make CMakeFiles/cmTC_81b6a.dir/build
+Building C object CMakeFiles/cmTC_81b6a.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=gnu11 -Wno-tautological-constant-compare -DZMQ_HAVE_TIPC -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_81b6a.dir/src.c.o   -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c"
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c:7:10: fatal error: 'linux/tipc.h' file not found
+#include <linux/tipc.h>
+         ^~~~~~~~~~~~~~
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_81b6a.dir/src.c.o] Error 1
+make: *** [cmTC_81b6a/fast] Error 2
+
+
+...and run output:
+
+Return value: 1
+Source file was:
+
+#include <stdlib.h>
+#include <string.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <sys/socket.h>
+#include <linux/tipc.h>
+
+int main(int argc, char *argv [])
+{
+    struct sockaddr_tipc topsrv;
+    int sd = socket(AF_TIPC, SOCK_SEQPACKET, 0);
+    memset(&topsrv, 0, sizeof(topsrv));
+    topsrv.family = AF_TIPC;
+    topsrv.addrtype = TIPC_ADDR_NAME;
+    topsrv.addr.name.name.type = TIPC_TOP_SRV;
+    topsrv.addr.name.name.instance = TIPC_TOP_SRV;
+    fcntl(sd, F_SETFL, O_NONBLOCK);
+}
+
+Performing C SOURCE FILE Test ZMQ_HAVE_PTHREAD_SETNAME_2 failed with the following compile output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_acf52/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_acf52.dir/build.make CMakeFiles/cmTC_acf52.dir/build
+Building C object CMakeFiles/cmTC_acf52.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=gnu11 -Wno-tautological-constant-compare -DZMQ_HAVE_PTHREAD_SETNAME_2 -D_GNU_SOURCE -Werror -pthread -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_acf52.dir/src.c.o   -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c"
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c:6:41: error: too many arguments to function call, expected 1, have 2
+    pthread_setname_np (pthread_self(), "foo");
+    ~~~~~~~~~~~~~~~~~~                  ^~~~~
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/pthread.h:512:1: note: 'pthread_setname_np' declared here
+__API_AVAILABLE(macos(10.6), ios(3.2))
+^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/Availability.h:496:162: note: expanded from macro '__API_AVAILABLE'
+    #define __API_AVAILABLE(...) __API_AVAILABLE_GET_MACRO(__VA_ARGS__,__API_AVAILABLE7, __API_AVAILABLE6, __API_AVAILABLE5, __API_AVAILABLE4, __API_AVAILABLE3, __API_AVAILABLE2, __API_AVAILABLE1, 0)(__VA_ARGS__)
+                                                                                                                                                                 ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_acf52.dir/src.c.o] Error 1
+make: *** [cmTC_acf52/fast] Error 2
+
+
+...and run output:
+
+Return value: 1
+Source file was:
+
+#include <pthread.h>
+
+int main(int argc, char *argv [])
+{
+    pthread_setname_np (pthread_self(), "foo");
+    return 0;
+}
+
+Performing C SOURCE FILE Test ZMQ_HAVE_PTHREAD_SETNAME_3 failed with the following compile output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_45f09/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_45f09.dir/build.make CMakeFiles/cmTC_45f09.dir/build
+Building C object CMakeFiles/cmTC_45f09.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=gnu11 -Wno-tautological-constant-compare -DZMQ_HAVE_PTHREAD_SETNAME_3 -D_GNU_SOURCE -Werror -pthread -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_45f09.dir/src.c.o   -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c"
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c:6:41: error: too many arguments to function call, expected 1, have 3
+    pthread_setname_np (pthread_self(), "foo", (void *)0);
+    ~~~~~~~~~~~~~~~~~~                  ^~~~~~~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/pthread.h:512:1: note: 'pthread_setname_np' declared here
+__API_AVAILABLE(macos(10.6), ios(3.2))
+^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/Availability.h:496:162: note: expanded from macro '__API_AVAILABLE'
+    #define __API_AVAILABLE(...) __API_AVAILABLE_GET_MACRO(__VA_ARGS__,__API_AVAILABLE7, __API_AVAILABLE6, __API_AVAILABLE5, __API_AVAILABLE4, __API_AVAILABLE3, __API_AVAILABLE2, __API_AVAILABLE1, 0)(__VA_ARGS__)
+                                                                                                                                                                 ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_45f09.dir/src.c.o] Error 1
+make: *** [cmTC_45f09/fast] Error 2
+
+
+...and run output:
+
+Return value: 1
+Source file was:
+
+#include <pthread.h>
+
+int main(int argc, char *argv [])
+{
+    pthread_setname_np (pthread_self(), "foo", (void *)0);
+    return 0;
+}
+
+Performing C SOURCE FILE Test ZMQ_HAVE_PTHREAD_SET_NAME failed with the following compile output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_96387/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_96387.dir/build.make CMakeFiles/cmTC_96387.dir/build
+Building C object CMakeFiles/cmTC_96387.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=gnu11 -Wno-tautological-constant-compare -DZMQ_HAVE_PTHREAD_SET_NAME -D_GNU_SOURCE -Werror -pthread -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_96387.dir/src.c.o   -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c"
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c:6:5: error: implicit declaration of function 'pthread_set_name_np' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+    pthread_set_name_np (pthread_self(), "foo");
+    ^
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c:6:5: note: did you mean 'pthread_setname_np'?
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/pthread.h:513:5: note: 'pthread_setname_np' declared here
+int     pthread_setname_np(const char*);
+        ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_96387.dir/src.c.o] Error 1
+make: *** [cmTC_96387/fast] Error 2
+
+
+...and run output:
+
+Return value: 1
+Source file was:
+
+#include <pthread.h>
+
+int main(int argc, char *argv [])
+{
+    pthread_set_name_np (pthread_self(), "foo");
+    return 0;
+}
+
+Performing C SOURCE FILE Test ZMQ_HAVE_PTHREAD_SET_AFFINITY failed with the following compile output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a2b90/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_a2b90.dir/build.make CMakeFiles/cmTC_a2b90.dir/build
+Building C object CMakeFiles/cmTC_a2b90.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=gnu11 -Wno-tautological-constant-compare -DZMQ_HAVE_PTHREAD_SET_AFFINITY -D_GNU_SOURCE -Werror -pthread -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_a2b90.dir/src.c.o   -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c"
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c:6:5: error: use of undeclared identifier 'cpu_set_t'
+    cpu_set_t test; 
+    ^
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c:7:5: error: implicit declaration of function 'pthread_setaffinity_np' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+    pthread_setaffinity_np (pthread_self(), sizeof(cpu_set_t), &test);
+    ^
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c:7:5: note: did you mean 'pthread_setname_np'?
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/pthread.h:513:5: note: 'pthread_setname_np' declared here
+int     pthread_setname_np(const char*);
+        ^
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c:7:52: error: use of undeclared identifier 'cpu_set_t'
+    pthread_setaffinity_np (pthread_self(), sizeof(cpu_set_t), &test);
+                                                   ^
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c:7:65: error: use of undeclared identifier 'test'; did you mean 'tzset'?
+    pthread_setaffinity_np (pthread_self(), sizeof(cpu_set_t), &test);
+                                                                ^~~~
+                                                                tzset
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/time.h:121:6: note: 'tzset' declared here
+void tzset(void);
+     ^
+4 errors generated.
+make[1]: *** [CMakeFiles/cmTC_a2b90.dir/src.c.o] Error 1
+make: *** [cmTC_a2b90/fast] Error 2
+
+
+...and run output:
+
+Return value: 1
+Source file was:
+
+#include <pthread.h>
+
+int main(int argc, char *argv [])
+{
+    cpu_set_t test; 
+    pthread_setaffinity_np (pthread_self(), sizeof(cpu_set_t), &test);
+    return 0;
+}
+
+Performing C SOURCE FILE Test ZMQ_HAVE_GETRANDOM failed with the following compile output:
+Change Dir: /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d812b/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_d812b.dir/build.make CMakeFiles/cmTC_d812b.dir/build
+Building C object CMakeFiles/cmTC_d812b.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -std=gnu11 -Wno-tautological-constant-compare -DZMQ_HAVE_GETRANDOM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14   -o CMakeFiles/cmTC_d812b.dir/src.c.o   -c "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c"
+In file included from /Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c:2:
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/sys/random.h:36:21: error: expected parameter declarator
+    __OSX_AVAILABLE(10.12) __IOS_AVAILABLE(10.0) __TVOS_AVAILABLE(10.0) __WATCHOS_AVAILABLE(3.0)
+                    ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/sys/random.h:36:21: error: expected ')'
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/sys/random.h:36:20: note: to match this '('
+    __OSX_AVAILABLE(10.12) __IOS_AVAILABLE(10.0) __TVOS_AVAILABLE(10.0) __WATCHOS_AVAILABLE(3.0)
+                   ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/sys/random.h:36:28: error: expected function body after function declarator
+    __OSX_AVAILABLE(10.12) __IOS_AVAILABLE(10.0) __TVOS_AVAILABLE(10.0) __WATCHOS_AVAILABLE(3.0)
+                           ^
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/cmake-make/CMakeFiles/CMakeTmp/src.c:7:14: warning: implicit declaration of function 'getrandom' is invalid in C99 [-Wimplicit-function-declaration]
+    int rc = getrandom(buf, 4, 0);
+             ^
+1 warning and 3 errors generated.
+make[1]: *** [CMakeFiles/cmTC_d812b.dir/src.c.o] Error 1
+make: *** [cmTC_d812b/fast] Error 2
+
+
+...and run output:
+
+Return value: 1
+Source file was:
+
+#include <sys/random.h>
+
+int main (int argc, char *argv [])
+{
+    char buf[4];
+    int rc = getrandom(buf, 4, 0);
+    return rc == -1 ? 1 : 0;
+}
+

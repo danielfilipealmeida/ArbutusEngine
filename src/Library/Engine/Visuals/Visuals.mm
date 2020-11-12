@@ -21,9 +21,9 @@ Visuals& Visuals::getInstance()
 }
 
 
-json Visuals::getState()
+ofJson Visuals::getState()
 {
-    json state;
+    ofJson state;
     
     for(auto visual:visualsList)
     {
@@ -33,7 +33,7 @@ json Visuals::getState()
     return state;
 }
 
-void Visuals::setState(json state)
+void Visuals::setState(ofJson state)
 {
     if (!state.is_array()) return;
     

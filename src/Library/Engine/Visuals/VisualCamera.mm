@@ -48,9 +48,9 @@ VisualCamera::~VisualCamera()
 }
 
 
-json VisualCamera::getState()
+ofJson VisualCamera::getState()
 {
-    json state;
+    ofJson state;
     
     state = Visual::getState();
     
@@ -64,7 +64,7 @@ json VisualCamera::getState()
 }
 
 
-void VisualCamera::setState(json state) {
+void VisualCamera::setState(ofJson state) {
     Visual::setState(state);
 }
 

@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/external/sha1/sha1.c
+sha1.h
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/external/sha1/sha1.h
+string.h
+-
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/external/sha1/sha1.h
+stdlib.h
+-
+../../src/stdint.hpp
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/src/stdint.hpp
+
+/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/External/libzmq/src/stdint.hpp
+inttypes.h
+-
+stdint.h
+-
+

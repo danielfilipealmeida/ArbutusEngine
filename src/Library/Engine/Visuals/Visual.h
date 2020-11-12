@@ -13,8 +13,7 @@
 
 #include "ofMain.h"
 #include <stdlib.h>
-
-using json = nlohmann::json;
+#include "ofJson.h"
 
 typedef enum VisualType {
     VisualType_Video = 0,
@@ -149,12 +148,12 @@ public:
     /*!
      \brief ...
      */
-    virtual json getState();
+    virtual ofJson getState();
     
     /*!
      \brief ...
      */
-    virtual void setState(json state);
+    virtual void setState(ofJson state);
 
 };
 

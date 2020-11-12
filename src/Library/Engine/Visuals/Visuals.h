@@ -32,12 +32,12 @@ public:
     /*!
      \brief Returns the state of all the visuals on the running Engine
      */
-    json getState();
+    ofJson getState();
     
     /*!
      \brief Sets the state of the visuals
      */
-    void setState(json state);
+    void setState(ofJson state);
     
     /*!
      \brief Adds a visual

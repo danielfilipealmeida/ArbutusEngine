@@ -43,6 +43,9 @@ ofJson setLayerControl(ofJson data);
  */
 ofJson updateState(ofJson data);
 
+/*!
+ @param layerData <#layerData description#>
+ */
 ofJson updateLayers(ofJson layerData);
 
 #endif /* messages_hpp */

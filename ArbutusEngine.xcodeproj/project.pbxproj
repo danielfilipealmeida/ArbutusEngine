@@ -134,6 +134,7 @@
 		6533F131255C22CE00AD9957 /* ofxSyphonServerDirectory.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65BC813A1DF8D94600331165 /* ofxSyphonServerDirectory.mm */; };
 		6533F132255C23F400AD9957 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65C1EB171E6E1D16003F731D /* RtMidi.cpp */; };
 		6533F133255C241500AD9957 /* SyphonNameboundClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BC81321DF8D94600331165 /* SyphonNameboundClient.m */; };
+		6533F2EC255D6F6A00AD9957 /* libzmq.5.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6533F2E8255D6EDB00AD9957 /* libzmq.5.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		653BB8C01F4F771300D25053 /* UtilsTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653BB8BF1F4F771300D25053 /* UtilsTests.cpp */; };
 		6545F8B91F558B75005D04F4 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6545F8B81F558B75005D04F4 /* Scene.cpp */; };
 		655BFAF91E7355BD00B74446 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 655BFAF81E7355BD00B74446 /* CoreMIDI.framework */; };
@@ -336,6 +337,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6533F2EB255D6F5900AD9957 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				6533F2EC255D6F6A00AD9957 /* libzmq.5.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		65E8965A1E72F3FF000D470B /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -410,6 +421,13 @@
 		65324F9C1F324187007C9FCF /* SetFile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SetFile.hpp; sourceTree = "<group>"; };
 		65324FAB1F35D280007C9FCF /* JsonLoad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonLoad.cpp; sourceTree = "<group>"; };
 		65324FB61F373E62007C9FCF /* test002.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = test002.json; path = Fixtures/FileHandling/test002.json; sourceTree = "<group>"; };
+		6533F2E3255D6EDB00AD9957 /* libzmq.5.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libzmq.5.2.3.dylib; path = "External/libzmq/cmake-make/lib/libzmq.5.2.3.dylib"; sourceTree = SOURCE_ROOT; };
+		6533F2E4255D6EDB00AD9957 /* libzmq.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzmq.a; path = "External/libzmq/cmake-make/lib/libzmq.a"; sourceTree = SOURCE_ROOT; };
+		6533F2E5255D6EDB00AD9957 /* libunity.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libunity.a; path = "External/libzmq/cmake-make/lib/libunity.a"; sourceTree = SOURCE_ROOT; };
+		6533F2E6255D6EDB00AD9957 /* libtestutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtestutil.a; path = "External/libzmq/cmake-make/lib/libtestutil.a"; sourceTree = SOURCE_ROOT; };
+		6533F2E7255D6EDB00AD9957 /* libtestutil-static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libtestutil-static.a"; path = "External/libzmq/cmake-make/lib/libtestutil-static.a"; sourceTree = SOURCE_ROOT; };
+		6533F2E8255D6EDB00AD9957 /* libzmq.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libzmq.5.dylib; path = "External/libzmq/cmake-make/lib/libzmq.5.dylib"; sourceTree = SOURCE_ROOT; };
+		6533F2E9255D6EDB00AD9957 /* libzmq.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libzmq.dylib; path = "External/libzmq/cmake-make/lib/libzmq.dylib"; sourceTree = SOURCE_ROOT; };
 		653BB8BF1F4F771300D25053 /* UtilsTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UtilsTests.cpp; sourceTree = "<group>"; };
 		6545F8B81F558B75005D04F4 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
 		655BFAF81E7355BD00B74446 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
@@ -663,11 +681,12 @@
 		0CC0659D1FBFAA7C0094744E /* Server */ = {
 			isa = PBXGroup;
 			children = (
+				6533F2ED255D6FCF00AD9957 /* Communications */,
 				0C0B84DE1FC0794A00BEF796 /* glsl */,
 				0C0B84D21FC0793900BEF796 /* Server-Info.plist */,
 				0C0B84D41FC0793900BEF796 /* main.cpp */,
-				0C0B84D31FC0793900BEF796 /* ofApp.cpp */,
 				0C0B84D51FC0793900BEF796 /* ofApp.h */,
+				0C0B84D31FC0793900BEF796 /* ofApp.cpp */,
 				0C0B84D61FC0793900BEF796 /* README.md */,
 				0C0B84D71FC0793A00BEF796 /* set.json */,
 				0C197EC81FC43AEC007F72D2 /* Messages.cpp */,
@@ -781,6 +800,43 @@
 			name = glsl;
 			path = src/Examples/HelloWorld/glsl;
 			sourceTree = SOURCE_ROOT;
+		};
+		6533F134255D4B9500AD9957 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				6533F2E1255D6EC000AD9957 /* zmq */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		6533F2E1255D6EC000AD9957 /* zmq */ = {
+			isa = PBXGroup;
+			children = (
+				6533F2E2255D6ECA00AD9957 /* libs */,
+			);
+			path = zmq;
+			sourceTree = "<group>";
+		};
+		6533F2E2255D6ECA00AD9957 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				6533F2E7255D6EDB00AD9957 /* libtestutil-static.a */,
+				6533F2E6255D6EDB00AD9957 /* libtestutil.a */,
+				6533F2E5255D6EDB00AD9957 /* libunity.a */,
+				6533F2E3255D6EDB00AD9957 /* libzmq.5.2.3.dylib */,
+				6533F2E8255D6EDB00AD9957 /* libzmq.5.dylib */,
+				6533F2E4255D6EDB00AD9957 /* libzmq.a */,
+				6533F2E9255D6EDB00AD9957 /* libzmq.dylib */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		6533F2ED255D6FCF00AD9957 /* Communications */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Communications;
+			sourceTree = "<group>";
 		};
 		65801763255A19AC00D8BAE2 /* ofxOsc */ = {
 			isa = PBXGroup;
@@ -1293,6 +1349,7 @@
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				65E896641E730453000D470B /* CatchCpp */,
+				6533F134255D4B9500AD9957 /* Libs */,
 				BB4B014C10F69532006C3DED /* addons */,
 				6948EE371B920CB800B5AC1A /* local_addons */,
 				659E25D41E70BCAE00217A12 /* Frameworks */,
@@ -1352,6 +1409,7 @@
 				0C0B84A31FC078FD00BEF796 /* Sources */,
 				0C0B84C01FC078FD00BEF796 /* Frameworks */,
 				0C0B84C51FC078FD00BEF796 /* Resources */,
+				6533F2EB255D6F5900AD9957 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1581,7 +1639,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Copying fixtures\"\ncp -R src/CatchCpp/Fixtures \"$TARGET_BUILD_DIR\"";
+			shellScript = "echo \"Copying fixtures\"\ncp -R src/CatchCpp/Fixtures \"$TARGET_BUILD_DIR\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1920,6 +1978,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADERS_ZMQ = "$(ZMQ_PATH)/src $(ZMQ_PATH)/include";
 				HEADER_SEARCH_PATHS = (
 					"$(OF_LIBS_PATH)/openframeworks/**",
 					src,
@@ -1942,11 +2001,13 @@
 					"$(LIB_CATCH_PATH)",
 					"$(LIB_JSON_PATH)",
 					"$(OF_CORE_HEADERS)",
+					"$(HEADERS_ZMQ)",
 				);
 				INFOPLIST_FILE = "src/Apps/Server/Server-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/\"",
+					"$(PROJECT_DIR)/External/libzmq/cmake-make/lib",
 				);
 				LIB_BOOST_FS = "\"$(OF_PATH)/libs/boost/lib/osx/boost_filesystem.a\"";
 				LIB_BOOST_SYSTEM = "\"$(OF_PATH)/libs/boost/lib/osx/boost_system.a\"";
@@ -1961,6 +2022,7 @@
 				LIB_GLUT = "\"$(OF_PATH)/libs/glut/lib/osx/GLUT.framework/Versions/A/GLUT\"";
 				LIB_RTAUDIO = "\"$(OF_PATH)/libs/rtAudio/lib/osx/rtAudio.a\"";
 				LIB_TESS = "\"$(OF_PATH)/libs/tess2/lib/osx/tess2.a\"";
+				LIB_ZMQ = "$(ZMQ_PATH)/cmake-make/lib/libzmq.dylib $(ZMQ_PATH)/cmake-make/lib/libunity.a $(ZMQ_PATH)/cmake-make/lib/libtestutil.a";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OF_CORE_FRAMEWORKS = "$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a -framework Accelerate -framework AGL -framework AppKit -framework ApplicationServices -framework AudioToolbox -framework AVFoundation -framework Cocoa -framework CoreAudio -framework CoreFoundation -framework CoreMedia -framework CoreServices -framework CoreVideo -framework IOKit -framework OpenGL -framework QuartzCore -framework QTKit -framework Security -framework LDAP";
@@ -1968,10 +2030,12 @@
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",
+					"$(LIB_ZMQ)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = DanielFilipeA.Server;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				ZMQ_PATH = "$(SRCROOT)/External/libzmq";
 			};
 			name = Debug;
 		};
@@ -2022,6 +2086,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADERS_ZMQ = "$(ZMQ_PATH)/src $(ZMQ_PATH)/include";
 				HEADER_SEARCH_PATHS = (
 					"$(OF_LIBS_PATH)/openframeworks/**",
 					src,
@@ -2044,11 +2109,13 @@
 					"$(LIB_CATCH_PATH)",
 					"$(LIB_JSON_PATH)",
 					"$(OF_CORE_HEADERS)",
+					"$(HEADERS_ZMQ)",
 				);
 				INFOPLIST_FILE = "src/Apps/Server/Server-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/\"",
+					"$(PROJECT_DIR)/External/libzmq/cmake-make/lib",
 				);
 				LIB_BOOST_FS = "\"$(OF_PATH)/libs/boost/lib/osx/boost_filesystem.a\"";
 				LIB_BOOST_SYSTEM = "\"$(OF_PATH)/libs/boost/lib/osx/boost_system.a\"";
@@ -2063,6 +2130,7 @@
 				LIB_GLUT = "\"$(OF_PATH)/libs/glut/lib/osx/GLUT.framework/Versions/A/GLUT\"";
 				LIB_RTAUDIO = "\"$(OF_PATH)/libs/rtAudio/lib/osx/rtAudio.a\"";
 				LIB_TESS = "\"$(OF_PATH)/libs/tess2/lib/osx/tess2.a\"";
+				LIB_ZMQ = "$(ZMQ_PATH)/cmake-make/lib/libzmq.dylib $(ZMQ_PATH)/cmake-make/lib/libunity.a $(ZMQ_PATH)/cmake-make/lib/libtestutil.a";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OF_CORE_FRAMEWORKS = "$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a -framework Accelerate -framework AGL -framework AppKit -framework ApplicationServices -framework AudioToolbox -framework AVFoundation -framework Cocoa -framework CoreAudio -framework CoreFoundation -framework CoreMedia -framework CoreServices -framework CoreVideo -framework IOKit -framework OpenGL -framework QuartzCore -framework QTKit -framework Security -framework LDAP";
@@ -2070,10 +2138,12 @@
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",
+					"$(LIB_ZMQ)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = DanielFilipeA.Server;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				ZMQ_PATH = "$(SRCROOT)/External/libzmq";
 			};
 			name = Release;
 		};
@@ -2370,6 +2440,7 @@
 				LIB_GLUT = "\"$(OF_PATH)/libs/glut/lib/osx/GLUT.framework/Versions/A/GLUT\"";
 				LIB_RTAUDIO = "\"$(OF_PATH)/libs/rtAudio/lib/osx/rtAudio.a\"";
 				LIB_TESS = "\"$(OF_PATH)/libs/tess2/lib/osx/tess2.a\"";
+				LIB_ZMQ = "$(SRCROOT)/External/libzmq";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OF_CORE_FRAMEWORKS = "$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a -framework Accelerate -framework AGL -framework AppKit -framework ApplicationServices -framework AudioToolbox -framework AVFoundation -framework Cocoa -framework CoreAudio -framework CoreFoundation -framework CoreMedia -framework CoreServices -framework CoreVideo -framework IOKit -framework OpenGL -framework QuartzCore -framework QTKit -framework Security -framework LDAP";
@@ -2470,6 +2541,7 @@
 				LIB_GLUT = "\"$(OF_PATH)/libs/glut/lib/osx/GLUT.framework/Versions/A/GLUT\"";
 				LIB_RTAUDIO = "\"$(OF_PATH)/libs/rtAudio/lib/osx/rtAudio.a\"";
 				LIB_TESS = "\"$(OF_PATH)/libs/tess2/lib/osx/tess2.a\"";
+				LIB_ZMQ = "$(SRCROOT)/External/libzmq";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OF_CORE_FRAMEWORKS = "$(OF_PATH)/libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a -framework Accelerate -framework AGL -framework AppKit -framework ApplicationServices -framework AudioToolbox -framework AVFoundation -framework Cocoa -framework CoreAudio -framework CoreFoundation -framework CoreMedia -framework CoreServices -framework CoreVideo -framework IOKit -framework OpenGL -framework QuartzCore -framework QTKit -framework Security -framework LDAP";
@@ -2865,6 +2937,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADERS_ZMQ = "$(LIB_ZMQ)/src $(LIB_ZMQ)/include";
 				HEADER_JSON = "$(LIB_JSON_PATH)/include";
 				HEADER_SEARCH_PATHS = (
 					"$(OF_PATH)/libs/openframeworks/**",
@@ -2878,6 +2951,7 @@
 				LIB_CATCH_PATH = "$(EXTERNAL_LIBS_PATH)/Catch/single_include/";
 				LIB_JSON_PATH = "$(OF_PATH)/libs/json";
 				LIB_OFXSYPHON_PATH = "$(EXTERNAL_LIBS_PATH)/ofxSyphon";
+				LIB_ZMQ = "$(SRCROOT)/External/libzmq";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OF_ADDONS_PATH = "$(OF_PATH)/addons";
 				OF_CORE_HEADERS = "$(HEADER_OF) $(HEADER_FREETYPE) $(HEADER_FREETYPE2) $(HEADER_FMODEX) $(HEADER_GLEW) $(HEADER_FREEIMAGE) $(HEADER_TESS2) $(HEADER_CAIRO) $(HEADER_RTAUDIO) $(HEADER_GLFW) $(HEADER_BOOST) $(HEADER_UTF8) $(HEADER_GLM) $(HEADER_CURL) $(HEADER_URIPARSER) $(HEADER_PUGIXML)";
@@ -2937,6 +3011,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADERS_ZMQ = "$(LIB_ZMQ)/src $(LIB_ZMQ)/include";
 				HEADER_JSON = "$(LIB_JSON_PATH)/include";
 				HEADER_SEARCH_PATHS = (
 					"$(OF_PATH)/libs/openframeworks/**",
@@ -2950,6 +3025,7 @@
 				LIB_CATCH_PATH = "$(EXTERNAL_LIBS_PATH)/Catch/single_include/";
 				LIB_JSON_PATH = "$(OF_PATH)/libs/json";
 				LIB_OFXSYPHON_PATH = "$(EXTERNAL_LIBS_PATH)/ofxSyphon";
+				LIB_ZMQ = "$(SRCROOT)/External/libzmq";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OF_ADDONS_PATH = "$(OF_PATH)/addons";
 				OF_CORE_HEADERS = "$(HEADER_OF) $(HEADER_FREETYPE) $(HEADER_FREETYPE2) $(HEADER_FMODEX) $(HEADER_GLEW) $(HEADER_FREEIMAGE) $(HEADER_TESS2) $(HEADER_CAIRO) $(HEADER_RTAUDIO) $(HEADER_GLFW) $(HEADER_BOOST) $(HEADER_UTF8) $(HEADER_GLM) $(HEADER_CURL) $(HEADER_URIPARSER) $(HEADER_PUGIXML)";
