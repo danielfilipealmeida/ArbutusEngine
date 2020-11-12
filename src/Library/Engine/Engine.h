@@ -25,14 +25,7 @@
 #include "AppProtocol.h"
 #include "EngineProperties.h"
 #include "Visuals.h"
-
-
-
-
-using json = nlohmann::json;
-
-
-
+#include "ofJson.h"
 
 
 /*!
@@ -150,19 +143,19 @@ public:
     /*!
      @abstract handles all actions related to layers
      */
-    void handleLayerAction(string parameter, json data);
+    void handleLayerAction(string parameter, ofJson data);
     
     
     /*!
      @abstract handles all actions related to visuals
      */
-    void handleVisualAction (string parameter, json data);
+    void handleVisualAction (string parameter, ofJson data);
     
     /*!
      @abstract handles all actions to the engine
      @param parameter a string
      */
-    void handleAction(string parameter, json data);
+    void handleAction(string parameter, ofJson data);
     
     /*************************************************************/
     
@@ -171,12 +164,12 @@ public:
     /*!
      @abstract ...
      */
-    void play(json data);
+    void play(ofJson data);
 
     /*!
      @abstract ...
      */
-    void stop(json data);
+    void stop(ofJson data);
 
     
     /*!
@@ -252,7 +245,8 @@ public:
     /*!
      @abstract ...
      */
-    void addVisualToSceneListInCurrentLayer(unsigned int visual, unsigned int layer, unsigned int column);
+    void addVisualToSceneListInCurrentLayer(
+                                            unsigned int visual, unsigned int layer, unsigned int column);
     
     
     /*!
@@ -308,23 +302,23 @@ public:
     /*!
      @abstract ...
      */
-    json getState();
+    ofJson getState();
     
     /*!
      @abstract ...
      */
-    json getFullState();
+    ofJson getFullState();
     
     /*!
      @abstract ...
      */
-    void setState(json state);
+    void setState(ofJson state);
 
     
     /*!
      @abstract ...
      */
-    json getLayersState();
+    ofJson getLayersState();
     
     /*************************************************************/
 
@@ -456,7 +450,7 @@ public:
 
     
 private:
-    Layer*  getLayerForActionHandler (json data);
+    Layer*  getLayerForActionHandler (ofJson data);
     unsigned int getSelectedLayerNumber();
     unsigned int getSelectedColumnNumber();
 };

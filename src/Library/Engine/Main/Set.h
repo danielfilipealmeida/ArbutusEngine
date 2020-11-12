@@ -73,11 +73,13 @@ public:
 
     /*!
      \brief ...
+     @param _filePath the file path
      */
     bool openSet(string _filePath);
     
     /*!
      \brief ...
+     @param _filePath <#_filePath description#>
      */
     bool openSet_old(string _filePath);
 	
@@ -88,8 +90,14 @@ public:
     
     /*!
      \brief ...
+     @param _width <#_width description#>
+     @param _height <#_height description#>
+     @param _nLayers <#_nLayers description#>
      */
-    void newSet(unsigned int _width, unsigned int _height, unsigned int _nLayers);
+    void newSet(
+                unsigned int _width,
+                unsigned int _height,
+                unsigned int _nLayers);
     
     /*!
      \brief traverse set data and generate a xml document
@@ -99,25 +107,37 @@ public:
     
     /*!
      \brief ...
+     @param _filePath <#_filePath description#>
      */
     void saveSetAs(string _filePath);
     
 	
     /*!
      \brief ...
+     @param filePath <#filePath description#>
      */
 	void addVisualVideoToListFromFile(string filePath);
     
-    /**!
+    /**
+     !
      @abstract ...
+     @param rate <#rate description#>
+     @param w <#w description#>
+     @param h <#h description#>
      */
-    void addVisualCameraToList(unsigned int id, unsigned int rate, unsigned int w, unsigned int h);
+    void addVisualCameraToList(
+                               unsigned int id,
+                               unsigned int rate,
+                               unsigned int w,
+                               unsigned int h);
     
-    /**!
+    /**
+     !
      @abstract ...
+     @param serverName <#serverName description#>
+     @param appName <#appName description#>
      */
-    void
-    addVisualSyphonToList(string serverName, string appName);
+    void addVisualSyphonToList(string serverName, string appName);
 	
     /**!
      @abstract ...
@@ -127,17 +147,27 @@ public:
   
 #pragma mark Scenes
 	
-    /**!
+    /**
+     !
      @abstract ...
+     @param sceneName <#sceneName description#>
+     @param nVisualsInScene <#nVisualsInScene description#>
+     @param visualsInScene <#visualsInScene description#>
      */
-    Scene* addScene(string sceneName, unsigned char nVisualsInScene, unsigned char *visualsInScene);
+    Scene* addScene(
+                    string sceneName,
+                    unsigned char nVisualsInScene,
+                    unsigned char *visualsInScene);
     
-    /**!
+    /**
+     !
      @abstract ...
+     @param newScene <#newScene description#>
      */
     void addScene(Scene *newScene);
     
-    /**!
+    /**
+     !
      @abstract ...
      */
     Scene* newScene();
@@ -153,13 +183,17 @@ public:
      */
     void emptyScenesList();
 	
-    /**!
+    /**
+     !
      @abstract ...
+     @param _sceneNumber <#_sceneNumber description#>
      */
     void setCurrentScene(unsigned int _sceneNumber);
     
-    /**!
+    /**
+     !
      @abstract ...
+     @param newName <#newName description#>
      */
     void setNameToCurrentScene(string newName);
     
@@ -175,8 +209,12 @@ public:
     
     /*!
      @abstract ...
+     @param layerN <#layerN description#>
+     @param column <#column description#>
      */
-    void setActiveVisualInstance(unsigned int layerN, unsigned int column);
+    void setActiveVisualInstance(
+                                 unsigned int layerN,
+                                 unsigned int column);
     
     /*!
      \brief Returns a Visual instance in a given layer and column. 
@@ -201,17 +239,17 @@ public:
      */
     unsigned int getTotalScenes();
     
-    /**!
+    /*!
      @abstract ...
      */
     Scene* getSceneAtIndex(unsigned int index);
     
-    /**!
+    /*!
      @abstract ...
      */
 	void print();
     
-    /**!
+    /*!
      @abstract ...
      */
     void cleanup();
@@ -219,39 +257,39 @@ public:
     
 #pragma mark Setters & Getters
     
-    /**!
+    /*!
      @abstract ...
      */
     bool isLoaded() {return loaded;}
 
     
-    /**!
+    /*!
      @abstract ...
      */
     string getFilePath () { return filePath; }
     
     
-    /**!
+    /*!
      @abstract ...
      */
     void setFilePath ( string _input ) { filePath = _input; }
     
-    /**!
+    /*!
      @abstract ...
      */
     unsigned int getNumberOfLayers () { return nLayers; }
     
-    /**!
+    /*!
      @abstract ...
      */
     void setNumberOfLayers (unsigned int _val) { nLayers = _val; }
     
-    /**!
+    /*!
      @abstract ...
      */
     unsigned int getCurrentSceneNumber () { return currentSceneNumber; }
     
-    /**!
+    /*!
      @abstract ...
      */
     Scene*  getCurrentScene () { return currentScene; }

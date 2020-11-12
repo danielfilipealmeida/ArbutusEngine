@@ -4,7 +4,15 @@ The Arbutus Engine is a C++ library that uses openFrameworks for creating Real-t
 Along with the Library, a TCP Server is also implemented for rendering video output.
 
 
+## Roadmap
 
+- Migrate the lib to a Header-only Library
+- Implement the code using functional programming as much as possible
+- Add documentation to the Library
+- Test all! get full coverage if possible
+- Add IPC to the server to allow a faster communication between server and client on the same machine
+- Implement all actions on the server through JSON messages via HTTP or IPC
+- 
 
 ## Compiling
 
@@ -38,6 +46,13 @@ xcodebuild -list -project ArbutusEngine.xcodeproj/
 
 xcodebuild -scheme ArbutusLib build
 
+## Documentation
+
+Code is documented with HeaderDoc.
+
+- [Apple Documentation](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/HeaderDoc/)
+
+- [HeaderDoc Reference by Justin Loew](http://www.cocoanutsdev.com/resources/headerdoc-reference-by-justin-loew)
 
 
 ## Work todo
@@ -46,6 +61,7 @@ xcodebuild -scheme ArbutusLib build
 - Compile all again
 - add documentation placemarks on all functions
 - implement IPC 
+- REMOVE ALL SINGLETON PATTERNS
 
 - fix generated json of the state
 - break the current shader into parts. have one shader per effect

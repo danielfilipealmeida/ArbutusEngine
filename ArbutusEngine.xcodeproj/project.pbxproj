@@ -1280,10 +1280,10 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				65F6C5401F42F08A00270C51 /* README.md */,
 				658017E4255AD34F00D8BAE2 /* libfmodex.dylib */,
 				65E6BD471F464F4E008E4F9E /* Syphon.framework */,
 				651CFE8225571AB900DAC431 /* openFrameworksLib.xcodeproj */,
-				65F6C5401F42F08A00270C51 /* README.md */,
 				0C0B84FC1FC1C97600BEF796 /* DevNotes.md */,
 				0C628F001F9B954400ADB871 /* doxygenconf */,
 				0C71D3C31F8A6901006126A5 /* CMakeLists.txt */,

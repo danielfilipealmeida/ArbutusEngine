@@ -61,23 +61,7 @@ public:
      @abstract ...
      */
 	void print();
-	
-    /*!
-     @abstract ...
-     */
-    /*
-	void addFreeFrameInstanceToVisualInstance(unsigned int instanceSlotNumber,
-                                              unsigned int column,
-                                              unsigned int layerN);
-    */
-    /*!
-     @abstract ...
-     */
-    /*
-	void removeFreeFrameInstanceToVisualInstance(unsigned int instanceSlotNumber,
-                                                 unsigned int column,
-                                                 unsigned int layerN);
-    */
+
   
     /*!
      @abstract ...

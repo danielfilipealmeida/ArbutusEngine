@@ -86,8 +86,8 @@ Engine* Engine::getInstance() {
 
 #pragma mark State Handling
 
-json Engine::getState() {
-    json state;
+ofJson Engine::getState() {
+    ofJson state;
     
     state["visuals"] = Visuals::getInstance().getState();
     state["layers"] = Layers::getInstance().getState();
@@ -98,7 +98,7 @@ json Engine::getState() {
 
 
 
-void Engine::setState(json state) {
+void Engine::setState(ofJson state) {
     if (state["visuals"].is_array()) {
         Visuals::getInstance().setState(state["visuals"]);
     }
@@ -110,8 +110,8 @@ void Engine::setState(json state) {
     }
 }
 
-json Engine::getFullState() {
-    json state;
+ofJson Engine::getFullState() {
+    ofJson state;
     
     state["layers"] = Layers::getInstance().getFullState();
     state["activeVisualInstance"] = Engine::getInstance()->getCurrentActiveVisualInstance()->getProperties()->getFullState();
@@ -122,8 +122,8 @@ json Engine::getFullState() {
 
 // TODO: move this to the Layers class
 /*
-json Engine::getLayersState() {
-    json state;
+ofJson Engine::getLayersState() {
+    ofJson state;
     
     for(auto layer:Layers::getInstance().getList()) {
         state.push_back(layer->getState());
@@ -222,7 +222,7 @@ bool Engine::saveSetAs(string _setPath) {
 
 
 Layer*
-Engine::getLayerForActionHandler (json data) {
+Engine::getLayerForActionHandler (ofJson data) {
     Layer *layer;
     
     if (!data["layer"].is_number()) {
@@ -239,7 +239,7 @@ Engine::getLayerForActionHandler (json data) {
 void
 Engine::handleLayerAction(
                           string parameter,
-                          json data
+                          ofJson data
                           )
 {
     Layer *layer;
@@ -256,7 +256,7 @@ Engine::handleLayerAction(
 void
 Engine::handleVisualAction(
                           string parameter,
-                          json data
+                          ofJson data
                           )
 {
     Layer *layer;
@@ -281,7 +281,7 @@ TODO:
 void
 Engine::handleAction(
                      string parameter,
-                     json data
+                     ofJson data
 ) {
     
     
@@ -390,7 +390,7 @@ VisualInstance* Engine::setActiveVisualInstance(unsigned int layerN, unsigned in
 }
 
 
-void Engine::play(json data) {
+void Engine::play(ofJson data) {
     unsigned int layer, column;
     
     if (!data.is_object()) throw "data must be an object";
@@ -407,7 +407,7 @@ void Engine::play(json data) {
 }
 
 
-void Engine::stop(json data) {
+void Engine::stop(ofJson data) {
     if (
         data.is_object() &&
         data["layer"].is_number()
