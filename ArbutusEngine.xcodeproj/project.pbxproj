@@ -392,6 +392,8 @@
 		6504558D1F47AA1F00CB3BE5 /* ofApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofApp.cpp; path = src/Examples/Empty/ofApp.cpp; sourceTree = SOURCE_ROOT; };
 		6504558E1F47AA1F00CB3BE5 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofApp.h; path = src/Examples/Empty/ofApp.h; sourceTree = SOURCE_ROOT; };
 		6504CA6B1ECE4DCC00355E4A /* Loop001.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Loop001.mp4; sourceTree = "<group>"; };
+		650EDBCC255EB7330048409A /* TCP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCP.h; sourceTree = "<group>"; };
+		650EDBCD255EB7330048409A /* ComProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComProtocol.h; sourceTree = "<group>"; };
 		6511F61A1F388F7000B750C2 /* VisualInstancesPropertiesTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VisualInstancesPropertiesTest.cpp; path = Properties/VisualInstancesPropertiesTest.cpp; sourceTree = "<group>"; };
 		651CFE8225571AB900DAC431 /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../of_v0.11.0_osx_release/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = "<group>"; };
 		651CFE892558B60F00DAC431 /* ofxTCPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTCPManager.h; sourceTree = "<group>"; };
@@ -681,7 +683,7 @@
 		0CC0659D1FBFAA7C0094744E /* Server */ = {
 			isa = PBXGroup;
 			children = (
-				6533F2ED255D6FCF00AD9957 /* Communications */,
+				650EDBCB255EB7330048409A /* Protocols */,
 				0C0B84DE1FC0794A00BEF796 /* glsl */,
 				0C0B84D21FC0793900BEF796 /* Server-Info.plist */,
 				0C0B84D41FC0793900BEF796 /* main.cpp */,
@@ -728,6 +730,16 @@
 			name = "Test Data";
 			path = TestData;
 			sourceTree = "<group>";
+		};
+		650EDBCB255EB7330048409A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				650EDBCC255EB7330048409A /* TCP.h */,
+				650EDBCD255EB7330048409A /* ComProtocol.h */,
+			);
+			name = Protocols;
+			path = src/Apps/Server/Protocols;
+			sourceTree = SOURCE_ROOT;
 		};
 		6511F6181F388F2400B750C2 /* Properties */ = {
 			isa = PBXGroup;
@@ -829,13 +841,6 @@
 				6533F2E9255D6EDB00AD9957 /* libzmq.dylib */,
 			);
 			path = libs;
-			sourceTree = "<group>";
-		};
-		6533F2ED255D6FCF00AD9957 /* Communications */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Communications;
 			sourceTree = "<group>";
 		};
 		65801763255A19AC00D8BAE2 /* ofxOsc */ = {

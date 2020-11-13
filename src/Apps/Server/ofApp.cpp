@@ -34,47 +34,6 @@ void ofApp::initEngine() {
     setupTestSet();
 }
 
-void ofApp::initTCPServer() {
-    TCP.setup(serverPort);
-    TCP.setMessageDelimiter("\n");
-    lastSent = 0;
-}
-
-void ofApp::updateTCPServer() {
-    uint64_t now = ofGetElapsedTimeMillis();
-    if(now - lastSent >= 100){
-        for(int i = 0; i < TCP.getLastID(); i++){
-            if( !TCP.isClientConnected(i) ) continue;
-            
-            string str = TCP.receive(i);
-            
-            if( str.length() > 0 ) {
-                
-                json jsonRequest = json::parse(str);
-                json jsonResponse;
-                
-               
-                if (jsonRequest.is_object()) {
-                    try {
-                        jsonResponse = handleJSONRequestForClient(jsonRequest);
-                    }
-                    catch (std::exception &e) {
-                        jsonResponse = {
-                            {"success", false},
-                            {"message", e.what()},
-                            {"data", {}}
-                        };
-                    }
-                    // cout << "message sent: " << jsonResponse.dump(4) << endl;
-                    
-                    TCP.send(i, jsonResponse.dump());
-                }
-            }
-        }
-        lastSent = now;
-    }
-}
-
 
 void ofApp::initIPC()
 {
@@ -82,26 +41,38 @@ void ofApp::initIPC()
     void *responder = zmq_socket (context, ZMQ_REP);
     int rc = zmq_bind (responder, "ipc:///tmp/arbutus-state");
     assert (rc == 0);
+    
+    // the following needs to go in a thread
+    /*
+    while (1) {
+        char buffer [10];
+        zmq_recv (responder, buffer, 10, 0);
+        printf ("Received Hello\n");
+        sleep (1);          //  Do some 'work'
+        zmq_send (responder, "World", 5, 0);
+    }
+    return 0;
+     */
 }
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     initEngine();
-    initTCPServer();
+    tcp.init(DEFAULT_TCP_PORT);
     initIPC();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    updateTCPServer();
-    
+    //updateTCPServer();
+    tcp.update(handleJSONRequestForClient);
     
     Engine::getInstance()->render();
 }
 
 
 void ofApp::close(){
-    TCP.close();
+    tcp.close();
 }
 
 //--------------------------------------------------------------

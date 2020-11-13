@@ -62,6 +62,7 @@ Code is documented with HeaderDoc.
 - add documentation placemarks on all functions
 - implement IPC 
 - REMOVE ALL SINGLETON PATTERNS
+- Decent logging
 
 - fix generated json of the state
 - break the current shader into parts. have one shader per effect
