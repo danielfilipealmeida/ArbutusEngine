@@ -2,7 +2,7 @@
 #include "JsonLoad.hpp"
 #include "Utils.h"
 #include "Messages.hpp"
-#include "zmq.h"
+
 
 
 
@@ -35,37 +35,17 @@ void ofApp::initEngine() {
 }
 
 
-void ofApp::initIPC()
-{
-    void *context = zmq_ctx_new ();
-    void *responder = zmq_socket (context, ZMQ_REP);
-    int rc = zmq_bind (responder, "ipc:///tmp/arbutus-state");
-    assert (rc == 0);
-    
-    // the following needs to go in a thread
-    /*
-    while (1) {
-        char buffer [10];
-        zmq_recv (responder, buffer, 10, 0);
-        printf ("Received Hello\n");
-        sleep (1);          //  Do some 'work'
-        zmq_send (responder, "World", 5, 0);
-    }
-    return 0;
-     */
-}
-
 //--------------------------------------------------------------
 void ofApp::setup(){
     initEngine();
-    tcp.init(DEFAULT_TCP_PORT);
-    initIPC();
+    tcp.init({{"port", (int) DEFAULT_TCP_PORT}});
+    ipc.init({{"uri", DEFAULT_IPC_URI}});
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    //updateTCPServer();
     tcp.update(handleJSONRequestForClient);
+    ipc.update(handleJSONRequestForClient);
     
     Engine::getInstance()->render();
 }
@@ -73,6 +53,7 @@ void ofApp::update(){
 
 void ofApp::close(){
     tcp.close();
+    ipc.close();
 }
 
 //--------------------------------------------------------------

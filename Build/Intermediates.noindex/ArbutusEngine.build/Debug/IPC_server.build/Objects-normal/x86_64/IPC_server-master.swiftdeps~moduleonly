@@ -1,0 +1,5 @@
+version: "Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)"
+options: "fec0b41efaff091089f8f962a8f9b90d"
+build_time: [1605518490, 201936000]
+inputs:
+  "/Users/daniel/Work/XCode/VJ apps/ArbutusEngine/IPC_server/main.swift": !dirty [1605518110, 667937224]

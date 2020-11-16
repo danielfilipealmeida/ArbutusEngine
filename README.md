@@ -58,7 +58,7 @@ Code is documented with HeaderDoc.
 ## Work todo
 
 
-- Compile all again
+- ZMQ IPC client and server example using barebone ZMQ
 - add documentation placemarks on all functions
 - implement IPC 
 - REMOVE ALL SINGLETON PATTERNS
