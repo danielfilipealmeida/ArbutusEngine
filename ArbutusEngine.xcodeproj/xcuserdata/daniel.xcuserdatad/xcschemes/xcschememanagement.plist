@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Client.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>Empty.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -29,12 +34,12 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>ipc_client.xcscheme_^#shared#^_</key>
+		<key>ipc_client.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>ipc_server.xcscheme_^#shared#^_</key>
+		<key>ipc_server.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>6</integer>
@@ -58,6 +63,11 @@
 			<true/>
 		</dict>
 		<key>650455791F47A9FE00CB3BE5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6554959D25634B3000EEAB1E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -58,6 +58,7 @@ Code is documented with HeaderDoc.
 ## Work todo
 
 
+- Find what project functional methods where added and put them here
 - ZMQ IPC client and server example using barebone ZMQ
 - add documentation placemarks on all functions
 - implement IPC 

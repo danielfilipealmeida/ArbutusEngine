@@ -4,9 +4,6 @@
 #include "Messages.hpp"
 
 
-
-
-
 void ofApp::setupTestSet() {
     string filePath = ofFilePath::getCurrentExeDir() + "../Resources/set.json";
     
